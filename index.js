@@ -98,6 +98,151 @@ var expenses = [{
     app.put("/expenses-of-countries-in-education-and-culture", (req, res)=>{
         res.sendStatus(405);
     });
+    
+//Cristian    
+var emigrations = [{
+    country: "USA",
+    year: "2017",
+    emigrantMan: "1527889",
+    emigrantWoman: "1488796",
+    totalEmigrant: "3016685"
+},{
+    country: "Spain",
+    year: "2017",
+    emigrantMan: "609615",
+    emigrantWoman: "736247",
+    totalEmigrant: "1345862"
+},{
+    country: "China",
+    year: "2017",
+    emigrantMan: "4589075",
+    emigrantWoman: "5372983",
+    totalEmigrant: "9962058"
+},{
+    country: "Germany",
+    year: "2017",
+    emigrantMan: "1934294",
+    emigrantWoman: "2273789",
+    totalEmigrant: "4208083"
+},{
+    country: "Colombia",
+    year: "2017",
+    emigrantMan: "1249848	",
+    emigrantWoman: "1486382",
+    totalEmigrant: "2736230"
+},];
+
+//Cristian GET /emigrations-by-countries/
+app.get("/emigrations-by-countries", (req,res) =>{
+    res.send(emigrations);
+});
+
+//Cristian POST /emigrations-by-countries/
+app.post("/emigrations-by-countries", (req,res) =>{
+    var newEmigrations =req.body;
+    
+    emigrations.push(newEmigrations);
+    
+    res.sendStatus(201);
+});
+
+//Cristian DELETE /emigrations-by-countries/
+app.delete("/emigrations-by-countries", (req,res) =>{
+
+    emigrations = [];
+    
+    res.sendStatus(200);
+});
+
+
+//Cristian GET /emigrations-by-countries/USA
+
+app.get("/emigrations-by-countries/:country", (req,res) =>{
+
+    var country = req.params.country;
+    
+    var filteredEmigrations = emigrations.filter((c) =>{
+        return c.country == country;
+    });
+    
+    if (filteredEmigrations.length >= 1){
+        res.send(filteredEmigrations[0]);
+    }else{
+            res.sendStatus(404);
+
+    }
+    
+});
+
+//Cristian PUT /emigrations-by-countries/USA
+
+app.put("/emigrations-by-countries/:country", (req,res) =>{
+
+    var country = req.params.country;
+    var updateEmigrations = req.body;
+    var found = false;
+    
+    var updateEmigration = emigrations.map((c) =>{
+        
+        if(c.country == country){
+            found = true;
+            return updateEmigrations;
+        }else{
+            return c;
+        }
+        
+    });
+    
+    
+    
+    if (found == false){
+            res.sendStatus(404);
+    }else{
+        emigrations=updateEmigration;
+        res.sendStatus(200);
+    }
+    
+});
+
+//Cristian DELETE /emigrations-by-countries/USA
+
+app.delete("/emigrations-by-countries/:country", (req,res) =>{
+
+    var country = req.params.country;
+    var found = false;
+    
+    var updateEmigrations = emigrations.filter((c) =>{
+         if(c.country == country)
+            found = true;
+            return c.country != country;
+         
+    });
+    
+    
+    
+    if (found == false){
+            res.sendStatus(404);
+    }else{
+        emigrations=updateEmigrations;
+        res.sendStatus(200);
+    }
+    
+});
+
+//Cristian POST a un recurso, metodo no permitido
+app.post("/emigrations-by-countries/:country", (req,res) =>{
+    
+    res.sendStatus(405);
+});
+
+//Cristian PUT a la ruta base, método no permitido
+app.put("/emigrations-by-countries", (req,res) =>{
+    
+    res.sendStatus(405);
+});
+
+
+
 app.use("/", express.static(__dirname+"/public"));
 
 app.get("/time", (request, response)=> {
