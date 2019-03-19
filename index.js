@@ -285,13 +285,13 @@ var turists = [{
 
 //GET / turists/
 
-app.get("/turists", (req, res) => {
+app.get("/tourists-by-countries", (req, res) => {
     res.send(turists);
 });
 
 //POST / turists/
 
-app.post("/turists", (req, res) => {
+app.post("/tourists-by-countries", (req, res) => {
     var newContact = req.body;
 
     turists.push(newContact);
@@ -300,7 +300,7 @@ app.post("/turists", (req, res) => {
 });
 
 //DELETE/ turists/
-app.delete("/turists", (req, res) => {
+app.delete("/tourists-by-countries", (req, res) => {
 
     turists = [];
 
@@ -310,7 +310,7 @@ app.delete("/turists", (req, res) => {
 
 //GET /turists/China
 
-app.get("/turists/:country", (req, res) => {
+app.get("/tourists-by-countries/:country", (req, res) => {
 
     var country = req.params.country;
 
@@ -332,7 +332,7 @@ app.get("/turists/:country", (req, res) => {
 //PUT /turists/China
 
 
-app.put("/turists/:country", (req, res) => {
+app.put("/tourists-by-countries/:country", (req, res) => {
 
     var country = req.params.country;
     var updatedTurist = req.body;
@@ -364,9 +364,9 @@ app.put("/turists/:country", (req, res) => {
 });
 
 
-//DELETE/turist/China
+//DELETE/tourists-by-countries/China
 
-app.delete("/turists/:country", (req, res) => {
+app.delete("/tourists-by-countries/:country", (req, res) => {
 
     var country = req.params.country;
 
@@ -396,11 +396,11 @@ app.delete("/turists/:country", (req, res) => {
 
 //ERRORES
 
-app.post("/turists/:country", (req, res) => {
+app.post("/tourists-by-countries/:country", (req, res) => {
     res.sendStatus(405);
 });
 
-app.put("/turists", (req, res) => {
+app.put("/tourists-by-countries", (req, res) => {
     res.sendStatus(405);
 });
 
