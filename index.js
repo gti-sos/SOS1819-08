@@ -1,7 +1,11 @@
 var express = require("express");
+
 var bodyParser = require("body-parser");
+
 var app = express();
+
 var port = process.env.PORT || 8080;
+
 app.use(bodyParser.json())
 
 var expenses = [{
@@ -19,23 +23,23 @@ var expenses = [{
 }];
 
 // Felix get 
-app.get("/expenses-of-countries-in-education-and-culture", (req, res) => {
+app.get("/api/v1/expenses-of-countries-in-education-and-culture", (req, res) => {
     res.send(expenses);
 });
 //Felix post
-app.post("/expenses-of-countries-in-education-and-culture", (req, res) => {
+app.post("/api/v1/expenses-of-countries-in-education-and-culture", (req, res) => {
     var newExpense = req.body;
 
     expenses.push(newExpense);
     res.sendStatus(201);
 });
 // Felix delete 
-app.delete("/expenses-of-countries-in-education-and-culture", (req, res) => {
+app.delete("/api/v1/expenses-of-countries-in-education-and-culture", (req, res) => {
     expenses = [];
     res.sendStatus(200);
 });
 //Felix get concreto
-app.get("/expenses-of-countries-in-education-and-culture/:country", (req, res) => {
+app.get("/api/v1/expenses-of-countries-in-education-and-culture/:country", (req, res) => {
     var country = req.params.country;
     var filteredExpenses = expenses.filter((c) => {
         return c.country == country;
@@ -49,7 +53,7 @@ app.get("/expenses-of-countries-in-education-and-culture/:country", (req, res) =
 
 });
 //Felix PUT
-app.put("/expenses-of-countries-in-education-and-culture/:country", (req, res) => {
+app.put("/api/v1/expenses-of-countries-in-education-and-culture/:country", (req, res) => {
     var updateExpense = req.body;
     var found = false;
     var country = req.params.country;
@@ -74,7 +78,7 @@ app.put("/expenses-of-countries-in-education-and-culture/:country", (req, res) =
 
 });
 //Felix delete concreto 
-app.delete("/expenses-of-countries-in-education-and-culture/:country", (req, res) => {
+app.delete("/api/v1/expenses-of-countries-in-education-and-culture/:country", (req, res) => {
 
     var country = req.params.country;
     var found = false;
@@ -100,11 +104,11 @@ app.delete("/expenses-of-countries-in-education-and-culture/:country", (req, res
 
 
 //Felix errores
-app.post("/expenses-of-countries-in-education-and-culture/:country", (req, res) => {
+app.post("/api/v1/expenses-of-countries-in-education-and-culture/:country", (req, res) => {
     res.sendStatus(405);
 });
 //error 2
-app.put("/expenses-of-countries-in-education-and-culture", (req, res) => {
+app.put("/api/v1/expenses-of-countries-in-education-and-culture", (req, res) => {
     res.sendStatus(405);
 });
 
@@ -142,12 +146,12 @@ var emigrations = [{
 }, ];
 
 //Cristian GET /emigrations-by-countries/
-app.get("/emigrations-by-countries", (req, res) => {
+app.get("/api/v1/emigrations-by-countries", (req, res) => {
     res.send(emigrations);
 });
 
 //Cristian POST /emigrations-by-countries/
-app.post("/emigrations-by-countries", (req, res) => {
+app.post("/api/v1/emigrations-by-countries", (req, res) => {
     var newEmigrations = req.body;
 
     emigrations.push(newEmigrations);
@@ -156,7 +160,7 @@ app.post("/emigrations-by-countries", (req, res) => {
 });
 
 //Cristian DELETE /emigrations-by-countries/
-app.delete("/emigrations-by-countries", (req, res) => {
+app.delete("/api/v1/emigrations-by-countries", (req, res) => {
 
     emigrations = [];
 
@@ -166,7 +170,7 @@ app.delete("/emigrations-by-countries", (req, res) => {
 
 //Cristian GET /emigrations-by-countries/USA
 
-app.get("/emigrations-by-countries/:country", (req, res) => {
+app.get("/api/v1/emigrations-by-countries/:country", (req, res) => {
 
     var country = req.params.country;
 
@@ -186,7 +190,7 @@ app.get("/emigrations-by-countries/:country", (req, res) => {
 
 //Cristian PUT /emigrations-by-countries/USA
 
-app.put("/emigrations-by-countries/:country", (req, res) => {
+app.put("/api/v1/emigrations-by-countries/:country", (req, res) => {
 
     var country = req.params.country;
     var updateEmigrations = req.body;
@@ -218,7 +222,7 @@ app.put("/emigrations-by-countries/:country", (req, res) => {
 
 //Cristian DELETE /emigrations-by-countries/USA
 
-app.delete("/emigrations-by-countries/:country", (req, res) => {
+app.delete("/api/v1/emigrations-by-countries/:country", (req, res) => {
 
     var country = req.params.country;
     var found = false;
@@ -243,13 +247,13 @@ app.delete("/emigrations-by-countries/:country", (req, res) => {
 });
 
 //Cristian POST a un recurso, metodo no permitido
-app.post("/emigrations-by-countries/:country", (req, res) => {
+app.post("/api/v1/emigrations-by-countries/:country", (req, res) => {
 
     res.sendStatus(405);
 });
 
 //Cristian PUT a la ruta base, método no permitido
-app.put("/emigrations-by-countries", (req, res) => {
+app.put("/api/v1/emigrations-by-countries", (req, res) => {
 
     res.sendStatus(405);
 });
@@ -298,13 +302,13 @@ var turists = [{
 
 //GET / turists/
 
-app.get("/tourists-by-countries", (req, res) => {
+app.get("/api/v1/tourists-by-countries", (req, res) => {
     res.send(turists);
 });
 
 //POST / turists/
 
-app.post("/tourists-by-countries", (req, res) => {
+app.post("/api/v1/tourists-by-countries", (req, res) => {
     var newContact = req.body;
 
     turists.push(newContact);
@@ -313,7 +317,7 @@ app.post("/tourists-by-countries", (req, res) => {
 });
 
 //DELETE/ turists/
-app.delete("/tourists-by-countries", (req, res) => {
+app.delete("/api/v1/tourists-by-countries", (req, res) => {
 
     turists = [];
 
@@ -323,7 +327,7 @@ app.delete("/tourists-by-countries", (req, res) => {
 
 //GET /turists/China
 
-app.get("/tourists-by-countries/:country", (req, res) => {
+app.get("/api/v1/tourists-by-countries/:country", (req, res) => {
 
     var country = req.params.country;
 
@@ -345,7 +349,7 @@ app.get("/tourists-by-countries/:country", (req, res) => {
 //PUT /turists/China
 
 
-app.put("/tourists-by-countries/:country", (req, res) => {
+app.put("/api/v1/tourists-by-countries/:country", (req, res) => {
 
     var country = req.params.country;
     var updatedTurist = req.body;
@@ -379,7 +383,7 @@ app.put("/tourists-by-countries/:country", (req, res) => {
 
 //DELETE/tourists-by-countries/China
 
-app.delete("/tourists - by - countries/:country", (req, res) => {
+app.delete("/api/v1/tourists-by-countries/:country", (req, res) => {
 
     var country = req.params.country;
 
@@ -409,11 +413,11 @@ app.delete("/tourists - by - countries/:country", (req, res) => {
 
 //ERRORES
 
-app.post("/tourists-by-countries/:country", (req, res) => {
+app.post("/api/v1/tourists-by-countries/:country", (req, res) => {
     res.sendStatus(405);
 });
 
-app.put("/tourists-by-countries", (req, res) => {
+app.put("/api/v1/tourists-by-countries", (req, res) => {
     res.sendStatus(405);
 });
 
