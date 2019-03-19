@@ -241,6 +241,173 @@ app.put("/emigrations-by-countries", (req,res) =>{
     res.sendStatus(405);
 });
 
+///------------------------------------PARTE MARIA DOLORES LÓPEZ------------------
+
+
+var turists = [{
+        country: "Spain",
+        year: 2017,
+        touristDeparture: 17031.00,
+        arrivalTourist: 81786.00,
+        incomeTourist: 67964000
+    },
+    {
+        country: "China",
+        year: 2017,
+        touristDeparture: 43035.00,
+        arrivalTourist: 60740.00,
+        incomeTourist: 32617000
+    },
+    {
+        country: "USA",
+        year: 2017,
+        touristDeparture: 87703.00,
+        arrivalTourist: 76941.00,
+        incomeTourist: 210747000
+    },
+    {
+        country: "Germany",
+        year: 2017,
+        touristDeparture: 92402.00,
+        arrivalTourist: 37452.00,
+        incomeTourist: 39823000
+    },
+    {
+        country: "Colombia",
+        year: 2017,
+        touristDeparture: 4017.00,
+        arrivalTourist: 4027.00,
+        incomeTourist: 4821000
+    }
+];
+
+
+
+//GET / turists/
+
+app.get("/turists", (req, res) => {
+    res.send(turists);
+});
+
+//POST / turists/
+
+app.post("/turists", (req, res) => {
+    var newContact = req.body;
+
+    turists.push(newContact);
+    res.sendStatus(201);
+
+});
+
+//DELETE/ turists/
+app.delete("/turists", (req, res) => {
+
+    turists = [];
+
+    res.sendStatus(200);
+
+});
+
+//GET /turists/China
+
+app.get("/turists/:country", (req, res) => {
+
+    var country = req.params.country;
+
+    var filteredTurist = turists.filter((c) => {
+        return c.country == country;
+    })
+
+    if (filteredTurist.length >= 1) {
+        res.send(filteredTurist[0]);
+    }
+    else {
+        res.sendStatus(404);
+    }
+
+
+});
+
+
+//PUT /turists/China
+
+
+app.put("/turists/:country", (req, res) => {
+
+    var country = req.params.country;
+    var updatedTurist = req.body;
+    var found = false;
+
+
+    var updatedTurist = turists.map((c) => {
+
+        if (c.country == country) {
+            found = true;
+            return updatedTurist;
+        }
+        else {
+            return c;
+        }
+    });
+
+
+
+    if (found == false) {
+        res.sendStatus(404);
+    }
+    else {
+        turists = updatedTurist;
+        res.sendStatus(200);
+    }
+
+
+});
+
+
+//DELETE/turist/China
+
+app.delete("/turists/:country", (req, res) => {
+
+    var country = req.params.country;
+
+    var found = false;
+
+
+    var updatedTurist = turists.filter((c) => {
+
+        if (c.country == country)
+            found = true;
+        return c.country != country;
+
+    });
+
+
+
+    if (found == false) {
+        res.sendStatus(404);
+    }
+    else {
+        turists = updatedTurist;
+        res.sendStatus(200);
+    }
+
+
+});
+
+//ERRORES
+
+app.post("/turists/:country", (req, res) => {
+    res.sendStatus(405);
+});
+
+app.put("/turists", (req, res) => {
+    res.sendStatus(405);
+});
+
+
+app.listen(port, () => {
+    console.log("Super server ready on port" + port);
+});
 
 
 app.use("/", express.static(__dirname+"/public"));
