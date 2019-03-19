@@ -76,26 +76,28 @@ app.put("/expenses-of-countries-in-education-and-culture/:country", (req, res) =
 //Felix delete concreto 
 app.delete("/expenses-of-countries-in-education-and-culture/:country", (req, res) => {
 
-    var found = false;
     var country = req.params.country;
-    var updateExpenses = expenses.filter((c) => {
-        if (c.country == country) {
-            found = true;
+    var found = false;
 
-            return c.country != country;
-        }
+    var updateExpenses = expenses.filter((c) => {
+        if (c.country == country)
+            found = true;
+        return c.country != country;
+
     });
+
+
 
     if (found == false) {
         res.sendStatus(404);
-
     }
     else {
-        res.sendStatus(200);
         expenses = updateExpenses;
+        res.sendStatus(200);
     }
 
 });
+
 
 //Felix errores
 app.post("/expenses-of-countries-in-education-and-culture/:country", (req, res) => {
