@@ -1,14 +1,16 @@
 var express = require("express");
 
 var bodyParser = require("body-parser");
-
+var emigrations;
 var app = express();
-
+var expenses;
+var turists;
 var port = process.env.PORT || 8080;
 
 app.use(bodyParser.json())
-
-var expenses = [{
+//Felix LID
+app.get("/api/v1/expenses-of-countries-in-education-and-culture/loadInitialData", (req, res) => {
+var newExpenses = [{
     country: "USA",
     year: "2017",
     countryExpense: "658066.8",
@@ -21,6 +23,9 @@ var expenses = [{
     budgetPercentage: "9.77",
     expensePerCapita: "997"
 }];
+expenses= newExpenses;
+    res.sendStatus(200);
+});
 
 // Felix get 
 app.get("/api/v1/expenses-of-countries-in-education-and-culture", (req, res) => {
@@ -112,8 +117,9 @@ app.put("/api/v1/expenses-of-countries-in-education-and-culture", (req, res) => 
     res.sendStatus(405);
 });
 
-//Cristian    
-var emigrations = [{
+//Cristian LID
+app.get("/api/v1/emigrations-by-countries/loadInitialData", (req, res) => {
+var newEmigrations = [{
     country: "USA",
     year: "2017",
     emigrantMan: "1527889",
@@ -143,7 +149,10 @@ var emigrations = [{
     emigrantMan: "1249848	",
     emigrantWoman: "1486382",
     totalEmigrant: "2736230"
-}, ];
+}];
+    emigrations= newEmigrations;
+    res.sendStatus(200);
+});
 
 //Cristian GET /emigrations-by-countries/
 app.get("/api/v1/emigrations-by-countries", (req, res) => {
@@ -260,8 +269,9 @@ app.put("/api/v1/emigrations-by-countries", (req, res) => {
 
 ///------------------------------------PARTE MARIA DOLORES LÓPEZ------------------
 
+app.get("/api/v1/tourists-by-countries/loadInitialData", (req, res) => {
 
-var turists = [{
+ var newTurist = [{
         country: "Spain",
         year: 2017,
         touristDeparture: 17031.00,
@@ -296,7 +306,11 @@ var turists = [{
         arrivalTourist: 4027.00,
         incomeTourist: 4821000
     }
-];
+] ;
+ turists=newTurist;
+     res.sendStatus(200);
+   
+});
 
 
 
