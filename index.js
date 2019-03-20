@@ -12,16 +12,16 @@ app.use(bodyParser.json())
 app.get("/api/v1/expenses-of-countries-in-education-and-culture/loadInitialData", (req, res) => {
 var newExpenses = [{
     country: "USA",
-    year: "2017",
-    countryExpense: "658066.8",
-    budgetPercentage: "13.45",
-    expensePerCapita: "2006"
+    year: 2017,
+    countryExpense: 658066.8,
+    budgetPercentage: 13.45,
+    expensePerCapita: 2006
 }, {
     country: "Spain",
-    year: "2017",
-    countryExpense: "46241.5",
-    budgetPercentage: "9.77",
-    expensePerCapita: "997"
+    year: 2017,
+    countryExpense: 46241.5,
+    budgetPercentage: 9.77,
+    expensePerCapita: 997
 }];
 expenses= newExpenses;
     res.sendStatus(200);
@@ -121,34 +121,34 @@ app.put("/api/v1/expenses-of-countries-in-education-and-culture", (req, res) => 
 app.get("/api/v1/emigrations-by-countries/loadInitialData", (req, res) => {
 var newEmigrations = [{
     country: "USA",
-    year: "2017",
-    emigrantMan: "1527889",
-    emigrantWoman: "1488796",
-    totalEmigrant: "3016685"
+    year: 2017,
+    emigrantMan: 1527889,
+    emigrantWoman: 1488796,
+    totalEmigrant: 3016685
 }, {
     country: "Spain",
-    year: "2017",
-    emigrantMan: "609615",
-    emigrantWoman: "736247",
-    totalEmigrant: "1345862"
+    year: 2017,
+    emigrantMan: 609615,
+    emigrantWoman: 736247,
+    totalEmigrant: 1345862
 }, {
     country: "China",
-    year: "2017",
-    emigrantMan: "4589075",
-    emigrantWoman: "5372983",
-    totalEmigrant: "9962058"
+    year: 2017,
+    emigrantMan: 4589075,
+    emigrantWoman: 5372983,
+    totalEmigrant: 9962058
 }, {
     country: "Germany",
-    year: "2017",
-    emigrantMan: "1934294",
-    emigrantWoman: "2273789",
-    totalEmigrant: "4208083"
+    year: 2017,
+    emigrantMan: 1934294,
+    emigrantWoman: 2273789,
+    totalEmigrant: 4208083
 }, {
     country: "Colombia",
-    year: "2017",
-    emigrantMan: "1249848	",
-    emigrantWoman: "1486382",
-    totalEmigrant: "2736230"
+    year: 2017,
+    emigrantMan: 1249848,
+    emigrantWoman: 1486382,
+    totalEmigrant: 2736230
 }];
     emigrations= newEmigrations;
     res.sendStatus(200);
