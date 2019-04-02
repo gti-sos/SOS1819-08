@@ -62,7 +62,13 @@ app.get("/api/v1/expenses-of-countries-in-education-and-culture/", (req, res) =>
     var offSetAux = parseInt(req.query.offset);
     var search = {};
     if(req.query.country)  search["country"] = req.query.country;
-    if(req.query.year)  search["year"] =  parseInt(req.query.year);
+    if(req.query.year){  search["year"] =  parseInt(req.query.year);
+} else if(req.query.from && req.query.to){
+            search["year"] = { $gte : req.query.from, $lte : req.query.to };
+}
+    if(req.query.countryExpenseMin||req.query.countryExpenseMax ) search["countryExpense"]= {$gte : parseFloat(req.query.countryExpenseMin), $lte : parseFloat(req.query.countryExpenseMax)};
+    if(req.query.percentageMin||req.query.percentageMax ) search["budgetPercentage"]= {$gte : parseFloat(req.query.percentageMin), $lte : parseFloat(req.query.percentageMax)};    
+    if(req.query.EPCMin||req.query.EPCMax ) search["expensePerCapita"]= {$gte : parseFloat(req.query.EPCMin), $lte : parseFloat(req.query.EPCMax)};    
     expenses.find(search).skip(offSetAux).limit(limitAux).toArray((err, expensesArray)=>{
          if(err)
             console.log("Error: "+err);
@@ -71,6 +77,7 @@ app.get("/api/v1/expenses-of-countries-in-education-and-culture/", (req, res) =>
             return c;
         }));
     })
+    console.log(search);
     
 });
     
@@ -115,7 +122,7 @@ app.delete("/api/v1/expenses-of-countries-in-education-and-culture", (req, res) 
 app.get("/api/v1/expenses-of-countries-in-education-and-culture/:country/:year", (req, res) => {
     var countryN = req.params.country;
     var yearN = parseInt(req.params.year);
-    expenses.find({"country": countryN,"year": yearN}).toArray((err,expArray)=>{
+    expenses.find({"country": countryN,"year": yearN},{fields : {_id : 0}}).toArray((err,expArray)=>{
         
         
         console.log(countryN+" "+yearN);
@@ -126,7 +133,7 @@ app.get("/api/v1/expenses-of-countries-in-education-and-culture/:country/:year",
         if(expArray.length==0){
             res.sendStatus(404);
         }else{
-        res.send(expArray);    
+        res.send(expArray[0]);    
         }
                 
     
