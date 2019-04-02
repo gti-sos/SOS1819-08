@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "https://www.getpostman.com/collections/b88bc32715724985e2bb; https://www.getpostman.com/collections/d0833b2de0d97bb2ff2d; ",
-    "test-tourist": "https://www.getpostman.com/collections/b88bc32715724985e2bb",
-    "test-expenses": "https://www.getpostman.com/collections/d0833b2de0d97bb2ff2d"
+    "test": "newman run https://www.getpostman.com/collections/b88bc32715724985e2bb; newman run https://www.getpostman.com/collections/d0833b2de0d97bb2ff2d; newman run https://www.getpostman.com/collections/58ebeec2e7648b1b6fec",
+    "test-tourist": "newman run https://www.getpostman.com/collections/b88bc32715724985e2bb",
+    "test-expenses": "newman run https://www.getpostman.com/collections/d0833b2de0d97bb2ff2d",
+    "test-emigrants": "newman run https://www.getpostman.com/collections/58ebeec2e7648b1b6fec"
   },
   "author": "",
   "license": "ISC",

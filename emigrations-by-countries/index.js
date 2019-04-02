@@ -4,7 +4,7 @@ module.exports = function(app, emigrations){
     
     app.get("/api/v1/emigrations-by-countries/docs", (req, res) => {
         console.log(Date() + " - GET /emigrations-by-countries/docs");
-        res.redirect("");
+        res.redirect("https://documenter.getpostman.com/view/6913613/S17xt6g2");
     });
     
     //Cristian LID
