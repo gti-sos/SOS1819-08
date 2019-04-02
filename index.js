@@ -1,115 +1,202 @@
 var express = require("express");
 
+
+
+//Felix mongodb
+const MongoClient = require("mongodb").MongoClient;
+const uri = "mongodb+srv://test:test@sos1819-08-lynix.mongodb.net/test?retryWrites=true";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  expenses= client.db("sos1819-08").collection("expenses-of-countries-in-education-and-culture");
+  // perform actions on the collection object
+  console.log("mongo connected");
+  
+});
+
+
+var expenses=[];
+
+
 var bodyParser = require("body-parser");
 var emigrations=[];
 var app = express();
-var expenses=[];
+
 var turists=[];
 var port = process.env.PORT || 8080;
 
 app.use(bodyParser.json())
 //Felix LID
 app.get("/api/v1/expenses-of-countries-in-education-and-culture/loadInitialData", (req, res) => {
-var newExpenses = [{
-    country: "USA",
-    year: 2017,
-    countryExpense: 658066.8,
-    budgetPercentage: 13.45,
-    expensePerCapita: 2006
+    expenses.find({}).toArray((err, expArray)=>{
+        if(err){
+            console.error(err);
+        }
+        if(expArray.length==0){
+        var newExpenses = [{
+    "country": "USA",
+    "year": 2017,
+    "countryExpense": 658066.8,
+    "budgetPercentage": 13.45,
+    "expensePerCapita": 2006
 }, {
-    country: "Spain",
+    "country": "Spain",
+    "year": 2017,
+    "countryExpense": 46241.5,
+    "budgetPercentage": 9.77,
+    "expensePerCapita": 997
+},{
+    "country": "China",
+    "year": 2017,
+    "countryExpense": 19435.5,
+    "budgetPercentage": 12.63,
+    "expensePerCapita": 15
+},{
+    "country": "Germany",
+    "year": 2017,
+    "countryExpense": 658066.9,
+    "budgetPercentage": 13.46,
+    "expensePerCapita": 1.795
+},{
+    country: "Colombia",
     year: 2017,
-    countryExpense: 46241.5,
-    budgetPercentage: 9.77,
-    expensePerCapita: 997
+    countryExpense: 12247.1,
+    budgetPercentage: 9.78,
+    expensePerCapita: 248
 }];
-expenses= newExpenses;
-    res.sendStatus(200);
+expenses.insertMany(newExpenses);
+      res.sendStatus(200);  }
+      else{
+          res.sendStatus(400);
+      }
+    });
+
+
 });
 
+    
+
 // Felix get 
-app.get("/api/v1/expenses-of-countries-in-education-and-culture", (req, res) => {
-    res.send(expenses);
+app.get("/api/v1/expenses-of-countries-in-education-and-culture/", (req, res) => {
+    expenses.find({}).toArray((err, expensesArray)=>{
+         if(err)
+            console.log("Error: "+err);
+        res.send(expensesArray);
+    })
+    
 });
+    
 //Felix post
 app.post("/api/v1/expenses-of-countries-in-education-and-culture", (req, res) => {
     var newExpense = req.body;
-
-    expenses.push(newExpense);
-    res.sendStatus(201);
+    var aux = false;
+    if(newExpense.length > 5 || !newExpense.hasOwnProperty("country") || !newExpense.hasOwnProperty("year")
+    || !newExpense.hasOwnProperty("countryExpense")|| !newExpense.hasOwnProperty("budgetPercentage")||
+    !newExpense.hasOwnProperty("expensePerCapita")){
+       console.log("datos: "+ newExpense);
+        res.sendStatus(400);
+    }
+    expenses.find({ "country": newExpense.country, "year": newExpense.year }).toArray(( err, data) => {
+         if(err==1){
+             console.log("ERROR");
+         }
+          console.log("data" +data.country);
+          console.log("country"+ newExpense.country);
+          console.log("country 2 "+ newExpense["country"]);
+          console.log("year 2 "+ newExpense["year"]);
+            if (data.length!= 0) {
+                aux = true;
+                res.sendStatus(409);
+                return;
+            }else{
+                expenses.insertOne(newExpense, (numUpdated) => {
+                    
+                    console.log("Insert: " + numUpdated);
+                    res.sendStatus(201);
+                });
+            }
+        });
 });
 // Felix delete 
 app.delete("/api/v1/expenses-of-countries-in-education-and-culture", (req, res) => {
-    expenses = [];
+    expenses.remove();
+    
     res.sendStatus(200);
 });
 //Felix get concreto
-app.get("/api/v1/expenses-of-countries-in-education-and-culture/:country", (req, res) => {
-    var country = req.params.country;
-    var filteredExpenses = expenses.filter((c) => {
-        return c.country == country;
-    });
-    if (filteredExpenses.length >= 1) {
-        res.send(filteredExpenses[0]);
-    }
-    else {
-        res.sendStatus(404);
-    }
-
+app.get("/api/v1/expenses-of-countries-in-education-and-culture/:country/:year", (req, res) => {
+    var countryN = req.params.country;
+    var yearN = parseInt(req.params.year);
+    expenses.find({"country": countryN,"year": yearN}).toArray((err,expArray)=>{
+        
+        console.log(countryN+" "+yearN);
+        console.log(expArray);
+        if(err){
+            console.log("Error: "+err);
+        }
+        
+        res.send(expArray);        
+    
+});
 });
 //Felix PUT
-app.put("/api/v1/expenses-of-countries-in-education-and-culture/:country", (req, res) => {
+app.put("/api/v1/expenses-of-countries-in-education-and-culture/:country/:year", (req, res) => {
+   var country = req.params.country;
+   var year = parseInt(req.params.year);
+   
+   
+  
     var updateExpense = req.body;
-    var found = false;
     var country = req.params.country;
-    var updateExpenses = expenses.map((c) => {
-        if (c.country == country) {
-            found = true;
-            return updateExpense;
-        }
-        else {
-            return c;
-        }
-    });
-
-    if (found == false) {
-        res.sendStatus(404);
-
-    }
-    else {
+    
+    if(country!= updateExpense.country|| year!= updateExpense.year|| !updateExpense.hasOwnProperty("country")||!updateExpense.hasOwnProperty("year")
+    || !updateExpense.hasOwnProperty("countryExpense")|| !updateExpense.hasOwnProperty("budgetPercentage")||
+    !updateExpense.hasOwnProperty("expensePerCapita")|| updateExpense.country == null|| updateExpense.year == null||updateExpense.countryExpense == null
+    || updateExpense.budgetPercentage == null|| updateExpense.expensePerCapita == null){
+       console.log(country);
+       console.log(year)
+        res.sendStatus(400);
+    }else{
+       expenses.find({"country": updateExpense.country, "year": parseInt(updateExpense.year) }).toArray((err,dataa)=>{
+           if(err){
+               console.log(err);
+               
+           }
+           if(dataa.length==0){
+               res.sendStatus(404);
+           }else{
+                expenses.update({"country": updateExpense.country, "year": parseInt(updateExpense.year) }, updateExpense, (err, numUpdated) => {
+            console.log(updateExpense.country);
+            console.log("Updated: " + numUpdated);
+            });
         res.sendStatus(200);
-        expenses = updateExpenses;
+           }
+       });
+        
     }
-
 });
 //Felix delete concreto 
-app.delete("/api/v1/expenses-of-countries-in-education-and-culture/:country", (req, res) => {
-
+app.delete("/api/v1/expenses-of-countries-in-education-and-culture/:country/:year", (req, res) => {
+    var year = parseInt(req.params.year);
     var country = req.params.country;
-    var found = false;
-
-    var updateExpenses = expenses.filter((c) => {
-        if (c.country == country)
-            found = true;
-        return c.country != country;
-
-    });
-
-
-
-    if (found == false) {
-        res.sendStatus(404);
-    }
-    else {
-        expenses = updateExpenses;
-        res.sendStatus(200);
-    }
+     expenses.find({"country": country, "year":year }).toArray((err,dataa)=>{
+           if(err){
+               console.log(err);
+               
+           }
+           if(dataa.length==0){
+               res.sendStatus(404);
+           }else{
+   expenses.deleteOne({"country": country, "year": year});
+    
+    res.sendStatus(200);
+           }
+    
 
 });
 
 
 //Felix errores
-app.post("/api/v1/expenses-of-countries-in-education-and-culture/:country", (req, res) => {
+app.post("/api/v1/expenses-of-countries-in-education-and-culture/:country/:year", (req, res) => {
     res.sendStatus(405);
 });
 //error 2
@@ -442,6 +529,3 @@ app.listen(port, () => {
 
 
 app.use("/", express.static(__dirname + "/public"));
-
-
-
