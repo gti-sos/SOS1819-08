@@ -48,13 +48,15 @@ app.get("/api/v1/emigrations-by-countries/loadInitialData", (req, res) => {
                 "total-emigrant": 2736230
             }];
             emigrations.insert(newEmigrations);
+            res.sendStatus(200);
+
             console.log(Date() + " - GET /emigrations-by-countries/loadInitialData - Created " + newEmigrations.length + " emigrations-by-countries");
         }
         else {
+            res.sendStatus(400)
             console.log(Date() + " - GET /emigrations-by-countries/loadInitialData - DB has " + emigrationsAux.length + " emigrations-by-countries");
         }
     });
-    res.sendStatus(200);
 })
 
 
@@ -62,7 +64,17 @@ app.get("/api/v1/emigrations-by-countries/loadInitialData", (req, res) => {
 app.get("/api/v1/emigrations-by-countries", (req, res) => {
     var limitAux = parseInt(req.query.limit);
     var offSetAux = parseInt(req.query.offset);
-    emigrations.find({}).skip(offSetAux).limit(limitAux).toArray((err, emigrationsArray) => {
+    var search = {};
+    if(req.query.country)  search["country"] = req.query.country;
+    if(req.query.year){  search["year"] =  parseInt(req.query.year);
+}else if(req.query.emigrantManFrom && req.query.emigrantManTo){
+    search["emigrant-man"] = {$gte : parseInt(req.query.emigrantManFrom), $lte: parseInt(req.query.emigrantManTo)};
+}else if(req.query.emigrantWomanFrom && req.query.emigrantWomanTo){
+    search["emigrant-woman"] = {$gte : parseInt(req.query.emigrantWomanFrom), $lte: parseInt(req.query.emigrantWomanTo)};
+}else if(req.query.totalEmigrantFrom && req.query.totalEmigrantTo){
+    search["total-emigrant"] = {$gte : parseInt(req.query.totalEmigrantFrom), $lte: parseInt(req.query.totalEmigrantTo)};
+}
+    emigrations.find(search).skip(offSetAux).limit(limitAux).toArray((err, emigrationsArray) => {
 
         if (err)
             console.log("Error: " + err);
@@ -137,7 +149,7 @@ app.get("/api/v1/emigrations-by-countries/:country/:year", (req, res) => {
         res.send(emigrationsArray.map((c) => {
             delete c._id;
             return c;
-        }));
+        })[0]);
     });
 });
 
