@@ -1,6 +1,6 @@
 
-var emigrations = {};
-module.exports = function(app){
+
+module.exports = function(app, emigrations){
     
     app.get("/api/v1/emigrations-by-countries/docs", (req, res) => {
         console.log(Date() + " - GET /emigrations-by-countries/docs");

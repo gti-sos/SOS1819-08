@@ -3,13 +3,14 @@
 var touristsByCountries = {};
 var BASE_PATH = "/api/v1";
 
-module.exports = touristsByCountries;
 
 
 
-touristsByCountries.register = function(app, db) {
+
+module.exports= function(app, touristsByCountries) {
 
     console.log("Registering routes for tourists API...");
+    
     app.get(BASE_PATH + "/tourists-by-countries/docs", (req, res) => {
         console.log(Date() + " - GET /tourists-by-countries/docs");
         res.redirect("https://documenter.getpostman.com/view/6926249/S17xr5ZF");
