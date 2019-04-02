@@ -122,7 +122,7 @@ app.post(BASE_PATH+"/tourists-by-countries", (req, res) => {
     var data = req.body;
     var auxiliar = false;
     //Comprobamos si hay incongruencias en los datos antes de actuar
-    if (data.length > 8 || !data.hasOwnProperty("country") || !data.hasOwnProperty("year") || !data.hasOwnProperty("touristDeparture") ||
+    if (data.length > 5 || !data.hasOwnProperty("country") || !data.hasOwnProperty("year") || !data.hasOwnProperty("touristDeparture") ||
         !data.hasOwnProperty("arrivalTourist") || !data.hasOwnProperty("incomeTourist")) {
         res.sendStatus(400);
         return;
@@ -258,7 +258,7 @@ app.delete(BASE_PATH+"/tourists-by-countries/:country/:year", (req, res) => {
 
 //ERRORES
 
-app.post(BASE_PATH+"/tourists-by-countries/:country", (req, res) => {
+app.post(BASE_PATH+"/tourists-by-countries/:country/:year", (req, res) => {
     res.sendStatus(405);
 });
 
