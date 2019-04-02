@@ -13,7 +13,7 @@ module.exports= function(app, touristsByCountries) {
     
     app.get(BASE_PATH + "/tourists-by-countries/docs", (req, res) => {
         console.log(Date() + " - GET /tourists-by-countries/docs");
-        res.redirect("https://documenter.getpostman.com/view/6926249/S17xr5ZF");
+        res.redirect("https://documenter.getpostman.com/view/6926249/S17xt6bi");
     });
 
 
