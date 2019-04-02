@@ -218,6 +218,12 @@ app.post("/api/v1/emigrations-by-countries/:country", (req, res) => {
     res.sendStatus(405);
 });
 
+//Cristian POST a un recurso, metodo no permitido
+app.post("/api/v1/emigrations-by-countries/:country/:year", (req, res) => {
+
+    res.sendStatus(405);
+});
+
 //Cristian PUT a la ruta base, método no permitido
 app.put("/api/v1/emigrations-by-countries", (req, res) => {
 
