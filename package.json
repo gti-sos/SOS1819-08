@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "https://www.getpostman.com/collections/b88bc32715724985e2bb; "
-    "test-tourist": "https://www.getpostman.com/collections/b88bc32715724985e2bb"
+    "test": "https://www.getpostman.com/collections/b88bc32715724985e2bb; https://www.getpostman.com/collections/d0833b2de0d97bb2ff2d; ",
+    "test-tourist": "https://www.getpostman.com/collections/b88bc32715724985e2bb",
+    "test-expenses": "https://www.getpostman.com/collections/d0833b2de0d97bb2ff2d"
   },
   "author": "",
   "license": "ISC",
