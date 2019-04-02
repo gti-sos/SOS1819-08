@@ -128,13 +128,18 @@ app.get("/api/v1/expenses-of-countries-in-education-and-culture/:country/:year",
     var yearN = parseInt(req.params.year);
     expenses.find({"country": countryN,"year": yearN}).toArray((err,expArray)=>{
         
+        
         console.log(countryN+" "+yearN);
         console.log(expArray);
         if(err){
             console.log("Error: "+err);
         }
-        
-        res.send(expArray);        
+        if(expArray==0){
+            res.sendStatus(404);
+        }else{
+        res.send(expArray);    
+        }
+                
     
 });
 });
