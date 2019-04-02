@@ -95,11 +95,11 @@ app.get(BASE_PATH +"/tourists-by-countries", (req, res) => {
     if(req.query.year){  search["year"] =  parseInt(req.query.year);
 }else if(req.query.from && req.query.to){ search["year"] = {$gte:parseInt(req.query.from),$lte:parseInt(req.query.to)};
     
-}else if(req.query.touristDepartureFrom && req.query.touristDepartureTo){ search["year"] = {$gte:parseInt(req.query.touristDepartureFrom),$lte:parseInt(req.query.touristDepartureTo)};
+}else if(req.query.touristDepartureFrom && req.query.touristDepartureTo){ search["touristDeparture"] = {$gte:parseInt(req.query.touristDepartureFrom),$lte:parseInt(req.query.touristDepartureTo)};
     
-}else if(req.query.arrivalTouristFrom && req.query.arrivalTouristTo){ search["year"] = {$gte:parseInt(req.query.arrivalTouristFrom),$lte:parseInt(req.query.arrivalTouristTo)};
+}else if(req.query.arrivalTouristFrom && req.query.arrivalTouristTo){ search["arrivalTourist"] = {$gte:parseInt(req.query.arrivalTouristFrom),$lte:parseInt(req.query.arrivalTouristTo)};
     
-}else if(req.query.incomeTouristFrom && req.query.incomeTouristTo){ search["year"] = {$gte:parseInt(req.query.incomeTouristFrom),$lte:parseInt(req.query.incomeTouristTo)};
+}else if(req.query.incomeTouristFrom && req.query.incomeTouristTo){ search["incomeTourist"] = {$gte:parseInt(req.query.incomeTouristFrom),$lte:parseInt(req.query.incomeTouristTo)};
     
 }
 
