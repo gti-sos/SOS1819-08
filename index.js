@@ -193,7 +193,7 @@ app.delete("/api/v1/expenses-of-countries-in-education-and-culture/:country/:yea
     
 
 });
-
+});
 
 //Felix errores
 app.post("/api/v1/expenses-of-countries-in-education-and-culture/:country/:year", (req, res) => {
@@ -526,6 +526,5 @@ app.put("/api/v1/tourists-by-countries", (req, res) => {
 app.listen(port, () => {
     console.log("Super server ready on port" + port);
 });
-
 
 app.use("/", express.static(__dirname + "/public"));
