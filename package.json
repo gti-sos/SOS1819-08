@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "https://www.getpostman.com/collections/b88bc32715724985e2bb",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "https://www.getpostman.com/collections/b88bc32715724985e2bb; "
+    "test-tourist": "https://www.getpostman.com/collections/b88bc32715724985e2bb"
   },
   "author": "",
   "license": "ISC",
