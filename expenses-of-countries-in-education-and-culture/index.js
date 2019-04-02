@@ -58,10 +58,18 @@ app.get("/api/v1/expenses-of-countries-in-education-and-culture/docs", (req, res
 
 // Felix get 
 app.get("/api/v1/expenses-of-countries-in-education-and-culture/", (req, res) => {
-    expenses.find({}).toArray((err, expensesArray)=>{
+     var limitAux = parseInt(req.query.limit);
+    var offSetAux = parseInt(req.query.offset);
+    var search = {};
+    if(req.query.country)  search["country"] = req.query.country;
+    if(req.query.year)  search["year"] =  parseInt(req.query.year);
+    expenses.find(search).skip(offSetAux).limit(limitAux).toArray((err, expensesArray)=>{
          if(err)
             console.log("Error: "+err);
-        res.send(expensesArray);
+        res.send(expensesArray.map((c) => {
+            delete c._id;
+            return c;
+        }));
     })
     
 });
