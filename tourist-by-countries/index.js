@@ -64,13 +64,16 @@ app.get(BASE_PATH+"/tourists-by-countries/loadInitialData", (req, res) => {
         }
     ];
      touristsByCountries.insert(newTourist);
+            res.sendStatus(200);
             console.log(Date() + " - GET /tourists-by-countries/loadInitialData - Created " + newTourist.length + " emigrations-by-countries");
         }
         else {
             console.log(Date() + " - GET /tourists-by-countries/loadInitialData - DB has " + touristAux.length + " emigrations-by-countries");
+            res.sendStatus(400);
+            
         }
     });
-    res.sendStatus(200);
+    
 })
 
 
@@ -82,7 +85,26 @@ app.get(BASE_PATH+"/tourists-by-countries/loadInitialData", (req, res) => {
 app.get(BASE_PATH +"/tourists-by-countries", (req, res) => {
     var limitAux = parseInt(req.query.limit);
     var offSetAux = parseInt(req.query.offset);
-    touristsByCountries.find({}).skip(offSetAux).limit(limitAux).toArray((err, touristArray) => {
+    
+    
+    
+    
+    
+    var search = {};
+    if(req.query.country)  search["country"] = req.query.country;
+    if(req.query.year){  search["year"] =  parseInt(req.query.year);
+}else if(req.query.from && req.query.to){ search["year"] = {$gte:parseInt(req.query.from),$lte:parseInt(req.query.to)};
+    
+}else if(req.query.touristDepartureFrom && req.query.touristDepartureTo){ search["year"] = {$gte:parseInt(req.query.touristDepartureFrom),$lte:parseInt(req.query.touristDepartureTo)};
+    
+}else if(req.query.arrivalTouristFrom && req.query.arrivalTouristTo){ search["year"] = {$gte:parseInt(req.query.arrivalTouristFrom),$lte:parseInt(req.query.arrivalTouristTo)};
+    
+}else if(req.query.incomeTouristFrom && req.query.incomeTouristTo){ search["year"] = {$gte:parseInt(req.query.incomeTouristFrom),$lte:parseInt(req.query.incomeTouristTo)};
+    
+}
+
+    
+    touristsByCountries.find(search).skip(offSetAux).limit(limitAux).toArray((err, touristArray) => {
 
         if (err)
             console.log("Error: " + err);
@@ -142,18 +164,28 @@ app.delete(BASE_PATH+"/tourists-by-countries", (req, res) => {
 
 //GET /turists/China
 
-app.get(BASE_PATH+"/tourists-by-countries/:country", (req, res) => {
+app.get(BASE_PATH+"/tourists-by-countries/:country/:year", (req, res) => {
 
     var country = req.params.country;
+    var year = parseInt(req.params.year);
 
-    touristsByCountries.find({ country }).toArray((err, touristArray) => {
+    
+    touristsByCountries.find({ "country": country, "year": year }).toArray((err, emigrationsArray) => {
+        if (err) {
+            console.error("Error accesing DB");
+            res.sendStatus(500);
+            return;
+        }
+        if (emigrationsArray.length == 0) {
+            res.sendStatus(404);
+            return;
+        }
 
-        if (err)
-            console.log("Error: " + err);
-
-        res.send(touristArray);
+        res.send(emigrationsArray.map((c) => {
+            delete c._id;
+            return c;
+        })[0]);
     });
-
 
 });
 
