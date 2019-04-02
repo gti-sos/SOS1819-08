@@ -87,7 +87,10 @@ app.get(BASE_PATH +"/tourists-by-countries", (req, res) => {
         if (err)
             console.log("Error: " + err);
 
-        res.send(touristArray);
+        res.send(touristArray.map((c) => {
+            delete c._id;
+            return c;
+        }));
     });
 });
 
