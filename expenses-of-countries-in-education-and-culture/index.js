@@ -52,7 +52,7 @@ expenses.insertMany(newExpenses);
 //Felix docs
 app.get("/api/v1/expenses-of-countries-in-education-and-culture/docs", (req, res) => {
 
-    res.redirect('https://app.example.io');
+    res.redirect("https://documenter.getpostman.com/view/6911989/S17xt6bh");
 });
     
 
@@ -66,6 +66,7 @@ app.get("/api/v1/expenses-of-countries-in-education-and-culture/", (req, res) =>
 } else if(req.query.from && req.query.to){
             search["year"] = { $gte : req.query.from, $lte : req.query.to };
 }
+
     if(req.query.countryExpenseMin||req.query.countryExpenseMax ) search["countryExpense"]= {$gte : parseFloat(req.query.countryExpenseMin), $lte : parseFloat(req.query.countryExpenseMax)};
     if(req.query.percentageMin||req.query.percentageMax ) search["budgetPercentage"]= {$gte : parseFloat(req.query.percentageMin), $lte : parseFloat(req.query.percentageMax)};    
     if(req.query.EPCMin||req.query.EPCMax ) search["expensePerCapita"]= {$gte : parseFloat(req.query.EPCMin), $lte : parseFloat(req.query.EPCMax)};    
