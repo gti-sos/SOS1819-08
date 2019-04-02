@@ -232,5 +232,9 @@ app.put(BASE_PATH+"/tourists-by-countries/", (req, res) => {
 res.sendStatus(405);
 });
 
+app.put(BASE_PATH+"/tourists-by-countries/:year", (req, res) => {
+
+res.sendStatus(405);
+});
 
 }
