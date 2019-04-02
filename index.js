@@ -134,7 +134,7 @@ app.get("/api/v1/expenses-of-countries-in-education-and-culture/:country/:year",
         if(err){
             console.log("Error: "+err);
         }
-        if(expArray==0){
+        if(expArray.length==0){
             res.sendStatus(404);
         }else{
         res.send(expArray);    
