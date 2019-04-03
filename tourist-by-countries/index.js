@@ -227,7 +227,7 @@ console.log(data);
 
 if (country != data.country || year != data.year) {
             res.sendStatus(400);
-            console.warn(Date() + "Hacking attempt!");
+            console.warn(Date() + "Error accesing DB");
             return;
         }
 
