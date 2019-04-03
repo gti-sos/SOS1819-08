@@ -91,7 +91,7 @@ app.post("/api/v1/expenses-of-countries-in-education-and-culture", (req, res) =>
     !newExpense.hasOwnProperty("expensePerCapita")){
        console.log("datos: "+ newExpense);
         res.sendStatus(400);
-    }
+    }else{
     expenses.find({ "country": newExpense.country, "year": newExpense.year }).toArray(( err, data) => {
          if(err==1){
              console.log("ERROR");
@@ -112,6 +112,7 @@ app.post("/api/v1/expenses-of-countries-in-education-and-culture", (req, res) =>
                 });
             }
         });
+    }
 });
 // Felix delete 
 app.delete("/api/v1/expenses-of-countries-in-education-and-culture", (req, res) => {
