@@ -169,8 +169,9 @@ app.put("/api/v1/expenses-of-countries-in-education-and-culture/:country/:year",
                 expenses.update({"country": updateExpense.country, "year": parseInt(updateExpense.year) }, updateExpense, (err, numUpdated) => {
             console.log(updateExpense.country);
             console.log("Updated: " + numUpdated);
+            res.sendStatus(200);
             });
-        res.sendStatus(200);
+        
            }
        });
         
