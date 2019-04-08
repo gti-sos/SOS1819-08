@@ -67,9 +67,15 @@ app.get("/api/v1/expenses-of-countries-in-education-and-culture/", (req, res) =>
             search["year"] = { $gte : req.query.from, $lte : req.query.to };
 }
 
-    if(req.query.countryExpenseMin||req.query.countryExpenseMax ) search["countryExpense"]= {$gte : parseFloat(req.query.countryExpenseMin), $lte : parseFloat(req.query.countryExpenseMax)};
-    if(req.query.percentageMin||req.query.percentageMax ) search["budgetPercentage"]= {$gte : parseFloat(req.query.percentageMin), $lte : parseFloat(req.query.percentageMax)};    
-    if(req.query.EPCMin||req.query.EPCMax ) search["expensePerCapita"]= {$gte : parseFloat(req.query.EPCMin), $lte : parseFloat(req.query.EPCMax)};    
+    if(req.query.countryExpenseMin&&req.query.countryExpenseMax ) search["countryExpense"]= {$gte : parseFloat(req.query.countryExpenseMin), $lte : parseFloat(req.query.countryExpenseMax)};
+     if(req.query.countryExpenseMin&&!req.query.countryExpenseMax ) search["countryExpense"]= {$gte : parseFloat(req.query.countryExpenseMin)};
+      if(!req.query.countryExpenseMin&&req.query.countryExpenseMax ) search["countryExpense"]= { $lte : parseFloat(req.query.countryExpenseMax)};
+    if(req.query.percentageMin&&req.query.percentageMax ) search["budgetPercentage"]= {$gte : parseFloat(req.query.percentageMin), $lte : parseFloat(req.query.percentageMax)};
+    if(req.query.percentageMin&&!req.query.percentageMax ) search["budgetPercentage"]= {$gte : parseFloat(req.query.percentageMin)};
+    if(!req.query.percentageMin&&req.query.percentageMax ) search["budgetPercentage"]= { $lte : parseFloat(req.query.percentageMax)};
+    if(req.query.EPCMin&&req.query.EPCMax ) search["expensePerCapita"]= {$gte : parseFloat(req.query.EPCMin), $lte : parseFloat(req.query.EPCMax)};
+    if(req.query.EPCMin&&!req.query.EPCMax ) search["expensePerCapita"]= {$gte : parseFloat(req.query.EPCMin)};
+    if(!req.query.EPCMin&&req.query.EPCMax ) search["expensePerCapita"]= { $lte : parseFloat(req.query.EPCMax)};
     expenses.find(search).skip(offSetAux).limit(limitAux).toArray((err, expensesArray)=>{
          if(err)
             console.log("Error: "+err);
