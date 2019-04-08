@@ -1,4 +1,6 @@
 var express = require("express");
+var path = require("path");
+
 var expensesCountries = require("./expenses-of-countries-in-education-and-culture");
 var emigrationsByCountries = require("./emigrations-by-countries");
 var tourist = require("./tourist-by-countries");
@@ -9,6 +11,10 @@ var touristsByCountries=[];
 const MongoClient = require("mongodb").MongoClient;
 const uri = "mongodb+srv://test:test@cluster0-xtof2.mongodb.net/emigrations-by-countries?retryWrites=true";
 const client = new MongoClient(uri, { useNewUrlParser: true });
+
+
+
+
 
 var emigrations;
 
@@ -67,4 +73,4 @@ var port = process.env.PORT || 8080;
 
 app.use(bodyParser.json())
 
-app.use("/", express.static(__dirname + "/public"));
+app.use("/", express.static(path.join(__dirname,"public/tourists-by-countries")));
