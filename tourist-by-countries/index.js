@@ -254,11 +254,11 @@ app.delete(BASE_PATH+"/tourists-by-countries/:country/:year", (req, res) => {
            if(dataa.length==0){
                res.sendStatus(404);
            }else{
-   touristsByCountries.deleteOne({"country": country, "year": year});
+            touristsByCountries.deleteOne({"country": country, "year": year});
     
-    res.sendStatus(200);
+            res.sendStatus(200);
            }
-
+});
 
 });
 
