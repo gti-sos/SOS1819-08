@@ -76,3 +76,6 @@ app.use(bodyParser.json())
 
 app.use("/", express.static(__dirname + "/public"));
 
+app.use("/api/v1/minipostman-emigration", express.static(__dirname + "/public/emigration"));
+
+app.use("/api/v1/minipostman-expenses", express.static(__dirname + "/public/expenses/minipostman-expenses.html"));
