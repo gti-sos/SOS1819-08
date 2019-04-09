@@ -74,11 +74,9 @@
     };
     $scope.postJson = function(){
                     $http.post(path+$scope.url,$scope.data).then(function(response){
-                        $scope.status = response.status;
-                        $scope.data = "";
-                    }, function (error){
-                        $scope.status = error.status;
-                        $scope.data = "";
+                        $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+                    }, function (response){
+                      $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
                         });
                     };
       $scope.putJson = function(){
