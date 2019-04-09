@@ -4,11 +4,8 @@ app.controller("MainCtrl", ["$scope","$http", function ($scope, $http){
                     console.log("Modular MainCtrl Initialized!");
                     $scope.url = "https://sos1819-08.herokuapp.com/api/v1/emigrations-by-countries/";
                     
-<<<<<<< HEAD
                     
-=======
 
->>>>>>> 9397b93eb114535b4da129a6c94105dec3eabd72
                     
                     $scope.get = function(){
                     $http.get($scope.url).then(function(response){
