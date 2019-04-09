@@ -48,9 +48,11 @@ app.controller("MainCtrl", ["$scope","$http", function ($scope, $http){
                     
                     $scope.loadInitialData = function (){
                         $http.get($scope.url + "loadInitialData").then(function (response){
+                            $scope.status = response.status;
                             $scope.data = JSON.stringify(response.data,null,2);
                             $scope.statusInfo = JSON.stringify(response.status, null, 2);
                         }).catch(function (response) {
+                            $scope.status = response.status;
 			            	$scope.statusInfo = JSON.stringify(response.status, null, 2);
 			            });
                     };
