@@ -5,46 +5,45 @@ var expensesCountries = require("./expenses-of-countries-in-education-and-cultur
 var emigrationsByCountries = require("./emigrations-by-countries");
 var tourist = require("./tourist-by-countries");
 
-var expenses=[];
-var touristsByCountries=[];
+var expenses = [];
+var touristsByCountries = [];
+var emigrations = [];
 
 const MongoClient = require("mongodb").MongoClient;
 const uri = "mongodb+srv://test:test@cluster0-xtof2.mongodb.net/emigrations-by-countries?retryWrites=true";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
-
-
-
-
-var emigrations;
+/////##############CONEXIONES MONGODB #####################//
 
 client.connect(err => {
     emigrations = client.db("emigrations-by-countries").collection("paises");
     console.log("Connected!");
-    emigrationsByCountries(app, emigrations);    
-    
+    emigrationsByCountries(app, emigrations);
+
     const MongoClient2 = require("mongodb").MongoClient;
     const uri2 = "mongodb+srv://test:test@sos1819-08-lynix.mongodb.net/test?retryWrites=true";
     const client2 = new MongoClient(uri2, { useNewUrlParser: true });
 
     client2.connect(err => {
-        expenses= client2.db("sos1819-08").collection("expenses-of-countries-in-education-and-culture");
+        expenses = client2.db("sos1819-08").collection("expenses-of-countries-in-education-and-culture");
         console.log("mongo connected");
-        expensesCountries(app,expenses);
-    
-    const MongoClient3 = require("mongodb").MongoClient;
-    const uri3 = "mongodb+srv://test:test@practica-exo8m.mongodb.net/practica?retryWrites=true";
-    const client3 = new MongoClient(uri3, { useNewUrlParser: true });
+        expensesCountries(app, expenses);
 
-    client3.connect(err => {
-        touristsByCountries= client3.db("practica").collection("touristsByCountries");
-        console.log("mongo connected");
-        tourist(app,touristsByCountries);
-    
-    app.listen(port, () => {
-    console.log("Super server ready on port" + port);
-})});
-})});
+        const MongoClient3 = require("mongodb").MongoClient;
+        const uri3 = "mongodb+srv://test:test@practica-exo8m.mongodb.net/practica?retryWrites=true";
+        const client3 = new MongoClient(uri3, { useNewUrlParser: true });
+
+        client3.connect(err => {
+            touristsByCountries = client3.db("practica").collection("touristsByCountries");
+            console.log("mongo connected");
+            tourist(app, touristsByCountries);
+
+            app.listen(port, () => {
+                console.log("Super server ready on port" + port);
+            })
+        });
+    })
+});
 
 
 //Felix mongodb
@@ -56,13 +55,8 @@ client.connect(err => {
 //   expenses= client.db("sos1819-08").collection("expenses-of-countries-in-education-and-culture");
 //   // perform actions on the collection object
 //   console.log("mongo connected");
-  
+
 // });
-
-
-
-
-
 
 
 var bodyParser = require("body-parser");
@@ -71,16 +65,15 @@ var app = express();
 
 var port = process.env.PORT || 8080;
 
-var path =require("path");
 app.use(bodyParser.json())
 
-app.use("/", express.static(__dirname + "/public"));
 
+
+app.use("/", express.static(path.join(__dirname, "public"))); //conexion index.html principal
 
 
 app.use("/api/v1/minipostman-expenses", express.static(__dirname + "/public/expenses"));
 
-//app.use("/", express.static(path.join(__dirname,"public/tourists-by-countries")));
 app.use("/api/v1/minipostman-emigration", express.static(__dirname + "/public/emigration"));
 
-app.use("/api/v1/minipostman-tourist", express.static(path.join(__dirname + "/public/tourists-by-countries")));
+app.use("/api/v1/minipostman-tourist", express.static(path.join(__dirname + "/public/tourists-by-countries")));  //conexion index.html tourist
