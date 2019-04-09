@@ -65,6 +65,8 @@ var app = express();
 
 var port = process.env.PORT || 8080;
 
+var path =require("path");
 app.use(bodyParser.json())
 
 app.use("/", express.static(__dirname + "/public"));
+app.use("/ECEC", express.static(path.join(__dirname, "public/expenses/minipostman-expenses.html")));
