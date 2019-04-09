@@ -15,26 +15,28 @@
             <style>
 body {
   margin: 0; 
-  background-image: url("https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjMw-PMocPhAhXvmuAKHYfdBhQQjRx6BAgBEAU&url=https%3A%2F%2Fwww.istockphoto.com%2Fes%2Filustraciones%2Ffondo-morado&psig=AOvVaw2zR-Zcr5nPT5z-fg2jZXl4&ust=1554907939087391");
-  }
+  background-image: url("https://i2.wp.com/acorch.cl/wp-content/uploads/2017/04/purpura-y-morado-82360.jpg")
+    
+}
+
 </style>
         
-        <h1>Tourists APP</h1>
+        <h1><p class="text-light">Tourists APP</p></h1>
         <div>
             <label>URL: <input class="form-control text-center" ng-model="url" size="80"/></label>
             <button class="btn btn-primary" ng-click="get()">Get</button>
             <button class="btn btn-secondary" ng-click="post()">Post</button>
             <button class="btn btn-warning" ng-click="put()">Put</button>
             <button class="btn btn-danger" ng-click="delete()">Delete</button>
-            <button class="btn btn-dark" ng-click="loadInitialData()">Load Initial Data</button>
+            <button class="btn btn-info" ng-click="loadInitialData()">Load Initial Data</button>
         </div>
         
         <div>
-            <label>Status code: {{status}}</label>
+            <label><p class="text-light">Status code: {{status}}</p></label>
         </div>
         
         <div>
-            <textarea class="form-control" row="200" ng-model="data"></textarea>
+            <textarea class="form-control" size="40" rows="20" ng-model="data"></textarea>
         </div>
     </body>
     
