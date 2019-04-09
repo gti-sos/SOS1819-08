@@ -97,8 +97,10 @@
                             $scope.status = response.status;
 			            	$scope.statusInfo = JSON.stringify(response.status, null, 2);
 			            });
-             }
-             
+             };
+             $scope.putJson = function(){
+                 $scope.data="";
+             };
              
             
        } ] );
