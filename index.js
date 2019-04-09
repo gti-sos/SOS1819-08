@@ -73,4 +73,7 @@ var port = process.env.PORT || 8080;
 
 app.use(bodyParser.json())
 
-app.use("/", express.static(path.join(__dirname,"public/tourists-by-countries")));
+app.use("/", express.static(__dirname + "/public"));
+
+//app.use("/", express.static(path.join(__dirname,"public/tourists-by-countries")));
+app.use("/api/v1/minipostman-emigration", express.static(__dirname + "/public/emigration"));
