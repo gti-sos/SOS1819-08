@@ -2,7 +2,7 @@ var app = angular.module("MiniPostmanApp");
 
 app.controller("MainCtrl", ["$scope","$http", function ($scope, $http){
                     console.log("Modular MainCtrl Initialized!");
-                    $scope.url = "https://sos1819-08.herokuapp.com/api/v1/emigrations-by-countries";
+                    $scope.url = "https://sos1819-08.herokuapp.com/api/v1/emigrations-by-countries/";
                     
 
                     
@@ -47,7 +47,7 @@ app.controller("MainCtrl", ["$scope","$http", function ($scope, $http){
                     };
                     
                     $scope.loadInitialData = function (){
-                        $http.get($scope.url + "/loadInitialData").then(function (response){
+                        $http.get($scope.url + "loadInitialData").then(function (response){
                             $scope.data = JSON.stringify(response.data,null,2);
                             $scope.statusInfo = JSON.stringify(response.status, null, 2);
                         }).catch(function (response) {
