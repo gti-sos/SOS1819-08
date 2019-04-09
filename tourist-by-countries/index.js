@@ -244,14 +244,20 @@ if (country != data.country || year != data.year) {
 
 app.delete(BASE_PATH+"/tourists-by-countries/:country/:year", (req, res) => {
 
+    var year = parseInt(req.params.year);
     var country = req.params.country;
-
-
-    var year = req.params.year;
-
-    touristsByCountries.remove({ "country": country, "year": year });
+    touristsByCountries.find({"country": country, "year":year }).toArray((err,dataa)=>{
+           if(err){
+               console.log(err);
+               
+           }
+           if(dataa.length==0){
+               res.sendStatus(404);
+           }else{
+   touristsByCountries.deleteOne({"country": country, "year": year});
+    
     res.sendStatus(200);
-
+           }
 
 
 });
