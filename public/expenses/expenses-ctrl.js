@@ -72,6 +72,24 @@
             $scope.dataResponse=response.status+", "+response.statusText;
         });
     };
+    $scope.postJson = function(){
+                    $http.post(path+$scope.url,$scope.data).then(function(response){
+                        $scope.status = response.status;
+                        $scope.data = "";
+                    }, function (error){
+                        $scope.status = error.status;
+                        $scope.data = "";
+                        });
+                    };
+      $scope.putJson = function(){
+                    $http.put(path+$scope.url,$scope.data).then(function(response){
+                        $scope.status = response.status;
+                        $scope.data = "";
+                    }, function (error){
+                        $scope.status = error.status;
+                        $scope.data = "";
+                        });
+                    };
 
              }
              

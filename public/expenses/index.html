@@ -23,12 +23,15 @@ body {
     <h1>Expenses</h1>
     <div>
         <label>URL: <input class="form-control text-center" ng-model="url" size ="50"/></label>
-        <button class="btn btn-primary" ng-click="sendGet()">Get</button>
         
+        <div class="btn-group" role="group" aria-label="Basic example">
+        <button class="btn btn-primary" ng-click="sendGet()">Get</button>
+         <button float:center class="btn btn-secondary" ng-click="postJson()">Post</button>
+        <button class="btn btn-warning" ng-click="putJson">Put</button>
         
         
         <button type="button" class="btn btn-danger" ng-click="sendDelete()">Delete</button>
-       
+       </div>
         {{ url }}
     </div>
     <div class="alert alert-primary alert-dismissible fade show" role="alert">
