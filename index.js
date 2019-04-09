@@ -76,4 +76,4 @@ app.use("/api/v1/minipostman-expenses", express.static(__dirname + "/public/expe
 
 app.use("/api/v1/minipostman-emigration", express.static(__dirname + "/public/emigration"));
 
-app.use("/api/v1/minipostman-tourist", express.static(path.join(__dirname + "/public/tourists-by-countries")));  //conexion index.html tourist
+app.use("/api/v1/minipostman-tourist", express.static(path.join(__dirname + "/public/tourists")));  //conexion index.html tourist
