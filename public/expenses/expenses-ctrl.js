@@ -75,15 +75,19 @@
     $scope.postJson = function(){
                     $http.post(path+$scope.url,$scope.data).then(function(response){
                         $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+                        $scope.data = response.status;
                     }, function (response){
                       $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+                      $scope.data = response.status;
                         });
                     };
       $scope.putJson = function(){
                     $http.put(path+$scope.url,$scope.data).then(function(response){
                        $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+                       $scope.data = response.status;
                     }, function (response){
                         $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+                        $scope.data = response.status
                         });
                     };
 
