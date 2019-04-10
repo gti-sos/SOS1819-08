@@ -67,9 +67,11 @@
             console.log($scope.url);
             var res = JSON.stringify(response.data,null,2);
            
-            $scope.dataResponse = res;
+           $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+                      $scope.data = response.status;
         }, function (response) {
-            $scope.dataResponse=response.status+", "+response.statusText;
+          $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+                      $scope.data = response.status;
         });
     };
     $scope.postJson = function(){
