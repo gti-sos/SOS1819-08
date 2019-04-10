@@ -52,7 +52,7 @@
             console.log("this is the new data:  " + data);
             $http.post(path+$scope.url, JSON.stringify(data)).then(function (response) {
                 console.log("post done");
-                $scope.dataResponse = JSON.stringify(response.data,null,2);
+                $scope.dataResponse = JSON.stringify(response.data,null,2)+"\n"+"Code: "+response.status;
             }, function (response) {
                 console.log("Error PUT method: Code "+response.status+", "+response.statusText);
                 $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
@@ -96,12 +96,9 @@
 
         $scope.loadInitialData = function (){
                         $http.get(path+$scope.url + "/loadInitialData").then(function (response){
-                            $scope.status = response.status;
-                            $scope.data = JSON.stringify(response.data,null,2);
-                            $scope.statusInfo = JSON.stringify(response.status, null, 2);
+                            $scope.data = JSON.stringify(response.data,null,2) + response.status;
                         }).catch(function (response) {
-                            $scope.status = response.status;
-			            	$scope.statusInfo = JSON.stringify(response.status, null, 2);
+                            $scope.data = response.status;
 			            });
              };
              $scope.clear = function(){
