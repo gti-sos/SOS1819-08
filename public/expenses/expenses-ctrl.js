@@ -37,11 +37,15 @@
             
         };
         $scope.sendPost = function (country, year, countryExpense, budgetPercentage, expensePerCapita){
-                 if(typeof country!=='undefined'
+                 if((typeof country!=='undefined'
         && typeof year!=='undefined'
         && typeof countryExpense!=='undefined'
         && typeof budgetPercentage!=='undefined'
-        && typeof expensePerCapita!=='undefined'){
+        && typeof expensePerCapita!=='undefined')||country!==""
+        &&  year!==""
+        &&  countryExpense!==""
+        && budgetPercentage!==""
+        &&  expensePerCapita!==""){
             var data = {
                 country : country,
                 year :parseInt(year)  ,
