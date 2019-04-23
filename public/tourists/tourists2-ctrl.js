@@ -2,7 +2,7 @@
 
 angular
     .module("TouristsApp")
-    .controller("touristsCtrl", ["$scope","$http", function ($scope, $http){
+    .controller("MainCtrl", ["$scope","$http", function ($scope, $http){
         console.log("Tourists Initialized!");
         
         
