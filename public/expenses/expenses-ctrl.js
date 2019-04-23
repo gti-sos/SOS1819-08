@@ -92,8 +92,9 @@
         }, function (response) {
           $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
                       $scope.data = response.status;
+                      refresh();
         });
-        refresh();
+        
     };
     $scope.postJson = function(){
                     $http.post(path+$scope.url,$scope.data).then(function(response){
