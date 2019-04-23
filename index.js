@@ -78,4 +78,6 @@ app.use("/ui/v1/expenses-of-countries-in-education-and-culture", express.static(
 app.use("/api/v1/minipostman-emigration", express.static(__dirname + "/public/emigration"));
 app.use("/ui/v1/emigrations-by-countries", express.static(__dirname + "/public/emigration/emigrationapp"));
 
-app.use("/api/v1/minipostman-tourist", express.static(path.join(__dirname + "/public/tourists")));  //conexion index.html tourist
+
+app.use("/api/v1/minipostman-tourist", express.static(path.join(__dirname + "/public/tourists/touristAPP.html")));  //conexion index.html tourist
+app.use("/ui/v1/tourists-by-countries", express.static(path.join(__dirname + "/public/tourists")));
