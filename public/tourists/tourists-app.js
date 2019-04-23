@@ -1,4 +1,4 @@
             /* global angular $scope*/
         
-            angular.module("TouristsByCountriesApp",[]);
+            angular.module("TouristsApp",[]);
             console.log("TouristsByCountriesApp initialized!");

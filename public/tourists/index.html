@@ -5,8 +5,8 @@
             <link rel="stylesheet" href="../../../bower_components/bootstrap/dist/css/bootstrap.min.css" />
             <script src="../../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
             <script src="../../../bower_components/angular/angular.min.js"></script>
-            <script src="touristsbycountries-app.js"></script>
-            <script src="main-ctrl.js"></script>
+            <script src="tourists-app.js"></script>
+            <script src="tourists2-ctrl.js"></script>
             
     </head>
     
@@ -21,24 +21,85 @@ body {
 
 </style>
         
-        <h1><p class="text-light">Tourists APP</p></h1>
-        <div>
-            <label>URL: <input class="form-control text-center" ng-model="url" size="80"/></label>
-            <button class="btn btn-primary" ng-click="get()">Get</button>
-            <button class="btn btn-secondary" ng-click="post()">Post</button>
-            <button class="btn btn-warning" ng-click="put()">Put</button>
-            <button class="btn btn-danger" ng-click="delete()">Delete</button>
-            <button class="btn btn-info" ng-click="loadInitialData()">Load Initial Data</button>
-        </div>
+        <h1>Gastos de paises en cultura y educación</h1>
+             <div class="container-fluid">
+          ¡Busca según los criterios que desees!
         
-        <div>
-            <label><p class="text-light">Status code: {{status}}</p></label>
+         
+        <label>Pais:<input class="form-control text-center" ng-model="Fcountry"/></label>
+        <label>Año:<input class="form-control text-center" ng-model="Fyear"/></label>
+        <label>Llegadas de turistas mínimos:<input class="form-control text-center" ng-model="FarrivalTouristMin"/></label>
+        <label>Llegadas de turistas máximos:<input class="form-control text-center" ng-model="FarrivalTouristMax"/></label>
+        <label>Salidas de turistas mínimo:<input class="form-control text-center" ng-model="FdepartureTouristMin"/></label>
+         <label>Salidas de turistas máximo:<input class="form-control text-center" ng-model="FdepartureTouristMax"/></label>
+        <label>Ingresos turísticos mínimos:<input class="form-control text-center" ng-model="FincomeTouristMin"/></label>
+        <label>Ingresos turísticos máximos:<input class="form-control text-center" ng-model="FincomeTouristMin"/></label>
+         <button class="btn btn-primary" ng-click="sendGet(Fcountry, Fyear, FincomeTouristMin, FincomeTouristMax, FarrivalTouristMin,  FarrivalTouristMax, FdepartureTouristMin, FdepartureTouristMax)">Buscar</button>
+           <button class="btn btn-light" ng-click="limpiar(Fcountry)">Quitar filtros de busqueda</button>
         </div>
+        <table class="table">
+           <thead>
+                <tr>
+                    <th>
+                        Pais
+                    </th>
+                    <th>
+                        Año
+                    </th>
+                    <th>
+                       Gastos del país
+                    </th>
+                    <th>
+                       Porcentaje de presupuesto
+                    </th>
+                    <th>
+                        Gasto per Capita
+                    </th>
+                    <th>
+                        Acciones
+                    </th>
+                </tr>
+            </thead>
+
+           <tbody>
+                <tr ng-repeat="tourist in tourists">
+                    <td>{{ touristsByCountries.country }}</td>
+                    <td>{{ touristsByCountries.year }}</td>
+                    <td>{{ touristsByCountries.touristDeparture }}</td>
+                    <td>{{ touristsByCountries.arrivalTourist }}</td>
+                    <td>{{ touristsByCountries.incomeTourist }}</td>
+                    <td><button type="button" class="btn btn-danger" ng-click="sendDelete(touristsByCountries.country, touristsByCountries.year)">Eliminar</button></td>
+            </tbody>
+        </table>
         
-        <div>
-            <textarea class="form-control" size="40" rows="20" ng-model="data"></textarea>
+        
+        <span><button class="button" ng-click="Pagination(1)"><<</button></span>
+    <span><button class="button" ng-click="Pagination(2)">>></button></span>
+            <div class="container-fluid">
+  
+        
+         
+        <label>Pais:<input class="form-control text-center" ng-model="country"/></label>
+        <label>Año:<input class="form-control text-center" ng-model="year"/></label>
+        <label>Salidas de turistas:<input class="form-control text-center" ng-model="touristDeparture"/></label>
+        <label>Llegadas de turistas:<input class="form-control text-center" ng-model="arrivalTourist"/></label>
+        <label>Ingresos de los turistas:<input class="form-control text-center" ng-model="incomeTourist"/></label>
         </div>
-    </body>
     
     
+       <div class="btn-group" role="group" aria-label="Botones">
+        <button float:center class="btn btn-secondary" ng-click="sendPost(country, year, touristDeparture, arrivalTourist, incomeTourist)">Crea</button>
+        <button class="btn btn-warning" ng-click="sendPut(country, year, touristDeparture, arrivalTourist, incomeTourist)">Modificar</button>
+         <button class="btn btn-dark" ng-click="loadInitialData()">Carga datos iniciales</button>
+         <button type="button" class="btn btn-danger" ng-click="sendDeleteAll()">Eliminar todos los datos</button>
+        </div>
+                </tr>
+            </tbody>
+        </table>
+         <div class="col-xs-5" style="width": 50%;float:left;>
+                    <label class="input-lg" for="dataResponse">Data response</label>
+                    <textarea class="form-control" rows="2" ng-model="dataResponse"></textarea>
+                </div>
+        </body>
+
 </html>

@@ -1,6 +1,6 @@
 /* global angular $scope*/
 
-var app = angular.module("TouristsByCountriesApp");
+var app = angular.module("Tourists-app");
 
 
 app.controller("MainCtrl", ["$scope","$http", function ($scope, $http){
