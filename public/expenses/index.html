@@ -19,59 +19,24 @@
     
     <body ng-controller= "MainCtrl">
         <h1>Gastos de paises en cultura y educación</h1>
+ 
         <table class="table">
             <thead>
                 <tr>
-                    <th>
-                        Pais
-                    </th>
-                    <th>
-                        Año
-                    </th>
-                    <th>
-                       Gastos del país
-                    </th>
-                    <th>
-                       Porcentaje de presupuesto
-                    </th>
-                    <th>
-                        Gasto per Capita
-                    </th>
-                    <th>
-                        Acciones
-                    </th>
+                    <th>Name</th>
+                    <th>Phone</th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="expense in expenses">
-                    <td>{{ expense.country }}</td>
-                    <td>{{ expense.year }}</td>
-                    <td>{{ expense.countryExpense }}</td>
-                    <td>{{ expense.budgetPercentage }}</td>
-                    <td>{{ expense.expensePerCapita }}</td>
-                    <td>
-                        <button class="btn btn-danger" ng-click="deleteData(dato.country, dato.year)">Borrar</button>
-                    </td>
+                <tr>
+                    <td>Peter</td>
+                    <td>123456</td>
                 </tr>
-                 <div class="container-fluid">
-  
-        
-         
-        <label>Country:<input class="form-control text-center" ng-model="country"/></label>
-        <label>Year:<input class="form-control text-center" ng-model="year"/></label>
-        <label>country Expense:<input class="form-control text-center" ng-model="countryExpense"/></label>
-        <label>budget Percentage:<input class="form-control text-center" ng-model="budgetPercentage"/></label>
-        <label>expensePerCapita:<input class="form-control text-center" ng-model="expensePerCapita"/></label>
-        </div>
-    
-    
-       <div class="btn-group" role="group" aria-label="Botones">
-        <button float:center class="btn btn-secondary" ng-click="sendPost(country, year, countryExpense, budgetPercentage, expensePerCapita)">Crea</button>
-        <button class="btn btn-warning" ng-click="sendPut(country, year, countryExpense, budgetPercentage, expensePerCapita)">Modifica</button>
-        </div>
+                <tr>
+                    <td>John</td>
+                    <td>7777</td>
                 </tr>
             </tbody>
         </table>
-        <div class="alert alert-success"> Todo ha salido bien.</div>
     </body>
 </html>
