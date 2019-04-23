@@ -162,7 +162,9 @@
              $scope.clear = function(){
                  $scope.data="";
              };
-             
+              $scope.limpiar = function(){
+                 refresh();
+             };
              
              $scope.sendDeleteAll = function(){
         $http.delete(API).then(function(response){
