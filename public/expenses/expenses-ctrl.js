@@ -82,9 +82,9 @@
         }   
           refresh();  
         };
-         $scope.sendDelete = function(){
-        $http.delete(path+$scope.url).then(function(response){
-            console.log($scope.url);
+         $scope.sendDelete = function(country, year){
+        $http.delete(API+"/"+country+"/"+year).then(function(response){
+            console.log("Deleting data :"+country+ " "+ year);
             var res = JSON.stringify(response.data,null,2);
            
            $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
@@ -115,7 +115,7 @@
 
 
         $scope.loadInitialData = function (){
-                        $http.get(path+$scope.url + "/loadInitialData").then(function (response){
+                        $http.get("https://sos1819-08.herokuapp.com/api/v1/expenses-of-countries-in-education-and-culture/loadInitialData").then(function (response){
                             $scope.data = JSON.stringify(response.data,null,2) + response.status;
                         }).catch(function (response) {
                             $scope.data = response.status;

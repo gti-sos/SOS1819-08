@@ -51,7 +51,7 @@
                     <td>{{ expense.countryExpense }}</td>
                     <td>{{ expense.budgetPercentage }}</td>
                     <td>{{ expense.expensePerCapita }}</td>
-   
+                    <td><button type="button" class="btn btn-danger" ng-click="sendDelete(expense.country, expense.year)">Eliminar</button></td>
             </tbody>
         </table>
             <div class="container-fluid">
