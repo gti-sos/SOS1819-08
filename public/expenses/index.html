@@ -21,21 +21,37 @@
         <h1>Gastos de paises en cultura y educación</h1>
  
         <table class="table">
-            <thead>
+           <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Phone</th>
+                    <th>
+                        Pais
+                    </th>
+                    <th>
+                        Año
+                    </th>
+                    <th>
+                       Gastos del país
+                    </th>
+                    <th>
+                       Porcentaje de presupuesto
+                    </th>
+                    <th>
+                        Gasto per Capita
+                    </th>
+                    <th>
+                        Acciones
+                    </th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Peter</td>
-                    <td>123456</td>
-                </tr>
-                <tr>
-                    <td>John</td>
-                    <td>7777</td>
-                </tr>
+
+           <tbody>
+                <tr ng-repeat="expense in expenses">
+                    <td>{{ expense.country }}</td>
+                    <td>{{ expense.year }}</td>
+                    <td>{{ expense.countryExpense }}</td>
+                    <td>{{ expense.budgetPercentage }}</td>
+                    <td>{{ expense.expensePerCapita }}</td>
+   
             </tbody>
         </table>
     </body>
