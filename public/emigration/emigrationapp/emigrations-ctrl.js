@@ -17,6 +17,7 @@ angular
         $scope.sendGet = function (emiMin, emiMax){
              $http.get(API+ "?totalEmigrantFrom="+emiMin +"&totalEmigrantTo="+emiMax).then(function(response){
             console.log(API+ "?totalEmigrantFrom="+emiMin +"&totalEmigrantTo="+emiMax);
+            $scope.status= "Status: Búsqueda realizada";
                 $scope.emigrations =response.data;
                 
             });
