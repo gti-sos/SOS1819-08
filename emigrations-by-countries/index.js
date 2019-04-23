@@ -19,33 +19,33 @@ app.get("/api/v1/emigrations-by-countries/loadInitialData", (req, res) => {
             var newEmigrations = [{
                 "country": "USA",
                 "year": 2017,
-                "emigrant-man": 1527889,
-                "emigrant-woman": 1488796,
-                "total-emigrant": 3016685
+                "emigrantman": 1527889,
+                "emigrantwoman": 1488796,
+                "totalemigrant": 3016685
             }, {
                 "country": "Spain",
                 "year": 2017,
-                "emigrant-man": 609615,
-                "emigrant-woman": 736247,
-                "total-emigrant": 1345862
+                "emigrantman": 609615,
+                "emigrantwoman": 736247,
+                "totalemigrant": 1345862
             }, {
                 "country": "China",
                 "year": 2017,
-                "emigrant-man": 4589075,
-                "emigrant-woman": 5372983,
-                "total-emigrant": 9962058
+                "emigrantman": 4589075,
+                "emigrantwoman": 5372983,
+                "totalemigrant": 9962058
             }, {
                 "country": "Germany",
                 "year": 2017,
-                "emigrant-man": 1934294,
-                "emigrant-woman": 2273789,
-                "total-emigrant": 4208083
+                "emigrantman": 1934294,
+                "emigrantwoman": 2273789,
+                "totalemigrant": 4208083
             }, {
                 "country": "Colombia",
                 "year": 2017,
-                "emigrant-man": 1249848,
-                "emigrant-woman": 1486382,
-                "total-emigrant": 2736230
+                "emigrantman": 1249848,
+                "emigrantwoman": 1486382,
+                "totalemigrant": 2736230
             }];
             emigrations.insert(newEmigrations);
             res.sendStatus(200);
@@ -68,11 +68,11 @@ app.get("/api/v1/emigrations-by-countries", (req, res) => {
     if(req.query.country)  search["country"] = req.query.country;
     if(req.query.year){  search["year"] =  parseInt(req.query.year);
 }else if(req.query.emigrantManFrom && req.query.emigrantManTo){
-    search["emigrant-man"] = {$gte : parseInt(req.query.emigrantManFrom), $lte: parseInt(req.query.emigrantManTo)};
+    search["emigrantman"] = {$gte : parseInt(req.query.emigrantManFrom), $lte: parseInt(req.query.emigrantManTo)};
 }else if(req.query.emigrantWomanFrom && req.query.emigrantWomanTo){
-    search["emigrant-woman"] = {$gte : parseInt(req.query.emigrantWomanFrom), $lte: parseInt(req.query.emigrantWomanTo)};
+    search["emigrantwoman"] = {$gte : parseInt(req.query.emigrantWomanFrom), $lte: parseInt(req.query.emigrantWomanTo)};
 }else if(req.query.totalEmigrantFrom && req.query.totalEmigrantTo){
-    search["total-emigrant"] = {$gte : parseInt(req.query.totalEmigrantFrom), $lte: parseInt(req.query.totalEmigrantTo)};
+    search["totalemigrant"] = {$gte : parseInt(req.query.totalEmigrantFrom), $lte: parseInt(req.query.totalEmigrantTo)};
 }
     emigrations.find(search).skip(offSetAux).limit(limitAux).toArray((err, emigrationsArray) => {
 
@@ -91,10 +91,10 @@ app.post("/api/v1/emigrations-by-countries", (req, res) => {
     var newEmigrations = req.body;
     var auxiliar = false;
 
-    if (!newEmigrations.hasOwnProperty("country") || !newEmigrations.hasOwnProperty("year") || !newEmigrations.hasOwnProperty("emigrant-man") ||
-        !newEmigrations.hasOwnProperty("emigrant-woman") || !newEmigrations.hasOwnProperty("total-emigrant") ||
-        newEmigrations["country"] == null || newEmigrations["year"] == null || newEmigrations["emigrant-man"] == null || newEmigrations["emigrant-woman"] == null ||
-        newEmigrations["total-emigrant"] == null) {
+    if (!newEmigrations.hasOwnProperty("country") || !newEmigrations.hasOwnProperty("year") || !newEmigrations.hasOwnProperty("emigrantman") ||
+        !newEmigrations.hasOwnProperty("emigrantwoman") || !newEmigrations.hasOwnProperty("totalemigrant") ||
+        newEmigrations["country"] == null || newEmigrations["year"] == null || newEmigrations["emigrantman"] == null || newEmigrations["emigrantwoman"] == null ||
+        newEmigrations["totalemigrant"] == null) {
         res.sendStatus(400);
         return;
     }
@@ -187,10 +187,10 @@ app.put("/api/v1/emigrations-by-countries/:country/:year", (req, res) => {
     var country = req.params.country;
     var year = parseInt(req.params.year);
     var updateEmigrations = req.body;
-    if (country != updateEmigrations.country || year != parseInt(updateEmigrations.year) || !updateEmigrations.hasOwnProperty("year") || !updateEmigrations.hasOwnProperty("emigrant-man") ||
-        !updateEmigrations.hasOwnProperty("emigrant-woman") || !updateEmigrations.hasOwnProperty("total-emigrant") ||
-        updateEmigrations["country"] == null || updateEmigrations["year"] == null || updateEmigrations["emigrant-man"] == null || updateEmigrations["emigrant-woman"] == null ||
-        updateEmigrations["total-emigrant"] == null) {
+    if (country != updateEmigrations.country || year != parseInt(updateEmigrations.year) || !updateEmigrations.hasOwnProperty("year") || !updateEmigrations.hasOwnProperty("emigrantman") ||
+        !updateEmigrations.hasOwnProperty("emigrantwoman") || !updateEmigrations.hasOwnProperty("totalemigrant") ||
+        updateEmigrations["country"] == null || updateEmigrations["year"] == null || updateEmigrations["emigrantman"] == null || updateEmigrations["emigrantwoman"] == null ||
+        updateEmigrations["totalemigrant"] == null) {
         res.sendStatus(400);
         return;
     }
