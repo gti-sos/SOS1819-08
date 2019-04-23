@@ -13,7 +13,7 @@ angular
             console.log("Requesting contacts to <"+API+">...");
             $http.get(API).then(function (response){
                 console.log("Data Recieved: "+ JSON.stringify(response.data,null,2));            
-                $scope.touristsByCountries= response.data;
+                $scope.tourists= response.data;
             
             });
         };
@@ -48,7 +48,7 @@ angular
                 "&arrivalTourisMax="+FarrivalTouristMax+"&departureTouristMin="+FdepartureTouristMin+"&departureTouristMax="+FdepartureTouristMax).then(function(response){
             console.log(API+ "?country="+Fcountry+"&year="+Fyear+"&incomeTouristMin="+FincomeTouristMin+"&cincomeTouristMax="+FincomeTouristMax+"&arrivalTouristMin="+FarrivalTouristMin+
                 "&arrivalTouristMax="+FarrivalTouristMax+"&departureTouristMin="+FdepartureTouristMin+"&departureTouristMax="+FdepartureTouristMax);
-                $scope.touristsByCountries =response.data;
+                $scope.tourists =response.data;
                 
             });
             };
@@ -57,7 +57,7 @@ angular
         $scope.loadCountries = function (){
             $http.get(API+ "/loadInitialData").then(function(response){
                 $scope.status= "Status: Registro iniciales añadidos con éxito";
-                $scope.touristsByCountries =response.data;
+                $scope.tourists =response.data;
             refresh();
             });
         };
