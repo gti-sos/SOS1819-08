@@ -72,7 +72,8 @@ app.use(bodyParser.json())
 app.use("/", express.static(path.join(__dirname, "public"))); //conexion index.html principal
 
 
-app.use("/api/v1/minipostman-expenses", express.static(__dirname + "/public/expenses"));
+app.use("/api/v1/minipostman-expenses", express.static(__dirname + "/public/expenses/minipostman.html"));
+app.use("/ui/v1/expenses-of-countries-in-education-and-culture", express.static(__dirname + "/public/expenses"));
 
 app.use("/api/v1/minipostman-emigration", express.static(__dirname + "/public/emigration"));
 
