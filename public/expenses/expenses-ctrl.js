@@ -5,6 +5,7 @@
             $scope.url = "/api/v1/expenses-of-countries-in-education-and-culture";
             var API = "https://sos1819-08.herokuapp.com/api/v1/expenses-of-countries-in-education-and-culture";
             var path="https://sos1819-08.herokuapp.com"
+           refresh();
             function refresh(){
                 console.log("Requesting expenses to <"+API+">");
                 $http.get(API).then(function(response) {
