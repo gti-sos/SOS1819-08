@@ -19,7 +19,20 @@
     
     <body ng-controller= "MainCtrl">
         <h1>Gastos de paises en cultura y educación</h1>
- 
+             <div class="container-fluid">
+          ¡Busca según los criterios que desees!
+        
+         
+        <label>Pais:<input class="form-control text-center" ng-model="Fcountry"/></label>
+        <label>Año:<input class="form-control text-center" ng-model="Fyear"/></label>
+        <label>Gastos del pais mínimos:<input class="form-control text-center" ng-model="FcountryExpenseMin"/></label>
+        <label>Gastos del pais máximos:<input class="form-control text-center" ng-model="FcountryExpenseMax"/></label>
+        <label>Porcentaje de presupuesto mínimo:<input class="form-control text-center" ng-model="FbudgetPercentageMin"/></label>
+         <label>Porcentaje de presupuesto máximo:<input class="form-control text-center" ng-model="FbudgetPercentageMax"/></label>
+        <label>Gasto per Capita mínimo:<input class="form-control text-center" ng-model="FexpensePerCapitaMin"/></label>
+        <label>Gasto per Capita Max:<input class="form-control text-center" ng-model="FexpensePerCapitaMax"/></label>
+         <button class="btn btn-primary" ng-click="sendGet(Fcountry, Fyear, FcountryExpenseMin, FcountryExpenseMax, FbudgetPercentageMin,  FbudgetPercentageMax, FexpensePerCapitaMin, FexpensePerCapitaMax)">Buscar</button>
+        </div>
         <table class="table">
            <thead>
                 <tr>
@@ -58,11 +71,11 @@
   
         
          
-        <label>Country:<input class="form-control text-center" ng-model="country"/></label>
-        <label>Year:<input class="form-control text-center" ng-model="year"/></label>
-        <label>country Expense:<input class="form-control text-center" ng-model="countryExpense"/></label>
-        <label>budget Percentage:<input class="form-control text-center" ng-model="budgetPercentage"/></label>
-        <label>expensePerCapita:<input class="form-control text-center" ng-model="expensePerCapita"/></label>
+        <label>Pais:<input class="form-control text-center" ng-model="country"/></label>
+        <label>Año:<input class="form-control text-center" ng-model="year"/></label>
+        <label>Gastos del pais:<input class="form-control text-center" ng-model="countryExpense"/></label>
+        <label>Porcentaje de presupuesto:<input class="form-control text-center" ng-model="budgetPercentage"/></label>
+        <label>Gasto per Capita:<input class="form-control text-center" ng-model="expensePerCapita"/></label>
         </div>
     
     
