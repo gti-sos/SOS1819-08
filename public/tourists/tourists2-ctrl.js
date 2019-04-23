@@ -57,7 +57,7 @@ angular
         $scope.loadCountries = function (){
             $http.get(API+ "/loadInitialData").then(function(response){
                 $scope.status= "Status: Registro iniciales añadidos con éxito";
-                $scope.emigrations =response.data;
+                $scope.tourists =response.data;
             refresh();
             });
         };
@@ -72,7 +72,7 @@ angular
                 refresh();
             
             },function(){
-                    if( newCountry.country==null || newCountry.year==null || newCountry.emigrantman==null || newCountry.emigrantwoman==null || newCountry.totalemigrant==null){
+                    if( newCountry.country==null || newCountry.year==null || newCountry.touristDeparture==null || newCountry.arrivalTourist==null || newCountry.incomeTourist==null){
                     $scope.status="Error: No están todos los campos rellenos"
                     }else{
                     $scope.status="Error: Ya existe el país en el año especificado"
