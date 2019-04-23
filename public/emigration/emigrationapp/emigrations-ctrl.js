@@ -71,4 +71,8 @@ angular
             });
         }
         
+        $scope.limpiar = function(){
+            refresh();
+        };
+        
     }]);
