@@ -39,7 +39,7 @@ body {
            <button class="btn btn-light" ng-click="limpiar(Fcountry)">Quitar filtros de busqueda</button>
         </div>
         
-        <div class="alert alert-info" role="alert">
+        <div class="alert alert-success" role="alert">
  
 
         <table class="table">
@@ -68,6 +68,8 @@ body {
 
         </div>
 
+
+<div>
            <tbody>
                 <tr ng-repeat="tourist in touristsByCountries">
                      <p class="text-light"><td>{{ tourist.country }}</td></p>
@@ -78,7 +80,8 @@ body {
                      <td><button type="button" class="btn btn-danger" ng-click="sendDelete(tourist.country, tourist.year)">Eliminar</button></td>
             </tbody>
         </table>
-        
+    
+</div>
         
         <span><button class="button" ng-click="Pagination(1)"><<</button></span>
         <span><button class="button" ng-click="Pagination(2)">>></button></span>
