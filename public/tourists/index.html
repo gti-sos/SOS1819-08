@@ -26,14 +26,14 @@ body {
           ¡Métodos de busqueda!
         
          
-        <label>Pais:<input class="form-control text-center" ng-model="Fcountry"/></label>
-        <label>Año:<input class="form-control text-center" ng-model="Fyear"/></label>
+        <label><p class="text-light">Pais:<input class="form-control text-center" ng-model="Fcountry"/></p></label>
+        <label><p class="text-light">Año:<input class="form-control text-center" ng-model="Fyear"/></p></label>
         <label><p class="text-light">Llegadas de turistas mínimos:<input class="form-control text-center" ng-model="FarrivalTouristMin"/></p></label>
-        <label>Llegadas de turistas máximos:<input class="form-control text-center" ng-model="FarrivalTouristMax"/></label>
-        <label>Salidas de turistas mínimo:<input class="form-control text-center" ng-model="FdepartureTouristMin"/></label>
-         <label>Salidas de turistas máximo:<input class="form-control text-center" ng-model="FdepartureTouristMax"/></label>
-        <label>Ingresos turísticos mínimos:<input class="form-control text-center" ng-model="FincomeTouristMin"/></label>
-        <label>Ingresos turísticos máximos:<input class="form-control text-center" ng-model="FincomeTouristMin"/></label>
+        <label><p class="text-light">Llegadas de turistas máximos:<input class="form-control text-center" ng-model="FarrivalTouristMax"/></p></label>
+        <label><p class="text-light">Salidas de turistas mínimo:<input class="form-control text-center" ng-model="FdepartureTouristMin"/></p></label>
+         <label><p class="text-light">Salidas de turistas máximo:<input class="form-control text-center" ng-model="FdepartureTouristMax"/></p></label>
+        <label><p class="text-light">Ingresos turísticos mínimos:<input class="form-control text-center" ng-model="FincomeTouristMin"/></p></label>
+        <label><p class="text-light">Ingresos turísticos máximos:<input class="form-control text-center" ng-model="FincomeTouristMin"/></p></label>
          <button class="btn btn-primary" ng-click="sendGet(Fcountry, Fyear, FincomeTouristMin, FincomeTouristMax, FarrivalTouristMin,  FarrivalTouristMax, FdepartureTouristMin, FdepartureTouristMax)">Buscar</button>
            <button class="btn btn-light" ng-click="limpiar(Fcountry)">Quitar filtros de busqueda</button>
         </div>
@@ -63,12 +63,12 @@ body {
 
            <tbody>
                 <tr ng-repeat="tourist in tourists">
-                    <td>{{ tourists.country }}</td>
-                    <td>{{ tourists.year }}</td>
-                    <td>{{ tourists.touristDeparture }}</td>
-                    <td>{{ tourists.arrivalTourist }}</td>
-                    <td>{{ tourists.incomeTourist }}</td>
-                    <td><button type="button" class="btn btn-danger" ng-click="sendDelete(tourists.country, tourists.year)">Eliminar</button></td>
+                    <td>{{ tourist.country }}</td>
+                    <td>{{ tourist.year }}</td>
+                    <td>{{ tourist.touristDeparture }}</td>
+                    <td>{{ tourist.arrivalTourist }}</td>
+                    <td>{{ tourist.incomeTourist }}</td>
+                    <td><button type="button" class="btn btn-danger" ng-click="sendDelete(tourist.country, tourist.year)">Eliminar</button></td>
             </tbody>
         </table>
         
