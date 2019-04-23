@@ -38,6 +38,10 @@ body {
          <button class="btn btn-primary" ng-click="sendGet(Fcountry, Fyear, FincomeTouristMin, FincomeTouristMax, FarrivalTouristMin,  FarrivalTouristMax, FdepartureTouristMin, FdepartureTouristMax)">Buscar</button>
            <button class="btn btn-light" ng-click="limpiar(Fcountry)">Quitar filtros de busqueda</button>
         </div>
+        
+        <div class="alert alert-info" role="alert">
+ 
+
         <table class="table">
            <thead>
                 <tr>
@@ -61,6 +65,8 @@ body {
                     </th>
                 </tr>
             </thead>
+
+        </div>
 
            <tbody>
                 <tr ng-repeat="tourist in touristsByCountries">
