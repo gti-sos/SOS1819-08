@@ -89,6 +89,7 @@
            
            $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
                       $scope.data = response.status;
+                      refresh();
         }, function (response) {
           $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
                       $scope.data = response.status;
