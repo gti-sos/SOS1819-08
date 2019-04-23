@@ -73,14 +73,16 @@
             $http.post(path+$scope.url, JSON.stringify(data)).then(function (response) {
                 console.log("post done");
                 $scope.dataResponse = JSON.stringify(response.data,null,2)+"\n"+"Code: "+response.status;
+                 refresh();
             }, function (response) {
                 console.log("Error POST method: Code "+response.status+", "+response.statusText);
                 $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+                 refresh();
             });
         }else{
             $scope.dataResponse="Fields required";
         }   
-          refresh();  
+           
         };
          $scope.sendDelete = function(country, year){
         $http.delete(API+"/"+country+"/"+year).then(function(response){
