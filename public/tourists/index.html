@@ -23,7 +23,8 @@ body {
         
         <h1><p class="text-light">Datos sobre turistas</p></h1>
              <div class="container-fluid">
-          ¡Métodos de busqueda!
+          <p class="text-light">¡Métodos de busqueda!</p>
+          
         
          
         <label><p class="text-light">Pais:<input class="form-control text-center" ng-model="Fcountry"/></p></label>
@@ -62,13 +63,13 @@ body {
             </thead>
 
            <tbody>
-                <tr ng-repeat="tourist in tourists">
-                    <td>{{ tourist.country }}</td>
-                    <td>{{ tourist.year }}</td>
-                    <td>{{ tourist.touristDeparture }}</td>
-                    <td>{{ tourist.arrivalTourist }}</td>
-                    <td>{{ tourist.incomeTourist }}</td>
-                    <td><button type="button" class="btn btn-danger" ng-click="sendDelete(tourist.country, tourist.year)">Eliminar</button></td>
+                <tr ng-repeat="tourist in touristsByCountries">
+                     <p class="text-light"><td>{{ tourist.country }}</td></p>
+                     <p class="text-light"><td>{{ tourist.year }}</td></p>
+                     <p class="text-light"><td>{{ tourist.touristDeparture }}</td></p>
+                     <p class="text-light"><td>{{ tourist.arrivalTourist }}</td></p>
+                     <p class="text-light"><td>{{ tourist.incomeTourist }}</td></p>
+                     <p class="text-light"><td><button type="button" class="btn btn-danger" ng-click="sendDelete(tourist.country, tourist.year)">Eliminar</button></td>
             </tbody>
         </table>
         
@@ -79,11 +80,11 @@ body {
   
         
          
-        <label>Pais:<input class="form-control text-center" ng-model="country"/></label>
-        <label>Año:<input class="form-control text-center" ng-model="year"/></label>
-        <label>Salidas de turistas:<input class="form-control text-center" ng-model="touristDeparture"/></label>
-        <label>Llegadas de turistas:<input class="form-control text-center" ng-model="arrivalTourist"/></label>
-        <label>Ingresos de los turistas:<input class="form-control text-center" ng-model="incomeTourist"/></label>
+        <label><p class="text-light">Pais:<input class="form-control text-center" ng-model="country"/></p></label>
+        <label><p class="text-light">Año:<input class="form-control text-center" ng-model="year"/></p></label>
+        <label><p class="text-light">Salidas de turistas:<input class="form-control text-center" ng-model="touristDeparture"/></p></label>
+        <label><p class="text-light">Llegadas de turistas:<input class="form-control text-center" ng-model="arrivalTourist"/></p></label>
+        <label><p class="text-light">Ingresos de los turistas:<input class="form-control text-center" ng-model="incomeTourist"/></p></label>
         </div>
     
     
