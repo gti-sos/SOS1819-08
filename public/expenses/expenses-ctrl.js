@@ -18,6 +18,30 @@
         
             
             $scope.sendGet = function (Fcountry, Fyear, FcountryExpenseMin, FcountryExpenseMax, FbudgetPercentageMin,  FbudgetPercentageMax, FexpensePerCapitaMin, FexpensePerCapitaMax){
+                if(typeof Fcountry=='undefined'){
+                    Fcountry="";
+                }
+                if(typeof Fyear=='undefined'){
+                    Fyear="";
+                }
+                if(typeof FcountryExpenseMin=='undefined'){
+                    FcountryExpenseMin="";
+                }
+                if(typeof FcountryExpenseMax=='undefined'){
+                    FcountryExpenseMax="";
+                }
+                if(typeof FbudgetPercentageMin=='undefined'){
+                    FbudgetPercentageMin="";
+                }
+                if(typeof FbudgetPercentageMax=='undefined'){
+                    FbudgetPercentageMax="";
+                }
+                if(typeof FexpensePerCapitaMin=='undefined'){
+                    FexpensePerCapitaMin="";
+                }
+                if(typeof FexpensePerCapitaMax=='undefined'){
+                    FexpensePerCapitaMax="";
+                }
                 $http.get(API+ "?country="+Fcountry+"&year="+Fyear+"&countryExpenseMin="+FcountryExpenseMin+"&countryExpenseMax="+FcountryExpenseMax+"&percentageMin="+FbudgetPercentageMin+
                 "&.percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax).then(function(response){
             console.log(API+ "?country="+Fcountry+"&year="+Fyear+"&countryExpenseMin="+FcountryExpenseMin+"&countryExpenseMax="+FcountryExpenseMax+"&percentageMin="+FbudgetPercentageMin+
