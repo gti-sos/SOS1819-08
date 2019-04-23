@@ -1,7 +1,7 @@
            /* global angular $scope*/
 
 angular
-    .module("touristsApp")
+    .module("TouristsApp")
     .controller("touristsCtrl", ["$scope","$http", function ($scope, $http){
         console.log("Tourists Initialized!");
         
