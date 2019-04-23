@@ -74,7 +74,7 @@
                 console.log("post done");
                 $scope.dataResponse = JSON.stringify(response.data,null,2)+"\n"+"Code: "+response.status;
             }, function (response) {
-                console.log("Error PUT method: Code "+response.status+", "+response.statusText);
+                console.log("Error POST method: Code "+response.status+", "+response.statusText);
                 $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
             });
         }else{
@@ -93,6 +93,7 @@
           $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
                       $scope.data = response.status;
         });
+        refresh();
     };
     $scope.postJson = function(){
                     $http.post(path+$scope.url,$scope.data).then(function(response){
@@ -120,6 +121,7 @@
                         }).catch(function (response) {
                             $scope.data = response.status;
 			            });
+			            refresh();
              };
              $scope.clear = function(){
                  $scope.data="";
