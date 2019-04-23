@@ -21,14 +21,14 @@ body {
 
 </style>
         
-        <h1>Gastos de paises en cultura y educación</h1>
+        <h1><p class="text-light">Datos sobre turistas</p></h1>
              <div class="container-fluid">
-          ¡Busca según los criterios que desees!
+          ¡Métodos de busqueda!
         
          
         <label>Pais:<input class="form-control text-center" ng-model="Fcountry"/></label>
         <label>Año:<input class="form-control text-center" ng-model="Fyear"/></label>
-        <label>Llegadas de turistas mínimos:<input class="form-control text-center" ng-model="FarrivalTouristMin"/></label>
+        <label><p class="text-light">Llegadas de turistas mínimos:<input class="form-control text-center" ng-model="FarrivalTouristMin"/></p></label>
         <label>Llegadas de turistas máximos:<input class="form-control text-center" ng-model="FarrivalTouristMax"/></label>
         <label>Salidas de turistas mínimo:<input class="form-control text-center" ng-model="FdepartureTouristMin"/></label>
          <label>Salidas de turistas máximo:<input class="form-control text-center" ng-model="FdepartureTouristMax"/></label>
@@ -63,12 +63,12 @@ body {
 
            <tbody>
                 <tr ng-repeat="tourist in tourists">
-                    <td>{{ touristsByCountries.country }}</td>
-                    <td>{{ touristsByCountries.year }}</td>
-                    <td>{{ touristsByCountries.touristDeparture }}</td>
-                    <td>{{ touristsByCountries.arrivalTourist }}</td>
-                    <td>{{ touristsByCountries.incomeTourist }}</td>
-                    <td><button type="button" class="btn btn-danger" ng-click="sendDelete(touristsByCountries.country, touristsByCountries.year)">Eliminar</button></td>
+                    <td>{{ tourists.country }}</td>
+                    <td>{{ tourists.year }}</td>
+                    <td>{{ tourists.touristDeparture }}</td>
+                    <td>{{ tourists.arrivalTourist }}</td>
+                    <td>{{ tourists.incomeTourist }}</td>
+                    <td><button type="button" class="btn btn-danger" ng-click="sendDelete(tourists.country, tourists.year)">Eliminar</button></td>
             </tbody>
         </table>
         
