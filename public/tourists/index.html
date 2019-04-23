@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="TouristsApp">
     <head>
-            <title> SOS1819-08 </title>
+            <title> Turists </title>
             <link rel="stylesheet" href="../../../bower_components/bootstrap/dist/css/bootstrap.min.css" />
             <script src="../../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
             <script src="../../../bower_components/angular/angular.min.js"></script>
@@ -15,7 +15,7 @@
             <style>
 body {
   margin: 0; 
-  background-image: url("https://i2.wp.com/acorch.cl/wp-content/uploads/2017/04/purpura-y-morado-82360.jpg")
+  background-image: url("https://www.suryarestaurants.com/wp-content/uploads/2017/06/fondo-azul-claro-2.jpg")
     
 }
 
@@ -69,24 +69,23 @@ body {
                      <p class="text-light"><td>{{ tourist.touristDeparture }}</td></p>
                      <p class="text-light"><td>{{ tourist.arrivalTourist }}</td></p>
                      <p class="text-light"><td>{{ tourist.incomeTourist }}</td></p>
-                     <p class="text-light"><td><button type="button" class="btn btn-danger" ng-click="sendDelete(tourist.country, tourist.year)">Eliminar</button></td>
+                     <td><button type="button" class="btn btn-danger" ng-click="sendDelete(tourist.country, tourist.year)">Eliminar</button></td>
             </tbody>
         </table>
         
         
         <span><button class="button" ng-click="Pagination(1)"><<</button></span>
-    <span><button class="button" ng-click="Pagination(2)">>></button></span>
+        <span><button class="button" ng-click="Pagination(2)">>></button></span>
             <div class="container-fluid">
   
-        
-         
+       
+      
         <label><p class="text-light">Pais:<input class="form-control text-center" ng-model="country"/></p></label>
         <label><p class="text-light">Año:<input class="form-control text-center" ng-model="year"/></p></label>
         <label><p class="text-light">Salidas de turistas:<input class="form-control text-center" ng-model="touristDeparture"/></p></label>
         <label><p class="text-light">Llegadas de turistas:<input class="form-control text-center" ng-model="arrivalTourist"/></p></label>
         <label><p class="text-light">Ingresos de los turistas:<input class="form-control text-center" ng-model="incomeTourist"/></p></label>
         </div>
-    
     
        <div class="btn-group" role="group" aria-label="Botones">
         <button float:center class="btn btn-secondary" ng-click="sendPost(country, year, touristDeparture, arrivalTourist, incomeTourist)">Crea</button>
