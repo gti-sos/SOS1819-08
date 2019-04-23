@@ -120,15 +120,33 @@
         $scope.loadInitialData = function (){
                         $http.get("https://sos1819-08.herokuapp.com/api/v1/expenses-of-countries-in-education-and-culture/loadInitialData").then(function (response){
                             $scope.data = JSON.stringify(response.data,null,2) + response.status;
+                             refresh();
                         }).catch(function (response) {
                             $scope.data = response.status;
+                             refresh();
 			            });
-			            refresh();
+			           
              };
              $scope.clear = function(){
                  $scope.data="";
              };
              
+             
+             $scope.sendDeleteAll = function(){
+        $http.delete(API).then(function(response){
+            console.log("Deleting all data ");
+            var res = JSON.stringify(response.data,null,2);
+           
+           $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+                      $scope.data = response.status;
+                      refresh();
+        }, function (response) {
+          $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+                      $scope.data = response.status;
+                      refresh();
+        });
+        
+    };
              
             
        } ] );

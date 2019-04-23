@@ -70,11 +70,15 @@
         <button float:center class="btn btn-secondary" ng-click="sendPost(country, year, countryExpense, budgetPercentage, expensePerCapita)">Crea</button>
         <button class="btn btn-warning" ng-click="sendPut(country, year, countryExpense, budgetPercentage, expensePerCapita)">Modifica</button>
          <button class="btn btn-dark" ng-click="loadInitialData()">Carga datos iniciales</button>
-         
+         <button type="button" class="btn btn-danger" ng-click="sendDeleteAll()">Eliminar todos los datos</button>
         </div>
                 </tr>
             </tbody>
-        </table></body>
-</html>
-    </body>
+        </table>
+         <div class="col-xs-5" style="width": 50%;float:left;>
+                    <label class="input-lg" for="dataResponse">Data response</label>
+                    <textarea class="form-control" rows="20" ng-model="dataResponse"></textarea>
+                </div>
+        </body>
+
 </html>
