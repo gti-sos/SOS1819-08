@@ -162,8 +162,9 @@
              $scope.clear = function(){
                  $scope.data="";
              };
-              $scope.limpiar = function(){
+              $scope.limpiar = function(Fcountry){
                  refresh();
+                 Fcountry="";
              };
              
              $scope.sendDeleteAll = function(){
