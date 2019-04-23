@@ -54,5 +54,25 @@
    
             </tbody>
         </table>
+            <div class="container-fluid">
+  
+        
+         
+        <label>Country:<input class="form-control text-center" ng-model="country"/></label>
+        <label>Year:<input class="form-control text-center" ng-model="year"/></label>
+        <label>country Expense:<input class="form-control text-center" ng-model="countryExpense"/></label>
+        <label>budget Percentage:<input class="form-control text-center" ng-model="budgetPercentage"/></label>
+        <label>expensePerCapita:<input class="form-control text-center" ng-model="expensePerCapita"/></label>
+        </div>
+    
+    
+       <div class="btn-group" role="group" aria-label="Botones">
+        <button float:center class="btn btn-secondary" ng-click="sendPost(country, year, countryExpense, budgetPercentage, expensePerCapita)">Crea</button>
+        <button class="btn btn-warning" ng-click="sendPut(country, year, countryExpense, budgetPercentage, expensePerCapita)">Modifica</button>
+        </div>
+                </tr>
+            </tbody>
+        </table></body>
+</html>
     </body>
 </html>

@@ -80,7 +80,7 @@
         }else{
             $scope.dataResponse="Fields required";
         }   
-            
+          refresh();  
         };
          $scope.sendDelete = function(){
         $http.delete(path+$scope.url).then(function(response){
