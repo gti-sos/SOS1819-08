@@ -1,58 +1,61 @@
-<!DOCTYPE html>
-<html ng-app="minipostmanAPP">
+<html ng-app= "minipostmanAPP">
     
-
-<head>
-    <title>Minipostman Expenses of countries in educcation and culture</title>
-    <link rel="stylesheet" href="/../bower_components/bootstrap/dist/css/bootstrap.min.css"  />
-    <script src="/../bower_components/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/../bower_components/angular/angular.min.js"></script>
-    <script src="/expenses/expenses-app.js"></script>
-    <script src="/expenses/expenses-ctrl.js"></script>
-</head>
-<body ng-controller="MainCtrl">
-    <style>
-body {
-  background-image: url("data:image/png;base64,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");
-  background-repeat: no-repeat;
-  background-position: right top;
-  margin-right: 200px;
-  background-attachment: fixed;
-}
-</style>
-    <h1>Expenses</h1>
-    <div>
-        <label>URL: <input class="form-control text-center" ng-model="url" size ="50"/></label>
+    <head>
+        <title>
+            Gastos de paises en cultura
+        </title>
         
-        <div class="btn-group" role="group" aria-label="Basic example">
-        <button class="btn btn-primary" ng-click="sendGet()">Get</button>
-         <button float:center class="btn btn-secondary" ng-click="postJson()">Post</button>
-        <button class="btn btn-warning" ng-click="putJson()">Put</button>
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
         
+        <script src="/../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         
-        <button type="button" class="btn btn-danger" ng-click="sendDelete()">Delete</button>
-          <button class="btn btn-dark" ng-click="loadInitialData()">Load Initial Data</button>
-          <button class="btn btn-light" ng-click="clear()">clear</button>
-       </div>
-        {{ url }}
-    </div>
-    <div class="alert alert-primary alert-dismissible fade show" role="alert">
-  
-  <strong>¡Recuerda!</strong> Si deseas borrar un solo recurso, no olvides poner el recurso que deseas. ¡O se borrará toda la BD!
-  
-</div>
-    <div>
-        <textarea class="form-control" size="60" rows="20" ng-model="data"></textarea>
-    </div>
-   <br> </br>
-   <br> </br>
-
-    <br> </br>     
+        <script src="/../bower_components/angular/angular.min.js"></script>
+        
+        <script src="expenses-app.js"></script>
+        
+        <script src="expenses-ctrl.js"></script>
+        
+    </head>
     
-        
-      <div class="container-fluid">
+    <body ng-controller= "MainCtrl">
+        <h1>Gastos de paises en cultura y educación</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Pais
+                    </th>
+                    <th>
+                        Año
+                    </th>
+                    <th>
+                       Gastos del país
+                    </th>
+                    <th>
+                       Porcentaje de presupuesto
+                    </th>
+                    <th>
+                        Gasto per Capita
+                    </th>
+                    <th>
+                        Acciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="expense in expenses">
+                    <td>{{ expense.country }}</td>
+                    <td>{{ expense.year }}</td>
+                    <td>{{ expense.countryExpense }}</td>
+                    <td>{{ expense.budgetPercentage }}</td>
+                    <td>{{ expense.expensePerCapita }}</td>
+                    <td>
+                        <button class="btn btn-danger" ng-click="deleteData(dato.country, dato.year)">Borrar</button>
+                    </td>
+                </tr>
+                 <div class="container-fluid">
   
-        Post or put a new Data:
+        
          
         <label>Country:<input class="form-control text-center" ng-model="country"/></label>
         <label>Year:<input class="form-control text-center" ng-model="year"/></label>
@@ -63,17 +66,12 @@ body {
     
     
        <div class="btn-group" role="group" aria-label="Botones">
-        <button float:center class="btn btn-secondary" ng-click="sendPost(country, year, countryExpense, budgetPercentage, expensePerCapita)">Post</button>
-        <button class="btn btn-warning" ng-click="sendPut(country, year, countryExpense, budgetPercentage, expensePerCapita)">Put</button>
+        <button float:center class="btn btn-secondary" ng-click="sendPost(country, year, countryExpense, budgetPercentage, expensePerCapita)">Crea</button>
+        <button class="btn btn-warning" ng-click="sendPut(country, year, countryExpense, budgetPercentage, expensePerCapita)">Modifica</button>
         </div>
-    </div>
-    <div class="col-xs-5" style="width": 50%;float:left;>
-                    <label class="input-lg" for="dataResponse">Data response</label>
-                    <textarea class="form-control" rows="20" ng-model="dataResponse"></textarea>
-                </div>
-    
-   
-  
-</body>
-
+                </tr>
+            </tbody>
+        </table>
+        <div class="alert alert-success"> Todo ha salido bien.</div>
+    </body>
 </html>
