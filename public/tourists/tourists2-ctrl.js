@@ -13,7 +13,7 @@ angular
             console.log("Requesting contacts to <"+API+">...");
             $http.get(API).then(function (response){
                 console.log("Data Recieved: "+ JSON.stringify(response.data,null,2));            
-                $scope.emigrations = response.data;
+                $scope.tourists= response.data;
             
             });
         };
