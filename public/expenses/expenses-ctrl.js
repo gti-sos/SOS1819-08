@@ -183,6 +183,45 @@
         });
         
     };
+    
+    var pag=0;
+             var numero;
+             $scope.Pagination=function(num){
+                 numero=num;
+                  
+               if(num==1){
+                    pag=pag-10;
+                    if(pag<0){
+                            pag=0;
+                            $http.get(API+"?limit="+10+"&offset="+pag).then(function (response){
+                            $scope.expenses = response.data;
+                            console.log("pagination1")
+                             numero=num;
+                             console.log(numero);
+                             
+                            });
+                           
+                    }else{
+                        $http.get(API+"?limit="+10+"&offset="+pag).then(function (response){
+                $scope.expenses = response.data;
+                  console.log("pagination2")
+                   numero=num;
+                    console.log(numero);
+                });
+                    }
+               }else{
+                  
+                pag=pag+10;
+                $http.get(API+"?limit="+10+"&offset="+pag).then(function (response){
+                $scope.expenses = response.data;
+                 console.log("pagination3")
+                  numero=num;
+                   console.log(numero);
+               });
+               
+                 
+             }
+            }
              
             
        } ] );
