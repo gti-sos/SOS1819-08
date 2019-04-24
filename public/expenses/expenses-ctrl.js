@@ -84,14 +84,14 @@
         };
         $scope.sendPost = function (country, year, countryExpense, budgetPercentage, expensePerCapita){
                  if((typeof country!=='undefined'
-        || typeof year!=='undefined'
-        || typeof countryExpense!=='undefined'
-        || typeof budgetPercentage!=='undefined'
-        || typeof expensePerCapita!=='undefined')||(country!==""
-        ||  year!==""
-        ||  countryExpense!==""
-        || budgetPercentage!==""
-        ||  expensePerCapita!=="")){
+        && typeof year!=='undefined'
+        && typeof countryExpense!=='undefined'
+        && typeof budgetPercentage!=='undefined'
+        && typeof expensePerCapita!=='undefined')/*||(country!==""
+        &&  year!==""
+        &&  countryExpense!==""
+        && budgetPercentage!==""
+        &&  expensePerCapita!=="")*/){
             var data = {
                 country : country,
                 year :parseInt(year)  ,
@@ -99,7 +99,7 @@
                 budgetPercentage:parseFloat(budgetPercentage),
                 expensePerCapita :parseFloat(expensePerCapita)
             };
-            console.log("this is the new data:  " + data);
+            console.log("this is the new data:  " +JSON.stringify( data));
             $http.post(API, JSON.stringify(data)).then(function (response) {
                 console.log("post done");
                 $scope.dataResponse = JSON.stringify(response.data,null,2)+"\n"+"Code: "+response.status;
