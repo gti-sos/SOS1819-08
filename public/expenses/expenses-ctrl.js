@@ -198,6 +198,30 @@
              var numero;
              $scope.Pagination=function(Fcountry, Fyear, FcountryExpenseMin, FcountryExpenseMax, FbudgetPercentageMin,  FbudgetPercentageMax, FexpensePerCapitaMin, FexpensePerCapitaMax,num){
                  numero=num;
+                 if(typeof Fcountry=='undefined'){
+                    Fcountry="";
+                }
+                if(typeof Fyear=='undefined'){
+                    Fyear="";
+                }
+                if(typeof FcountryExpenseMin=='undefined'){
+                    FcountryExpenseMin="";
+                }
+                if(typeof FcountryExpenseMax=='undefined'){
+                    FcountryExpenseMax="";
+                }
+                if(typeof FbudgetPercentageMin=='undefined'){
+                    FbudgetPercentageMin="";
+                }
+                if(typeof FbudgetPercentageMax=='undefined'){
+                    FbudgetPercentageMax="";
+                }
+                if(typeof FexpensePerCapitaMin=='undefined'){
+                    FexpensePerCapitaMin="";
+                }
+                if(typeof FexpensePerCapitaMax=='undefined'){
+                    FexpensePerCapitaMax="";
+                }
                   
                if(num==1){
                     pag=pag-10;
