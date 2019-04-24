@@ -164,8 +164,18 @@
              $scope.clear = function(){
                  $scope.data="";
              };
-              $scope.limpiar = function(){
+              $scope.limpiar = function(Fcountry, Fyear, FcountryExpenseMin, FcountryExpenseMax, FbudgetPercentageMin,  FbudgetPercentageMax, FexpensePerCapitaMin, FexpensePerCapitaMax){
+               Fcountry="",
+               Fyear="",
+               FcountryExpenseMin="",
+               FcountryExpenseMax="",
+               FbudgetPercentageMax="",
+               FbudgetPercentageMin="",
+               FexpensePerCapitaMax="",
+               FexpensePerCapitaMin="";
+               if(FexpensePerCapitaMin==""){
                  refresh();
+               }
              };
              
              $scope.sendDeleteAll = function(){
@@ -186,14 +196,15 @@
     
     var pag=0;
              var numero;
-             $scope.Pagination=function(num){
+             $scope.Pagination=function(Fcountry, Fyear, FcountryExpenseMin, FcountryExpenseMax, FbudgetPercentageMin,  FbudgetPercentageMax, FexpensePerCapitaMin, FexpensePerCapitaMax,num){
                  numero=num;
                   
                if(num==1){
                     pag=pag-10;
                     if(pag<0){
                             pag=0;
-                            $http.get(API+"?limit="+10+"&offset="+pag).then(function (response){
+                            $http.get(API+ "?country="+Fcountry+"&year="+Fyear+"&countryExpenseMin="+FcountryExpenseMin+"&countryExpenseMax="+FcountryExpenseMax+"&percentageMin="+FbudgetPercentageMin+
+                "&.percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag).then(function (response){
                             $scope.expenses = response.data;
                             console.log("pagination1")
                              numero=num;
@@ -202,7 +213,8 @@
                             });
                            
                     }else{
-                        $http.get(API+"?limit="+10+"&offset="+pag).then(function (response){
+                        $http.get(API+ "?country="+Fcountry+"&year="+Fyear+"&countryExpenseMin="+FcountryExpenseMin+"&countryExpenseMax="+FcountryExpenseMax+"&percentageMin="+FbudgetPercentageMin+
+                "&.percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag).then(function (response){
                 $scope.expenses = response.data;
                   console.log("pagination2")
                    numero=num;
@@ -212,7 +224,8 @@
                }else{
                   
                 pag=pag+10;
-                $http.get(API+"?limit="+10+"&offset="+pag).then(function (response){
+                $http.get(API+ "?country="+Fcountry+"&year="+Fyear+"&countryExpenseMin="+FcountryExpenseMin+"&countryExpenseMax="+FcountryExpenseMax+"&percentageMin="+FbudgetPercentageMin+
+                "&.percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag).then(function (response){
                 $scope.expenses = response.data;
                  console.log("pagination3")
                   numero=num;
