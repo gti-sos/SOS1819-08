@@ -55,11 +55,11 @@
         && typeof year!=='undefined'
         && typeof countryExpense!=='undefined'
         && typeof budgetPercentage!=='undefined'
-        && typeof expensePerCapita!=='undefined')||(country!==""
+        && typeof expensePerCapita!=='undefined')/*||(country!==""
         &&  year!==""
         &&  countryExpense!==""
         && budgetPercentage!==""
-        &&  expensePerCapita!=="")){
+        &&  expensePerCapita!=="")*/){
             var data = {
                 country : country,
                 year : parseInt(year)  ,
