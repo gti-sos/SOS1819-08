@@ -7,12 +7,13 @@
 
 
                    var API = "https://sos1819-08.herokuapp.com/api/v1/tourists-by-countries";
+                   var path = "https://sos1819-08.herokuapp.com"
                    refresh();
 
 
                    function refresh() {
                        console.log("Requesting contacts to <" + API + ">...");
-                       $http.get(API+"?limit="+10+"&offset="+pag).then(function(response) {
+                       $http.get(API + "?limit=" + 10 + "&offset=" + pag).then(function(response) {
                            console.log("Data Recieved: " + JSON.stringify(response.data, null, 2));
                            $scope.touristsByCountries = response.data;
 
@@ -175,6 +176,28 @@
                    $scope.limpiar = function() {
                        refresh();
                    };
+
+
+                   $scope.postJson = function() {
+                       $http.post(path + $scope.url, $scope.data).then(function(response) {
+                           $scope.dataResponse = "Code: " + response.status + "\n" + response.statusText;
+                           $scope.data = response.status;
+                       }, function(response) {
+                           $scope.dataResponse = "Code: " + response.status + "\n" + response.statusText;
+                           $scope.data = response.status;
+                       });
+                   };
+                   $scope.putJson = function() {
+                       $http.put(path + $scope.url, $scope.data).then(function(response) {
+                           $scope.dataResponse = "Code: " + response.status + "\n" + response.statusText;
+                           $scope.data = response.status;
+                       }, function(response) {
+                           $scope.dataResponse = "Code: " + response.status + "\n" + response.statusText;
+                           $scope.data = response.status
+                       });
+                   };
+
+
 
 
                    var pag = 0;
