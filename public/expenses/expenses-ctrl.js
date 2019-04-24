@@ -8,7 +8,7 @@
            refresh();
             function refresh(){
                 console.log("Requesting expenses to <"+API+">");
-                $http.get(API+"?limit="+10+"&offset="+pag).then(function(response) {
+                $http.get(API+"?limit="+10+"&offset="+numero).then(function(response) {
                     console.log("Data received: "+ JSON.stringify(response.data));
                     $scope.expenses = response.data;
                 })
