@@ -53,8 +53,41 @@ angular
             });
             };
         
+         $scope.sendPut = function (country, year, touristDeparture, arrivalTourist, incomeTourist){
+                 if((typeof country!=='undefined'
+        && typeof year!=='undefined'
+        && typeof touristDeparture!=='undefined'
+        && typeof arrivalTourist!=='undefined'
+        && typeof incomeTourist!=='undefined')||(country!==""
+        &&  year!==""
+        &&  touristDeparture!==""
+        && arrivalTourist!==""
+        &&  incomeTourist!=="")){
+            var data = {
+                country : country,
+                year : parseInt(year)  ,
+                touristDeparture:parseInt(touristDeparture),
+                arrivalTourist:parseInt(arrivalTourist),
+                incomeTourist:parseInt(incomeTourist)
+            };
+            console.log("Este es el nuevo dato:  " + data);
+            $http.put(API+"/"+country+"/"+year, JSON.stringify(data)).then(function (response) {
+                console.log("put done");
+                $scope.dataResponse =" Code: "+response.status+"\n"+response.statusText;
+                refresh();
+            }, function (response) {
+                console.log("Error PUT method: Code "+response.status+", "+response.statusText);
+                $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+                refresh();
+            });
+        }else{
+            $scope.dataResponse="Fields required";
+        }   
+            
+        };
         
-        $scope.loadCountries = function (){
+        
+        $scope.loadInitialData = function (){
             $http.get(API+ "/loadInitialData").then(function(response){
                 $scope.status= "Status: Registro iniciales añadidos con éxito";
                 $scope.touristsByCountries =response.data;
@@ -80,7 +113,7 @@ angular
             });
         }
         
-         $scope.deleteCountry = function(country, year){
+         $scope.deleteOne = function(country, year){
             $scope.status= "Status: Registro borrado con éxito";
             console.log("Delete country");
             
@@ -91,7 +124,7 @@ angular
             });
         }
         
-        $scope.deleteCountries = function(){
+        $scope.deleteAll = function(){
             $scope.status= "Status: Registros borrados con éxito";
             console.log("Delete country");
             
