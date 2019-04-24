@@ -6,7 +6,7 @@ angular
         console.log("Tourists Initialized!");
         
         
-        var API = "https://sos1819-08.herokuapp.com/api/v1/tourists-by-countries";
+        var API = "https://sos1819-08.herokuapp.com/ui/v1/tourists-by-countries/";
         refresh();
         
         function refresh(){
@@ -87,7 +87,7 @@ angular
         };
         
         
-        $scope.loadInitialData = function (){
+        $scope.sendLoadInitialData = function (){
             $http.get(API+ "/loadInitialData").then(function(response){
                 $scope.status= "Status: Registro iniciales añadidos con éxito";
                 $scope.touristsByCountries =response.data;
@@ -95,7 +95,7 @@ angular
             });
         };
         
-        $scope.addCountry = function(){
+        $scope.addCountry = function(country, year, touristDeparture, arrivalTourist, incomeTourist){
             console.log("Adding a new country");
             var newCountry = $scope.newCountry;
             
