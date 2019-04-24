@@ -55,7 +55,9 @@
         && typeof year!=='undefined'
         && typeof countryExpense!=='undefined'
         && typeof budgetPercentage!=='undefined'
-        && typeof expensePerCapita!=='undefined')/*||(country!==""
+        && typeof expensePerCapita!=='undefined'
+        &&  country !==null
+        &&  year!==null)/*||(country!==""
         &&  year!==""
         &&  countryExpense!==""
         && budgetPercentage!==""
