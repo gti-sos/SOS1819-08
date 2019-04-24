@@ -43,9 +43,9 @@
                     FexpensePerCapitaMax="";
                 }
                 $http.get(API+ "?country="+Fcountry+"&year="+Fyear+"&countryExpenseMin="+FcountryExpenseMin+"&countryExpenseMax="+FcountryExpenseMax+"&percentageMin="+FbudgetPercentageMin+
-                "&.percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax).then(function(response){
+                "&.percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag).then(function(response){
             console.log(API+ "?country="+Fcountry+"&year="+Fyear+"&countryExpenseMin="+FcountryExpenseMin+"&countryExpenseMax="+FcountryExpenseMax+"&percentageMin="+FbudgetPercentageMin+
-                "&.percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax);
+                "&.percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag);
                 $scope.expenses =response.data;
                 
             });
