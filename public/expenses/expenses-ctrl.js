@@ -43,9 +43,9 @@
                     FexpensePerCapitaMax="";
                 }
                 $http.get(API+ "?country="+Fcountry+"&year="+Fyear+"&countryExpenseMin="+FcountryExpenseMin+"&countryExpenseMax="+FcountryExpenseMax+"&percentageMin="+FbudgetPercentageMin+
-                "&.percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag).then(function(response){
+                "&percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag).then(function(response){
             console.log(API+ "?country="+Fcountry+"&year="+Fyear+"&countryExpenseMin="+FcountryExpenseMin+"&countryExpenseMax="+FcountryExpenseMax+"&percentageMin="+FbudgetPercentageMin+
-                "&.percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag);
+                "&percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag);
                 $scope.expenses =response.data;
                 
             });
@@ -55,11 +55,11 @@
         && typeof year!=='undefined'
         && typeof countryExpense!=='undefined'
         && typeof budgetPercentage!=='undefined'
-        && typeof expensePerCapita!=='undefined')||(country!==""
+        && typeof expensePerCapita!=='undefined')/*||(country!==""
         &&  year!==""
         &&  countryExpense!==""
         && budgetPercentage!==""
-        &&  expensePerCapita!=="")){
+        &&  expensePerCapita!=="")*/){
             var data = {
                 country : country,
                 year : parseInt(year)  ,
@@ -84,14 +84,14 @@
         };
         $scope.sendPost = function (country, year, countryExpense, budgetPercentage, expensePerCapita){
                  if((typeof country!=='undefined'
-        || typeof year!=='undefined'
-        || typeof countryExpense!=='undefined'
-        || typeof budgetPercentage!=='undefined'
-        || typeof expensePerCapita!=='undefined')||(country!==""
-        ||  year!==""
-        ||  countryExpense!==""
-        || budgetPercentage!==""
-        ||  expensePerCapita!=="")){
+        && typeof year!=='undefined'
+        && typeof countryExpense!=='undefined'
+        && typeof budgetPercentage!=='undefined'
+        && typeof expensePerCapita!=='undefined')/*||(country!==""
+        &&  year!==""
+        &&  countryExpense!==""
+        && budgetPercentage!==""
+        &&  expensePerCapita!=="")*/){
             var data = {
                 country : country,
                 year :parseInt(year)  ,
@@ -99,7 +99,7 @@
                 budgetPercentage:parseFloat(budgetPercentage),
                 expensePerCapita :parseFloat(expensePerCapita)
             };
-            console.log("this is the new data:  " + data);
+            console.log("this is the new data:  " +JSON.stringify( data));
             $http.post(API, JSON.stringify(data)).then(function (response) {
                 console.log("post done");
                 $scope.dataResponse = JSON.stringify(response.data,null,2)+"\n"+"Code: "+response.status;
@@ -241,7 +241,7 @@
                             $scope.expenses = response.data;
                             console.log("pagination1")
                             console.log(API+ "?country="+Fcountry+"&year="+Fyear+"&countryExpenseMin="+FcountryExpenseMin+"&countryExpenseMax="+FcountryExpenseMax+"&percentageMin="+FbudgetPercentageMin+
-                "&.percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag);
+                "&percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag);
                              numero=num;
                              console.log(numero);
                              
@@ -249,11 +249,11 @@
                            
                     }else{
                         $http.get(API+ "?country="+Fcountry+"&year="+Fyear+"&countryExpenseMin="+FcountryExpenseMin+"&countryExpenseMax="+FcountryExpenseMax+"&percentageMin="+FbudgetPercentageMin+
-                "&.percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag).then(function (response){
+                "&percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag).then(function (response){
                 $scope.expenses = response.data;
                   console.log("pagination2")
                   console.log(API+ "?country="+Fcountry+"&year="+Fyear+"&countryExpenseMin="+FcountryExpenseMin+"&countryExpenseMax="+FcountryExpenseMax+"&percentageMin="+FbudgetPercentageMin+
-                "&.percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag);
+                "&percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag);
                    numero=num;
                     console.log(numero);
                 });
@@ -262,11 +262,11 @@
                   
                 pag=pag+10;
                 $http.get( API+ "?country="+Fcountry+"&year="+Fyear+"&countryExpenseMin="+FcountryExpenseMin+"&countryExpenseMax="+FcountryExpenseMax+"&percentageMin="+FbudgetPercentageMin+
-                "&.percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag).then(function (response){
+                "&percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag).then(function (response){
                 $scope.expenses = response.data;
                  console.log("pagination3")
                  console.log(API+ "?country="+Fcountry+"&year="+Fyear+"&countryExpenseMin="+FcountryExpenseMin+"&countryExpenseMax="+FcountryExpenseMax+"&percentageMin="+FbudgetPercentageMin+
-                "&.percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag);
+                "&percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag);
                   numero=num;
                    console.log(numero);
                });
