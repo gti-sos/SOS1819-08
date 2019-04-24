@@ -207,6 +207,8 @@
                 "&.percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag).then(function (response){
                             $scope.expenses = response.data;
                             console.log("pagination1")
+                            console.log(API+ "?country="+Fcountry+"&year="+Fyear+"&countryExpenseMin="+FcountryExpenseMin+"&countryExpenseMax="+FcountryExpenseMax+"&percentageMin="+FbudgetPercentageMin+
+                "&.percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag);
                              numero=num;
                              console.log(numero);
                              
@@ -217,6 +219,8 @@
                 "&.percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag).then(function (response){
                 $scope.expenses = response.data;
                   console.log("pagination2")
+                  console.log(API+ "?country="+Fcountry+"&year="+Fyear+"&countryExpenseMin="+FcountryExpenseMin+"&countryExpenseMax="+FcountryExpenseMax+"&percentageMin="+FbudgetPercentageMin+
+                "&.percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag);
                    numero=num;
                     console.log(numero);
                 });
@@ -228,6 +232,8 @@
                 "&.percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag).then(function (response){
                 $scope.expenses = response.data;
                  console.log("pagination3")
+                 console.log(API+ "?country="+Fcountry+"&year="+Fyear+"&countryExpenseMin="+FcountryExpenseMin+"&countryExpenseMax="+FcountryExpenseMax+"&percentageMin="+FbudgetPercentageMin+
+                "&.percentageMax="+FbudgetPercentageMax+"&EPCMin="+FexpensePerCapitaMin+"&EPCMax="+FexpensePerCapitaMax+"&limit="+10+"&offset="+pag);
                   numero=num;
                    console.log(numero);
                });
