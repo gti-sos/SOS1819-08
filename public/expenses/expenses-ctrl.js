@@ -74,16 +74,10 @@
                 refresh();
             }, function (response) {
                 console.log("Error PUT method: Code "+response.status+", "+response.statusText);
-               if($scope.status==409){
-                          $scope.dataResponse="error";
-                      }
-                      else if($scope.status==404){
+               
                       
                           $scope.dataResponse="no se ha encontrado " + country +" "+ year;
-                      }else{
-                      $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
-                          
-                      }
+                      
                 refresh();
             });
         }else{
