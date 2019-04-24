@@ -111,12 +111,15 @@
             console.log("this is the new data:  " +JSON.stringify( data));
             $http.post(API, JSON.stringify(data)).then(function (response) {
                 console.log("post done");
+                if(response.status==201){
                 $scope.dataResponse ="¡Creado!";
+                }else{
+                     response.dataResponse ="Ya existe el pais "+ country+" y el año "+year;
+                }
                  refresh();
             }, function (response) {
                 console.log("Error POST method: Code "+response.status+", "+response.statusText);
-             
-                   response.dataResponse ="Ya existe el pais "+ country+" y el año "+year;
+              response.dataResponse ="Ya existe el pais "+ country+" y el año "+year;
               
                  refresh();
             });
