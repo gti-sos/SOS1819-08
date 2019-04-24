@@ -110,8 +110,10 @@
                            console.log("Este es el nuevo dato:  " + data);
                            $http.put(API + "/" + country + "/" + year, JSON.stringify(data)).then(function(response) {
                                console.log("put done");
-                               $scope.dataResponse = " Code: " + response.status + "\n" + response.statusText;
-                               refresh();
+                               
+                                $scope.dataResponse = JSON.stringify(response.data,null,2)+"\n"+"Code: "+response.status;
+                             refresh();
+                               
                            }, function(response) {
                                console.log("Error PUT method: Code " + response.status + ", " + response.statusText);
                                $scope.dataResponse = "Code: " + response.status + "\n" + response.statusText;
