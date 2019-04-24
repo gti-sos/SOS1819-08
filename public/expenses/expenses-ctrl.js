@@ -70,11 +70,20 @@
             console.log("this is the new data:  " + data);
             $http.put(API+"/"+country+"/"+year, JSON.stringify(data)).then(function (response) {
                 console.log("put done");
-                $scope.dataResponse =" Code: "+response.status+"\n"+response.statusText;
+                $scope.dataResponse ="Modificado ";
                 refresh();
             }, function (response) {
                 console.log("Error PUT method: Code "+response.status+", "+response.statusText);
-                $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+               if($scope.status==409){
+                          $scope.dataResponse="error";
+                      }
+                      else if($scope.status==404){
+                      
+                          $scope.dataResponse="no se ha encontrado " + country +" "+ year;
+                      }else{
+                      $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+                          
+                      }
                 refresh();
             });
         }else{
@@ -102,15 +111,19 @@
             console.log("this is the new data:  " +JSON.stringify( data));
             $http.post(API, JSON.stringify(data)).then(function (response) {
                 console.log("post done");
-                $scope.dataResponse = JSON.stringify(response.data,null,2)+"\n"+"Code: "+response.status;
+                $scope.dataResponse ="¡Creado!";
                  refresh();
             }, function (response) {
                 console.log("Error POST method: Code "+response.status+", "+response.statusText);
-                $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+               if(response.status==409){
+                   response.dataResponse ="Ya existe el pais "+ country+" y el año "+year;
+               }else{
+                    $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+               }
                  refresh();
             });
         }else{
-            $scope.dataResponse="Fields required";
+            $scope.dataResponse="campos requeridos";
         }   
            
         };
@@ -119,11 +132,11 @@
             console.log("Deleting data :"+country+ " "+ year);
             var res = JSON.stringify(response.data,null,2);
            
-           $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+           $scope.dataResponse="Borrado "+ country+ " "+ year;
                       $scope.data = response.status;
                       refresh();
         }, function (response) {
-          $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+          $scope.dataResponse="no se ha encontrado"+country+ " "+ year;
                       $scope.data = response.status;
                       refresh();
         });
@@ -131,10 +144,19 @@
     };
     $scope.postJson = function(){
                     $http.post(path+$scope.url,$scope.data).then(function(response){
-                        $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+                        $scope.dataResponse="modificado"
                         $scope.data = response.status;
                     }, function (response){
+                      if($scope.status=409){
+                          $scope.dataResponse="error";
+                      }
+                      else if($scope.status=404){
+                      
+                          $scope.dataResponse="no se ha encontrado " + country +" "+ year;
+                      }else{
                       $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+                          
+                      }
                       $scope.data = response.status;
                         });
                     };
@@ -152,11 +174,11 @@
         $scope.loadInitialData = function (){
                         $http.get("https://sos1819-08.herokuapp.com/api/v1/expenses-of-countries-in-education-and-culture/loadInitialData").then(function (response){
                             $scope.data = JSON.stringify(response.data,null,2) + response.status;
-                            $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+                            $scope.dataResponse="listo";
                              refresh();
                         }).catch(function (response) {
                             $scope.data = response.status;
-                            $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+                            $scope.dataResponse="ya hay datos creados";
                              refresh();
 			            });
 			           
