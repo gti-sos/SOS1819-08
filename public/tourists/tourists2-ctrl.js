@@ -108,7 +108,7 @@
                                incomeTourist: parseInt(incomeTourist)
                            };
                            console.log("Este es el nuevo dato:  " + data);
-                           $http.put(API + "/" + country + "/" + year, JSON.stringify(data)).then(function(response) {
+                           $http.put(API + "/" + country + "/" + year, JSON.stringify(data, null, 2)).then(function(response) {
                                console.log("put done");
 
                                $scope.dataResponse = JSON.stringify(response.data, null, 2) + "\n" + "Code: " + response.status;
