@@ -6,7 +6,7 @@ angular
         console.log("Tourists Initialized!");
         
         
-        var API = "https://sos1819-08.herokuapp.com/ui/v1/tourists-by-countries/";
+        var API = "https://sos1819-08.herokuapp.com/ui/v1/tourists-by-countries";
         refresh();
         
         function refresh(){
