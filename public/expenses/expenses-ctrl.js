@@ -78,7 +78,7 @@
                 refresh();
             });
         }else{
-            $scope.dataResponse="Datos incompletos";
+            $scope.dataResponse="Fields required";
         }   
             
         };
