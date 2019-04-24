@@ -115,11 +115,9 @@
                  refresh();
             }, function (response) {
                 console.log("Error POST method: Code "+response.status+", "+response.statusText);
-               if(response.status==409){
+             
                    response.dataResponse ="Ya existe el pais "+ country+" y el año "+year;
-               }else{
-                    $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
-               }
+              
                  refresh();
             });
         }else{
