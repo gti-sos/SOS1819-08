@@ -17,7 +17,7 @@
         <script>
 function myFunction() {
   document.getElementById("myForm").reset();
-  document.getElementById("country").reset();
+  document.getElementById("country").val("");
 }
 </script>
         
@@ -39,7 +39,6 @@ function myFunction() {
         <label>Gasto per Capita Max:<input class="form-control text-center" ng-model="FexpensePerCapitaMax"/></label>
         </form>
          <button class="btn btn-primary" ng-click="sendGet(Fcountry, Fyear, FcountryExpenseMin, FcountryExpenseMax, FbudgetPercentageMin,  FbudgetPercentageMax, FexpensePerCapitaMin, FexpensePerCapitaMax)">Buscar</button>
-           <button class="btn btn-light" onclick="myFunction()" ng-click="sendGet()">Quitar filtros de busqueda</button>
         </div>
         <table class="table">
            <thead>
