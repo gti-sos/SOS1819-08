@@ -164,6 +164,15 @@
              $scope.clear = function(){
                  $scope.data="";
              };
+             var Fcountry="";
+             var  FyearW;
+             var FcountryExpenseMin;
+             
+           var   FcountryExpenseMax;
+            var   FbudgetPercentageMax;
+            var   FbudgetPercentageMin;
+            var   FexpensePerCapitaMax;
+            var   FexpensePerCapitaMin;
               $scope.limpiar = function(Fcountry, Fyear, FcountryExpenseMin, FcountryExpenseMax, FbudgetPercentageMin,  FbudgetPercentageMax, FexpensePerCapitaMin, FexpensePerCapitaMax){
                Fcountry="",
                Fyear="",
@@ -173,9 +182,9 @@
                FbudgetPercentageMin="",
                FexpensePerCapitaMax="",
                FexpensePerCapitaMin="";
-               if(FexpensePerCapitaMin==""){
-                 refresh();
-               }
+               
+                  $http.get(API+"?limit="+10+"&offset="+pag);
+               
              };
              
              $scope.sendDeleteAll = function(){
