@@ -164,8 +164,8 @@
              $scope.clear = function(){
                  $scope.data="";
              };
-             var Fcountry;
-             var  Fyear;
+             var Fcountry="";
+             var  FyearW;
              var FcountryExpenseMin;
              
            var   FcountryExpenseMax;
