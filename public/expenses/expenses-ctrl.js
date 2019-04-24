@@ -212,7 +212,7 @@
             console.log("Deleting all data ");
             var res = JSON.stringify(response.data,null,2);
            
-           $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+           $scope.dataResponse="todo borrado";
                       $scope.data = response.status;
                       refresh();
         }, function (response) {
