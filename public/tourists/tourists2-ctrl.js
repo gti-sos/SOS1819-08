@@ -53,6 +53,40 @@
                        });
                    };
 
+                   $scope.sendPost = function(country, year, touristDeparture, arrivalTourist, incomeTourist) {
+                       if ((typeof country !== 'undefined' &&
+                               typeof year !== 'undefined' &&
+                               typeof touristDeparture !== 'undefined' &&
+                               typeof arrivalTourist !== 'undefined' &&
+                               typeof incomeTourist !== 'undefined') || (country !== "" &&
+                               year !== "" &&
+                               touristDeparture !== "" &&
+                               arrivalTourist !== "" &&
+                               incomeTourist !== "")) {
+
+                           var data = {
+                               country: country,
+                               year: parseInt(year),
+                               touristDeparture: parseInt(touristDeparture),
+                               arrivalTourist: parseInt(arrivalTourist),
+                               incomeTourist: parseInt(incomeTourist)
+                           };
+                           console.log("this is the new data:  " + data);
+                           $http.post(API, JSON.stringify(data)).then(function(response) {
+                               console.log("post done");
+                               $scope.dataResponse = JSON.stringify(response.data, null, 2) + "\n" + "Code: " + response.status;
+                               refresh();
+                           }, function(response) {
+                               console.log("Error POST method: Code " + response.status + ", " + response.statusText);
+                               $scope.dataResponse = "Code: " + response.status + "\n" + response.statusText;
+                               refresh();
+                           });
+                       }
+                       else {
+                           $scope.dataResponse = "Fields required";
+                       }
+
+                   };
 
                    $scope.sendPut = function(country, year, touristDeparture, arrivalTourist, incomeTourist) {
                        if ((typeof country !== 'undefined' &&
