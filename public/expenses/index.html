@@ -14,6 +14,11 @@
         <script src="expenses-app.js"></script>
         
         <script src="expenses-ctrl.js"></script>
+        <script>
+function myFunction() {
+  document.getElementById("myForm").reset();
+}
+</script>
         
     </head>
     
@@ -22,7 +27,7 @@
              <div class="container-fluid">
           ¡Busca según los criterios que desees!
         
-         
+         <form id="myForm">
         <label>Pais:<input class="form-control text-center" ng-model="Fcountry"/></label>
         <label>Año:<input class="form-control text-center" ng-model="Fyear"/></label>
         <label>Gastos del pais mínimos:<input class="form-control text-center" ng-model="FcountryExpenseMin"/></label>
@@ -31,8 +36,9 @@
          <label>Porcentaje de presupuesto máximo:<input class="form-control text-center" ng-model="FbudgetPercentageMax"/></label>
         <label>Gasto per Capita mínimo:<input class="form-control text-center" ng-model="FexpensePerCapitaMin"/></label>
         <label>Gasto per Capita Max:<input class="form-control text-center" ng-model="FexpensePerCapitaMax"/></label>
+        </form>
          <button class="btn btn-primary" ng-click="sendGet(Fcountry, Fyear, FcountryExpenseMin, FcountryExpenseMax, FbudgetPercentageMin,  FbudgetPercentageMax, FexpensePerCapitaMin, FexpensePerCapitaMax)">Buscar</button>
-           <button class="btn btn-light" ng-click="limpiar(Fcountry, Fyear, FcountryExpenseMin, FcountryExpenseMax, FbudgetPercentageMin,  FbudgetPercentageMax, FexpensePerCapitaMin, FexpensePerCapitaMax)">Quitar filtros de busqueda</button>
+           <button class="btn btn-light" onclick="myFunction()" ng-click="limpiar(Fcountry, Fyear, FcountryExpenseMin, FcountryExpenseMax, FbudgetPercentageMin,  FbudgetPercentageMax, FexpensePerCapitaMin, FexpensePerCapitaMax)">Quitar filtros de busqueda</button>
         </div>
         <table class="table">
            <thead>
