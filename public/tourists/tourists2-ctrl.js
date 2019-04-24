@@ -56,15 +56,11 @@
                    };
 
                    $scope.sendPost = function(country, year, touristDeparture, arrivalTourist, incomeTourist) {
-                       if ((typeof country !== 'undefined' &&
+                       if (typeof country !== 'undefined' &&
                                typeof year !== 'undefined' &&
                                typeof touristDeparture !== 'undefined' &&
                                typeof arrivalTourist !== 'undefined' &&
-                               typeof incomeTourist !== 'undefined') || (country !== "" &&
-                               year !== "" &&
-                               touristDeparture !== "" &&
-                               arrivalTourist !== "" &&
-                               incomeTourist !== "")) {
+                               typeof incomeTourist !== 'undefined' ){
 
                            var data = {
                                country: country,
@@ -85,21 +81,17 @@
                            });
                        }
                        else {
-                           $scope.dataResponse = "Fields required";
+                           $scope.dataResponse = "Dato incompleto";
                        }
 
                    };
 
                    $scope.sendPut = function(country, year, touristDeparture, arrivalTourist, incomeTourist) {
-                       if ((typeof country !== 'undefined' &&
+                       if (typeof country !== 'undefined' &&
                                typeof year !== 'undefined' &&
                                typeof touristDeparture !== 'undefined' &&
                                typeof arrivalTourist !== 'undefined' &&
-                               typeof incomeTourist !== 'undefined') || (country !== "" &&
-                               year !== "" &&
-                               touristDeparture !== "" &&
-                               arrivalTourist !== "" &&
-                               incomeTourist !== "")) {
+                               typeof incomeTourist !== 'undefined') {
                            var data = {
                                country: country,
                                year: parseInt(year),
@@ -107,24 +99,28 @@
                                arrivalTourist: parseInt(arrivalTourist),
                                incomeTourist: parseInt(incomeTourist)
                            };
-                           console.log("Nuevo dato:  " + data);
-                           $http.put(API + "/" + country + "/" + year, JSON.stringify(data, null, 2).then(function(response) {
-                               console.log("put done");
-
+                           
+              
+                     console.log("this is the new data:  " + data);
+                           $http.post(API, JSON.stringify(data)).then(function(response) {
+                               console.log("post done");
                                $scope.dataResponse = JSON.stringify(response.data, null, 2) + "\n" + "Code: " + response.status;
                                refresh();
-
                            }, function(response) {
-                               console.log("Error PUT method: Code " + response.status + ", " + response.statusText);
-                               $scope.dataResponse = "Code: " + response.status + "\n" + response.statusText;
+                               console.log("Error métod POST : Código " + response.status + ", " + response.statusText);
+                               $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
                                refresh();
                            });
                        }
                        else {
-                           $scope.dataResponse = "Datos incompletos";
+                           $scope.dataResponse = "Dato incompleto";
                        }
 
-                   };
+                 
+            
+        };
+                           
+                          
 
 
                    $scope.loadInitialData = function() {
