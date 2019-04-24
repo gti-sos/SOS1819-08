@@ -14,7 +14,7 @@
                    function refresh() {
                        console.log("Requesting contacts to <" + API + ">...");
                        $http.get(API + "?limit=" + 10 + "&offset=" + pag).then(function(response) {
-                           console.log("Data Recieved: " + JSON.stringify(response.data));
+                           console.log("Dato recivido: " + JSON.stringify(response.data));
                            $scope.touristsByCountries = response.data;
 
                        });
@@ -69,14 +69,14 @@
                                arrivalTourist: parseInt(arrivalTourist),
                                incomeTourist: parseInt(incomeTourist)
                            };
-                           console.log("this is the new data:  " + data);
+                           console.log("Este es el nuevo dato:  " + data);
                            $http.post(API, JSON.stringify(data)).then(function(response) {
                                console.log("post done");
-                               $scope.dataResponse = JSON.stringify(response.data, null, 2) + "\n" + "Code: " + response.status;
+                               $scope.dataResponse = JSON.stringify(response.data, null, 2) + "\n" + "Código: " + response.status + ". Dato creado";
                                refresh();
                            }, function(response) {
-                               console.log("Error POST method: Code " + response.status + ", " + response.statusText);
-                               $scope.dataResponse = "Code: " + response.status + "\n" + response.statusText;
+                               console.log("Error método POST: Código " + response.status + ", " + response.statusText);
+                               $scope.dataResponse = "Código: " + response.status + "\n" + "El Dato no ha sido creado";
                                refresh();
                            });
                        }
@@ -101,14 +101,14 @@
                            };
 
 
-                           console.log("this is the new data:  " + data);
+                           console.log("Este es el nuevo dato:  " + data);
                            $http.put(API + "/" + country + "/" + year, JSON.stringify(data)).then(function(response) {
                                console.log("put done");
-                               $scope.dataResponse = " Code: " + response.status + "\n" + response.statusText;
+                               $scope.dataResponse = " Código: " + response.status + "\n" + response.statusText+ " Dato modificado";
                                refresh();
                            }, function(response) {
-                               console.log("Error PUT method: Code " + response.status + ", " + response.statusText);
-                               $scope.dataResponse = "Code: " + response.status + "\n" + response.statusText;
+                               console.log("Error método PUT: Código" + response.status + ", " + response.statusText);
+                               $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText + "Dato no ha sido modificado";
                                refresh();
                            });
                        }
@@ -121,16 +121,14 @@
                    };
 
 
-
-
                    $scope.loadInitialData = function() {
                        $http.get(API + "/loadInitialData").then(function(response) {
                            $scope.data = JSON.stringify(response.data, null, 2) + response.status;
-                           $scope.dataResponse = "Code: " + response.status + "\n" + response.statusText;
+                           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText+ "Datos iniciados de nuevo";
                            refresh();
                        }).catch(function(response) {
                            $scope.data = response.status;
-                           $scope.dataResponse = "Code: " + response.status + "\n" + response.statusText;
+                           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
                            refresh();
                        });
 
@@ -142,11 +140,11 @@
                            console.log("Deleting data :" + country + " " + year);
                            var res = JSON.stringify(response.data, null, 2);
 
-                           $scope.dataResponse = "Code: " + response.status + "\n" + response.statusText;
-                           $scope.data = response.status;
+                           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
+                           $scope.data = "creado: "+response.status;
                            refresh();
                        }, function(response) {
-                           $scope.dataResponse = "Code: " + response.status + "\n" + response.statusText;
+                           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
                            $scope.data = response.status;
                            refresh();
                        });
@@ -160,11 +158,11 @@
                            console.log("Deleting all data ");
                            var res = JSON.stringify(response.data, null, 2);
 
-                           $scope.dataResponse = "Code: " + response.status + "\n" + response.statusText;
+                           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
                            $scope.data = response.status;
                            refresh();
                        }, function(response) {
-                           $scope.dataResponse = "Code: " + response.status + "\n" + response.statusText;
+                           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
                            $scope.data = response.status;
                            refresh();
                        });
@@ -176,24 +174,24 @@
                    };
 
 
-                   $scope.postJson = function() {
-                       $http.post(path + $scope.url, $scope.data).then(function(response) {
-                           $scope.dataResponse = "Code: " + response.status + "\n" + response.statusText;
-                           $scope.data = response.status;
-                       }, function(response) {
-                           $scope.dataResponse = "Code: " + response.status + "\n" + response.statusText;
-                           $scope.data = response.status;
-                       });
-                   };
-                   $scope.putJson = function() {
-                       $http.put(path + $scope.url, $scope.data).then(function(response) {
-                           $scope.dataResponse = "Code: " + response.status + "\n" + response.statusText;
-                           $scope.data = response.status;
-                       }, function(response) {
-                           $scope.dataResponse = "Code: " + response.status + "\n" + response.statusText;
-                           $scope.data = response.status
-                       });
-                   };
+                //   $scope.postJson = function() {
+                //       $http.post(path + $scope.url, $scope.data).then(function(response) {
+                //           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
+                //           $scope.data = response.status;
+                //       }, function(response) {
+                //           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
+                //           $scope.data = response.status;
+                //       });
+                //   };
+                //   $scope.putJson = function() {
+                //       $http.put(path + $scope.url, $scope.data).then(function(response) {
+                //           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
+                //           $scope.data = response.status;
+                //       }, function(response) {
+                //           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
+                //           $scope.data = response.status
+                //       });
+                //   };
 
 
 
@@ -237,7 +235,7 @@
                                        "&arrivalTouristMax=" + FarrivalTouristMax + "&departureTouristMin=" + FdepartureTouristMin + "&departureTouristMax=" + FdepartureTouristMax + "&limit=" + 10 + "&offset=" + pag);
                                    numero = num;
                                    console.log(numero);
-
+                                    refresh();
                                });
 
                            }
@@ -250,7 +248,7 @@
                                        "&arrivalTouristMax=" + FarrivalTouristMax + "&departureTouristMin=" + FdepartureTouristMin + "&departureTouristMax=" + FdepartureTouristMax + "&limit=" + 10 + "&offset=" + pag);
                                    numero = num;
                                    console.log(numero);
-
+        refresh();
                                });
 
                            }
@@ -265,7 +263,7 @@
                                    "&arrivalTouristMax=" + FarrivalTouristMax + "&departureTouristMin=" + FdepartureTouristMin + "&departureTouristMax=" + FdepartureTouristMax + "&limit=" + 10 + "&offset=" + pag);
                                numero = num;
                                console.log(numero);
-
+refresh();
 
                            });
 
@@ -273,7 +271,7 @@
                        }
                    }
 
-
+refresh();
 
 
                }]);
