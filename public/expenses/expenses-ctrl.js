@@ -120,7 +120,7 @@
                  refresh();
             }, function (response) {
                 console.log("Error POST method: Code "+response.status+", "+response.statusText);
-              response.dataResponse ="Ya existe el pais "+ country+" y el año "+year;
+              $scope.dataResponse ="Ya existe el pais "+ country+" y el año "+year;
               
                  refresh();
             });
