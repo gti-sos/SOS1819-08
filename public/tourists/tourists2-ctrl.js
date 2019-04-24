@@ -136,16 +136,21 @@
                        });
                    }
 
-                   $scope.deleteCountries = function() {
-                       $scope.status = "Status: Registros borrados con éxito";
-                       console.log("Delete country");
-
+                   $scope.sendDeleteAll = function() {
                        $http.delete(API).then(function(response) {
-                           console.log("DELETE Response " + response.status + "" + response.data);
-                           refresh();
+                           console.log("Deleting all data ");
+                           var res = JSON.stringify(response.data, null, 2);
 
+                           $scope.dataResponse = "Code: " + response.status + "\n" + response.statusText;
+                           $scope.data = response.status;
+                           refresh();
+                       }, function(response) {
+                           $scope.dataResponse = "Code: " + response.status + "\n" + response.statusText;
+                           $scope.data = response.status;
+                           refresh();
                        });
-                   }
+
+                   };
 
                    $scope.limpiar = function() {
                        refresh();
