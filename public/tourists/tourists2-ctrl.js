@@ -123,9 +123,6 @@
                    };
 
 
-
-
-
                    $scope.loadInitialData = function() {
                        $http.get(API + "/loadInitialData").then(function(response) {
                            $scope.data = JSON.stringify(response.data, null, 2) + response.status;
@@ -140,35 +137,23 @@
                    };
 
 
-                   $scope.addCountry = function() {
-                       console.log("Adding a new country");
-                       var newCountry = $scope.newCountry;
+                 $scope.sendDelete = function(country, year){
+        $http.delete(API+"/"+country+"/"+year).then(function(response){
+            console.log("Deleting data :"+country+ " "+ year);
+            var res = JSON.stringify(response.data,null,2);
+           
+           $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+                      $scope.data = response.status;
+                      refresh();
+        }, function (response) {
+          $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+                      $scope.data = response.status;
+                      refresh();
+        });
+        
+    };
 
-                       $http.post(API, newCountry).then(function(response) {
-                           $scope.status = "Status: Registro añadido con éxito";
-                           console.log("POST Response " + response.status + "" + response.data);
-                           refresh();
-
-                       }, function() {
-                           if (newCountry.country == null || newCountry.year == null || newCountry.touristDeparture == null || newCountry.arrivalTourist == null || newCountry.incomeTourist == null) {
-                               $scope.status = "Error: No están todos los campos rellenos"
-                           }
-                           else {
-                               $scope.status = "Error: Ya existe el país en el año especificado"
-                           }
-                       });
-                   }
-
-                   $scope.deleteCountry = function(country, year) {
-                       $scope.status = "Status: Registro borrado con éxito";
-                       console.log("Delete country");
-
-                       $http.delete(API + "/" + country + "/" + year).then(function(response) {
-                           console.log("DELETE Response " + response.status + "" + response.data);
-                           refresh();
-
-                       });
-                   }
+                  
 
                    $scope.sendDeleteAll = function() {
                        $http.delete(API).then(function(response) {
