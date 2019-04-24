@@ -72,11 +72,11 @@
                            console.log("Este es el nuevo dato:  " + data);
                            $http.post(API, JSON.stringify(data)).then(function(response) {
                                console.log("post done");
-                               $scope.dataResponse = JSON.stringify(response.data, null, 2) + "\n" + "Código: " + response.status;
+                               $scope.dataResponse = JSON.stringify(response.data, null, 2) + "\n" + "Código: " + response.status + ". Dato creado";
                                refresh();
                            }, function(response) {
                                console.log("Error método POST: Código " + response.status + ", " + response.statusText);
-                               $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
+                               $scope.dataResponse = "Código: " + response.status + "\n" + "El Dato no ha sido creado";
                                refresh();
                            });
                        }
@@ -104,11 +104,11 @@
                            console.log("Este es el nuevo dato:  " + data);
                            $http.put(API + "/" + country + "/" + year, JSON.stringify(data)).then(function(response) {
                                console.log("put done");
-                               $scope.dataResponse = " Código: " + response.status + "\n" + response.statusText;
+                               $scope.dataResponse = " Código: " + response.status + "\n" + response.statusText+ " Dato modificado";
                                refresh();
                            }, function(response) {
                                console.log("Error método PUT: Código" + response.status + ", " + response.statusText);
-                               $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
+                               $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText + "Dato no ha sido modificado";
                                refresh();
                            });
                        }
@@ -124,7 +124,7 @@
                    $scope.loadInitialData = function() {
                        $http.get(API + "/loadInitialData").then(function(response) {
                            $scope.data = JSON.stringify(response.data, null, 2) + response.status;
-                           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
+                           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText+ "Datos iniciados de nuevo";
                            refresh();
                        }).catch(function(response) {
                            $scope.data = response.status;
