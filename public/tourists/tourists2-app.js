@@ -7,7 +7,7 @@
                     controller : "ListCtrl",
                     templateUrl: "list.html"
                 })
-                .when("/edit",{
+                .when("/:country/:year",{
                     controller : "EditCtrl",
                     templateUrl: "edit.html"
                 });

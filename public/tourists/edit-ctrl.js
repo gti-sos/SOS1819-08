@@ -2,47 +2,13 @@
 
            angular
                .module("TouristsApp")
-               .controller("EditCtrl", ["$scope", "$http", function($scope, $http) {
+               .controller("EditCtrl", ["$scope", "$http","$routeParams","$location", function($scope, $http, $routeParams,$location) {
                    console.log("Edit Tourists Initialized!");
 
 
-                   var API = "https://sos1819-08.herokuapp.com/api/v1/tourists-by-countries/edit";
+                   var API = "https://sos1819-08.herokuapp.com/api/v1/tourists-by-countries/"+$routeParams.province+"/"+$routeParams.year;
                    var path = "https://sos1819-08.herokuapp.com"
                    refresh();
-
-
-// /* global angular*/
-// angular
-//     .module("ManagerApp")
-//     .controller("medicalAttentionRatesEditCtrl", ["$scope", "$http","$routeParams","$location", function($scope, $http, $routeParams,$location) {
-//         console.log("EditCtrl initialized!");
-//         var URL = "/api/v1/medical-attention-rates/"+$routeParams.province+"/"+$routeParams.year;
-        
-//         $http.get(URL).then(function (response){
-//             $scope.updatedMedicalAttentionRate = response.data;
-//         });
-        
-        
-//         $scope.updateMedicalAttentionRate = function() {
-//             $http.put(URL, $scope.updatedMedicalAttentionRate).then(function(response) {
-//                 $scope.status = "Status: " + response.status;
-//                 //console.log(Object.keys($scope.updatedMedicalAttentionRate).length)
-//                 window.alert("OK: estadistica actualizada");
-//                 $location.path("/medical-attention-rates");
-//             }, function() {
-//                 if ($scope.updatedMedicalAttentionRate["nursing"] == null ||
-//                     $scope.updatedMedicalAttentionRate["social-work"] == null ||
-//                     $scope.updatedMedicalAttentionRate["general-medicine"] == null) {
-//                     $scope.status = "Error: debe completar todos los campos"
-//                 }
-//             });
-//         }
-
-
-//     }]);
-
-
-
 
 
                    function refresh() {
