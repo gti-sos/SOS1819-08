@@ -2,11 +2,11 @@
 
 angular
     .module("TouristsApp")
-    .controller("EditCtrl", ["$scope", "$http", function($scope, $http) {
+    .controller("EditCtrl", ["$scope", "$http","$routeParams","$location", function($scope, $http, $routeParams, $location) {
         console.log("Edit Tourists Initialized!");
 
 
-        var API = "https://sos1819-08.herokuapp.com/api/v1/tourists-by-countries";
+        var API = "https://sos1819-08.herokuapp.com/api/v1/tourists-by-countries"+$routeParams.country+"/"+$routeParams.year;
         var path = "https://sos1819-08.herokuapp.com"
         refresh();
 
