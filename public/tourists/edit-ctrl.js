@@ -21,28 +21,39 @@
                    };
                    
                    
-        //           $http.get(API).then(function (response){
-        //     $scope.updatedTourist = response.data;
-        //     refresh();
-        // });
-        
-        
-        // $scope.updateTourist = function() {
-        //     $http.put(API, $scope.updatedTourist).then(function(response) {
-        //         $scope.status = "Status: " + response.status;
-        //         //console.log(Object.keys($scope.updatedMedicalAttentionRate).length)
-        //         window.alert("OK: estadistica actualizada");
-        //         $location.path("/tourists-by-countries");
-        //         refresh();
-        //     }, function() {
-        //         if ($scope.updatedTourist["touristDeparture"] == null ||
-        //             $scope.updatedTourist["arrivalTourist"] == null ||
-        //             $scope.updatedTourist["incomeTourist"] == null) {
-        //             $scope.status = "Error: debe completar todos los campos"
-        //             refresh();
-        //         }
-        //     });
-        // }
+                                   $scope.sendGet = function(Fcountry, Fyear, FincomeTouristMin, FincomeTouristMax, FarrivalTouristMin, FarrivalTouristMax, FdepartureTouristMin, FdepartureTouristMax) {
+                       if (typeof Fcountry == 'undefined') {
+                           Fcountry = "";
+                       }
+                       if (typeof Fyear == 'undefined') {
+                           Fyear = "";
+                       }
+                       if (typeof FincomeTouristMin == 'undefined') {
+                           FincomeTouristMin = "";
+                       }
+                       if (typeof FincomeTouristMax == 'undefined') {
+                           FincomeTouristMax = "";
+                       }
+                       if (typeof FarrivalTouristMin == 'undefined') {
+                           FarrivalTouristMin = "";
+                       }
+                       if (typeof FarrivalTouristMax == 'undefined') {
+                           FarrivalTouristMax = "";
+                       }
+                       if (typeof FdepartureTouristMin == 'undefined') {
+                           FdepartureTouristMin = "";
+                       }
+                       if (typeof FdepartureTouristMax == 'undefined') {
+                           FdepartureTouristMax = "";
+                       }
+                       $http.get(API + "?country=" + Fcountry + "&year=" + Fyear + "&incomeTouristMin=" + FincomeTouristMin + "&incomeTouristMax=" + FincomeTouristMax + "&arrivalTourisMin=" + FarrivalTouristMin +
+                           "&arrivalTourisMax=" + FarrivalTouristMax + "&departureTouristMin=" + FdepartureTouristMin + "&departureTouristMax=" + FdepartureTouristMax).then(function(response) {
+                           console.log(API + "?country=" + Fcountry + "&year=" + Fyear + "&incomeTouristMin=" + FincomeTouristMin + "&cincomeTouristMax=" + FincomeTouristMax + "&arrivalTouristMin=" + FarrivalTouristMin +
+                               "&arrivalTouristMax=" + FarrivalTouristMax + "&departureTouristMin=" + FdepartureTouristMin + "&departureTouristMax=" + FdepartureTouristMax);
+                           $scope.touristsByCountries = response.data;
+
+                       });
+                   };
 
 
                   $scope.sendPut = function(country, year, touristDeparture, arrivalTourist, incomeTourist) {
