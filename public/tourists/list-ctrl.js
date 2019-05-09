@@ -56,62 +56,38 @@
                    };
                    
                    
-                   $scope.sendPost = function() {
-            $http.post(API, $scope.sendPost()).then(function successCallback(response) {
-                $scope.status = "Status : " + response.status + "Dato añadido correctamente";
-                window.alert("El dato  se ha introducido correctamente.");
-                refresh();
-                
-            }, function errorCallback(response) {
-                console.log(response.status);
-                //Lo intenté con un switch y no funciona, salen varios mensajes de error
-                if (response.status === 400) {
-                    $scope.status = "Status : " + response.status + "fallo al introducir datos";
-                    window.alert("El dato no se ha introducido correctamente.");
-                    refresh();
-                }
-                if (response.status === 409) {
-                    $scope.status = "Status : " + response.status + "fallo al introducir datos";
-                    window.alert("El dato introducido ya existe.");
-                    refresh();
-                }
 
-            });
-            sendGet();
-            refresh();
-            
-        }
 
-                //   $scope.sendPost = function(country, year, touristDeparture, arrivalTourist, incomeTourist) {
-                //       if (typeof country !== 'undefined' &&
-                //           typeof year !== 'undefined' &&
-                //           typeof touristDeparture !== 'undefined' &&
-                //           typeof arrivalTourist !== 'undefined' &&
-                //           typeof incomeTourist !== 'undefined') {
+                  $scope.sendPost = function(country, year, touristDeparture, arrivalTourist, incomeTourist) {
+                      if (typeof country !== 'undefined' &&
+                          typeof year !== 'undefined' &&
+                          typeof touristDeparture !== 'undefined' &&
+                          typeof arrivalTourist !== 'undefined' &&
+                          typeof incomeTourist !== 'undefined') {
 
-                //           var data = {
-                //               country: country,
-                //               year: parseInt(year),
-                //               touristDeparture: parseInt(touristDeparture),
-                //               arrivalTourist: parseInt(arrivalTourist),
-                //               incomeTourist: parseInt(incomeTourist)
-                //           };
-                //           console.log("Este es el nuevo dato:  " + data);
-                //           $http.post(API, JSON.stringify(data)).then(function(response) {
-                //               console.log("post done");
-                //               $scope.dataResponse = JSON.stringify(response.data, null, 2) + "\n" + "Código: " + response.status + ". Dato creado";
-                //               refresh();
-                //           }, function(response) {
-                //               console.log("Error método POST: Código " + response.status + ", " + response.statusText);
-                //               $scope.dataResponse = "Código: " + response.status + "\n" + "El Dato no ha sido creado";
-                //               refresh();
-                //           });
-                //       }
-                //       else {
-                //           $scope.dataResponse = "Dato incompleto";
-                //       }
+                          var data = {
+                              country: country,
+                              year: parseInt(year),
+                              touristDeparture: parseInt(touristDeparture),
+                              arrivalTourist: parseInt(arrivalTourist),
+                              incomeTourist: parseInt(incomeTourist)
+                          };
+                          console.log("Este es el nuevo dato:  " + data);
+                          $http.post(API, JSON.stringify(data)).then(function(response) {
+                              console.log("post done");
+                              $scope.dataResponse = JSON.stringify(response.data, null, 2) + "\n" + "Código: " + response.status + ". Dato creado";
+                              refresh();
+                          }, function(response) {
+                              console.log("Error método POST: Código " + response.status + ", " + response.statusText);
+                              $scope.dataResponse = "Código: " + response.status + "\n" + "El Dato no ha sido creado";
+                              refresh();
+                          });
+                      }
+                      else {
+                          $scope.dataResponse = "Dato incompleto";
+                      }
 
-                //   };
+                  };
 
                    $scope.sendPut = function(country, year, touristDeparture, arrivalTourist, incomeTourist) {
                        if (typeof country !== 'undefined' &&

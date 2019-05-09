@@ -62,16 +62,16 @@ body {
 <div>
            <tbody>
                <tr>
-                   <td><input class="form-control" ng-model="tourist.country" /></td> 
-                   <td><input class="form-control" type=number ng-model="tourist.year" /></td>
-                   <td><input class="form-control" type=number ng-model="tourist['touristDeparture']" /></td>
-                   <td><input class="form-control" type=number ng-model="tourist['arrivalTouris']" /></td>
-                   <td><input class="form-control" type=number ng-model="tourist['incomeTourist']" /></td>
+        <label><input class="form-control text-center" ng-model="country"/></label>
+        <label><input class="form-control text-center" ng-model="year"/></label>
+        <label><input class="form-control text-center" ng-model="touristDeparture"/></label>
+        <label><input class="form-control text-center" ng-model="arrivalTourist"/></label>
+        <label><input class="form-control text-center" ng-model="incomeTourist"/></label>
                    
-                   <td><button class="button btn-primary btn-block" ng-click="sendPost()" style = "border-radius: .25rem";>
-                Agregar
-            </button></td>
-               </tr>
+        <td><button class="button btn-primary btn-block" ng-click="sendPost()" style = "border-radius: .25rem";>
+        Agregar</button></td>
+        
+        </tr>
                 <tr ng-repeat="tourist in touristsByCountries">
                      <p class="text-light"><td>{{ tourist.country }}</td></p>
                      <p class="text-light"><td>{{ tourist.year }}</td></p>

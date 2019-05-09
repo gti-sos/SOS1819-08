@@ -27,57 +27,57 @@
         });
         
         
-        $scope.updateTourist = function() {
-            $http.put(API, $scope.updatedTourist).then(function(response) {
-                $scope.status = "Status: " + response.status;
-                //console.log(Object.keys($scope.updatedMedicalAttentionRate).length)
-                window.alert("OK: estadistica actualizada");
-                $location.path("/tourists-by-countries");
-                refresh();
-            }, function() {
-                if ($scope.updatedTourist["touristDeparture"] == null ||
-                    $scope.updatedTourist["arrivalTourist"] == null ||
-                    $scope.updatedTourist["incomeTourist"] == null) {
-                    $scope.status = "Error: debe completar todos los campos"
-                    refresh();
-                }
-            });
-        }
+        // $scope.updateTourist = function() {
+        //     $http.put(API, $scope.updatedTourist).then(function(response) {
+        //         $scope.status = "Status: " + response.status;
+        //         //console.log(Object.keys($scope.updatedMedicalAttentionRate).length)
+        //         window.alert("OK: estadistica actualizada");
+        //         $location.path("/tourists-by-countries");
+        //         refresh();
+        //     }, function() {
+        //         if ($scope.updatedTourist["touristDeparture"] == null ||
+        //             $scope.updatedTourist["arrivalTourist"] == null ||
+        //             $scope.updatedTourist["incomeTourist"] == null) {
+        //             $scope.status = "Error: debe completar todos los campos"
+        //             refresh();
+        //         }
+        //     });
+        // }
 
 
-                //   $scope.sendPut = function(country, year, touristDeparture, arrivalTourist, incomeTourist) {
-                //       if (typeof country !== 'undefined' &&
-                //           typeof year !== 'undefined' &&
-                //           typeof touristDeparture !== 'undefined' &&
-                //           typeof arrivalTourist !== 'undefined' &&
-                //           typeof incomeTourist !== 'undefined') {
-                //           var data = {
-                //               country: country,
-                //               year: parseInt(year),
-                //               touristDeparture: parseInt(touristDeparture),
-                //               arrivalTourist: parseInt(arrivalTourist),
-                //               incomeTourist: parseInt(incomeTourist)
-                //           };
+                  $scope.sendPut = function(country, year, touristDeparture, arrivalTourist, incomeTourist) {
+                      if (typeof country !== 'undefined' &&
+                          typeof year !== 'undefined' &&
+                          typeof touristDeparture !== 'undefined' &&
+                          typeof arrivalTourist !== 'undefined' &&
+                          typeof incomeTourist !== 'undefined') {
+                          var data = {
+                              country: country,
+                              year: parseInt(year),
+                              touristDeparture: parseInt(touristDeparture),
+                              arrivalTourist: parseInt(arrivalTourist),
+                              incomeTourist: parseInt(incomeTourist)
+                          };
 
 
-                //           console.log("Este es el nuevo dato:  " + data);
-                //           $http.put(API + "/" + country + "/" + year, JSON.stringify(data)).then(function(response) {
-                //               console.log("put done");
-                //               $scope.dataResponse = " Código: " + response.status + "\n" + response.statusText + " Dato modificado";
-                //               refresh();
-                //           }, function(response) {
-                //               console.log("Error método PUT: Código" + response.status + ", " + response.statusText);
-                //               $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText + "Dato no ha sido modificado";
-                //               refresh();
-                //           });
-                //       }
-                //       else {
-                //           $scope.dataResponse = "Datos incompletos";
-                //       }
+                          console.log("Este es el nuevo dato:  " + data);
+                          $http.put(API + "/" + country + "/" + year, JSON.stringify(data)).then(function(response) {
+                              console.log("put done");
+                              $scope.dataResponse = " Código: " + response.status + "\n" + response.statusText + " Dato modificado";
+                              refresh();
+                          }, function(response) {
+                              console.log("Error método PUT: Código" + response.status + ", " + response.statusText);
+                              $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText + "Dato no ha sido modificado";
+                              refresh();
+                          });
+                      }
+                      else {
+                          $scope.dataResponse = "Datos incompletos";
+                      }
 
 
 
-                //   };
+                  };
 
 
                    $scope.loadInitialData = function() {
