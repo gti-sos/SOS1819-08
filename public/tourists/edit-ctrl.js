@@ -6,7 +6,7 @@ angular
         console.log("Edit Tourists Initialized!");
 
 
-        var API = "https://sos1819-08.herokuapp.com/api/v1/tourists-by-countries/edit";
+        var API = "https://sos1819-08.herokuapp.com/api/v1/tourists-by-countries";
         var path = "https://sos1819-08.herokuapp.com"
         refresh();
 
@@ -19,7 +19,6 @@ angular
 
             });
         };
-
 
 
         $scope.sendGet = function(Fcountry, Fyear, FincomeTouristMin, FincomeTouristMax, FarrivalTouristMin, FarrivalTouristMax, FdepartureTouristMin, FdepartureTouristMax) {
@@ -56,6 +55,39 @@ angular
             });
         };
 
+
+
+
+        $scope.sendPost = function(country, year, touristDeparture, arrivalTourist, incomeTourist) {
+            if (typeof country !== 'undefined' &&
+                typeof year !== 'undefined' &&
+                typeof touristDeparture !== 'undefined' &&
+                typeof arrivalTourist !== 'undefined' &&
+                typeof incomeTourist !== 'undefined') {
+
+                var data = {
+                    country: country,
+                    year: parseInt(year),
+                    touristDeparture: parseInt(touristDeparture),
+                    arrivalTourist: parseInt(arrivalTourist),
+                    incomeTourist: parseInt(incomeTourist)
+                };
+                console.log("Este es el nuevo dato:  " + data);
+                $http.post(API, JSON.stringify(data)).then(function(response) {
+                    console.log("post done");
+                    $scope.dataResponse = JSON.stringify(response.data, null, 2) + "\n" + "Código: " + response.status + ". Dato creado";
+                    refresh();
+                }, function(response) {
+                    console.log("Error método POST: Código " + response.status + ", " + response.statusText);
+                    $scope.dataResponse = "Código: " + response.status + "\n" + "El Dato no ha sido creado";
+                    refresh();
+                });
+            }
+            else {
+                $scope.dataResponse = "Dato incompleto";
+            }
+
+        };
 
         $scope.sendPut = function(country, year, touristDeparture, arrivalTourist, incomeTourist) {
             if (typeof country !== 'undefined' &&
@@ -143,6 +175,27 @@ angular
         $scope.limpiar = function() {
             refresh();
         };
+
+
+        //   $scope.postJson = function() {
+        //       $http.post(path + $scope.url, $scope.data).then(function(response) {
+        //           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
+        //           $scope.data = response.status;
+        //       }, function(response) {
+        //           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
+        //           $scope.data = response.status;
+        //       });
+        //   };
+        //   $scope.putJson = function() {
+        //       $http.put(path + $scope.url, $scope.data).then(function(response) {
+        //           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
+        //           $scope.data = response.status;
+        //       }, function(response) {
+        //           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
+        //           $scope.data = response.status
+        //       });
+        //   };
+
 
 
 

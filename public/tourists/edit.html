@@ -9,26 +9,8 @@ body {
 
 
         <h1><p class="text-light">Datos sobre turistas</p></h1>
-             <div class="container-fluid">
-          <p class="text-light">¡Métodos de busqueda!</p>
-          
         
-         
-        <label><p class="text-light">Pais:<input class="form-control text-center" ng-model="Fcountry"/></p></label>
-        <label><p class="text-light">Año:<input class="form-control text-center" ng-model="Fyear"/></p></label>
-        <label><p class="text-light">Llegadas de turistas mínimos:<input class="form-control text-center" ng-model="FarrivalTouristMin"/></p></label>
-        <label><p class="text-light">Llegadas de turistas máximos:<input class="form-control text-center" ng-model="FarrivalTouristMax"/></p></label>
-        <label><p class="text-light">Salidas de turistas mínimo:<input class="form-control text-center" ng-model="FdepartureTouristMin"/></p></label>
-         <label><p class="text-light">Salidas de turistas máximo:<input class="form-control text-center" ng-model="FdepartureTouristMax"/></p></label>
-        <label><p class="text-light">Ingresos turísticos mínimos:<input class="form-control text-center" ng-model="FincomeTouristMin"/></p></label>
-        <label><p class="text-light">Ingresos turísticos máximos:<input class="form-control text-center" ng-model="FincomeTouristMin"/></p></label>
-         <button class="btn btn-primary" ng-click="sendGet(Fcountry, Fyear, FincomeTouristMin, FincomeTouristMax, FarrivalTouristMin,  FarrivalTouristMax, FdepartureTouristMin, FdepartureTouristMax)">Buscar</button>
-           <button class="btn btn-success" ng-click="limpiar(Fcountry)">Quitar filtros de busqueda</button>
-        </div>
-        
-                <div> <button class="btn btn-info" ng-click="loadInitialData()">Carga datos iniciales</button>
-         <button type="button" class="btn btn-danger" ng-click="sendDeleteAll()">Eliminar todos los datos</button></div>
-        
+                
         <div class="alert alert-dark" role="alert">
  
 
@@ -62,11 +44,11 @@ body {
 <div>
            <tbody>
                <tr>
-                <td><input class="form-control" ng-model="country"/></td>
-                <td><input class="form-control" type=number ng-model="year"/></td>
-                <td><input class="form-control" type=number ng-model="touristDeparture"/></td>
-                <td><input class="form-control" type=number ng-model="arrivalTourist"/></td>
-                <td><input class="form-control" type=number ng-model="incomeTourist"/></td>
+                <td><input class="form-control" ng-model="sendPost['country']"/></td>
+                <td><input class="form-control" type=number ng-model="sendPost['year']"/></td>
+                <td><input class="form-control" type=number ng-model="sendPost['touristDeparture']"/></td>
+                <td><input class="form-control" type=number ng-model="sendPost['arrivalTourist']"/></td>
+                <td><input class="form-control" type=number ng-model="sendPost['incomeTourist']"/></td>
                    
                 <td><button class="btn btn-warning" ng-click="sendPut(country, year, touristDeparture, arrivalTourist, incomeTourist)">Modificar</button></td>
                
