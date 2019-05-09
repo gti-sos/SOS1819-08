@@ -1,114 +1,22 @@
 <!DOCTYPE html>
 <html ng-app="TouristsApp">
-    <head>
-            <title> Turists </title>
-            <link rel="stylesheet" href="../../../bower_components/bootstrap/dist/css/bootstrap.min.css" />
-            <script src="../../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-            <script src="../../../bower_components/angular/angular.min.js"></script>
-            <script src="tourists2-app.js"></script>
-            <script src="tourists2-ctrl.js"></script>
-            
-    </head>
-    
-    <body ng-controller="MainCtrl">
-        
-            <style>
-body {
-  margin: 0; 
-  background-image: url("https://i2.wp.com/acorch.cl/wp-content/uploads/2017/04/purpura-y-morado-82360.jpg")
-    
-}
 
-</style>
-        
-        <h1><p class="text-light">Datos sobre turistas</p></h1>
-             <div class="container-fluid">
-          <p class="text-light">¡Métodos de busqueda!</p>
-          
-        
-         
-        <label><p class="text-light">Pais:<input class="form-control text-center" ng-model="Fcountry"/></p></label>
-        <label><p class="text-light">Año:<input class="form-control text-center" ng-model="Fyear"/></p></label>
-        <label><p class="text-light">Llegadas de turistas mínimos:<input class="form-control text-center" ng-model="FarrivalTouristMin"/></p></label>
-        <label><p class="text-light">Llegadas de turistas máximos:<input class="form-control text-center" ng-model="FarrivalTouristMax"/></p></label>
-        <label><p class="text-light">Salidas de turistas mínimo:<input class="form-control text-center" ng-model="FdepartureTouristMin"/></p></label>
-         <label><p class="text-light">Salidas de turistas máximo:<input class="form-control text-center" ng-model="FdepartureTouristMax"/></p></label>
-        <label><p class="text-light">Ingresos turísticos mínimos:<input class="form-control text-center" ng-model="FincomeTouristMin"/></p></label>
-        <label><p class="text-light">Ingresos turísticos máximos:<input class="form-control text-center" ng-model="FincomeTouristMin"/></p></label>
-         <button class="btn btn-primary" ng-click="sendGet(Fcountry, Fyear, FincomeTouristMin, FincomeTouristMax, FarrivalTouristMin,  FarrivalTouristMax, FdepartureTouristMin, FdepartureTouristMax)">Buscar</button>
-           <button class="btn btn-success" ng-click="limpiar(Fcountry)">Quitar filtros de busqueda</button>
-        </div>
-        
-        <div class="alert alert-dark" role="alert">
- 
+<head>
+    <title> Turists </title>
+    <link rel="stylesheet" href="../../../bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="../../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="../../../bower_components/angular-route/angular-route.min.js"></script>
 
-        <table class="table">
-           <thead>
-                <tr>
-                    <th>
-                        <p class="text-light">Pais</p>
-                    </th>
-                    <th>
-                        <p class="text-light">Año</p>
-                    </th>
-                    <th>
-                       <p class="text-light">Salidas de turistas</p>
-                    </th>
-                    <th>
-                       <p class="text-light">Llegadas de turistas</p>
-                    </th>
-                    <th>
-                        <p class="text-light">Ingresos turisticos</p>
-                    </th>
-                    <th>
-                        <p class="text-light">Acciones</p>
-                    </th>
-                </tr>
-            </thead>
+    <script type="text/javascript" src="tourists2-app.js"></script>
+    <script type="text/javascript" src="list-ctrl.js"></script>
+    <script type="text/javascript" src="edit-ctrl.js"></script>
 
-        </div>
+</head>
 
-
-<div>
-           <tbody>
-                <tr ng-repeat="tourist in touristsByCountries">
-                     <p class="text-light"><td>{{ tourist.country }}</td></p>
-                     <p class="text-light"><td>{{ tourist.year }}</td></p>
-                     <p class="text-light"><td>{{ tourist.touristDeparture }}</td></p>
-                     <p class="text-light"><td>{{ tourist.arrivalTourist }}</td></p>
-                     <p class="text-light"><td>{{ tourist.incomeTourist }}</td></p>
-                     <td><button type="button" class="btn btn-danger" ng-click="sendDelete(tourist.country, tourist.year)">Eliminar</button></td>
-            </tbody>
-        </table>
-    
-</div>
-         <span><button class="button" ng-click="Pagination(Fcountry, Fyear, FincomeTouristMin, FincomeTouristMax, FarrivalTouristMin, FarrivalTouristMax, FdepartureTouristMin, FdepartureTouristMax, 1)"><<</button></span>
-        <span><button class="button" ng-click="Pagination(Fcountry, Fyear, FincomeTouristMin, FincomeTouristMax, FarrivalTouristMin, FarrivalTouristMax, FdepartureTouristMin, FdepartureTouristMax, 2)">>></button></span>
-            
-            <div class="container-fluid">
-  
-       
-      
-        <label><p class="text-light">Pais:<input class="form-control text-center" ng-model="country"/></p></label>
-        <label><p class="text-light">Año:<input class="form-control text-center" ng-model="year"/></p></label>
-        <label><p class="text-light">Salidas de turistas:<input class="form-control text-center" ng-model="touristDeparture"/></p></label>
-        <label><p class="text-light">Llegadas de turistas:<input class="form-control text-center" ng-model="arrivalTourist"/></p></label>
-        <label><p class="text-light">Ingresos de los turistas:<input class="form-control text-center" ng-model="incomeTourist"/></p></label>
-        </div>
-    
-       <div class="btn-group" role="group" aria-label="Botones">
-        <button float:center class="btn btn-success" ng-click="sendPost(country, year, touristDeparture, arrivalTourist, incomeTourist)">Crear</button>
-        <button class="btn btn-warning" ng-click="sendPut(country, year, touristDeparture, arrivalTourist, incomeTourist)">Modificar</button>
-         <button class="btn btn-info" ng-click="loadInitialData()">Carga datos iniciales</button>
-         <button type="button" class="btn btn-danger" ng-click="sendDeleteAll()">Eliminar todos los datos</button>
-        </div>
-                </tr>
-            </tbody>
-        </table>
-         <div class="col-xs-5" style="width": 50%;float:left;>
-                    <label class="input-lg" for="dataResponse">Data response</label>
-                    <textarea class="form-control" rows="2" ng-model="dataResponse"></textarea>
-                </div>
-        </body>
+<body>
+    <div ng-view>
+    </div>
+</body>
 
 </html>

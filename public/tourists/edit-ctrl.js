@@ -2,13 +2,47 @@
 
            angular
                .module("TouristsApp")
-               .controller("MainCtrl", ["$scope", "$http", function($scope, $http) {
-                   console.log("Tourists Initialized!");
+               .controller("EditCtrl", ["$scope", "$http", function($scope, $http) {
+                   console.log("Edit Tourists Initialized!");
 
 
-                   var API = "https://sos1819-08.herokuapp.com/api/v1/tourists-by-countries";
+                   var API = "https://sos1819-08.herokuapp.com/api/v1/tourists-by-countries/edit";
                    var path = "https://sos1819-08.herokuapp.com"
                    refresh();
+
+
+// /* global angular*/
+// angular
+//     .module("ManagerApp")
+//     .controller("medicalAttentionRatesEditCtrl", ["$scope", "$http","$routeParams","$location", function($scope, $http, $routeParams,$location) {
+//         console.log("EditCtrl initialized!");
+//         var URL = "/api/v1/medical-attention-rates/"+$routeParams.province+"/"+$routeParams.year;
+        
+//         $http.get(URL).then(function (response){
+//             $scope.updatedMedicalAttentionRate = response.data;
+//         });
+        
+        
+//         $scope.updateMedicalAttentionRate = function() {
+//             $http.put(URL, $scope.updatedMedicalAttentionRate).then(function(response) {
+//                 $scope.status = "Status: " + response.status;
+//                 //console.log(Object.keys($scope.updatedMedicalAttentionRate).length)
+//                 window.alert("OK: estadistica actualizada");
+//                 $location.path("/medical-attention-rates");
+//             }, function() {
+//                 if ($scope.updatedMedicalAttentionRate["nursing"] == null ||
+//                     $scope.updatedMedicalAttentionRate["social-work"] == null ||
+//                     $scope.updatedMedicalAttentionRate["general-medicine"] == null) {
+//                     $scope.status = "Error: debe completar todos los campos"
+//                 }
+//             });
+//         }
+
+
+//     }]);
+
+
+
 
 
                    function refresh() {
@@ -104,7 +138,7 @@
                            console.log("Este es el nuevo dato:  " + data);
                            $http.put(API + "/" + country + "/" + year, JSON.stringify(data)).then(function(response) {
                                console.log("put done");
-                               $scope.dataResponse = " Código: " + response.status + "\n" + response.statusText+ " Dato modificado";
+                               $scope.dataResponse = " Código: " + response.status + "\n" + response.statusText + " Dato modificado";
                                refresh();
                            }, function(response) {
                                console.log("Error método PUT: Código" + response.status + ", " + response.statusText);
@@ -124,7 +158,7 @@
                    $scope.loadInitialData = function() {
                        $http.get(API + "/loadInitialData").then(function(response) {
                            $scope.data = JSON.stringify(response.data, null, 2) + response.status;
-                           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText+ "Datos iniciados de nuevo";
+                           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText + "Datos iniciados de nuevo";
                            refresh();
                        }).catch(function(response) {
                            $scope.data = response.status;
@@ -141,7 +175,7 @@
                            var res = JSON.stringify(response.data, null, 2);
 
                            $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
-                           $scope.data = "creado: "+response.status;
+                           $scope.data = "creado: " + response.status;
                            refresh();
                        }, function(response) {
                            $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
@@ -174,24 +208,24 @@
                    };
 
 
-                //   $scope.postJson = function() {
-                //       $http.post(path + $scope.url, $scope.data).then(function(response) {
-                //           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
-                //           $scope.data = response.status;
-                //       }, function(response) {
-                //           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
-                //           $scope.data = response.status;
-                //       });
-                //   };
-                //   $scope.putJson = function() {
-                //       $http.put(path + $scope.url, $scope.data).then(function(response) {
-                //           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
-                //           $scope.data = response.status;
-                //       }, function(response) {
-                //           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
-                //           $scope.data = response.status
-                //       });
-                //   };
+                   //   $scope.postJson = function() {
+                   //       $http.post(path + $scope.url, $scope.data).then(function(response) {
+                   //           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
+                   //           $scope.data = response.status;
+                   //       }, function(response) {
+                   //           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
+                   //           $scope.data = response.status;
+                   //       });
+                   //   };
+                   //   $scope.putJson = function() {
+                   //       $http.put(path + $scope.url, $scope.data).then(function(response) {
+                   //           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
+                   //           $scope.data = response.status;
+                   //       }, function(response) {
+                   //           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
+                   //           $scope.data = response.status
+                   //       });
+                   //   };
 
 
 
@@ -235,7 +269,7 @@
                                        "&arrivalTouristMax=" + FarrivalTouristMax + "&departureTouristMin=" + FdepartureTouristMin + "&departureTouristMax=" + FdepartureTouristMax + "&limit=" + 10 + "&offset=" + pag);
                                    numero = num;
                                    console.log(numero);
-                                    refresh();
+                                   refresh();
                                });
 
                            }
@@ -248,7 +282,7 @@
                                        "&arrivalTouristMax=" + FarrivalTouristMax + "&departureTouristMin=" + FdepartureTouristMin + "&departureTouristMax=" + FdepartureTouristMax + "&limit=" + 10 + "&offset=" + pag);
                                    numero = num;
                                    console.log(numero);
-        refresh();
+                                   refresh();
                                });
 
                            }
@@ -263,7 +297,7 @@
                                    "&arrivalTouristMax=" + FarrivalTouristMax + "&departureTouristMin=" + FdepartureTouristMin + "&departureTouristMax=" + FdepartureTouristMax + "&limit=" + 10 + "&offset=" + pag);
                                numero = num;
                                console.log(numero);
-refresh();
+                               refresh();
 
                            });
 
@@ -271,7 +305,7 @@ refresh();
                        }
                    }
 
-refresh();
+                   refresh();
 
 
                }]);
