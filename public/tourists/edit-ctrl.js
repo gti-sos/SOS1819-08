@@ -41,7 +41,7 @@ $scope.sendPut = function() {
         }
 
 
-    }]);
+
 
 
 
