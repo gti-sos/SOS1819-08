@@ -64,21 +64,21 @@ $scope.sendPut = function() {
 
 
 
-                console.log("Este es el nuevo dato:  " + data);
-                $http.put(API , JSON.stringify(data)).then(function(response) {
-                    console.log("put done");
-                    $scope.dataResponse = " Código: " + response.status + "\n" + response.statusText + " Dato modificado";
-                    refresh();
-                }, function(response) {
-                    console.log("Error método PUT: Código" + response.status + ", " + response.statusText);
-                    $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText + "Dato no ha sido modificado";
-                    refresh();
-                });
-            }
-            else {
-                $scope.dataResponse = "Datos incompletos";
-            }
-};
+            //     console.log("Este es el nuevo dato:  " + data);
+            //     $http.put(API , JSON.stringify(data)).then(function(response) {
+            //         console.log("put done");
+            //         $scope.dataResponse = " Código: " + response.status + "\n" + response.statusText + " Dato modificado";
+            //         refresh();
+            //     }, function(response) {
+            //         console.log("Error método PUT: Código" + response.status + ", " + response.statusText);
+            //         $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText + "Dato no ha sido modificado";
+            //         refresh();
+            //     });
+            // }
+            // else {
+            //     $scope.dataResponse = "Datos incompletos";
+            // }
+
 
 
 
