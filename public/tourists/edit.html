@@ -59,13 +59,13 @@ body {
 <div>
            <tbody>
                <tr>
-                <p class="text-light"><td>{{ tourist.country }}</td></p>
-                <p class="text-light"><td>{{ tourist.year }}</td></p>
+                <td><input class="form-control" ng-model="country"/></td>
+                <td><input class="form-control" type=number ng-model="year"/></td>
                 <td><input class="form-control" type=number ng-model="touristDeparture"/></td>
                 <td><input class="form-control" type=number ng-model="arrivalTourist"/></td>
                 <td><input class="form-control" type=number ng-model="incomeTourist"/></td>
                    
-                <td><button class="btn btn-warning" ng-click="sendPut(touristDeparture, arrivalTourist, incomeTourist)">Modificar</button></td>
+                <td><button class="btn btn-warning" ng-click="sendPut(country, year, touristDeparture, arrivalTourist, incomeTourist)">Modificar</button></td>
                
                
                </tr>
