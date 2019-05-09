@@ -73,7 +73,7 @@ angular
 
 
                 console.log("Este es el nuevo dato:  " + data);
-                $http.put(API + "/" + country + "/" + year, JSON.stringify(data)).then(function(response) {
+                $http.put(API , JSON.stringify(data)).then(function(response) {
                     console.log("put done");
                     $scope.dataResponse = " Código: " + response.status + "\n" + response.statusText + " Dato modificado";
                     refresh();
