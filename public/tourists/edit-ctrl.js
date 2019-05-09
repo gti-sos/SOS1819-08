@@ -30,7 +30,7 @@ $scope.sendPut = function() {
                 $scope.status = "Status: " + response.status;
                 //console.log(Object.keys($scope.updatedMedicalAttentionRate).length)
                 window.alert("OK: estadistica actualizada");
-                
+                $location.path("/tourists-by-countries");
             }, function() {
                 if ($scope.sendPut['touristDeparture']== null ||
                     $scope.sendPut['arrivalTourist'] == null ||
