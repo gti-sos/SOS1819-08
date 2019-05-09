@@ -6,7 +6,7 @@
                    console.log("Edit Tourists Initialized!");
 
 
-                   var API = "https://sos1819-08.herokuapp.com/api/v1/tourists-by-countries/"+$routeParams.province+"/"+$routeParams.year;
+                   var API = "https://sos1819-08.herokuapp.com/api/v1/tourists-by-countries/#!/"+$routeParams.province+"/"+$routeParams.year;
                    var path = "https://sos1819-08.herokuapp.com"
                    refresh();
 
@@ -21,10 +21,10 @@
                    };
                    
                    
-                   $http.get(API).then(function (response){
-            $scope.updatedTourist = response.data;
-            refresh();
-        });
+        //           $http.get(API).then(function (response){
+        //     $scope.updatedTourist = response.data;
+        //     refresh();
+        // });
         
         
         // $scope.updateTourist = function() {

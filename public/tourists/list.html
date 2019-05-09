@@ -68,8 +68,7 @@ body {
         <label><input class="form-control text-center" ng-model="arrivalTourist"/></label>
         <label><input class="form-control text-center" ng-model="incomeTourist"/></label>
                    
-        <td><button class="button btn-primary btn-block" ng-click="sendPost()" style = "border-radius: .25rem";>
-        Agregar</button></td>
+        <td><button float:center class="btn btn-success" ng-click="sendPost(country, year, touristDeparture, arrivalTourist, incomeTourist)">Crear</button></td>
         
         </tr>
                 <tr ng-repeat="tourist in touristsByCountries">
