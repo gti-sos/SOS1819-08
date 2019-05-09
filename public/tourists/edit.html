@@ -59,8 +59,8 @@ body {
 <div>
            <tbody>
                <tr>
-                   <td><input class="form-control" ng-model="tourist.country" /></td> 
-                   <td><input class="form-control" type=number ng-model="tourist.year" /></td>
+                   <p class="text-light"><td>{{ tourist.country }}</td></p>
+                <p class="text-light"><td>{{ tourist.year }}</td></p>
                    <td><input class="form-control" type=number ng-model="tourist['touristDeparture']" /></td>
                    <td><input class="form-control" type=number ng-model="tourist['arrivalTouris']" /></td>
                    <td><input class="form-control" type=number ng-model="tourist['incomeTourist']" /></td>
@@ -69,17 +69,6 @@ body {
                 Agregar
             </button></td>
                </tr>
-                <tr ng-repeat="tourist in touristsByCountries">
-                   
-                   <td><a href="/#!/{{tourist.country}}/{{tourist.year}}">{{tourist.country}}</td>
-
-                     <p class="text-light"><td>{{ tourist.country }}</td></p>
-                     <p class="text-light"><td>{{ tourist.year }}</td></p>
-                     <p class="text-light"><td>{{ tourist["touristDeparture"] }}</td></p>
-                     <p class="text-light"><td>{{ tourist["arrivalTourist"] }}</td></p>
-                     <p class="text-light"><td>{{ tourist["incomeTourist"] }}</td></p>
-                     <td><button type="button" class="btn btn-danger" ng-click="sendDelete(tourist.country, tourist.year)">Eliminar</button></td>
-            </tbody>
         </table>
     
 </div>
