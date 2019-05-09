@@ -25,16 +25,16 @@ angular
             $scope.sendPut= response.data;
         });
 
-$scope.sendPut = function() {
+        $scope.sendPut = function() {
             $http.put(API, $scope.sendPut).then(function(response) {
                 $scope.status = "Status: " + response.status;
                 //console.log(Object.keys($scope.updatedMedicalAttentionRate).length)
                 window.alert("OK: estadistica actualizada");
                 $location.path("/tourists-by-countries");
             }, function() {
-                if ($scope.sendPut['touristDeparture']== null ||
-                    $scope.sendPut['arrivalTourist'] == null ||
-                    $scope.sendPut['incomeTourist'] == null) {
+                if ($scope.sendPut["touristDeparture"]== null ||
+                    $scope.sendPut["arrivalTourist"] == null ||
+                    $scope.sendPut["incomeTourist"] == null) {
                     $scope.status = "Error: debe completar todos los campos"
                 }
             });
