@@ -55,7 +55,9 @@
         && typeof year!=='undefined'
         && typeof countryExpense!=='undefined'
         && typeof budgetPercentage!=='undefined'
-        && typeof expensePerCapita!=='undefined')/*||(country!==""
+        && typeof expensePerCapita!=='undefined'
+        &&  country !==null
+        &&  year!==null)/*||(country!==""
         &&  year!==""
         &&  countryExpense!==""
         && budgetPercentage!==""
@@ -74,16 +76,10 @@
                 refresh();
             }, function (response) {
                 console.log("Error PUT method: Code "+response.status+", "+response.statusText);
-               if($scope.status==409){
-                          $scope.dataResponse="error";
-                      }
-                      else if($scope.status==404){
+               
                       
                           $scope.dataResponse="no se ha encontrado " + country +" "+ year;
-                      }else{
-                      $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
-                          
-                      }
+                      
                 refresh();
             });
         }else{
@@ -111,12 +107,16 @@
             console.log("this is the new data:  " +JSON.stringify( data));
             $http.post(API, JSON.stringify(data)).then(function (response) {
                 console.log("post done");
+                if(response.status==201){
                 $scope.dataResponse ="¡Creado!";
+                }else{
+                     response.dataResponse ="Ya existe el pais "+ country+" y el año "+year;
+                }
+                
                  refresh();
             }, function (response) {
                 console.log("Error POST method: Code "+response.status+", "+response.statusText);
-             
-                   response.dataResponse ="Ya existe el pais "+ country+" y el año "+year;
+              $scope.dataResponse ="Ya existe el pais "+ country+" y el año "+year;
               
                  refresh();
             });
@@ -212,7 +212,7 @@
             console.log("Deleting all data ");
             var res = JSON.stringify(response.data,null,2);
            
-           $scope.dataResponse="Code: "+response.status+"\n"+response.statusText;
+           $scope.dataResponse="todo borrado";
                       $scope.data = response.status;
                       refresh();
         }, function (response) {
