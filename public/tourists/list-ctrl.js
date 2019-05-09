@@ -60,6 +60,7 @@
             $http.post(API, $scope.sendPost()).then(function successCallback(response) {
                 $scope.status = "Status : " + response.status + "Dato añadido correctamente";
                 window.alert("El dato  se ha introducido correctamente.");
+                refresh();
                 
             }, function errorCallback(response) {
                 console.log(response.status);
@@ -67,14 +68,18 @@
                 if (response.status === 400) {
                     $scope.status = "Status : " + response.status + "fallo al introducir datos";
                     window.alert("El dato no se ha introducido correctamente.");
+                    refresh();
                 }
                 if (response.status === 409) {
                     $scope.status = "Status : " + response.status + "fallo al introducir datos";
                     window.alert("El dato introducido ya existe.");
+                    refresh();
                 }
 
             });
             sendGet();
+            refresh();
+            
         }
 
                 //   $scope.sendPost = function(country, year, touristDeparture, arrivalTourist, incomeTourist) {

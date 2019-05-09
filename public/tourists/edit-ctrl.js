@@ -23,6 +23,7 @@
                    
                    $http.get(API).then(function (response){
             $scope.updatedTourist = response.data;
+            refresh();
         });
         
         
@@ -32,11 +33,13 @@
                 //console.log(Object.keys($scope.updatedMedicalAttentionRate).length)
                 window.alert("OK: estadistica actualizada");
                 $location.path("/tourists-by-countries");
+                refresh();
             }, function() {
                 if ($scope.updatedTourist["touristDeparture"] == null ||
                     $scope.updatedTourist["arrivalTourist"] == null ||
                     $scope.updatedTourist["incomeTourist"] == null) {
                     $scope.status = "Error: debe completar todos los campos"
+                    refresh();
                 }
             });
         }
