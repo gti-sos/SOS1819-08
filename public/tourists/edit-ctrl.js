@@ -22,7 +22,7 @@ angular
 
 
         $http.get(API).then(function (response){
-            $scope.sendPost= response.data;
+            $scope.sendPut= response.data;
         });
 
 
@@ -59,18 +59,20 @@ angular
 
         };
 
-        $scope.sendPut = function( touristDeparture, arrivalTourist, incomeTourist) {
-            if (
+        $scope.sendPut = function(country, year, touristDeparture, arrivalTourist, incomeTourist) {
+            if (typeof country !== 'undefined' &&
+                typeof year !== 'undefined' &&
                 typeof touristDeparture !== 'undefined' &&
                 typeof arrivalTourist !== 'undefined' &&
                 typeof incomeTourist !== 'undefined') {
+
                 var data = {
-                    
+                    country: country,
+                    year: parseInt(year),
                     touristDeparture: parseInt(touristDeparture),
                     arrivalTourist: parseInt(arrivalTourist),
                     incomeTourist: parseInt(incomeTourist)
                 };
-
 
                 console.log("Este es el nuevo dato:  " + data);
                 $http.put(API , JSON.stringify(data)).then(function(response) {
