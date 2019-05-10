@@ -1,70 +1,66 @@
 <style>
-body {
-  margin: 0; 
-  background-image: url("https://i2.wp.com/acorch.cl/wp-content/uploads/2017/04/purpura-y-morado-82360.jpg")
-    
-}
-
+    body {
+        margin: 0;
+        background-image: url("https://i2.wp.com/acorch.cl/wp-content/uploads/2017/04/purpura-y-morado-82360.jpg")
+    }
 </style>
 
 
-        <h1><p class="text-light">Datos sobre turistas</p></h1>
-        
-                
-        <div class="alert alert-dark" role="alert">
- 
+<h1>
+    <p class="text-light">Datos sobre turistas</p>
+</h1>
 
-        <table class="table">
-           <thead>
-                <tr>
-                    <th>
-                        <p class="text-light">Pais</p>
-                    </th>
-                    <th>
-                        <p class="text-light">Año</p>
-                    </th>
-                    <th>
-                       <p class="text-light">Salidas de turistas</p>
-                    </th>
-                    <th>
-                       <p class="text-light">Llegadas de turistas</p>
-                    </th>
-                    <th>
-                        <p class="text-light">Ingresos turisticos</p>
-                    </th>
-                    <th>
-                        <p class="text-light">Acciones</p>
-                    </th>
-                </tr>
-            </thead>
 
-        </div>
+<div class="alert alert-dark" role="alert">
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <p class="text-light">Pais</p>
+                </th>
+                <th>
+                    <p class="text-light">Año</p>
+                </th>
+                <th>
+                    <p class="text-light">Salidas de turistas</p>
+                </th>
+                <th>
+                    <p class="text-light">Llegadas de turistas</p>
+                </th>
+                <th>
+                    <p class="text-light">Ingresos turisticos</p>
+                </th>
+                <th>
+                    <p class="text-light">Acciones</p>
+                </th>
+            </tr>
+        </thead>
+
+</div>
 
 
 <div>
-           <tbody>
-               <tr>
-                <td>{{sendPut.country}}</td>
-                <td>{{sendPut.year}}</td>
-                <td><input class="form-control" type=number ng-model="sendPut['touristDeparture']"/></td>
-                <td><input class="form-control" type=number ng-model="sendPut['arrivalTourist']"/></td>
-                <td><input class="form-control" type=number ng-model="sendPut['incomeTourist']"/></td>
-                   
-                <td><button class="btn btn-warning" ng-click="sendPut(country, year)">Modificar</button></td>
-               
-               
-               </tr>
+    <tbody>
+        <tr>
+            <td>{{sendPut.country}}</td>
+            <td>{{sendPut.year}}</td>
+            <td><input class="form-control" type=number ng-model="sendPut['touristDeparture']" /></td>
+            <td><input class="form-control" type=number ng-model="sendPut['arrivalTourist']" /></td>
+            <td><input class="form-control" type=number ng-model="sendPut['incomeTourist']" /></td>
+
+            <td><button class="btn btn-warning" ng-click="sendPut()">Modificar</button></td>
+
+
+        </tr>
         </table>
-    
+
 </div>
-         <span><button class="button" ng-click="Pagination(Fcountry, Fyear, FincomeTouristMin, FincomeTouristMax, FarrivalTouristMin, FarrivalTouristMax, FdepartureTouristMin, FdepartureTouristMax, 1)"><<</button></span>
-        <span><button class="button" ng-click="Pagination(Fcountry, Fyear, FincomeTouristMin, FincomeTouristMax, FarrivalTouristMin, FarrivalTouristMax, FdepartureTouristMin, FdepartureTouristMax, 2)">>></button></span>
-            
- 
-           <div class="col-xs-5" style="width": 50%;float:left;>
-                    <label class="input-lg" for="dataResponse">Data response</label>
-                    <textarea class="form-control" rows="2" ng-model="dataResponse"></textarea>
-                </div>
-        </body>
-       
-      
+
+
+<div class="col-xs-5" style="width" : 50%;float:left;>
+    <label class="input-lg" for="dataResponse">Data response</label>
+    <textarea class="form-control" rows="2" ng-model="dataResponse"></textarea>
+</div>
+</body>
