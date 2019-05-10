@@ -12,7 +12,7 @@ angular
 ///La variable put se pone a true para señalar que lo que vamos a hacer es actualizar la base de datos, es decir, hacer un put    
     var put = true;
         $http.get(API).then(function(response){
-                   $scope.updateTourist = response.data; 
+                  $scope.updateTourist = response.data; 
                 });
             
 ///Se toma cada uno de los parámetros de entrada del recurso nuevo y los añade a un objeto nuevo countryStat, la actualización del primero.            
@@ -40,13 +40,13 @@ angular
             
 ///Se hace un put en la base de datos con el nuevo objeto, es decir, editamos la base de datos          
             console.log(put)
-               if(put){$http.put(API, countryStat).then(function(response){
+              if(put){$http.put(API, countryStat).then(function(response){
                    
                     $location.path("/tourists-by-countries/");
                     $scope.status= "Status 200. Item ("+ tourist.country + ", " + tourist.year + ") successfully updated.";
                 
             })
-               }
+              }
         put=true;  
         countryStat={};  ///Se reinicia la variable para futuras llamadas   
            
@@ -58,16 +58,16 @@ angular
         //     $scope.sendPut= response.data;
         // });
 
-        // $scope.sendPut = function() {
-        //     $http.put(API, $scope.sendPut).then(function(response) {
+        // $scope.updateTourist = function() {
+        //     $http.put(API, $scope.updateTourist).then(function(response) {
         //         $scope.status = "Status: " + response.status;
         //         //console.log(Object.keys($scope.updatedMedicalAttentionRate).length)
         //         window.alert("OK: estadistica actualizada");
-        //         $location.path("/");
+        //         $location.path("/tourists-by-countries/");
         //     }, function() {
-        //         if ($scope.sendPut["touristDeparture"]== null ||
-        //             $scope.sendPut["arrivalTourist"] == null ||
-        //             $scope.sendPut["incomeTourist"] == null) {
+        //         if ($scope.updateTourist["touristDeparture"]== null ||
+        //             $scope.updateTourist["arrivalTourist"] == null ||
+        //             $scope.updateTourist["incomeTourist"] == null) {
         //             $scope.status = "Error: debe completar todos los campos"
         //         }
         //     });
