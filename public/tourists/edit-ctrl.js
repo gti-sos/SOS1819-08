@@ -20,8 +20,8 @@ angular
                 $scope.status = "Status: " + response.status;
                 //console.log(Object.keys($scope.updatedMedicalAttentionRate).length)
                 window.alert("OK: estadistica actualizada");
-                $location.path("/api/v1/tourists-by-countries");
-            }, function() {
+                $location.path("/tourists-by-countries");
+            }, function(country, year) {
                 if ($scope.sendPut["touristDeparture"]== null ||
                     $scope.sendPut["arrivalTourist"] == null ||
                     $scope.sendPut["incomeTourist"] == null) {
