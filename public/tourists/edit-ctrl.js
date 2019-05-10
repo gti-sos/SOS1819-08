@@ -11,12 +11,12 @@ angular
 
         ///La variable put se pone a true para señalar que lo que vamos a hacer es actualizar la base de datos, es decir, hacer un put    
         $http.get(API).then(function(response) {
-            $scope.updateTourist = response.data;
+            $scope.updatedTourist = response.data;
         });
 
 
-        $scope.updateTourist = function(country, year, touristDeparture, arrivalTourist, incomeTourist) {
-            $http.put(API, $scope.updateTourist).then(function(response) {
+        $scope.updateTourist = function() {
+            $http.put(API, $scope.updatedTourist).then(function(response) {
                 $scope.status = "Status: " + response.status;
                 
                 window.alert("OK: estadistica actualizada");
