@@ -32,9 +32,6 @@ angular
 
 
 
-
-
-
         //     $scope.sendPut = function(country, year, touristDeparture, arrivalTourist, incomeTourist) {
         // if (typeof country !== 'undefined' &&
         //     typeof year !== 'undefined' &&
@@ -53,7 +50,6 @@ angular
 
 
 
-
         //     console.log("Este es el nuevo dato:  " + data);
         //     $http.put(API , JSON.stringify(data)).then(function(response) {
         //         console.log("put done");
@@ -68,89 +64,5 @@ angular
         // else {
         //     $scope.dataResponse = "Datos incompletos";
         // }
-
-
-
-        var pag = 0;
-        var numero;
-        $scope.Pagination = function(Fcountry, Fyear, FincomeTouristMin, FincomeTouristMax, FarrivalTouristMin, FarrivalTouristMax, FdepartureTouristMin, FdepartureTouristMax, num) {
-            if (typeof Fcountry == 'undefined') {
-                Fcountry = "";
-            }
-            if (typeof Fyear == 'undefined') {
-                Fyear = "";
-            }
-            if (typeof FincomeTouristMin == 'undefined') {
-                FincomeTouristMin = "";
-            }
-            if (typeof FincomeTouristMax == 'undefined') {
-                FincomeTouristMax = "";
-            }
-            if (typeof FarrivalTouristMin == 'undefined') {
-                FarrivalTouristMin = "";
-            }
-            if (typeof FarrivalTouristMax == 'undefined') {
-                FarrivalTouristMax = "";
-            }
-            if (typeof FdepartureTouristMin == 'undefined') {
-                FdepartureTouristMin = "";
-            }
-            if (typeof FdepartureTouristMax == 'undefined') {
-                FdepartureTouristMax = "";
-            }
-
-            if (num == 1) {
-                pag = pag - 10;
-                if (pag < 0) {
-                    pag = 0;
-                    $http.get(API + "?country=" + Fcountry + "&year=" + Fyear + "&incomeTouristMin=" + FincomeTouristMin + "&incomeTouristMax=" + FincomeTouristMax + "&arrivalTourisMin=" + FarrivalTouristMin +
-                        "&arrivalTourisMax=" + FarrivalTouristMax + "&departureTouristMin=" + FdepartureTouristMin + "&departureTouristMax=" + FdepartureTouristMax + "&limit=" + 10 + "&offset=" + pag).then(function(response) {
-                        console.log("pagina1");
-                        console.log(API + "?country=" + Fcountry + "&year=" + Fyear + "&incomeTouristMin=" + FincomeTouristMin + "&cincomeTouristMax=" + FincomeTouristMax + "&arrivalTouristMin=" + FarrivalTouristMin +
-                            "&arrivalTouristMax=" + FarrivalTouristMax + "&departureTouristMin=" + FdepartureTouristMin + "&departureTouristMax=" + FdepartureTouristMax + "&limit=" + 10 + "&offset=" + pag);
-                        numero = num;
-                        console.log(numero);
-                        refresh();
-                    });
-
-                }
-                else {
-
-                    $http.get(API + "?country=" + Fcountry + "&year=" + Fyear + "&incomeTouristMin=" + FincomeTouristMin + "&incomeTouristMax=" + FincomeTouristMax + "&arrivalTourisMin=" + FarrivalTouristMin +
-                        "&arrivalTourisMax=" + FarrivalTouristMax + "&departureTouristMin=" + FdepartureTouristMin + "&departureTouristMax=" + FdepartureTouristMax + "&limit=" + 10 + "&offset=" + pag).then(function(response) {
-                        console.log("pagina2");
-                        console.log(API + "?country=" + Fcountry + "&year=" + Fyear + "&incomeTouristMin=" + FincomeTouristMin + "&cincomeTouristMax=" + FincomeTouristMax + "&arrivalTouristMin=" + FarrivalTouristMin +
-                            "&arrivalTouristMax=" + FarrivalTouristMax + "&departureTouristMin=" + FdepartureTouristMin + "&departureTouristMax=" + FdepartureTouristMax + "&limit=" + 10 + "&offset=" + pag);
-                        numero = num;
-                        console.log(numero);
-                        refresh();
-                    });
-
-                }
-            }
-            else {
-
-                pag = pag + 10;
-                $http.get(API + "?country=" + Fcountry + "&year=" + Fyear + "&incomeTouristMin=" + FincomeTouristMin + "&incomeTouristMax=" + FincomeTouristMax + "&arrivalTourisMin=" + FarrivalTouristMin +
-                    "&arrivalTourisMax=" + FarrivalTouristMax + "&departureTouristMin=" + FdepartureTouristMin + "&departureTouristMax=" + FdepartureTouristMax + "&limit=" + 10 + "&offset=" + pag).then(function(response) {
-                    console.log("pagina3");
-                    console.log(API + "?country=" + Fcountry + "&year=" + Fyear + "&incomeTouristMin=" + FincomeTouristMin + "&cincomeTouristMax=" + FincomeTouristMax + "&arrivalTouristMin=" + FarrivalTouristMin +
-                        "&arrivalTouristMax=" + FarrivalTouristMax + "&departureTouristMin=" + FdepartureTouristMin + "&departureTouristMax=" + FdepartureTouristMax + "&limit=" + 10 + "&offset=" + pag);
-                    numero = num;
-                    console.log(numero);
-                    refresh();
-
-                });
-
-
-            }
-        }
-
-        refresh();
-
-
-
-
-
 
     }]);
