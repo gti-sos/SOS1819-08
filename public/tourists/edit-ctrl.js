@@ -15,7 +15,7 @@ angular
         });
 
 
-        $scope.updateTourist = function() {
+        $scope.updateTourist = function(country, year, touristDeparture, arrivalTourist, incomeTourist) {
             $http.put(API, $scope.updateTourist).then(function(response) {
                 $scope.status = "Status: " + response.status;
                 
