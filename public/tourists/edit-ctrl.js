@@ -11,7 +11,7 @@ angular
  
 ///La variable put se pone a true para señalar que lo que vamos a hacer es actualizar la base de datos, es decir, hacer un put    
     var put = true;
-        $http.get(country).then(function(response){
+        $http.get(API).then(function(response){
                    $scope.updateTourist = response.data; 
                 });
             
