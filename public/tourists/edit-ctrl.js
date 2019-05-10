@@ -15,7 +15,7 @@ angular
             $scope.sendPut= response.data;
         });
 
-        $scope.sendPut = function() {
+        $scope.sendPut = function(country, year) {
             $http.put(API, $scope.sendPut).then(function(response) {
                 $scope.status = "Status: " + response.status;
                 //console.log(Object.keys($scope.updatedMedicalAttentionRate).length)
