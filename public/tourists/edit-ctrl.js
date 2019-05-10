@@ -15,7 +15,6 @@ angular
             $scope.sendPut= response.data;
         });
 
-
         $scope.sendPut = function() {
             $http.put(API, $scope.sendPut).then(function(response) {
                 $scope.status = "Status: " + response.status;
