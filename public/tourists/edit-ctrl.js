@@ -15,12 +15,13 @@ angular
             $scope.sendPut= response.data;
         });
 
+
         $scope.sendPut = function() {
             $http.put(API, $scope.sendPut).then(function(response) {
                 $scope.status = "Status: " + response.status;
                 //console.log(Object.keys($scope.updatedMedicalAttentionRate).length)
                 window.alert("OK: estadistica actualizada");
-                $location.path("api/v1/tourists-by-countries");
+                $location.path("/api/v1/tourists-by-countries");
             }, function() {
                 if ($scope.sendPut["touristDeparture"]== null ||
                     $scope.sendPut["arrivalTourist"] == null ||
