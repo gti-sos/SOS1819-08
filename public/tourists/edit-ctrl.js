@@ -27,7 +27,7 @@ angular
                     countryStat[p] = $scope.updateTourist[p];
                 }
             });
-            console.log(tourist.country);
+            console.log(countryStat.country);
             
 ///Restricción que da error si hay un parámetro vacío dentro dela nueva variable que creamos
             Object.keys(countryStat).forEach(p =>{
@@ -43,7 +43,7 @@ angular
               if(put){$http.put(API, countryStat).then(function(response){
                    
                     $location.path("/tourists-by-countries/");
-                    $scope.status= "Status 200. Item ("+ tourist.country + ", " + tourist.year + ") successfully updated.";
+                    $scope.status= "Status 200. Item ("+ API.country + ", " + API.year + ") successfully updated.";
                 
             })
               }
