@@ -127,7 +127,7 @@
                    $scope.loadInitialData = function() {
                        $http.get(API + "/loadInitialData").then(function(response) {
                            $scope.data = JSON.stringify(response.data, null, 2) + response.status;
-                           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText + "Datos iniciados de nuevo";
+                           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText + ". Datos iniciados de nuevo";
                            refresh();
                        }).catch(function(response) {
                            $scope.data = response.status;
