@@ -23,7 +23,7 @@ body {
         <label><p class="text-light">Ingresos turísticos mínimos:<input class="form-control text-center" ng-model="FincomeTouristMin"/></p></label>
         <label><p class="text-light">Ingresos turísticos máximos:<input class="form-control text-center" ng-model="FincomeTouristMin"/></p></label>
          <button class="btn btn-primary" ng-click="sendGet(Fcountry, Fyear, FincomeTouristMin, FincomeTouristMax, FarrivalTouristMin,  FarrivalTouristMax, FdepartureTouristMin, FdepartureTouristMax)">Buscar</button>
-           <button class="btn btn-danger" ng-click="limpiar(Fcountry)">Quitar filtros de busqueda</button>
+           <button class="btn <btn-warning>" ng-click="limpiar(Fcountry)">Quitar filtros de busqueda</button>
         </div>
         
         <div> <button class="btn btn-info" ng-click="loadInitialData()">Carga datos iniciales</button>
