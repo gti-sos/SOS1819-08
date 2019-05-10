@@ -40,7 +40,7 @@ angular
             
 ///Se hace un put en la base de datos con el nuevo objeto, es decir, editamos la base de datos          
             console.log(put)
-               if(put){$http.put(country, countryStat).then(function(response){
+               if(put){$http.put(API, countryStat).then(function(response){
                    
                     $location.path("/tourists-by-countries");
                     $scope.status= "Status 200. Item ("+ tourist.country + ", " + tourist.year + ") successfully updated.";
