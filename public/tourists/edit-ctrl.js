@@ -42,7 +42,7 @@ angular
             console.log(put)
                if(put){$http.put(API, countryStat).then(function(response){
                    
-                    $location.path("/tourists-by-countries");
+                    $location.path("/tourists-by-countries/");
                     $scope.status= "Status 200. Item ("+ tourist.country + ", " + tourist.year + ") successfully updated.";
                 
             })
@@ -52,7 +52,7 @@ angular
            
         }    
             
-}]);
+
 
         // $http.get(API).then(function (response){
         //     $scope.sendPut= response.data;
