@@ -2,56 +2,61 @@
 
 angular
     .module("TouristsApp")
-    .controller("EditCtrl", ["$scope", "$http","$routeParams","$location", function($scope, $http, $routeParams, $location) {
+    .controller("EditCtrl", ["$scope", "$http", "$routeParams", "$location", function($scope, $http, $routeParams, $location) {
         console.log("Edit Tourists Initialized!");
 
 
-        var API = "/api/v1/tourists-by-countries/"+$routeParams.country+"/"+$routeParams.year;
+        var API = "/api/v1/tourists-by-countries/" + $routeParams.country + "/" + $routeParams.year;
 
- 
-///La variable put se pone a true para señalar que lo que vamos a hacer es actualizar la base de datos, es decir, hacer un put    
-    var put = true;
-        $http.get(API).then(function(response){
-                  $scope.updateTourist = response.data; 
-                });
-            
-///Se toma cada uno de los parámetros de entrada del recurso nuevo y los añade a un objeto nuevo countryStat, la actualización del primero.            
-        $scope.updateTourist = function(country, year, touristDeparture, arrivalTourist, incomeTouris){    
-            var countryStat = {};
-                
-            Object.keys($scope.updateTourist).forEach(p =>{
-            
-                try{
-                    countryStat[p] = JSON.parse($scope.updateTourist[p]);
-                }catch(e){
-                    countryStat[p] = $scope.updateTourist[p];
-                }
+
+        function refresh() {
+            console.log("Requesting contacts to <" + API + ">...");
+            $http.get(API + "?limit=" + 10 + "&offset=" + pag).then(function(response) {
+                console.log("Dato recivido: " + JSON.stringify(response.data));
+                $scope.touristsByCountries = response.data;
+
             });
-            console.log(countryStat.country);
-            
-///Restricción que da error si hay un parámetro vacío dentro dela nueva variable que creamos
-            Object.keys(countryStat).forEach(p =>{
-                
-                if(countryStat[p]==""){
-                  $scope.status = "Status 400. Cant update items with blank parameters."       
-                    put=false;    
-                }
-            })
-            
-///Se hace un put en la base de datos con el nuevo objeto, es decir, editamos la base de datos          
-            console.log(put)
-              if(put){$http.put(API, countryStat).then(function(response){
-                   
-                    $location.path("/tourists-by-countries/");
-                    $scope.status= "Status 200. Item ("+ API.country + ", " + API.year + ") successfully updated.";
-                
-            })
-              }
-        put=true;  
-        countryStat={};  ///Se reinicia la variable para futuras llamadas   
-           
-        }    
-            
+        };
+
+        ///La variable put se pone a true para señalar que lo que vamos a hacer es actualizar la base de datos, es decir, hacer un put    
+        $http.get(API).then(function(response) {
+            $scope.updateTourist = response.data;
+        });
+
+        $scope.updateTourist = function(country, year, touristDeparture, arrivalTourist, incomeTourist) {
+            if (typeof country !== 'undefined' &&
+                typeof year !== 'undefined' &&
+                typeof touristDeparture !== 'undefined' &&
+                typeof arrivalTourist !== 'undefined' &&
+                typeof incomeTourist !== 'undefined') {
+                var data = {
+                    country: country,
+                    year: parseInt(year),
+                    touristDeparture: parseInt(touristDeparture),
+                    arrivalTourist: parseInt(arrivalTourist),
+                    incomeTourist: parseInt(incomeTourist)
+                };
+
+
+                console.log("Este es el nuevo dato:  " + data);
+                $http.put(API + "/" + country + "/" + year, JSON.stringify(data)).then(function(response) {
+                    console.log("put done");
+                    $scope.dataResponse = " Código: " + response.status + "\n" + response.statusText + " Dato modificado";
+                    refresh();
+                }, function(response) {
+                    console.log("Error método PUT: Código" + response.status + ", " + response.statusText);
+                    $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText + "Dato no ha sido modificado";
+                    refresh();
+                });
+            }
+            else {
+                $scope.dataResponse = "Datos incompletos";
+            }
+
+
+
+        };
+
 
 
         // $http.get(API).then(function (response){
@@ -78,42 +83,122 @@ angular
 
 
 
-            //     $scope.sendPut = function(country, year, touristDeparture, arrivalTourist, incomeTourist) {
-            // if (typeof country !== 'undefined' &&
-            //     typeof year !== 'undefined' &&
-            //     typeof touristDeparture !== 'undefined' &&
-            //     typeof arrivalTourist !== 'undefined' &&
-            //     typeof incomeTourist !== 'undefined') {
+        //     $scope.sendPut = function(country, year, touristDeparture, arrivalTourist, incomeTourist) {
+        // if (typeof country !== 'undefined' &&
+        //     typeof year !== 'undefined' &&
+        //     typeof touristDeparture !== 'undefined' &&
+        //     typeof arrivalTourist !== 'undefined' &&
+        //     typeof incomeTourist !== 'undefined') {
 
-            //     var data = {
-            //         country: country,
-            //         year: parseInt(year),
-            //         touristDeparture: parseInt(touristDeparture),
-            //         arrivalTourist: parseInt(arrivalTourist),
-            //         incomeTourist: parseInt(incomeTourist)
-            //     };
-
-
-
-
-
-            //     console.log("Este es el nuevo dato:  " + data);
-            //     $http.put(API , JSON.stringify(data)).then(function(response) {
-            //         console.log("put done");
-            //         $scope.dataResponse = " Código: " + response.status + "\n" + response.statusText + " Dato modificado";
-            //         refresh();
-            //     }, function(response) {
-            //         console.log("Error método PUT: Código" + response.status + ", " + response.statusText);
-            //         $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText + "Dato no ha sido modificado";
-            //         refresh();
-            //     });
-            // }
-            // else {
-            //     $scope.dataResponse = "Datos incompletos";
-            // }
+        //     var data = {
+        //         country: country,
+        //         year: parseInt(year),
+        //         touristDeparture: parseInt(touristDeparture),
+        //         arrivalTourist: parseInt(arrivalTourist),
+        //         incomeTourist: parseInt(incomeTourist)
+        //     };
 
 
 
 
-        
+
+        //     console.log("Este es el nuevo dato:  " + data);
+        //     $http.put(API , JSON.stringify(data)).then(function(response) {
+        //         console.log("put done");
+        //         $scope.dataResponse = " Código: " + response.status + "\n" + response.statusText + " Dato modificado";
+        //         refresh();
+        //     }, function(response) {
+        //         console.log("Error método PUT: Código" + response.status + ", " + response.statusText);
+        //         $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText + "Dato no ha sido modificado";
+        //         refresh();
+        //     });
+        // }
+        // else {
+        //     $scope.dataResponse = "Datos incompletos";
+        // }
+
+
+
+        var pag = 0;
+        var numero;
+        $scope.Pagination = function(Fcountry, Fyear, FincomeTouristMin, FincomeTouristMax, FarrivalTouristMin, FarrivalTouristMax, FdepartureTouristMin, FdepartureTouristMax, num) {
+            if (typeof Fcountry == 'undefined') {
+                Fcountry = "";
+            }
+            if (typeof Fyear == 'undefined') {
+                Fyear = "";
+            }
+            if (typeof FincomeTouristMin == 'undefined') {
+                FincomeTouristMin = "";
+            }
+            if (typeof FincomeTouristMax == 'undefined') {
+                FincomeTouristMax = "";
+            }
+            if (typeof FarrivalTouristMin == 'undefined') {
+                FarrivalTouristMin = "";
+            }
+            if (typeof FarrivalTouristMax == 'undefined') {
+                FarrivalTouristMax = "";
+            }
+            if (typeof FdepartureTouristMin == 'undefined') {
+                FdepartureTouristMin = "";
+            }
+            if (typeof FdepartureTouristMax == 'undefined') {
+                FdepartureTouristMax = "";
+            }
+
+            if (num == 1) {
+                pag = pag - 10;
+                if (pag < 0) {
+                    pag = 0;
+                    $http.get(API + "?country=" + Fcountry + "&year=" + Fyear + "&incomeTouristMin=" + FincomeTouristMin + "&incomeTouristMax=" + FincomeTouristMax + "&arrivalTourisMin=" + FarrivalTouristMin +
+                        "&arrivalTourisMax=" + FarrivalTouristMax + "&departureTouristMin=" + FdepartureTouristMin + "&departureTouristMax=" + FdepartureTouristMax + "&limit=" + 10 + "&offset=" + pag).then(function(response) {
+                        console.log("pagina1");
+                        console.log(API + "?country=" + Fcountry + "&year=" + Fyear + "&incomeTouristMin=" + FincomeTouristMin + "&cincomeTouristMax=" + FincomeTouristMax + "&arrivalTouristMin=" + FarrivalTouristMin +
+                            "&arrivalTouristMax=" + FarrivalTouristMax + "&departureTouristMin=" + FdepartureTouristMin + "&departureTouristMax=" + FdepartureTouristMax + "&limit=" + 10 + "&offset=" + pag);
+                        numero = num;
+                        console.log(numero);
+                        refresh();
+                    });
+
+                }
+                else {
+
+                    $http.get(API + "?country=" + Fcountry + "&year=" + Fyear + "&incomeTouristMin=" + FincomeTouristMin + "&incomeTouristMax=" + FincomeTouristMax + "&arrivalTourisMin=" + FarrivalTouristMin +
+                        "&arrivalTourisMax=" + FarrivalTouristMax + "&departureTouristMin=" + FdepartureTouristMin + "&departureTouristMax=" + FdepartureTouristMax + "&limit=" + 10 + "&offset=" + pag).then(function(response) {
+                        console.log("pagina2");
+                        console.log(API + "?country=" + Fcountry + "&year=" + Fyear + "&incomeTouristMin=" + FincomeTouristMin + "&cincomeTouristMax=" + FincomeTouristMax + "&arrivalTouristMin=" + FarrivalTouristMin +
+                            "&arrivalTouristMax=" + FarrivalTouristMax + "&departureTouristMin=" + FdepartureTouristMin + "&departureTouristMax=" + FdepartureTouristMax + "&limit=" + 10 + "&offset=" + pag);
+                        numero = num;
+                        console.log(numero);
+                        refresh();
+                    });
+
+                }
+            }
+            else {
+
+                pag = pag + 10;
+                $http.get(API + "?country=" + Fcountry + "&year=" + Fyear + "&incomeTouristMin=" + FincomeTouristMin + "&incomeTouristMax=" + FincomeTouristMax + "&arrivalTourisMin=" + FarrivalTouristMin +
+                    "&arrivalTourisMax=" + FarrivalTouristMax + "&departureTouristMin=" + FdepartureTouristMin + "&departureTouristMax=" + FdepartureTouristMax + "&limit=" + 10 + "&offset=" + pag).then(function(response) {
+                    console.log("pagina3");
+                    console.log(API + "?country=" + Fcountry + "&year=" + Fyear + "&incomeTouristMin=" + FincomeTouristMin + "&cincomeTouristMax=" + FincomeTouristMax + "&arrivalTouristMin=" + FarrivalTouristMin +
+                        "&arrivalTouristMax=" + FarrivalTouristMax + "&departureTouristMin=" + FdepartureTouristMin + "&departureTouristMax=" + FdepartureTouristMax + "&limit=" + 10 + "&offset=" + pag);
+                    numero = num;
+                    console.log(numero);
+                    refresh();
+
+                });
+
+
+            }
+        }
+
+        refresh();
+
+
+
+
+
+
     }]);

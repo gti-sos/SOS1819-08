@@ -177,27 +177,8 @@
                    };
 
 
-                   //   $scope.postJson = function() {
-                   //       $http.post(path + $scope.url, $scope.data).then(function(response) {
-                   //           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
-                   //           $scope.data = response.status;
-                   //       }, function(response) {
-                   //           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
-                   //           $scope.data = response.status;
-                   //       });
-                   //   };
-                   //   $scope.putJson = function() {
-                   //       $http.put(path + $scope.url, $scope.data).then(function(response) {
-                   //           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
-                   //           $scope.data = response.status;
-                   //       }, function(response) {
-                   //           $scope.dataResponse = "Código: " + response.status + "\n" + response.statusText;
-                   //           $scope.data = response.status
-                   //       });
-                   //   };
 
-
-
+//paginacion
 
                    var pag = 0;
                    var numero;
@@ -273,7 +254,7 @@
 
                        }
                    }
-
+                
                    refresh();
 
 
