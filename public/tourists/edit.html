@@ -44,8 +44,8 @@
 <div>
     <tbody>
         <tr>
-            <td></b>{{updateTourist.country}}</td>
-            <td></b>{{updateTourist.year}}</td>
+            <td>{{updateTourist.country}}</td>
+            <td>{{updateTourist.year}}</td>
             <td><input class="form-control" type=number ng-model="updateTourist['touristDeparture']" /></td>
             <td><input class="form-control" type=number ng-model="updateTourist['arrivalTourist']" /></td>
             <td><input class="form-control" type=number ng-model="updateTourist['incomeTourist']" /></td>
@@ -54,13 +54,8 @@
 
 
         </tr>
-        </table>
-
+    </tbody>
 </div>
 
-
-<div class="col-xs-5" style="width" : 50%;float:left;>
-    <label class="input-lg" for="dataResponse">Data response</label>
-    <textarea class="form-control" rows="2" ng-model="dataResponse"></textarea>
-</div>
-</body>
+<p class="text-light">Status:</p>
+<h8><i>{{status}}</i></h8>
