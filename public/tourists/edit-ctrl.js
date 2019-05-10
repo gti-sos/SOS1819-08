@@ -16,7 +16,7 @@ angular
                 });
             
 ///Se toma cada uno de los parámetros de entrada del recurso nuevo y los añade a un objeto nuevo countryStat, la actualización del primero.            
-        $scope.updateTourist = function(){    
+        $scope.updateTourist = function(country, year, touristDeparture, arrivalTourist, incomeTouris){    
             var countryStat = {};
                 
             Object.keys($scope.updateTourist).forEach(p =>{
