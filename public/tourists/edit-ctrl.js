@@ -9,26 +9,69 @@ angular
         var API = "/api/v1/tourists-by-countries/"+$routeParams.country+"/"+$routeParams.year;
 
  
-
-
-        $http.get(API).then(function (response){
-            $scope.sendPut= response.data;
-        });
-
-        $scope.sendPut = function() {
-            $http.put(API, $scope.sendPut).then(function(response) {
-                $scope.status = "Status: " + response.status;
-                //console.log(Object.keys($scope.updatedMedicalAttentionRate).length)
-                window.alert("OK: estadistica actualizada");
-                $location.path("/");
-            }, function() {
-                if ($scope.sendPut["touristDeparture"]== null ||
-                    $scope.sendPut["arrivalTourist"] == null ||
-                    $scope.sendPut["incomeTourist"] == null) {
-                    $scope.status = "Error: debe completar todos los campos"
+///La variable put se pone a true para señalar que lo que vamos a hacer es actualizar la base de datos, es decir, hacer un put    
+    var put = true;
+        $http.get(country).then(function(response){
+                   $scope.updateTourist = response.data; 
+                });
+            
+///Se toma cada uno de los parámetros de entrada del recurso nuevo y los añade a un objeto nuevo countryStat, la actualización del primero.            
+        $scope.updateTourist = function(){    
+            var countryStat = {};
+                
+            Object.keys($scope.updateTourist).forEach(p =>{
+            
+                try{
+                    countryStat[p] = JSON.parse($scope.updateTourist[p]);
+                }catch(e){
+                    countryStat[p] = $scope.updateTourist[p];
                 }
             });
-        };
+            console.log(tourist.country);
+            
+///Restricción que da error si hay un parámetro vacío dentro dela nueva variable que creamos
+            Object.keys(countryStat).forEach(p =>{
+                
+                if(countryStat[p]==""){
+                  $scope.status = "Status 400. Cant update items with blank parameters."       
+                    put=false;    
+                }
+            })
+            
+///Se hace un put en la base de datos con el nuevo objeto, es decir, editamos la base de datos          
+            console.log(put)
+               if(put){$http.put(country, countryStat).then(function(response){
+                   
+                    $location.path("/country-stats");
+                    $scope.status= "Status 200. Item ("+ tourist.country + ", " + tourist.year + ") successfully updated.";
+                
+            })
+               }
+        put=true;  
+        countryStat={};  ///Se reinicia la variable para futuras llamadas   
+           
+        }    
+            
+}]);
+
+        // $http.get(API).then(function (response){
+        //     $scope.sendPut= response.data;
+        // });
+
+        // $scope.sendPut = function() {
+        //     $http.put(API, $scope.sendPut).then(function(response) {
+        //         $scope.status = "Status: " + response.status;
+        //         //console.log(Object.keys($scope.updatedMedicalAttentionRate).length)
+        //         window.alert("OK: estadistica actualizada");
+        //         $location.path("/");
+        //     }, function() {
+        //         if ($scope.sendPut["touristDeparture"]== null ||
+        //             $scope.sendPut["arrivalTourist"] == null ||
+        //             $scope.sendPut["incomeTourist"] == null) {
+        //             $scope.status = "Error: debe completar todos los campos"
+        //         }
+        //     });
+        // };
 
 
 
