@@ -28,30 +28,34 @@
 
            <tbody>
                 <tr>
-                    <td>{{ expense.country }}</td>
-                    <td>{{ expense.year }}</td>
+                    <td>{{ updateExpense.country }}</td>
+                    <td>{{ updateExpense.year }}</td>
                     <td>
                 <input 
                     class="form-control" 
-                    ng-model="expense.countryExpense"
+                    ng-model="updateExpense.countryExpense"
                 />
             <td>
                 <td>
                 <input 
                     class="form-control" 
-                    ng-model="expense.budgetPercentage"
+                    ng-model="updateExpense.budgetPercentage"
                 />
             <td>
                 <td>
                 <input 
                     class="form-control" 
-                    ng-model="expense.expensePerCapita"
+                    ng-model="updateExpense.expensePerCapita"
                 />
             <td>
                    
-                    <td><button type="button" class="btn btn-primary" ng-click="sendPut(expense.country, expense.year, expense.countryExpense, expense.budgetPercentage, expense.expensePerCapita)">Editar</button></td>
+                    <td><button type="button" class="btn btn-primary" ng-click="sendPut(updateExpense.country, updateExpense.year, updateExpense.countryExpense, updateExpense.budgetPercentage, updateExpense.expensePerCapita)">Editar</button></td>
             </tbody>
         </table>
+         <div class="col-xs-5" style="width": 50%;float:left;>
+                    <label class="input-lg" for="dataResponse">Respuesta:</label>
+                    <textarea class="form-control" rows="2" ng-model="dataResponse"></textarea>
+                </div>
         
         
        
