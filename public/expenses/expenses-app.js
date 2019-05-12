@@ -6,7 +6,7 @@ angular.module("minipostmanAPP", ["ngRoute"])
         controller : "ListCtrl",
         templateUrl: "list-expenses.html"
     }).when("/:country/:year",{
-         controller : "ListCtrl",
+         controller : "edit-expenses-ctrl.js",
         templateUrl: "edit-expenses.html"
     });
 });
