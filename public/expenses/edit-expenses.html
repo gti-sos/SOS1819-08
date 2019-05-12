@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    
+
+<body ng-controller= "ListCtrl">
+        <h1>Editar un dato</h1>
+             
+        <table class="table">
+           <thead>
+                <tr>
+                    <th>
+                        Pais
+                    </th>
+                    <th>
+                        Año
+                    </th>
+                    <th>
+                       Gastos del país
+                    </th>
+                    <th>
+                       Porcentaje de presupuesto
+                    </th>
+                    <th>
+                        Gasto per Capita
+                    </th>
+                    <th>
+                        Acciones
+                    </th>
+                </tr>
+            </thead>
+
+           <tbody>
+                <tr>
+                    <td>{{ expense.country }}</td>
+                    <td>{{ expense.year }}</td>
+                    <td>
+                <input 
+                    class="form-control" 
+                    ng-model="expense.countryExpense"
+                />
+            <td>
+                <td>
+                <input 
+                    class="form-control" 
+                    ng-model="expense.budgetPercentage"
+                />
+            <td>
+                <td>
+                <input 
+                    class="form-control" 
+                    ng-model="expense.expensePerCapita"
+                />
+            <td>
+                   
+                    <td><button type="button" class="btn btn-primary" ng-click="sendPut(expense.country, expense.year, expense.countryExpense, expense.budgetPercentage, expense.expensePerCapita)">Editar</button></td>
+            </tbody>
+        </table>
+        
+        
+       
+  
+        
+         
+       
+        </body>
+        </html>

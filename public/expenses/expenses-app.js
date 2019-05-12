@@ -5,6 +5,9 @@ angular.module("minipostmanAPP", ["ngRoute"])
     $routeProvider.when("/",{
         controller : "ListCtrl",
         templateUrl: "list-expenses.html"
-    })
+    }).when("/:country/:year",{
+         controller : "ListCtrl",
+        templateUrl: "edit-expenses.html"
+    });
 });
         console.log("angular app ok");

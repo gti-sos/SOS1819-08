@@ -45,7 +45,7 @@
 
            <tbody>
                 <tr ng-repeat="expense in expenses">
-                    <td>{{ expense.country }}</td>
+                    <td><a href="#!/{{expense.country}}/{{expense.year}}">{{ expense.country }}</a></td> <td><a href="#!/edit/{{contact.name}}">{{ contact.name }}</a></td>
                     <td>{{ expense.year }}</td>
                     <td>{{ expense.countryExpense }}</td>
                     <td>{{ expense.budgetPercentage }}</td>
