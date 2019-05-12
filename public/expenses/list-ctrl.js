@@ -1,7 +1,7 @@
 /*global angular*/
 
- angular.module("minipostmanAPP").controller("MainCtrl", ["$scope", "$http", function($scope, $http){
-            console.log("MainCtrl initialized");
+ angular.module("minipostmanAPP").controller("ListCtrl", ["$scope", "$http", function($scope, $http){
+            console.log("ListCtrl initialized");
             $scope.url = "/api/v1/expenses-of-countries-in-education-and-culture";
             var API = "https://sos1819-08.herokuapp.com/api/v1/expenses-of-countries-in-education-and-culture";
             var path="https://sos1819-08.herokuapp.com"
@@ -78,7 +78,7 @@
                 console.log("Error PUT method: Code "+response.status+", "+response.statusText);
                
                       
-                          $scope.dataResponse="no se ha encontrado " + country +" "+ year;
+                      $scope.dataResponse="no se ha encontrado " + country +" "+ year;
                       
                 refresh();
             });

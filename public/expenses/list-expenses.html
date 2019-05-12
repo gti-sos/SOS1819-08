@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    
+
+<body ng-controller= "MainCtrl">
+        <h1>Gastos de paises en cultura y educación</h1>
+             <div class="container-fluid">
+          ¡Busca según los criterios que desees!
+        
+         <form id="myForm">
+        <label>Pais:<input class="form-control text-center" id="country" ng-model="Fcountry"/></label>
+        <label>Año:<input class="form-control text-center" ng-model="Fyear"/></label>
+        <label>Gastos del pais mínimos:<input class="form-control text-center" ng-model="FcountryExpenseMin"/></label>
+        <label>Gastos del pais máximos:<input class="form-control text-center" ng-model="FcountryExpenseMax"/></label>
+        <label>Porcentaje de presupuesto mínimo:<input class="form-control text-center" ng-model="FbudgetPercentageMin"/></label>
+         <label>Porcentaje de presupuesto máximo:<input class="form-control text-center" ng-model="FbudgetPercentageMax"/></label>
+        <label>Gasto per Capita mínimo:<input class="form-control text-center" ng-model="FexpensePerCapitaMin"/></label>
+        <label>Gasto per Capita Max:<input class="form-control text-center" ng-model="FexpensePerCapitaMax"/></label>
+        </form>
+         <button class="btn btn-primary" ng-click="sendGet(Fcountry, Fyear, FcountryExpenseMin, FcountryExpenseMax, FbudgetPercentageMin,  FbudgetPercentageMax, FexpensePerCapitaMin, FexpensePerCapitaMax)">Buscar</button>
+        </div>
+        <table class="table">
+           <thead>
+                <tr>
+                    <th>
+                        Pais
+                    </th>
+                    <th>
+                        Año
+                    </th>
+                    <th>
+                       Gastos del país
+                    </th>
+                    <th>
+                       Porcentaje de presupuesto
+                    </th>
+                    <th>
+                        Gasto per Capita
+                    </th>
+                    <th>
+                        Acciones
+                    </th>
+                </tr>
+            </thead>
+
+           <tbody>
+                <tr ng-repeat="expense in expenses">
+                    <td>{{ expense.country }}</td>
+                    <td>{{ expense.year }}</td>
+                    <td>{{ expense.countryExpense }}</td>
+                    <td>{{ expense.budgetPercentage }}</td>
+                    <td>{{ expense.expensePerCapita }}</td>
+                    <td><button type="button" class="btn btn-danger" ng-click="sendDelete(expense.country, expense.year)">Eliminar</button></td>
+            </tbody>
+        </table>
+        
+        
+        <span><button class="button" ng-click="Pagination(Fcountry, Fyear, FincomeTouristMin, FincomeTouristMax, FarrivalTouristMin, FarrivalTouristMax, FdepartureTouristMin, FdepartureTouristMax, 1)"><<</button></span>
+        <span><button class="button" ng-click="Pagination(Fcountry, Fyear, FincomeTouristMin, FincomeTouristMax, FarrivalTouristMin, FarrivalTouristMax, FdepartureTouristMin, FdepartureTouristMax, 2)">>></button></span>
+            <div class="container-fluid">
+  
+        
+         
+        <label>Pais:<input class="form-control text-center" ng-model="country"/></label>
+        <label>Año:<input class="form-control text-center" ng-model="year"/></label>
+        <label>Gastos del pais:<input class="form-control text-center" ng-model="countryExpense"/></label>
+        <label>Porcentaje de presupuesto:<input class="form-control text-center" ng-model="budgetPercentage"/></label>
+        <label>Gasto per Capita:<input class="form-control text-center" ng-model="expensePerCapita"/></label>
+        </div>
+    
+    
+       <div class="btn-group" role="group" aria-label="Botones">
+        <button float:center class="btn btn-secondary" ng-click="sendPost(country, year, countryExpense, budgetPercentage, expensePerCapita)">Crea</button>
+        <button class="btn btn-warning" ng-click="sendPut(country, year, countryExpense, budgetPercentage, expensePerCapita)">Modificar</button>
+         <button class="btn btn-dark" ng-click="loadInitialData()">Carga datos iniciales</button>
+         <button type="button" class="btn btn-danger" ng-click="sendDeleteAll()">Eliminar todos los datos</button>
+        </div>
+                </tr>
+            </tbody>
+        </table>
+         <div class="col-xs-5" style="width": 50%;float:left;>
+                    <label class="input-lg" for="dataResponse">Respuesta:</label>
+                    <textarea class="form-control" rows="2" ng-model="dataResponse"></textarea>
+                </div>
+        </body>
+        </html>
