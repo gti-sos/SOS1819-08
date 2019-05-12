@@ -2,7 +2,7 @@
 
 angular.module("minipostmanAPP", ["ngRoute"])
 .config(function ($routeProvider){
-    $routeProvider.when("/",{
+    $routeProvider.when("/list",{
         controller : "ListCtrl",
         templateUrl: "list-expenses.html"
     })
