@@ -15,6 +15,9 @@ describe("Data is loaded", function() {
         browser.get('https://sos1819-08.herokuapp.com/ui/v1/tourists-by-countries/#!/').
         then(function() {
             element.all(by.repeater('tourist in touristsByCountries')).then(function(touristsByCountries) {
+                browser.driver.sleep(2000);
+                 browser.driver.sleep(2000);
+                  browser.driver.sleep(2000);
                // console.log(countryStats);
                 // browser 
                 //     .takeScreenshot()
