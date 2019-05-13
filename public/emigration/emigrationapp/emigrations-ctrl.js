@@ -9,7 +9,7 @@ angular
         
         function refresh(){
             console.log("Requesting contacts to <"+API+">...");
-            $http.get(API + "?limit=" + 10 + "&offset=" + pag).then(function (response){
+            $http.get(API).then(function (response){
                 console.log("Data Recieved: "+ JSON.stringify(response.data,null,2));            
                 $scope.emigrations = response.data;
             
@@ -84,23 +84,23 @@ angular
                            pag = pag - 10;
                            if (pag < 0) {
                                pag = 0;
-                               $http.get(API + "&limit=" + 10 + "&offset=" + pag).then(function(response) {
+                               $http.get(API + "?limit=" + 10 + "&offset=" + pag).then(function(response) {
                                    console.log("pagina1");
                                    console.log(API + "?limit=" + 10 + "&offset=" + pag);
                                    numero = num;
                                    console.log(numero);
-                                   refresh();
+                                   
                                });
 
                            }
                            else {
 
-                               $http.get(API + 10 + "&offset=" + pag).then(function(response) {
+                               $http.get(API + "?limit=" + 10 + "&offset=" + pag).then(function(response) {
                                    console.log("pagina2");
                                    console.log(API + "?limit=" + 10 + "&offset=" + pag);
                                    numero = num;
                                    console.log(numero);
-                                   refresh();
+                                   
                                });
 
                            }
@@ -108,7 +108,7 @@ angular
                        else {
 
                            pag = pag + 10;
-                           $http.get(API + "&limit=" + 10 + "&offset=" + pag).then(function(response) {
+                           $http.get(API + "?limit=" + 10 + "&offset=" + pag).then(function(response) {
                                console.log("pagina3");
                                console.log(API + "?limit=" + 10 + "&offset=" + pag);
                                numero = num;
