@@ -6,9 +6,9 @@ angular
                 controller : "ListCtrl",
                 templateUrl: "list.html"
             });
-            .when("/edit/:country/:year",{
+/*            .when("/edit/:country/:year",{
                 controller : "EditCtrl",
                 templateUrl: "edit.html"
-            })
+            })*/
     });
 
