@@ -9,7 +9,7 @@ angular
         
         function refresh(){
             console.log("Requesting contacts to <"+API+">...");
-            $http.get(API).then(function (response){
+            $http.get(API + "?limit=" + 10 + "&offset=" + pag).then(function (response){
                 console.log("Data Recieved: "+ JSON.stringify(response.data,null,2));            
                 $scope.emigrations = response.data;
             
@@ -89,7 +89,7 @@ angular
                                    console.log(API + "?limit=" + 10 + "&offset=" + pag);
                                    numero = num;
                                    console.log(numero);
-                                   
+                                   refresh();
                                });
 
                            }
@@ -100,7 +100,7 @@ angular
                                    console.log(API + "?limit=" + 10 + "&offset=" + pag);
                                    numero = num;
                                    console.log(numero);
-                                   
+                                   refresh();
                                });
 
                            }
@@ -113,7 +113,7 @@ angular
                                console.log(API + "?limit=" + 10 + "&offset=" + pag);
                                numero = num;
                                console.log(numero);
-                               
+                               refresh();
 
                            });
 
