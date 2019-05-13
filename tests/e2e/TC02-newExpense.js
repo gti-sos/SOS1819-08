@@ -7,14 +7,17 @@ describe('Checking if a new expense is created', function(){
                 element
                 .all(by.repeater("expense in expenses"))
                 .then(function(initialExpenses){
+                    console.log(initialExpenses.length);
+                      browser.driver.sleep(2000);
                   element(by.model('country')).sendKeys('RandomCountry');
-                  element(by.model('year')).sendKeys('123');
-                  element(by.model('countryExpense')).sendKeys('222');
-                  element(by.model('budgetPercentage')).sendKeys('333');
-                  element(by.model('expensePerCapita')).sendKeys('222');
+                  element(by.model('year')).sendKeys(parseInt(123));
+                  element(by.model('countryExpense')).sendKeys(parseFloat(22));
+                  element(by.model('budgetPercentage')).sendKeys(parseFloat(33));
+                  element(by.model('expensePerCapita')).sendKeys(parseFloat(44));
                   element(by.css('[value="add"]')).click();
                   
                   element.all(by.repeater("expense in expenses")).then(function(finalExpenses){
+                 console.log(finalExpenses.length)
                   expect(finalExpenses.length).toEqual(initialExpenses.length+1);
                       
                       
