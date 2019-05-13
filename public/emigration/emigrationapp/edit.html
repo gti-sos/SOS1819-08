@@ -24,14 +24,14 @@
                             <input type="number" class="form-control" ng-model=Country.emigrantman value="Hombres"/>
                         </td>
                         <td>
-                            <input type="number" class="form-control" ng-model=newCountry.emigrantwoman value="Mujeres"/>
+                            <input type="number" class="form-control" ng-model=Country.emigrantwoman value="Mujeres"/>
                         </td>
                         <td>
-                            <input type="number" class="form-control" ng-model=newCountry.totalemigrant value="Total Emigrantes"/>
+                            <input type="number" class="form-control" ng-model=Country.totalemigrant value="Total Emigrantes"/>
                         </td>
                         <td>
                             <button 
-                            class="btn btn-primary" ng-click="UpdateCountry(emigration.country, emigration.year)">
+                            class="btn btn-primary" ng-click="updateCountry()">
                                 Modificar</button>
                         </td>
                     </tr>

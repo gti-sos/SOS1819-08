@@ -8,15 +8,15 @@ angular
         
         $http.get(API+"/"+country+"/"+year).then(function (response){
                 console.log("Data Recieved: "+ JSON.stringify(response.data,null,2));            
-                $scope.emigration = response.data;
+                $scope.updateCountry = response.data;
             
             });
         
-        $scope.updateCountry = function(country, year){
+        $scope.updateCountry = function(){
             console.log("Updating a new country");
             
             
-            $http.put(API+"/"+country+"/"+year, $scope.emigration).then(function (response){
+            $http.put(API+"/"+country+"/"+year, $scope.updateCountry).then(function (response){
                 $scope.status= "Status: Registro añadido con éxito";
                 console.log("POST Response "+ response.status + "" + response.data);            
                
