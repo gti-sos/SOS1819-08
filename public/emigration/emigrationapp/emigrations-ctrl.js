@@ -113,7 +113,7 @@ angular
                                console.log(API + "?limit=" + 10 + "&offset=" + pag);
                                numero = num;
                                console.log(numero);
-                               refresh();
+                               
 
                            });
 
