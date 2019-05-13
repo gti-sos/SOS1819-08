@@ -1,13 +1,36 @@
 angular
     .module("emigrationsApp")
-    .controller("emigrationsCtrl",["$scope","$http", function ($scope,$http){
-        console.log("Emigrations Controller Initialized.");
+    .controller("EditCtrl",["$scope","$http", "$routeParams", function ($scope,$http,$routeParams){
+        console.log("EditCtrl Initialized.");
         var API = "https://sos1819-08.herokuapp.com/api/v1/emigrations-by-countries";
+        var country = $routeParams.country;
+        var year = $routeParams.year;
+        
+        $http.get(API+"/"+country+"/"+year).then(function (response){
+                console.log("Data Recieved: "+ JSON.stringify(response.data,null,2));            
+                $scope.updatedCountry = response.data;
+            
+            });
+        
+        $scope.updateCountry = function(){
+            console.log("Updating a new country");
+            
+            
+            $http.put(API+"/"+country+"/"+year, $scope.updatedCountry).then(function (response){
+                $scope.status= "Status: Registro añadido con éxito";
+                console.log("POST Response "+ response.status + "" + response.data);            
+               
+            
+            });
+        }
+        
+/*       
         refresh();
+        var pag = 0;
         
         function refresh(){
             console.log("Requesting contacts to <"+API+">...");
-            $http.get(API).then(function (response){
+            $http.get(API + "?limit=" + 10 + "&offset=" + pag).then(function (response){
                 console.log("Data Recieved: "+ JSON.stringify(response.data,null,2));            
                 $scope.emigrations = response.data;
             
@@ -75,4 +98,48 @@ angular
             refresh();
         };
         
+        var numero;
+        
+        $scope.Pagination = function(num) {
+                       if (num == 1) {
+                           pag = pag - 10;
+                           if (pag < 0) {
+                               pag = 0;
+                               $http.get(API + "?limit=" + 10 + "&offset=" + pag).then(function(response) {
+                                   console.log("pagina1");
+                                   console.log(API + "?limit=" + 10 + "&offset=" + pag);
+                                   numero = num;
+                                   console.log(numero);
+                                   refresh();
+                               });
+
+                           }
+                           else {
+
+                               $http.get(API + "?limit=" + 10 + "&offset=" + pag).then(function(response) {
+                                   console.log("pagina2");
+                                   console.log(API + "?limit=" + 10 + "&offset=" + pag);
+                                   numero = num;
+                                   console.log(numero);
+                                   refresh();
+                               });
+
+                           }
+                       }
+                       else {
+
+                           pag = pag + 10;
+                           $http.get(API + "?limit=" + 10 + "&offset=" + pag).then(function(response) {
+                               console.log("pagina3");
+                               console.log(API + "?limit=" + 10 + "&offset=" + pag);
+                               numero = num;
+                               console.log(numero);
+                               refresh();
+
+                           });
+
+
+                       }
+                   }
+ */       
     }]);

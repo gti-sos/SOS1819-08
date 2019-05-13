@@ -1,0 +1,65 @@
+<h1>Emigración por Países</h1>
+        Buscar: 
+        
+        <label>Emigrantes Totales mínimos:<input type= "number" class="form-control text-center" ng-model="emiMin"/></label>
+        <label>Emigrantes Totales máximos:<input type= "number" class="form-control text-center" ng-model="emiMax"/></label>
+        <button class="btn btn-primary" ng-click="sendGet(emiMin, emiMax)">Buscar</button>
+        <button class="btn btn-warning" ng-click="limpiar()">Borrar búsqueda</button>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>País</th>
+                        <th>Año</th>
+                        <th>Hombres</th>
+                        <th>Mujeres</th>
+                        <th>Total Emigrantes</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="emigration in emigrations">
+                        <td><a href="#!/edit/{{emigration.country}}/{{emigration.year}}">{{emigration.country}}</a></td>
+                        <td>{{emigration.year}}</td>
+                        <td>{{emigration.emigrantman}}</td>
+                        <td>{{emigration.emigrantwoman}}</td>
+                        <td>{{emigration.totalemigrant}}</td>
+                        <td>
+                            <button class="btn btn-danger" ng-click="deleteCountry(emigration.country, emigration.year)";>Borrar</button>
+                        </td>
+                    </tr>
+                    
+                        <span><button class="button" ng-click="Pagination(1)"><<</button></span>
+                        <span><button class="button" ng-click="Pagination(2)">>></button></span>
+                        
+                    
+                    <tr>
+                        <td>
+                            <input type="text" class="form-control" ng-model=newCountry.country value="Nuevo País"/>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" ng-model=newCountry.year value="Año"/>
+                        </td>
+                                                <td>
+                            <input type="number" class="form-control" ng-model=newCountry.emigrantman value="Hombres"/>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" ng-model=newCountry.emigrantwoman value="Mujeres"/>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" ng-model=newCountry.totalemigrant value="Total Emigrantes"/>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" ng-click="addCountry()";>Añadir</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" ng-click="deleteCountries()";>Borrar Todos</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-secondary" ng-click="loadCountries()";>Cargar Registros Iniciales</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr/>
+            <h8><i>{{status}}</i></h8>
+            <hr/>
