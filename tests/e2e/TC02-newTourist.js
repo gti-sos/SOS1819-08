@@ -20,7 +20,7 @@ describe('Checking if a new expense is created', function() {
 
 
 
-                })
-            })
+                });
+            });
     });
 });
