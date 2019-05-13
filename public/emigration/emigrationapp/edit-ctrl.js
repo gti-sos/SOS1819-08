@@ -1,6 +1,6 @@
 angular
     .module("emigrationsApp")
-    .controller("EditCtrl",["$scope","$http", "$routeParams", function ($scope,$http,$routeParams){
+    .controller("EditCtrl",["$scope","$http", "$routeParams", "$location", function ($scope,$http,$routeParams,$location){
         console.log("EditCtrl Initialized.");
         var API = "https://sos1819-08.herokuapp.com/api/v1/emigrations-by-countries";
         var country = $routeParams.country;
@@ -17,12 +17,18 @@ angular
             
             
             $http.put(API+"/"+country+"/"+year, $scope.updatedCountry).then(function (response){
-                $scope.status= "Status: Registro añadido con éxito";
+                $scope.status= "Status: Registro modificado con éxito";
                 console.log("POST Response "+ response.status + "" + response.data);            
-               
+               $location.path("/");
             
+            }, function() {
+                if ($scope.updateCountry.emigrantman== null ||
+                    $scope.updateCountry.emigrantwoman == null ||
+                    $scope.updateCountry.totalemigrant == null) {
+                    $scope.status = "Error: debe completar todos los campos"
+                }
             });
-        }
+        };
         
 /*       
         refresh();
