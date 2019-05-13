@@ -1,6 +1,8 @@
 describe("Check if a new sport center can be created",function () {
+    var until = protractor.ExpectedConditions;
+    
     it("List should grow after the contact creation", function (){
-        browser.get("localhost:8080/ui/v1/tourists-by-countries/#!/");
+        browser.get("http://localhost:8080/ui/v1/tourists-by-countries/#!/");
         
                 element(by.model('id')).sendKeys('22');
                 element(by.model('country')).sendKeys('Tarfia');
