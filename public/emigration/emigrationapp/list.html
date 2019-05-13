@@ -18,7 +18,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="emigration in emigrations">
-                        <td>{{emigration.country}}</td>
+                        <td><a href="#!/edit/{{emigration.country}}/{{emigration.year}}">{{emigration.country}}</a></td>
                         <td>{{emigration.year}}</td>
                         <td>{{emigration.emigrantman}}</td>
                         <td>{{emigration.emigrantwoman}}</td>
