@@ -120,5 +120,5 @@ angular
 
                        }
                    }
-        
+        refresh();
     }]);
