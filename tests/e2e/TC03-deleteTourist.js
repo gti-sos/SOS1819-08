@@ -8,7 +8,7 @@ describe('Checking if an Tourist is deleted', function() {
             .then(function(initialTourist) {
                 console.log(initialTourist.length);
                 browser.driver.sleep(2000);
-                element.all(by.css('[value="borrar"]')).last().click();
+                element.all(by.css('[value="delete"]')).last().click();
 
                 element.all(by.repeater("tourist in touristsByCountries"))
                     .then(function(finalTourist) {
