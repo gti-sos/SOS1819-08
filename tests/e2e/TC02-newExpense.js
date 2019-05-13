@@ -14,7 +14,7 @@ describe('Checking if a new expense is created', function(){
                   element(by.model('countryExpense')).sendKeys(parseFloat(22));
                   element(by.model('budgetPercentage')).sendKeys(parseFloat(33));
                   element(by.model('expensePerCapita')).sendKeys(parseFloat(44));
-                  element(by.css('[value="add"]')).click();
+                  element(by.css('[value="agregar"]')).click();
                   
                   element.all(by.repeater("expense in expenses")).then(function(finalExpenses){
                  console.log(finalExpenses.length)
