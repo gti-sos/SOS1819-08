@@ -39,6 +39,11 @@
                         </td>
                     </tr>
                     <tr>
+                        <span><button class="button" ng-click="Pagination(1)"><<</button></span>
+                        <span><button class="button" ng-click="Pagination(2)">>></button></span>
+                    </tr>    
+                    
+                    <tr>
                         <td>
                             <input type="text" class="form-control" ng-model=newCountry.country value="Nuevo País"/>
                         </td>
@@ -69,5 +74,8 @@
             <hr/>
             <h8><i>{{status}}</i></h8>
             <hr/>
+            
+        
+            
     </body>
 </html>
