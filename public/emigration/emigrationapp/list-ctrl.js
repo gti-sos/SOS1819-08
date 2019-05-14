@@ -1,7 +1,7 @@
 angular
-    .module("emigrationsApp")
-    .controller("ListCtrl",["$scope","$http", function ($scope,$http){
-        console.log("ListCtrl Initialized.");
+    .module("app")
+    .controller("ListCtrlEmigration",["$scope","$http", function ($scope,$http){
+        console.log("ListCtrlEmigration Initialized.");
         var API = "https://sos1819-08.herokuapp.com/api/v1/emigrations-by-countries";
         refresh();
         

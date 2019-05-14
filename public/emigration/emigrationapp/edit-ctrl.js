@@ -1,7 +1,7 @@
 angular
-    .module("emigrationsApp")
-    .controller("EditCtrl",["$scope","$http", "$routeParams", "$location", function ($scope,$http,$routeParams,$location){
-        console.log("EditCtrl Initialized.");
+    .module("app")
+    .controller("EditCtrlEmigration",["$scope","$http", "$routeParams", "$location", function ($scope,$http,$routeParams,$location){
+        console.log("EditCtrlEmigration Initialized.");
         var API = "https://sos1819-08.herokuapp.com/api/v1/emigrations-by-countries";
         var country = $routeParams.country;
         var year = $routeParams.year;

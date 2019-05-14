@@ -13,6 +13,17 @@ angular.module("app", ["ngRoute"])
     .when("/expenses-of-countries-in-education-and-culture/:country/:year",{
          controller : "EditCtrl",
         templateUrl: "expenses/edit-expenses.html"
-    });
+    })
+    
+    .when("/emigrations-by-countries",{
+        controller : "ListCtrlEmigration",
+        templateUrl: "emigration/emigrationapp/list.html"
+    })
+    
+    .when("/emigrations-by-countries/:country/:year",{
+    controller : "EditCtrl",
+    templateUrl: "edit.html"
+            });
+    
 });
         console.log("angular app ok");
