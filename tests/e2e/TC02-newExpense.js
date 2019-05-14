@@ -7,7 +7,8 @@ describe('Checking if a new expense is created', function(){
                 element
                 .all(by.repeater("expense in expenses"))
                 .then(function(initialExpenses){
-                    console.log(initialExpenses.length);
+                    console.log("initial data before add: "+initialExpenses.length);
+                    
                       browser.driver.sleep(2000);
                   element(by.model('country')).sendKeys('RandomCountry');
                   element(by.model('year')).sendKeys(parseInt(123));
@@ -17,7 +18,7 @@ describe('Checking if a new expense is created', function(){
                   element(by.css('[value="add"]')).click();
                   
                   element.all(by.repeater("expense in expenses")).then(function(finalExpenses){
-                 console.log(finalExpenses.length)
+                 console.log("final data :"+finalExpenses.length);
                   expect(finalExpenses.length).toEqual(initialExpenses.length+1);
                       
                       

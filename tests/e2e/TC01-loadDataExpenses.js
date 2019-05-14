@@ -13,4 +13,5 @@ describe('expenses is Loaded', function(){
                 .all(by.repeater("expense in expenses"))
                 .then(function(expenses){
                     expect(expenses.length).toBeGreaterThan(0);
+                    console.log("the length of data is: "+ expenses.length);
                 })})})});

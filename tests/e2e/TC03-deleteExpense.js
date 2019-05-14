@@ -6,12 +6,13 @@ describe('Checking if an expense is deleted', function(){
              element
                 .all(by.repeater("expense in expenses"))
                 .then(function(initialExpenses){
-                     console.log(initialExpenses.length);
+                     console.log("data before delete: "+initialExpenses.length);
                       browser.driver.sleep(2000);
                       element.all(by.css('[value="delete"]')).last().click();
                       
                       element.all(by.repeater("expense in expenses"))
                 .then(function(finalExpenses){
+                    console.log("final data :"+finalExpenses.length);
                  expect(finalExpenses.length).toEqual(initialExpenses.length-1);
                     
                     
