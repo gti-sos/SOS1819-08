@@ -68,7 +68,7 @@ body {
         <td><input class="form-control text-center" ng-model="arrivalTourist"/></td>
         <td><input class="form-control text-center" ng-model="incomeTourist"/></td>
                    
-        <td><button float:center class="btn btn-success" ng-click="sendPost(country, year, touristDeparture, arrivalTourist, incomeTourist)">Crear</button></td>
+        <td><button float:center class="btn btn-success" ng-click="sendPost(country, year, touristDeparture, arrivalTourist, incomeTourist)" value="add">Crear</button></td>
         
         </tr>
                 <tr ng-repeat="tourist in touristsByCountries">
@@ -77,7 +77,7 @@ body {
                      <p class="text-light"><td>{{ tourist.touristDeparture }}</td></p>
                      <p class="text-light"><td>{{ tourist.arrivalTourist }}</td></p>
                      <p class="text-light"><td>{{ tourist.incomeTourist }}</td></p>
-                     <td><button type="button" class="btn btn-danger" ng-click="sendDelete(tourist.country, tourist.year)">Eliminar</button></td>
+                     <td><button type="button" class="btn btn-danger" ng-click="sendDelete(tourist.country, tourist.year)" value="delete">Eliminar</button></td>
             </tbody>
         </table>
     
