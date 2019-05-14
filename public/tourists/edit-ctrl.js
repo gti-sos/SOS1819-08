@@ -6,7 +6,7 @@ angular
         console.log("Edit Tourists Initialized!");
 
 
-        var API = "/tourists-by-countries/" + $routeParams.country + "/" + $routeParams.year;
+        var API = "api/v1/tourists-by-countries/" + $routeParams.country + "/" + $routeParams.year;
 
 
      
