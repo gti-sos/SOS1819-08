@@ -1,50 +1,23 @@
-<!DOCTYPE html>
-<html>
+<html ng-app= "app">
+    
     <head>
- <title>
-            SOS1819-08
-        </title>
+       
+        
         <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
         
         <script src="/../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-</head>
-        <body>
-            <h1> SOS1819-08 </h1>
-<UL>
-<LI><B>Team</B></LI> 
-<UL>
-    <LI><A HREF= "https://github.com/crijimnun ">Cristian Jiménez Núñez</A></LI>
-    <LI><A HREF= "https://github.com/lolilolii ">María Dolores López Sánchez</A></LI>
-    <LI><A HREF= "https://github.com/felgonmar ">Felix Gonzalez Marín</A></LI>
+        
+        <script src="/../bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="/../bower_components/angular-route/angular-route.js"></script>
+        <script src="/../global-app.js"></script>
+        
+        <script src="list-ctrl.js"></script>
+         <script src="edit-expenses-ctrl.js"></script>
+        
+    </head>
     
-</UL>
-<BR>
-<LI><B>Project description:</B> Analyze the relationship between tourism, emigration and spending on education / culture.</LI><BR>
-<LI><B>Repository:</B> <A HREF= "https://github.com/gti-sos/SOS1819-08 ">gti-sos/SOS1819-08</A></LI><BR>
-<LI><B>URL:</B> <A HREF= "http://sos1819-08.herokuapp.com/ ">http://sos1819-08.herokuapp.com/</A></LI><BR>
-<LI><B>APIs</B></LI>
-    <UL>
-        <LI><A HREF= "https://documenter.getpostman.com/view/6913613/S17xt6g2">https://sos1819-08.herokuapp.com/api/v1/emigrations-by-countries/docs</A>(developed by <A HREF= "https://github.com/crijimnun ">Cristian Jiménez Núñez</A>)</LI>
-        <LI><A HREF= "https://documenter.getpostman.com/view/6926249/S17xt6bi ">https://sos1819-08.herokuapp.com/api/v1/tourists-by-countries/docs</A>(developed by <A HREF= "https://github.com/lolilolii ">Maria Dolores López Sánchez</A>)</LI>
-        <LI><A HREF= "https://documenter.getpostman.com/view/6911989/S17xt6bh ">https://sos1819-08.herokuapp.com/api/v1/expenses-of-countries-in-education-and-culture/docs</A>(developed by <A HREF= "https://github.com/felgonmar ">Felix Gonzalez Marín</A>)</LI>
-    </UL>
-
-
-<BR><LI><B>Minipostman</B></LI>
-               <ul style="list-style-type:circle;"> 
-                   <LI><A HREF= "https://sos1819-08.herokuapp.com/api/v1/minipostman-emigration/">https://sos1819-08.herokuapp.com/api/v1/minipostman-emigration/</A>(developed by <A HREF= "https://github.com/crijimnun ">Cristian Jiménez Núñez</A>)</LI>
-                   <LI><A HREF= "https://sos1819-08.herokuapp.com/api/v1/minipostman-tourist/">https://sos1819-08.herokuapp.com/api/v1/minipostman-tourist/</A>(developed by <A HREF= "https://github.com/lolilolii">María Dolores López Sánchez</A>)</LI>
-                     <LI><A HREF= "https://sos1819-08.herokuapp.com/api/v1/minipostman-expenses/">https://sos1819-08.herokuapp.com//api/v1/minipostman-expenses</A>(developed by <A HREF= "https://github.com/felgonmar">Félix González Marín</A>)</LI>   
-               </ul>
-               
-<BR><LI><B>Front-end</B></LI>
-               <ul style="list-style-type:circle;"> 
-                     <LI><A HREF= "https://sos1819-08.herokuapp.com/expenses-of-countries-in-education-and-culture/">https://sos1819-08.herokuapp.com/ui/v1/expenses-of-countries-in-education-and-culture</A>(developed by <A HREF= "https://github.com/felgonmar">Félix González Marín</A>)</LI>
-                     <LI><A HREF= "https://sos1819-08.herokuapp.com/ui/v1/emigrations-by-countries/">https://sos1819-08.herokuapp.com/ui/v1/emigrations-by-countries</A>(developed by <A HREF= "https://github.com/crijimnun">Cristian Jiménez Núñez</A>)</LI>
-                     <LI><A HREF= "https://sos1819-08.herokuapp.com/ui/v1/tourists-by-countries/">https://sos1819-08.herokuapp.com/ui/v1/tourists-by-countries</A>(developed by <A HREF= "https://github.com/lolilolii">María Dolores López Sánchez</A>)</LI>
-
-               </ul>
-</UL>
+    <body ng-view>
+        
         </body>
-    
+
 </html>

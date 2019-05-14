@@ -1,16 +1,16 @@
 /*global angular*/
 
-angular.module("minipostmanAPP", ["ngRoute"])
+angular.module("app", ["ngRoute"])
 .config(function ($routeProvider){
     $routeProvider.when("/",{
-        templateUrl: "index.html"
-    }).when("/expenses",{
-        controller : "ListCtrl",
+        templateUrl: "info.html"
+    }).when("/expenses-of-countries-in-education-and-culture",{
+        controller : "ListCtrl-expenses",
         templateUrl: "expenses/list-expenses.html"
     })
     
     
-    .when("/:country/:year",{
+    .when("/expenses-of-countries-in-education-and-culture/:country/:year",{
          controller : "EditCtrl",
         templateUrl: "expenses/edit-expenses.html"
     });

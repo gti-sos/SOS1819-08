@@ -1,6 +1,6 @@
 /*global angular*/
 
- angular.module("minipostmanAPP").controller("ListCtrl", ["$scope", "$http", function($scope, $http){
+ angular.module("app").controller("ListCtrl-expenses", ["$scope", "$http", function($scope, $http){
             console.log("ListCtrl initialized");
             $scope.url = "/api/v1/expenses-of-countries-in-education-and-culture";
             var API = "https://sos1819-08.herokuapp.com/api/v1/expenses-of-countries-in-education-and-culture";
