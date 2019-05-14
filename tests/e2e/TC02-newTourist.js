@@ -1,7 +1,7 @@
 describe('Checking if a new tourist is created', function() {
     it('should show some tourist', function() {
         browser
-            .get('https://sos1819-08.herokuapp.com/ui/v1/tourists-by-countries/#!/');
+            .get('https://sos1819-08.herokuapp.com/#!/tourists-by-countries/');
 
 
         element
