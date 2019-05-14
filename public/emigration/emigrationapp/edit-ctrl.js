@@ -19,7 +19,7 @@ angular
             $http.put(API+"/"+country+"/"+year, $scope.updatedCountry).then(function (response){
                 $scope.status= "Status: Registro modificado con éxito";
                 console.log("POST Response "+ response.status + "" + response.data);            
-               $location.path("/");
+               $location.path("/#!/emigrations-by-countries/");
             
             }, function() {
                 if ($scope.updateCountry.emigrantman== null ||
