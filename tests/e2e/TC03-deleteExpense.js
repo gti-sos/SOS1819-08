@@ -16,5 +16,9 @@ describe('Checking if an expense is deleted', function(){
                     
                     
                     
-                })
+                });
+                 browser.driver.sleep(2000);
+                  browser.driver.sleep(2000);
+                    browser.driver.sleep(2000);
+                  element(by.css('[value="deleteAll"]')).click();
                 })})})
