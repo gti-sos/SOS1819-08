@@ -1,7 +1,7 @@
 describe('Checking if a new emigration is created', function(){
     it('should show some emigrations',function(){
         browser
-            .get('https://sos1819-08.herokuapp.com/ui/v1/emigrations-by-countries/#!/');
+            .get('https://sos1819-08.herokuapp.com/#!/emigrations-by-countries/');
                
                 
                 element
