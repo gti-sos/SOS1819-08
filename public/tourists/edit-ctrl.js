@@ -20,7 +20,7 @@ angular
                 $scope.status = "Status: " + response.status;
                 
                 window.alert("OK: estadistica actualizada");
-                $location.path("/");
+                $location.path("/#!/tourists-by-countries/");
             }, function() {
                 if ($scope.updateTourist["touristDeparture"]== null ||
                     $scope.updateTourist["arrivalTourist"] == null ||
