@@ -21,8 +21,8 @@ angular.module("app", ["ngRoute"])
     })
     
     .when("/emigrations-by-countries/:country/:year",{
-    controller : "EditCtrl",
-    templateUrl: "edit.html"
+    controller : "EditCtrlEmigration",
+    templateUrl: "emigration/emigrationapp/edit.html"
             });
     
 });
