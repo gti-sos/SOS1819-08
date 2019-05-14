@@ -1,12 +1,12 @@
 /* global angular $scope*/
 
 angular
-    .module("TouristsApp")
+    .module("App")
     .controller("EditCtrl", ["$scope", "$http", "$routeParams", "$location", function($scope, $http, $routeParams, $location) {
         console.log("Edit Tourists Initialized!");
 
 
-        var API = "/api/v1/tourists-by-countries/" + $routeParams.country + "/" + $routeParams.year;
+        var API = "/tourists-by-countries/" + $routeParams.country + "/" + $routeParams.year;
 
 
      
