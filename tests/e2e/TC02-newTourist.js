@@ -7,7 +7,7 @@ describe('Checking if a new tourist is created', function() {
         element
             .all(by.repeater("tourist in touristsByCountries"))
             .then(function(initialTourist) {
-
+                browser.driver.sleep(2000);
                 element(by.model('country')).sendKeys('Sevilla');
                 element(by.model('year')).sendKeys('2000');
                 element(by.model('touristDeparture')).sendKeys('41012');
