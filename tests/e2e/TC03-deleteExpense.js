@@ -1,7 +1,11 @@
 describe('Checking if an expense is deleted', function(){
     it('should show some expenses',function(){
         browser
+<<<<<<< HEAD
+            .get('https://sos1819-08.herokuapp.com/#!/expenses-of-countries-in-education-and-culture');
+=======
             .get('https://sos1819-08.herokuapp.com/#!/expenses-of-countries-in-education-and-culture/');
+>>>>>>> 8d42b24e43ea7adeec69aac4ce2636c0ebe3ee5b
             
              element
                 .all(by.repeater("expense in expenses"))

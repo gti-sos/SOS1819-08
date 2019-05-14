@@ -1,7 +1,7 @@
 describe('Checking if a new expense is created', function(){
     it('should show some expenses',function(){
         browser
-            .get('https://sos1819-08.herokuapp.com/ui/v1/expenses-of-countries-in-education-and-culture/#!/');
+            .get('https://sos1819-08.herokuapp.com/#!/expenses-of-countries-in-education-and-culture');
                
                 
                 element
