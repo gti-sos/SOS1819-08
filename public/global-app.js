@@ -27,11 +27,11 @@ angular.module("app", ["ngRoute"])
 
         .when("/tourists-by-countries", {
             controller: "ListCtrl",
-            templateUrl: "tourist/list.html"
+            templateUrl: "tourists/list.html"
         })
         .when("/tourists-by-countries/:country/:year", {
             controller: "EditCtrl",
-            templateUrl: "tourist/edit.html"
+            templateUrl: "tourists/edit.html"
         });
 
 
