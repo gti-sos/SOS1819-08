@@ -1,7 +1,7 @@
 /* global angular */
 
     angular
-        .module("minipostmanAPP")
+        .module("app")
         .controller("EditCtrl",
                         ["$scope",
                         "$http", 
