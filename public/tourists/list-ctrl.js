@@ -1,7 +1,7 @@
            /* global angular $scope*/
 
            angular
-               .module("App")
+               .module("app")
                .controller("ListCtrl", ["$scope", "$http", function($scope, $http) {
                    console.log("Tourists Initialized!");
 

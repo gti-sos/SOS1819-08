@@ -1,7 +1,7 @@
 /* global angular $scope*/
 
 angular
-    .module("App")
+    .module("app")
     .controller("EditCtrl", ["$scope", "$http", "$routeParams", "$location", function($scope, $http, $routeParams, $location) {
         console.log("Edit Tourists Initialized!");
 
