@@ -72,14 +72,13 @@ body {
         
         </tr>
                 <tr ng-repeat="tourist in touristsByCountries">
-                    
                     <td><a href="#!/{{tourist.country}}/{{tourist.year}}">{{tourist.country}}</a></td>
                      <p class="text-light"><td>{{ tourist.country }}</td></p>
                      <p class="text-light"><td>{{ tourist.year }}</td></p>
                      <p class="text-light"><td>{{ tourist.touristDeparture }}</td></p>
                      <p class="text-light"><td>{{ tourist.arrivalTourist }}</td></p>
                      <p class="text-light"><td>{{ tourist.incomeTourist }}</td></p>
-                     <td><button type="button" class="btn btn-danger" ng-click="sendDelete(tourist.country, tourist.year)" value="delete">Eliminar</button></td>
+                     <td><button type="button" class="btn btn-danger" ng-click="sendDelete(tourist.country, tourist.year)" value="delete";>Eliminar</button></td>
             </tbody>
         </table>
     
