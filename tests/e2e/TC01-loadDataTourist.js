@@ -12,7 +12,7 @@ var path = require("path");
 
 describe("Data is loaded Tourist", function() {
     it("should show initial Tourist start", function() {
-        browser.get('https://sos1819-08.herokuapp.com/ui/v1/tourists-by-countries/#!/').
+        browser.get('https://sos1819-08.herokuapp.com/#!/tourists-by-countries/').
         then(function() {
             element.all(by.repeater('tourist in touristsByCountries')).then(function(touristsByCountries) {
                 browser.driver.sleep(2000);

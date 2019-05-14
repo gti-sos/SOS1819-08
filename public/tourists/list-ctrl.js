@@ -1,12 +1,12 @@
            /* global angular $scope*/
 
            angular
-               .module("TouristsApp")
+               .module("app")
                .controller("ListCtrl", ["$scope", "$http", function($scope, $http) {
                    console.log("Tourists Initialized!");
 
 
-                   var API = "/api/v1/tourists-by-countries";
+                   var API = "api/v1/tourists-by-countries";
                    var path = "https://sos1819-08.herokuapp.com"
                    refresh();
 

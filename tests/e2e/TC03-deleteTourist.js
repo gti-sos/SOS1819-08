@@ -1,7 +1,7 @@
 describe('Checking if an Tourist is deleted', function() {
     it('should show some Tourist', function() {
         browser
-            .get('https://sos1819-08.herokuapp.com/ui/v1/tourists-by-countries/#!/');
+            .get('https://sos1819-08.herokuapp.com/#!/tourists-by-countries/');
 
         element
             .all(by.repeater("tourist in touristsByCountries"))
