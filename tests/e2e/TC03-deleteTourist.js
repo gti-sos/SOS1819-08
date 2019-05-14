@@ -12,7 +12,7 @@ describe('Checking if an Tourist is deleted', function() {
 
                 element.all(by.repeater("tourist in touristsByCountries"))
                     .then(function(finalTourist) {
-                        expect(finalTourist.length).toEqual(initialTourist.length - 1);
+                        expect(finalTourist.length).toEqual(initialTourist.length-1);
 
                     });
             });
