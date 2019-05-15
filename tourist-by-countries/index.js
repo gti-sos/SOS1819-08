@@ -193,51 +193,7 @@ app.get(BASE_PATH+"/tourists-by-countries/:country/:year", (req, res) => {
 //PUT /turists/China
 
 
-app.put(BASE_PATH+"/tourists-by-countries/:country/:year", (req, res) => {
-
-    // var id1 = req.body.country;
-
-
-    // var updateTourist = req.body;
-
-    // var country = req.params.country;
-
-
-
-    // var esta = touristsByCountries.find({ $set: { 'country': country } });
-
-    // var newValues = { $set: updateTourist };
-    // if (id1 != esta) {
-    //     res.sendStatus(400);
-    //     console.log("FALLO");
-    // }
-    // else {
-    //     console.log("NO FALLO");
-    //     touristsByCountries.updateOne({ "country": country }, newValues, { upsert: true });
-    //     res.sendStatus(200);
-    // }
-
-var country = req.params.country;
-var year = req.params.year;
-var data = req.body;
-
-console.log(data);
-//Comprobamos si hay incongruencias en los datos antes de actuar
-
-
-if (country != data.country || year != data.year ||  touristDeparture != data.touristDeparture) {
-            res.sendStatus(400);
-            console.warn(Date() + "Error accesing DB");
-            return;
-        }
-
-        else {
-            touristsByCountries.update({ "province": data.province, "year": data.year }, data, (err, numUpdated) => {
-                console.log("Updated: " + numUpdated);
-                res.sendStatus(200);
-            });
-        }
-    });
+// 
     
     
     
