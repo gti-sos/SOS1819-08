@@ -11,7 +11,7 @@ angular.module("app", ["ngRoute"])
 
 
             .when("/expenses-of-countries-in-education-and-culture/:country/:year", {
-                controller: "EditCtrl",
+                controller: "EditCtrl-expense",
                 templateUrl: "expenses/edit-expenses.html"
             })
 
