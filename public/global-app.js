@@ -11,7 +11,7 @@ angular.module("app", ["ngRoute"])
 
 
             .when("/expenses-of-countries-in-education-and-culture/:country/:year", {
-                controller: "EditCtrl-expense",
+                controller: "EditCtrl-expense", //fallo
                 templateUrl: "expenses/edit-expenses.html"
             })
 
@@ -33,7 +33,7 @@ angular.module("app", ["ngRoute"])
             controller: "EditCtrl",
             templateUrl: "tourists/edit.html"
         });
-
+  
 
     });
 console.log("angular app ok");
