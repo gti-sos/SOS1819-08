@@ -11,7 +11,7 @@ angular.module("app", ["ngRoute"])
 
 
             .when("/expenses-of-countries-in-education-and-culture/:country/:year", {
-                controller: "EditCtrl-expense", //fallo
+                controller: "EditCtrlExpenses", //fallo
                 templateUrl: "expenses/edit-expenses.html"
             })
 

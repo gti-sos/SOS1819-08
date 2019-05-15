@@ -2,7 +2,7 @@
 
     angular
         .module("app")
-        .controller("EditCtrl-expense",
+        .controller("EditCtrlExpenses",
                         ["$scope",
                         "$http", 
                         "$routeParams",
