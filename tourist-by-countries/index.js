@@ -225,7 +225,7 @@ console.log(data);
 //Comprobamos si hay incongruencias en los datos antes de actuar
 
 
-if (country != data.country || year != data.year) {
+if (country != data.country || year != data.year ||  touristDeparture != data.touristDeparture) {
             res.sendStatus(400);
             console.warn(Date() + "Error accesing DB");
             return;
@@ -238,6 +238,27 @@ if (country != data.country || year != data.year) {
             });
         }
     });
+    
+    
+    
+    app.put("/api/v1/tourists-by-countries/:country/:year", (req, res) => {
+
+    var country = req.params.country;
+    var year = parseInt(req.params.year);
+    var updateTourist = req.body;
+    if (country != updateTourist.country || year != parseInt(updateTourist.year) || !updateTourist.hasOwnProperty("year") || !updateTourist.hasOwnProperty("touristDeparture") ||
+        !updateTourist.hasOwnProperty("arrivalTourist") || !updateTourist.hasOwnProperty("incomeTourist") ||
+        updateTourist["country"] == null || updateTourist["year"] == null || updateTourist["touristDeparture"] == null || updateTourist["arrivalTourist"] == null ||
+        updateTourist["incomeTourist"] == null) {
+        res.sendStatus(400);
+        return;
+    }
+    touristsByCountries.update({ "country": country, "year": year }, updateTourist, { upsert: false });
+
+
+    res.sendStatus(200);
+
+});
 
 
 //DELETE/tourists-by-countries/China
