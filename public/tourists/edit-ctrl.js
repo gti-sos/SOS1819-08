@@ -2,7 +2,7 @@
 
 angular
     .module("app")
-    .controller("EditCtrl-expense", ["$scope", "$http", "$routeParams", "$location", function($scope, $http, $routeParams, $location) {
+    .controller("EditCtrl", ["$scope", "$http", "$routeParams", "$location", function($scope, $http, $routeParams, $location) {
         console.log("Edit Tourists Initialized!");
 
 
