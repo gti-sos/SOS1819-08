@@ -34,17 +34,8 @@ angular.module("app", ["ngRoute"])
             templateUrl: "tourists/edit.html"
      
         
-        .when("/analytics/highchartsTourist", {
-            controller: "HighchartsTourist",
-            templateUrl: "tourists/analytics/highcharts-tourist.html"
-
-        })
-        .when("/analytics/geoChartsTourist", {
-
-            controller: "GeoChartsTourist",
-            templateUrl: "tourists/analytics/geocharts-tourist.html"
-
-        })  })
+        
+        });  
         });
 
   
