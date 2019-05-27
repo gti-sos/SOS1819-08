@@ -33,7 +33,18 @@ angular.module("app", ["ngRoute"])
             controller: "EditCtrl",
             templateUrl: "tourists/edit.html"
      
-        
+        .when("/analytics/highchartsTourist", {
+
+            controller: "HighchartsTourist",
+            templateUrl: "biofuels/analytics/highcharts-tourist.html"
+
+        })
+        .when("/analytics/geoChartsTourist", {
+
+            controller: "GeoChartsBiofuels",
+            templateUrl: "biofuels/analytics/geocharts-tourist.html"
+
+        })
         
         });  
         });
