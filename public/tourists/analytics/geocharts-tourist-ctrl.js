@@ -7,7 +7,7 @@ angular
         "$routeParams",
         function($scope, $http, $routeParams) {
 
-            var API = "api/v1/tourists-by-countries/";
+            var API = "api/v1/tourists-by-countries";
             var tourists = [];
 
             $http.get(API).then(function(response) {
