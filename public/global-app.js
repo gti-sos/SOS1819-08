@@ -36,13 +36,13 @@ angular.module("app", ["ngRoute"])
         .when("/analytics/highchartsTourist", {
 
             controller: "HighchartsTourist",
-            templateUrl: "biofuels/analytics/highcharts-tourist.html"
+            templateUrl: "tourists/analytics/highcharts-tourist.html"
 
         })
         .when("/analytics/geoChartsTourist", {
 
             controller: "GeoChartsBiofuels",
-            templateUrl: "biofuels/analytics/geocharts-tourist.html"
+            templateUrl: "tourists/analytics/geocharts-tourist.html"
 
         })
         
