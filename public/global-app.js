@@ -46,8 +46,7 @@ angular.module("app", ["ngRoute"])
             templateUrl: "tourists/analytics/geocharts-tourist.html"
 
         })
-        
-         
+
         });
 
   
