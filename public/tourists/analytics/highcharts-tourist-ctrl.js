@@ -30,7 +30,7 @@ angular
                     yAxis: {
                         min: 0,
                         title: {
-                            text: 'Population (millions)',
+                            text: 'Turistas (mil)',
                             align: 'high'
                         },
                         labels: {
@@ -38,7 +38,7 @@ angular
                         }
                     },
                     tooltip: {
-                        valueSuffix: ' millions'
+                        valueSuffix: ' mil'
                     },
                     plotOptions: {
                         bar: {
@@ -63,11 +63,11 @@ angular
                     },
                     series: [{
                             name: 'Tourists Departure',
-                            data: [parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['touristDeparture'] })),
-                                parseInt(response.data.filter(d => d.country == 'China').map(function(d) { return d['touristDeparture'] })),
-                                parseInt(response.data.filter(d => d.country == 'Colombia').map(function(d) { return d['touristDeparture'] })),
-                                parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['touristDeparture'] })),
-                                parseInt(response.data.filter(d => d.country == 'USA').map(function(d) { return d['touristDeparture'] }))
+                            data: [parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d["touristDeparture"] })),
+                                parseInt(response.data.filter(d => d.country == 'China').map(function(d) { return d["touristDeparture"] })),
+                                parseInt(response.data.filter(d => d.country == 'Colombia').map(function(d) { return d["touristDeparture"] })),
+                                parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d["touristDeparture"]})),
+                                parseInt(response.data.filter(d => d.country == 'USA').map(function(d) { return d["touristDeparture"]}))
                             ]
                         }, {
                             name: 'Income Tourist',
