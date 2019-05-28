@@ -7,7 +7,7 @@ angular
         "$routeParams",
         function($scope, $http, $routeParams) {
 
-            var API = "/api/v1/tourists-by-countries";
+            var API = "api/v1/tourists-by-countries";
             var tourists = [];
             $http.get(API).then(function(response) {
 
@@ -35,11 +35,7 @@ angular
 
                     });
 
-                    if (filter.length == 0) {
-                        return touristDeparture;
-                    } else {
-                        return touristDeparture;
-                    }
+                    return touristDeparture;
 
                 });
 
@@ -53,11 +49,7 @@ angular
 
                     });
 
-                    if (filter.length == 0) {
-                        return touristDeparture;
-                    } else {
-                        return touristDeparture;
-                    }
+                    return touristDeparture;
 
                 });
                 var naturalGermany = sinRepetidos.map(function(year) {
@@ -70,11 +62,7 @@ angular
 
                     });
 
-                    if (filter.length == 0) {
-                        return touristDeparture;
-                    } else {
-                        return touristDeparture;
-                    }
+                    return touristDeparture;
 
                 });
 
@@ -88,11 +76,7 @@ angular
 
                     });
 
-                    if (filter.length == 0) {
-                        return touristDeparture;
-                    } else {
-                        return touristDeparture;
-                    }
+                     return touristDeparture;
 
                 });
 

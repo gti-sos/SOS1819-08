@@ -10,32 +10,30 @@ angular
             var API = "api/v1/tourists-by-countries";
             var tourists = [];
 
-            $http.get(API).then(function(response) {
-                google.charts.load('current', {
-                    'packages': ['geochart'],
-                    // Note: you will need to get a mapsApiKey for your project.
-                    // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-                    'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
-                });
-                google.charts.setOnLoadCallback(drawRegionsMap);
 
-                function drawRegionsMap() {
-                    var data = [];
 
-                    tourists = response.data;
-                    data.push(["Country", "Tourist Departure"]);
-                    data.push([tourists[0].country, tourists[0].touristDeparture]);
-                    data.push([tourists[2].country, tourists[2].touristDeparture]);
-                    data.push([tourists[3].country, tourists[3].touristDeparture]);
-                    console.log(data);
-                    var plot = google.visualization.arrayToDataTable(data);
+google.charts.load('current', {
+        'packages': ['geochart'],
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        'mapsApiKey': 'AIzaSyBHY1cV7da92cIQ7IHqGsQdWQxDzxMQjCg'
+      });
+      google.charts.setOnLoadCallback(drawRegionsMap);
 
-                    var options = {};
+      function drawRegionsMap() {
+        var data = google.visualization.arrayToDataTable([
+          ['Country', 'Popularity'],
+          ['Spain', 200],
+          ['United States', 300],
+          ['Germany', 400],
+          ['China', 500],
+          ['Colombia', 600]
+        ]);
 
-                    var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+        var options = {};
 
-                    chart.draw(plot, options);
-                }
-            });
-        }
-    ]);
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        chart.draw(data, options);
+      }
+       }]);
