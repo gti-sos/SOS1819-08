@@ -16,7 +16,7 @@ angular
                         type: 'bar'
                     },
                     title: {
-                        text: 'Historic World Population by Region'
+                        text: 'Datos turisticos por Pais'
                     },
                     subtitle: {
                         text: ''
@@ -63,27 +63,27 @@ angular
                     },
                     series: [{
                             name: 'Tourists Departure',
-                            data: [parseInt(response.data.filter(d => d.country == 'China').map(function(d) { return d['touristDeparture'] })),
-                                parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['touristDeparture'] })),
-                                parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['touristDeparture'] })),
+                            data: [parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['touristDeparture'] })),
+                                parseInt(response.data.filter(d => d.country == 'China').map(function(d) { return d['touristDeparture'] })),
                                 parseInt(response.data.filter(d => d.country == 'Colombia').map(function(d) { return d['touristDeparture'] })),
+                                parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['touristDeparture'] })),
                                 parseInt(response.data.filter(d => d.country == 'USA').map(function(d) { return d['touristDeparture'] }))
                             ]
                         }, {
                             name: 'Income Tourist',
-                            data: [parseInt(response.data.filter(d => d.country == 'China').map(function(d) { return d['incomeTourist'] })),
-                                parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['incomeTourist'] })),
-                                parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['incomeTourist'] })),
+                            data: [parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['incomeTourist'] })),
+                                parseInt(response.data.filter(d => d.country == 'China').map(function(d) { return d['incomeTourist'] })),
                                 parseInt(response.data.filter(d => d.country == 'Colombia').map(function(d) { return d['incomeTourist'] })),
+                                parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['incomeTourist'] })),
                                 parseInt(response.data.filter(d => d.country == 'USA').map(function(d) { return d['incomeTourist'] }))
                             ]
                         }, {
                             name: 'arrival Tourist',
-                            data: [parseInt(response.data.filter(d => d.country == 'China').map(function(d) { return d['arrivalTourist'] })),
-                                parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['arrivalTourist'] })),
-                                parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['arrivalTourist'] })),
-                                parseInt(response.data.filter(d => d.country == 'Colombia').map(function(d) { return d['arrivalTourist'] })),
-                                parseInt(response.data.filter(d => d.country == 'USA').map(function(d) { return d['arrivalTourist'] }))
+                            data: [parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['arrivalTourist'] })),
+                            parseInt(response.data.filter(d => d.country == 'China').map(function(d) { return d['arrivalTourist'] })),
+                            parseInt(response.data.filter(d => d.country == 'Colombia').map(function(d) { return d['arrivalTourist'] })),   
+                            parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['arrivalTourist'] })),
+                            parseInt(response.data.filter(d => d.country == 'USA').map(function(d) { return d['arrivalTourist'] }))
                             ]
                         }
 
