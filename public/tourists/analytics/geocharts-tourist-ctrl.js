@@ -20,8 +20,8 @@ angular
       function drawRegionsMap() {
           var data1 = google.visualization.arrayToDataTable([
     
-        ['año', 'touristDeparture', 'country'],
-         ['2017', parseInt(response.data.filter(d =>d.year == 2017).map(d => { return d['touristDeparture'] })),
+        [ 'touristDeparture', 'country'],
+         [ parseInt(response.data.filter(d =>d.year == 2017).map(d => { return d['touristDeparture'] })),
                             response.data.filter( d =>d.year == 2017).map(d => { return d.country })],
         
 
