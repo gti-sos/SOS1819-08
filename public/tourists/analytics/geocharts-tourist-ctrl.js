@@ -17,13 +17,13 @@ angular
       google.charts.setOnLoadCallback(drawRegionsMap);
 
       function drawRegionsMap() {
-          var data = google.visualization.arrayToDataTable([
+          var data1 = google.visualization.arrayToDataTable([
         ['Country', 'tourist Departure'],
         ['First grade',     touristsByCountries.data.map(function(d){return parseInt(d["touristDeparture"])}), 1],
 
         ]);
 
-        var data1 = google.visualization.arrayToDataTable([
+        var data = google.visualization.arrayToDataTable([
           ['Country', 'Popularity'],
           ['Spain', 200],
           ['United States', 300],
