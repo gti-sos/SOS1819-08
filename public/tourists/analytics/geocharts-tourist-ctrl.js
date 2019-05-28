@@ -1,5 +1,6 @@
 /* global angular */
 
+ 
 angular
     .module("app")
     .controller("GeoChartsBiofuels", ["$scope","$http", function($scope,$http){
@@ -7,7 +8,7 @@ angular
  var API = "api/v1/tourists-by-countries";
  
  
- // $http.get(API).then(function(response){
+  $http.get(API).then(function(response){
     google.charts.load('current', {
         'packages': ['geochart'],
         // Note: you will need to get a mapsApiKey for your project.
@@ -18,25 +19,20 @@ angular
 
       function drawRegionsMap() {
           var data1 = google.visualization.arrayToDataTable([
-        ['Country', 'tourist Departure'],
-        ['First grade',     touristsByCountries.data.map(function(d){return parseInt(d["touristDeparture"])}), 1],
+    
+        ['año', 'touristDeparture', 'country'],
+         ['2017', parseInt(response.data.filter(d.year == 2017).map(d => { return d['touristDeparture'] })),
+                            response.data.filter( d.year == 2017).map(d => { return d.country })],
+        
 
         ]);
 
-        var data = google.visualization.arrayToDataTable([
-          ['Country', 'Popularity'],
-          ['Spain', 200],
-          ['United States', 300],
-          ['Germany', 400],
-          ['China', 500],
-          ['Colombia', 600]
-        ]);
-
-        var options = {};
+        var options = {displayMode: 'markers',
+                        colorAxis: { colors: ['green', 'red'] }};
 
         var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
-        chart.draw(data, options);
+        chart.draw(data1, options);
       }
-//  })
+  })
        }]);
