@@ -2,123 +2,100 @@
 
 angular
     .module("app")
-    .controller("HighchartsTourist", ["$scope",
-        "$http",
-        "$routeParams",
-        function($scope, $http, $routeParams) {
+    .controller("HighchartsTourist", ["$scope", "$http",
+        function($scope, $http) {
 
             var API = "api/v1/tourists-by-countries";
-            var tourists = [];
-            
-            
-        $http.get(API).then(function(response) {
-        Highcharts.chart('turistsbycountries', {
+         
+
+
+            $http.get(API).then(function(response) {
+                Highcharts.chart('container', {
                     chart: {
-                        type: 'area'
+                        type: 'bar'
                     },
                     title: {
-                        text: 'turists by countries'
+                        text: 'Historic World Population by Region'
                     },
                     subtitle: {
-                        text: ''
+                        text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>'
                     },
                     xAxis: {
                         categories: ['Spain', 'China', 'Colombia', 'Germany', 'USA'],
-                        tickmarkPlacement: 'on',
                         title: {
-                            enabled: false
+                            text: null
                         }
                     },
                     yAxis: {
+                        min: 0,
                         title: {
-                            text: 'turistas por pais'
-
+                            text: 'Population (millions)',
+                            align: 'high'
+                        },
+                        labels: {
+                            overflow: 'justify'
                         }
                     },
                     tooltip: {
-                        split: true,
-                        valueSuffix: 'turistas por pais'
+                        valueSuffix: ' millions'
                     },
                     plotOptions: {
-                        area: {
-                            stacking: 'normal',
-                            lineColor: '#666666',
-                            lineWidth: 1,
-                            marker: {
-                                lineWidth: 1,
-                                lineColor: '#666666'
+                        bar: {
+                            dataLabels: {
+                                enabled: true
                             }
                         }
-                    },  
-
-
-    
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'top',
+                        x: -40,
+                        y: 80,
+                        floating: true,
+                        borderWidth: 1,
+                        backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                        shadow: true
+                    },
+                    credits: {
+                        enabled: false
+                    },
                     series: [{
-                        name: 'China touristDeparture',
-                        data: response.data.filter(d => d.country == 'China').map(function(d){return d['touristDeparture']})
+                            name: 'Tourists Departure',
+                            data: [parseInt(response.data.filter(d => d.country == 'China').map(function(d) { return d['touristDeparture'] })),
+                                parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['touristDeparture'] })),
+                                parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['touristDeparture'] })),
+                                parseInt(response.data.filter(d => d.country == 'Colombia').map(function(d) { return d['touristDeparture'] })),
+                                parseInt(response.data.filter(d => d.country == 'USA').map(function(d) { return d['touristDeparture'] }))
+                            ]
+                        }, {
+                            name: 'Income Tourist',
+                            data: [parseInt(response.data.filter(d => d.country == 'China').map(function(d) { return d['incomeTourist'] })),
+                                parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['incomeTourist'] })),
+                                parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['incomeTourist'] })),
+                                parseInt(response.data.filter(d => d.country == 'Colombia').map(function(d) { return d['incomeTourist'] })),
+                                parseInt(response.data.filter(d => d.country == 'USA').map(function(d) { return d['incomeTourist'] }))
+                            ]
+                        }, {
+                            name: 'arrival Tourist',
+                            data: [parseInt(response.data.filter(d => d.country == 'China').map(function(d) { return d['arrivalTourist'] })),
+                                parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['arrivalTourist'] })),
+                                parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['arrivalTourist'] })),
+                                parseInt(response.data.filter(d => d.country == 'Colombia').map(function(d) { return d['arrivalTourist'] })),
+                                parseInt(response.data.filter(d => d.country == 'USA').map(function(d) { return d['arrivalTourist'] }))
+                            ]
+                        }
 
-                    },{
-                        name: 'Spain touristDeparture',
-                        data: response.data.filter(d => d.country == 'Spain').map(function(d){return d['touristDeparture']})
 
-                    },{
-                        name: 'Colombia touristDeparture',
-                        data: response.data.filter(d => d.country == 'Colombia').map(function(d){return d['touristDeparture']})
 
-                    },{
-                        name: 'Germany touristDeparture',
-                        data: response.data.filter(d => d.country == 'Germany').map(function(d){return d['touristDeparture']})
 
-                    },{
-                        name: 'USA touristDeparture',
-                        data: response.data.filter(d => d.country == 'USA').map(function(d){return d['touristDeparture']})
 
-                    },{
-                        name: 'China arrivalTourist',
-                        data: response.data.filter(d => d.country == 'China').map(function(d){return d['arrivalTourist']})
 
-                    },{
-                        name: 'Spain arrivalTourist',
-                        data: response.data.filter(d => d.country == 'Spain').map(function(d){return d['arrivalTourist']})
-
-                    },{
-                        name: 'Colombia arrivalTourist',
-                        data: response.data.filter(d => d.country == 'Colombia').map(function(d){return d['arrivalTourist']})
-
-                    },{
-                        name: 'Germany arrivalTourist',
-                        data: response.data.filter(d => d.country == 'Germany').map(function(d){return d['arrivalTourist']})
-
-                    },{
-                        name: 'USA arrivalTourist',
-                        data: response.data.filter(d => d.country == 'USA').map(function(d){return d['arrivalTourist']})
-
-                    },{
-                        name: 'China incomeTourist',
-                        data: response.data.filter(d => d.country == 'China').map(function(d){return d['incomeTourist']})
-
-                    },{
-                        name: 'Spain incomeTourist',
-                        data: response.data.filter(d => d.country == 'Spain').map(function(d){return d['incomeTourist']})
-
-                    },{
-                        name: 'Colombia incomeTourist',
-                        data: response.data.filter(d => d.country == 'Colombia').map(function(d){return d['incomeTourist']})
-
-                    },{
-                        name: 'Germany incomeTourist',
-                        data: response.data.filter(d => d.country == 'Germany').map(function(d){return d['incomeTourist']})
-
-                    },{
-                        name: 'USA incomeTourist',
-                        data: response.data.filter(d => d.country == 'USA').map(function(d){return d['incomeTourist']})
-
-                    }
                     ]
+
                 });
 
+            })
 
-
-            });
         }
     ]);
