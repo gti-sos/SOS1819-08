@@ -7,7 +7,7 @@ angular
  var API = "api/v1/tourists-by-countries";
  
  
-  $http.get(API).then(function(touristsByCountries){
+ // $http.get(API).then(function(response){
     google.charts.load('current', {
         'packages': ['geochart'],
         // Note: you will need to get a mapsApiKey for your project.
@@ -38,5 +38,5 @@ angular
 
         chart.draw(data, options);
       }
-  })
+//  })
        }]);
