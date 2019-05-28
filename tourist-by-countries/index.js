@@ -58,8 +58,8 @@ app.get(BASE_PATH+"/tourists-by-countries/loadInitialData", (req, res) => {
         {
             country: "Colombia",
             year: 2017,
-            touristDeparture: 4017,
-            arrivalTourist: 4027,
+            touristDeparture: 24017,
+            arrivalTourist: 14027,
             incomeTourist: 4821000
         }
     ];
