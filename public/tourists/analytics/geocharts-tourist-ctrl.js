@@ -15,14 +15,15 @@ angular
         // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
         'mapsApiKey': 'AIzaSyBHY1cV7da92cIQ7IHqGsQdWQxDzxMQjCg'
       });
-      google.charts.setOnLoadCallback(drawRegionsMap);
+                google.charts.setOnLoadCallback(drawMarkersMap);
+                /*console.log("variables :" + response.data.filter(d => d.province == "huelva" && d.year == 2016).map(d => { return d.year }));*/
 
-      function drawRegionsMap() {
+                function drawMarkersMap() {
           var data1 = google.visualization.arrayToDataTable([
     
         ['touristDeparture', 'country'],
          [ parseInt(response.data.filter(d =>d.year == 2017).map(d => { return d['touristDeparture'] })),
-                            response.data.filter( d =>d.year == 2017).map(d => { return d.country })],
+                            parseInt(response.data.filter( d =>d.year == 2017).map(d => { return d.country}))]
         
 
         ]);
