@@ -4,7 +4,8 @@ angular
     .module("app")
     .controller("HighchartsTourist", ["$scope", "$http",
         function($scope, $http) {
-
+        console.log("highcharts inicializado!");
+           
             var API = "api/v1/tourists-by-countries";
          
 
@@ -18,7 +19,7 @@ angular
                         text: 'Historic World Population by Region'
                     },
                     subtitle: {
-                        text: 'Source: <a href="https://en.wikipedia.org/wiki/World_population">Wikipedia.org</a>'
+                        text: ''
                     },
                     xAxis: {
                         categories: ['Spain', 'China', 'Colombia', 'Germany', 'USA'],
