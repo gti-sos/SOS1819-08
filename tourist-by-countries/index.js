@@ -30,36 +30,36 @@ app.get(BASE_PATH+"/tourists-by-countries/loadInitialData", (req, res) => {
     var newTourist = [{
             country: "Spain",
             year: 2017,
-            touristDeparture: 17031.00,
-            arrivalTourist: 81786.00,
+            touristDeparture: 17031,
+            arrivalTourist: 81786,
             incomeTourist: 67964000
         },
         {
             country: "China",
             year: 2017,
-            touristDeparture: 43035.00,
-            arrivalTourist: 60740.00,
+            touristDeparture: 43035,
+            arrivalTourist: 60740,
             incomeTourist: 32617000
         },
         {
             country: "USA",
             year: 2017,
-            touristDeparture: 87703.00,
-            arrivalTourist: 76941.00,
+            touristDeparture: 87703,
+            arrivalTourist: 76941,
             incomeTourist: 210747000
         },
         {
             country: "Germany",
             year: 2017,
-            touristDeparture: 92402.00,
-            arrivalTourist: 37452.00,
+            touristDeparture: 92402,
+            arrivalTourist: 37452,
             incomeTourist: 39823000
         },
         {
             country: "Colombia",
             year: 2017,
-            touristDeparture: 4017.00,
-            arrivalTourist: 4027.00,
+            touristDeparture: 4017,
+            arrivalTourist: 4027,
             incomeTourist: 4821000
         }
     ];
