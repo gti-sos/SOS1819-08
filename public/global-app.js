@@ -34,12 +34,12 @@ angular.module("app", ["ngRoute"])
             templateUrl: "tourists/edit.html"
         
         })
-        // .when("/analytics/highchartsTourist", {
+        .when("/analytics/highchartsTourist", {
 
-        //     controller: "HighchartsTourist",
-        //     templateUrl: "tourists/analytics/highcharts-tourist.html"
+            controller: "HighchartsTourist",
+            templateUrl: "tourists/analytics/highcharts-tourist.html"
 
-        // })
+        })
         .when("/analytics/geoChartsTourist", {
 
             controller: "GeoChartsBiofuels",
