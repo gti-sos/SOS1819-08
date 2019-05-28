@@ -20,15 +20,14 @@ angular
       function drawRegionsMap() {
           var data1 = google.visualization.arrayToDataTable([
     
-        [ 'touristDeparture', 'country'],
+        ['touristDeparture', 'country'],
          [ parseInt(response.data.filter(d =>d.year == 2017).map(d => { return d['touristDeparture'] })),
                             response.data.filter( d =>d.year == 2017).map(d => { return d.country })],
         
 
         ]);
 
-        var options = {displayMode: 'markers',
-                        colorAxis: { colors: ['green', 'red'] }};
+        var options = {};
 
         var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
