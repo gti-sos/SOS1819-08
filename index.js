@@ -1,6 +1,6 @@
 var express = require("express");
 var path = require("path");
-
+var request = require("request");
 var expensesCountries = require("./expenses-of-countries-in-education-and-culture");
 var emigrationsByCountries = require("./emigrations-by-countries");
 var tourist = require("./tourist-by-countries");
@@ -12,6 +12,19 @@ var emigrations = [];
 const MongoClient = require("mongodb").MongoClient;
 const uri = "mongodb+srv://test:test@cluster0-xtof2.mongodb.net/emigrations-by-countries?retryWrites=true";
 const client = new MongoClient(uri, { useNewUrlParser: true });
+
+////############## PROXY MARILOLI #####################//
+// var apiServerHost = 'http://echo.httpkit.com';
+
+// app.use("proxyMLS/", function(req, res) {
+
+//   var url = apiServerHost + req.baseUrl + req.url;
+  
+//   console.log('piped: '+req.baseUrl + req.url);
+ 
+//   req.pipe(request(url)).pipe(res);
+// });
+
 
 /////##############CONEXIONES MONGODB #####################//
 

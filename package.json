@@ -8,7 +8,6 @@
     "pretest": "tests/runPhantom.sh",
     "test": " newman run https://www.getpostman.com/collections/b88bc32715724985e2bb; newman run https://www.getpostman.com/collections/d0833b2de0d97bb2ff2d; newman run https://www.getpostman.com/collections/58ebeec2e7648b1b6fec;protractor tests/tests.js;",
     "posttest": "killall phantomjs",
-   
     "test-tourist": "newman run https://www.getpostman.com/collections/b88bc32715724985e2bb",
     "test-expenses": "newman run https://www.getpostman.com/collections/d0833b2de0d97bb2ff2d",
     "test-emigrants": "newman run https://www.getpostman.com/collections/58ebeec2e7648b1b6fec"
@@ -18,6 +17,7 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "mongodb": "^3.2.3"
+    "mongodb": "^3.2.3",
+    "request": "^2.88.0"
   }
 }
