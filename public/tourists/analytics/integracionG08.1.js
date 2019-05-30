@@ -1,10 +1,8 @@
-/* global angular */
-
 angular
     .module("app")
-    .controller("HighchartsTourist", ["$scope", "$http",
+    .controller("integracionG08", ["$scope", "$http",
             function($scope, $http) {
-                console.log("highcharts inicializado!");
+                console.log("integracionG08!");
 
                 var API = "api/v1/tourists-by-countries";
                 var API2 = "api/v1/emigrations-by-countries";
@@ -13,57 +11,49 @@ angular
 
                 $http.get(API).then(function(response) {
                     $http.get(API2).then(function(response1) {
+                        
                         Highcharts.chart('container', {
-                            chart: {
-                                type: 'bar'
-                            },
-                            title: {
-                                text: 'Datos turisticos por Pais'
-                            },
-                            subtitle: {
-                                text: ''
-                            },
-                            xAxis: {
-                                categories: ['Spain', 'China', 'Colombia', 'Germany', 'USA'],
-                                title: {
-                                    text: null
-                                }
-                            },
-                            yAxis: {
-                                min: 0,
-                                title: {
-                                    text: 'Turistas (mil)',
-                                    align: 'high'
-                                },
-                                labels: {
-                                    overflow: 'justify'
-                                }
-                            },
-                            tooltip: {
-                                valueSuffix: ' mil'
-                            },
-                            plotOptions: {
-                                bar: {
-                                    dataLabels: {
-                                        enabled: true
-                                    }
-                                }
-                            },
-                            legend: {
-                                layout: 'vertical',
-                                align: 'right',
-                                verticalAlign: 'top',
-                                x: -40,
-                                y: 80,
-                                floating: true,
-                                borderWidth: 1,
-                                backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
-                                shadow: true
-                            },
-                            credits: {
-                                enabled: false
-                            },
-                            series: [{
+    chart: {
+        type: 'packedbubble',
+        height: '100%'
+    },
+    title: {
+        text: 'Tourists'
+    },
+    tooltip: {
+        useHTML: true,
+        pointFormat: '<b>{point.name}:</b> {point.value}m CO<sub>2</sub>'
+    },
+    plotOptions: {
+        packedbubble: {
+            minSize: '20%',
+            maxSize: '100%',
+            zMin: 0,
+            zMax: 1000,
+            layoutAlgorithm: {
+                gravitationalConstant: 0.05,
+                splitSeries: true,
+                seriesInteraction: false,
+                dragBetweenSeries: true,
+                parentNodeLimit: true
+            },
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}',
+                filter: {
+                    property: 'y',
+                    operator: '>',
+                    value: 250
+                },
+                style: {
+                    color: 'black',
+                    textOutline: 'none',
+                    fontWeight: 'normal'
+                }
+            }
+        }
+    },
+    series: [{
                                     name: 'Tourists Departure',
                                     data: [parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d["touristDeparture"] })),
                                         parseInt(response.data.filter(d => d.country == 'China').map(function(d) { return d["touristDeparture"] })),
@@ -112,17 +102,10 @@ angular
                                         parseInt(response1.data.filter(d => d.country == 'Germany').map(function(d) { return d['emigrantwoman'] })),
                                         parseInt(response1.data.filter(d => d.country == 'USA').map(function(d) { return d['emigrantwoman'] }))
                                     ]
-                                }
-
-
-
-
-
-
-                            ]
-
-                        });
+                                }]
+});
+                        })
 
                     })
-})
-                }]);
+}
+                ]);

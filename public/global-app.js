@@ -46,6 +46,12 @@ angular.module("app", ["ngRoute"])
             templateUrl: "tourists/analytics/geocharts-tourist.html"
 
         })
+         .when("/analytics/integracionG08", {
+
+            controller: "integracionG08",
+            templateUrl: "tourists/analytics/integracionG08.html"
+
+        })
 
         });
 
