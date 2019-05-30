@@ -4,6 +4,7 @@ var request = require("request");
 var expensesCountries = require("./expenses-of-countries-in-education-and-culture");
 var emigrationsByCountries = require("./emigrations-by-countries");
 var tourist = require("./tourist-by-countries");
+var cors = require("cors");
 
 var expenses = [];
 var touristsByCountries = [];
@@ -78,8 +79,8 @@ var app = express();
 
 var port = process.env.PORT || 8080;
 
-app.use(bodyParser.json())
-
+app.use(bodyParser.json());
+app.use(cors());
 
 
 app.use("/", express.static(path.join(__dirname, "public"))); //conexion index.html principal
