@@ -115,7 +115,7 @@ console.log("Datos para plottable: "+generateData());
 
 
 
-      function generatePlotGroup(xScale, yScale) {
+    /*  function generatePlotGroup(xScale, yScale) {
  var linePlot = new Plottable.Plots.Line()
     .addDataset(new Plottable.Dataset(generateData()))
     .addDataset(new Plottable.Dataset(generateData()))
@@ -183,7 +183,7 @@ var table = new Plottable.Components.Table([
 ]);
 
 table.renderTo("svg#example");
-}
+}*/
 
      });      
              
