@@ -100,12 +100,15 @@ console.log(data1)
       function generateData() {
   var data;
   for (var i in response.data) {
-    var c=response.data[i].country + " "+ response.data[i].year;
-    var ce = response.data[i].countryExpense;
-    var epc = response.data[i].expensePerCapita;
-    var d=[c,ce,epc];
-    data.push(d);
-  }
+   var dat={
+                        name: response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],
+                        expenses: response.data.map(function(d) { return d["countryExpense"] })[i],
+                        epc: response.data.map(function(d) { return d["expensePerCapita"] })[i]
+       
+   }
+                        data.push(dat);
+                    }
+  
   return data;
 }
 
