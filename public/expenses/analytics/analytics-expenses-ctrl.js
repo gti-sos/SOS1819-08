@@ -23,7 +23,7 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
                     expensesData.push(data);
                 
                     console.log("Datos:"+ expensesData);
-     });
+     
                 
                 
               Highcharts.chart('container', {
@@ -55,6 +55,6 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
         data: expensesData
     }]
 });
-                
+     });      
              
  }] );
