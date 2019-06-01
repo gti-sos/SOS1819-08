@@ -21,7 +21,7 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
                     };}else{
                          data={
                         name: response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],
-                        data: response.data.map(function(d) { return d["countryExpense"] })[i]};
+                        data: parseFloat(response.data.map(function(d) { return d["countryExpense"] }))[i]};
                     };
                     expensesData.push(data);
                     }
