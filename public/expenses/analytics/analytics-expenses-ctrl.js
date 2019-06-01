@@ -85,10 +85,11 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
       google.charts.setOnLoadCallback(drawRegionsMap);
 
       function drawRegionsMap() {
+        var data1=['Country', 'Popularity']+ApiCountriesExpenses
         var data = google.visualization.arrayToDataTable([
           ['Country', 'Popularity']+ApiCountriesExpenses
         ]);
-console.log(data)
+console.log(data1)
         var options = {};
         var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
