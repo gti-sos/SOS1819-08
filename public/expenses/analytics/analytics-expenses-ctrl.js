@@ -85,7 +85,8 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
       google.charts.setOnLoadCallback(drawRegionsMap);
 
       function drawRegionsMap() {
-        var data1=ApiCountriesExpenses.unshift(['Country', 'Expenses'])
+        ApiCountriesExpenses.unshift(['Country', 'Expenses'])
+        var data1=ApiCountriesExpenses;
         var data = google.visualization.arrayToDataTable(data1);
 console.log(data1)
         var options = {};
