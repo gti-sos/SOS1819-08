@@ -1,5 +1,5 @@
 /* global angular*/
-
+/* global google*/
 /* global Highcharts*/
 angular.module("app").controller("analyticsExpenses", ["$scope", "$http", function($scope, $http){
     console.log("analytics ctrl initialized");
@@ -16,12 +16,12 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
                     if(i==0){
                     var dat={
                         name: response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],
-                        y: response.data.map(function(d) { return d["expensePerCapita"] })[i] ,sliced: true,
+                        y: response.data.map(function(d) { return d["countryExpense"] })[i] ,sliced: true,
             selected: true
                     };}else{
                          dat={
                         name: response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],
-                        y: response.data.map(function(d) { return d["expensePerCapita"] })[i]};
+                        y: response.data.map(function(d) { return d["countryExpense"] })[i]};
                     };
                     expensesData.push(dat);
                     }
@@ -60,6 +60,44 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
         data: expensesData
     }]
 });
+
+//GEOCHARTS
+      google.charts.load('current', {
+        'packages':['geochart'],
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        'mapsApiKey': 'AIzaSyCo1e4ogvTgn7uvbwO6AtnmfVUt_XZVbgs'
+      });
+            google.charts.load('current', {
+        'packages':['geochart'],
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+      });
+      
+      var ApiCountries;
+      var ApiExpenses;
+       for (var i in response.data){
+           var c=response.data[i];
+           var e=response.data[i];
+           ApiCountries.push(c);
+           ApiExpenses.push(e);
+       }
+       
+      google.charts.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+        var data = google.visualization.arrayToDataTable([
+          ['Country', 'Popularity']
+        ]);
+
+        var options = {};
+        data.push([ApiCountries,ApiExpenses])
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        chart.draw(data, options);
+      }
+
      });      
              
  }] );
