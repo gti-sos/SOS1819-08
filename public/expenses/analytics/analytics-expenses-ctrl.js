@@ -103,7 +103,8 @@ console.log(data1)
     var c=response.data[i].country + " "+ response.data[i].year;
     var ce = response.data[i].countryExpense;
     var epc = response.data[i].expensePerCapita;
-    data.push([c,ce,epc]);
+    var d=[c,ce,epc];
+    data.push(d);
   }
   return data;
 }
