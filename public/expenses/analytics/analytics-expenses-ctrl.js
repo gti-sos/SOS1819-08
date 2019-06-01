@@ -87,7 +87,7 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
         var data = google.visualization.arrayToDataTable([
           ['Country', 'Popularity'],ApiCountriesExpenses
         ]);
-
+console.log(data)
         var options = {};
         var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
