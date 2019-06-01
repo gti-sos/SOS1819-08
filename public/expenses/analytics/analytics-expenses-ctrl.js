@@ -19,7 +19,11 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
                         data: $scope.expenses.map(function(d) { return d["countryExpense"] })[i]
                     };
                     expensesData.push(data);
+                
+                    console.log("Datos:"+ expensesData);
                 }
+                
+                
                Highcharts.chart('container', {
     chart: {
         plotBackgroundColor: null,
