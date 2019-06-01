@@ -77,9 +77,8 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
       
       var ApiCountriesExpenses;
        for (var i in response.data){
-           var c=response.data[i];
-           var e=response.data[i];
-           ApiCountriesExpenses.push([c,e])
+           var d =[response.data[i].country, response.data[i].countryExpense];
+           ApiCountriesExpenses.push(d);
        }
        
       google.charts.setOnLoadCallback(drawRegionsMap);
