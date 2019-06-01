@@ -16,12 +16,12 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
                     if(i==0){
                     var dat={
                         name: response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],
-                        ex: parseInt(response.data.map(function(d) { return d["countryExpense"] }))[i] ,sliced: true,
+                        ex: parseInt(response.data.map(function(d) { return d["expensePerCapita"] }))[i] ,sliced: true,
             selected: true
                     };}else{
                          dat={
                         name: response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],
-                        ex: parseInt(response.data.map(function(d) { return d["countryExpense"] }))[i]};
+                        ex: parseInt(response.data.map(function(d) { return d["expensePerCapita"] }))[i]};
                     };
                     expensesData.push(dat);
                     }
