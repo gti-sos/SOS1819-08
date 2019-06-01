@@ -75,13 +75,11 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
         'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
       });
       
-      var ApiCountries;
-      var ApiExpenses;
+      var ApiCountriesExpenses;
        for (var i in response.data){
            var c=response.data[i];
            var e=response.data[i];
-           ApiCountries.push(c);
-           ApiExpenses.push(e);
+           ApiCountriesExpenses.push([c,e])
        }
        
       google.charts.setOnLoadCallback(drawRegionsMap);
@@ -92,7 +90,7 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
         ]);
 
         var options = {};
-        data.push([ApiCountries,ApiExpenses])
+        data.push(ApiCountriesExpenses)
         var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
         chart.draw(data, options);
