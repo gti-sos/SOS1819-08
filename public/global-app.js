@@ -55,7 +55,7 @@ angular.module("app", ["ngRoute"])
         .when("/analytics/expenses", {
 
             controller: "analyticsExpenses",
-            templateUrl: "expenses/edit-expenses.html"
+            templateUrl: "expenses/analytics/analytics-expenses.html"
 
         })
 
