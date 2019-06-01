@@ -13,7 +13,7 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
                 //HIGHCHARTS FOR MY OWN API
                 var expensesData=[];
                 for (var i in response.data) {
-                    if(i==response.data.length){
+                    if(i==response.data.length-1){
                     var data={
                         name: response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],
                         data: parseInt(response.data.map(function(d) { return d["countryExpense"] }))[i],sliced: true,
