@@ -13,16 +13,19 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
                 //HIGHCHARTS FOR MY OWN API
                 var expensesData=[];
                 
-                for(var i in response.data){
-                    
+                var i= $scope.expenses.length;
+                    while(i>0){
                     var data={
-                        name: response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],
-                        data: response.data.map(function(d) { return d["countryExpense"] })[i]
+                        name: $scope.expenses.map(function(d) { return d["country"] })[i]+" "+ $scope.expenses.map(function(d) { return d["year"] })[i],
+                        data: $scope.expenses.map(function(d) { return d["countryExpense"] })[i]
                     };
+                        i=i-1;
+                    }
+                    
                     expensesData.push(data);
                 
                     console.log("Datos:"+ expensesData);
-                }
+                
                 
                 
               /* Highcharts.chart('container', {
