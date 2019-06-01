@@ -8,7 +8,7 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
      $http.get(API).then(function(response) {
                     console.log("Data received: "+ JSON.stringify(response.data));
                     $scope.expenses = response.data;
-                });
+                
                 
                 //HIGHCHARTS FOR MY OWN API
                 var expensesData=[];
@@ -25,7 +25,7 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
                     expensesData.push(data);
                 
                     console.log("Datos:"+ expensesData);
-                
+     });
                 
                 
               /* Highcharts.chart('container', {
