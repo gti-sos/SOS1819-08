@@ -98,7 +98,7 @@ console.log(data1)
       //PLOTTABLE
       
       function generateData() {
-  var data;
+  var data=[];
   for (var i in response.data) {
    var dat={
                         name: response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],
