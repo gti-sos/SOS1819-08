@@ -14,6 +14,7 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
                 var expensesData=[];
                 
                 for(var i in response.data){
+                    
                     var data={
                         name: response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],
                         data: response.data.map(function(d) { return d["countryExpense"] })[i]
@@ -24,7 +25,7 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
                 }
                 
                 
-               Highcharts.chart('container', {
+              /* Highcharts.chart('container', {
     chart: {
         plotBackgroundColor: null,
         plotBorderWidth: null,
@@ -54,5 +55,5 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
     }]
 });
                 
-                
+      */          
  }] );
