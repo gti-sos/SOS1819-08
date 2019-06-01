@@ -13,11 +13,11 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
                 //HIGHCHARTS FOR MY OWN API
                 var expensesData=[];
                 
-                var i= $scope.expenses.length;
+                var i= response.data.length;
                     while(i>0){
                     var data={
-                        name: $scope.expenses.map(function(d) { return d["country"] })[i]+" "+ $scope.expenses.map(function(d) { return d["year"] })[i],
-                        data: $scope.expenses.map(function(d) { return d["countryExpense"] })[i]
+                        name: response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],
+                        data: response.data.map(function(d) { return d["countryExpense"] })[i]
                     };
                         i=i-1;
                     }
