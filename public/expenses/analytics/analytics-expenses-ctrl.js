@@ -76,7 +76,7 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
            if(c=='USA'){
                c="United States"
            }
-           var d =[, response.data[i].countryExpense];
+           var d =[c, response.data[i].countryExpense];
             ApiCountriesExpenses.push(d);
        }
       
