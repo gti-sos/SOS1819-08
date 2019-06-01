@@ -81,6 +81,7 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
            
        }
        ApiCountriesExpenses.push(d);
+       console.log("DATOS GEOCHART: "+JSON.stringify(ApiCountriesExpenses))
       google.charts.setOnLoadCallback(drawRegionsMap);
 
       function drawRegionsMap() {
