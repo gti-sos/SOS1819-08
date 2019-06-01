@@ -14,10 +14,11 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
                 var expensesData=[];
                 
                 for(var i in $scope.expenses){
-                    expensesData={
+                    var data={
                         name:$scope.expenses.map(function(d) { return d["country"] })[i]+" "+ $scope.expenses.map(function(d) { return d["year"] })[i],
                         data: $scope.expenses.map(function(d) { return d["countryExpense"] })[i]
                     };
+                    expensesData.push(data);
                 }
                Highcharts.chart('container', {
     chart: {
