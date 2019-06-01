@@ -112,7 +112,7 @@ console.log(data1)
   return data;
 }
 
-console.log("Datos para plottable: "+generateData());
+console.log("Datos para plottable: "+JSON.stringify(generateData()));
 
 
 
