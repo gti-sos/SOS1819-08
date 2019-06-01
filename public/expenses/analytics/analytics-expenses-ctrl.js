@@ -16,7 +16,7 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
                     if(i==response.data.length){
                     var data={
                         name: response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],
-                        data: parseInt(response.data.map(function(d) { return d["countryExpense"] }))[i],sliced: true,
+                        data: parseFloat(response.data.map(function(d) { return d["countryExpense"] }))[i],sliced: true,
             selected: true
                     };}else{
                          data={
