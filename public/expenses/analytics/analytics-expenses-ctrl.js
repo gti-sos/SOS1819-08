@@ -12,14 +12,12 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
                 
                 //HIGHCHARTS FOR MY OWN API
                 var expensesData=[];
-                
-                var i= response.data.length;
-                    while(i>0){
+                for (var i in response.data) {
                     var data={
                         name: response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],
                         data: response.data.map(function(d) { return d["countryExpense"] })[i]
                     };
-                        i=i-1;
+                    expensesData.push(data);
                     }
                     
                     expensesData.push(data);
@@ -28,7 +26,7 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
      });
                 
                 
-              /* Highcharts.chart('container', {
+              Highcharts.chart('container', {
     chart: {
         plotBackgroundColor: null,
         plotBorderWidth: null,
@@ -58,5 +56,5 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
     }]
 });
                 
-      */          
+             
  }] );
