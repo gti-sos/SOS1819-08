@@ -75,7 +75,7 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
         'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
       });
       
-      var ApiCountriesExpenses;
+      var ApiCountriesExpenses=[];
        for (var i in response.data){
            var d =[response.data[i].country, response.data[i].countryExpense];
            
