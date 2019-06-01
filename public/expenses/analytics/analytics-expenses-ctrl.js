@@ -14,16 +14,16 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
                 var expensesData=[];
                 for (var i in response.data) {
                     if(i==0){
-                    var data={
+                    var dat={
                         name: response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],
-                        data: parseInt(response.data.map(function(d) { return d["countryExpense"] }))[i],sliced: true,
+                        data: parseInt(response.data.map(function(d) { return d["countryExpense"] }))[i] ,sliced: true,
             selected: true
                     };}else{
-                         data={
+                         dat={
                         name: response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],
                         data: parseInt(response.data.map(function(d) { return d["countryExpense"] }))[i]};
                     };
-                    expensesData.push(data);
+                    expensesData.push(dat);
                     }
                     
                     
