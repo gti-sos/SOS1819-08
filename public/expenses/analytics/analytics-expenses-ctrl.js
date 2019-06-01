@@ -27,7 +27,7 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
                     }
                     
                     
-                    console.log("Datos:"+ expensesData);
+                    console.log("Datos:"+ JSON.stringify(expensesData));
      
                 
                 
