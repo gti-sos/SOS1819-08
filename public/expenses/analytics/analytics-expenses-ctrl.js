@@ -93,6 +93,97 @@ console.log(data1)
 
         chart.draw(data, options);
       }
+      
+      
+      //PLOTTABLE
+      
+      function generateData() {
+  var data;
+  for (var i in response.data) {
+    var c=response.data[i].country + " "+ response.data[i].year;
+    var ce = response.data[i].countryExpense;
+    var epc = response.data[i].expensePerCapita;
+    data.push([c,ce,epc]);
+  }
+  return data;
+}
+
+console.log("Datos para plottable: "+generateData());
+
+
+
+
+
+
+      function generatePlotGroup(xScale, yScale) {
+ var linePlot = new Plottable.Plots.Line()
+    .addDataset(new Plottable.Dataset(generateData()))
+    .addDataset(new Plottable.Dataset(generateData()))
+    .x(function(d) { return d.date; }, xScale)
+    .y(function(d) { return d.value; }, yScale)
+    .attr("opacity", 0.9);
+
+  var datasetForFocusPoint = new Plottable.Dataset();
+
+  var selectedPoint = new Plottable.Plots.Scatter()
+    .x(function(d) { return d.date; }, xScale)
+    .y(function(d) { return d.value; }, yScale)
+    .size(10)
+    .attr("opacity", 1)
+    .addDataset(datasetForFocusPoint);
+
+  var selectedPointHighlight = new Plottable.Plots.Scatter()
+    .x(function(d) { return d.date; }, xScale)
+    .y(function(d) { return d.value; }, yScale)
+    .size(20)
+    .attr("opacity", 0.25)
+    .addDataset(datasetForFocusPoint);
+
+  var guideline = new Plottable.Components.GuideLineLayer(
+    Plottable.Components.GuideLineLayer.ORIENTATION_VERTICAL
+  ).scale(xScale);
+
+  return new Plottable.Components.Group([linePlot, guideline, selectedPoint, selectedPointHighlight]);
+}
+
+function generateInteraction(plotGroup1) {
+  var linePlot1 = plotGroup1.components()[0];
+
+  var guideline1 = plotGroup1.components()[1];
+
+  var selectedPoint1 = plotGroup1.components()[2];
+
+  var interaction = new Plottable.Interactions.Pointer();
+  interaction.onPointerMove(function(point) {
+    var nearestEntity = linePlot1.entityNearest(point);
+    selectedPoint1.datasets()[0].data([nearestEntity.datum]);
+    guideline1.value(nearestEntity.datum.date);
+  });
+
+  return interaction;
+}
+
+var xScale = new Plottable.Scales.Time();
+var yScaleTop = new Plottable.Scales.Linear();
+
+var plotGroupTop = generatePlotGroup(xScale, yScaleTop);
+
+generateInteraction(plotGroupTop).attachTo(plotGroupTop.components()[0]);
+
+var xAxisTop = new Plottable.Axes.Time(xScale, "bottom");
+var yAxisTop = new Plottable.Axes.Numeric(yScaleTop, "left");
+
+var chart1 = new Plottable.Components.Table([
+  [yAxisTop, plotGroupTop],
+  [null,     xAxisTop],
+]);
+
+var table = new Plottable.Components.Table([
+  [chart1]
+]);
+
+table.renderTo("svg#example");
+}
 
      });      
              
