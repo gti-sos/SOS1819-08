@@ -1,6 +1,7 @@
 /* global angular*/
 /* global google*/
 /* global Highcharts*/
+/* global Plottable*/
 angular.module("app").controller("analyticsExpenses", ["$scope", "$http", function($scope, $http){
     console.log("analytics ctrl initialized");
      var API = "https://sos1819-08.herokuapp.com/api/v1/expenses-of-countries-in-education-and-culture";
@@ -99,12 +100,13 @@ console.log(data1)
       
       function generateData() {
   var data=[];
+  var val= 500;
   for (var i in response.data) {
    var dat={
                         name: response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],
                         expenses: response.data.map(function(d) { return d["countryExpense"] })[i],
-                        epc: response.data.map(function(d) { return d["expensePerCapita"] })[i]
-       
+                        epc: response.data.map(function(d) { return d["expensePerCapita"] })[i],
+                        value:  + data[data.length - 1].value + Math.random()
    }
                         data.push(dat);
                     }
@@ -114,16 +116,11 @@ console.log(data1)
 
 console.log("Datos para plottable: "+JSON.stringify(generateData()));
 
-
-
-
-
-
-    /*  function generatePlotGroup(xScale, yScale) {
- var linePlot = new Plottable.Plots.Line()
+function generatePlotGroup(xScale, yScale) {
+  var linePlot = new Plottable.Plots.Line()
     .addDataset(new Plottable.Dataset(generateData()))
     .addDataset(new Plottable.Dataset(generateData()))
-    .x(function(d) { return d.date; }, xScale)
+    .x(function(d) { return d.name; }, xScale)
     .y(function(d) { return d.value; }, yScale)
     .attr("opacity", 0.9);
 
@@ -150,44 +147,10 @@ console.log("Datos para plottable: "+JSON.stringify(generateData()));
   return new Plottable.Components.Group([linePlot, guideline, selectedPoint, selectedPointHighlight]);
 }
 
-function generateInteraction(plotGroup1) {
-  var linePlot1 = plotGroup1.components()[0];
 
-  var guideline1 = plotGroup1.components()[1];
 
-  var selectedPoint1 = plotGroup1.components()[2];
 
-  var interaction = new Plottable.Interactions.Pointer();
-  interaction.onPointerMove(function(point) {
-    var nearestEntity = linePlot1.entityNearest(point);
-    selectedPoint1.datasets()[0].data([nearestEntity.datum]);
-    guideline1.value(nearestEntity.datum.date);
-  });
-
-  return interaction;
-}
-
-var xScale = new Plottable.Scales.Time();
-var yScaleTop = new Plottable.Scales.Linear();
-
-var plotGroupTop = generatePlotGroup(xScale, yScaleTop);
-
-generateInteraction(plotGroupTop).attachTo(plotGroupTop.components()[0]);
-
-var xAxisTop = new Plottable.Axes.Time(xScale, "bottom");
-var yAxisTop = new Plottable.Axes.Numeric(yScaleTop, "left");
-
-var chart1 = new Plottable.Components.Table([
-  [yAxisTop, plotGroupTop],
-  [null,     xAxisTop],
-]);
-
-var table = new Plottable.Components.Table([
-  [chart1]
-]);
-
-table.renderTo("svg#example");
-}*/
+   
 
      });      
              
