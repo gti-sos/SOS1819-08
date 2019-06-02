@@ -7,7 +7,7 @@ var tourist = require("./tourist-by-countries");
 var cors = require("cors");
 
 var expensesExternalProxy='/proxyExternal1';
-var expensesProxyE1= 'https://countryapi.gear.host/v1/Country/getCountries';
+var expensesProxyE1= 'http://countryapi.gear.host/v1/Country/getCountries';
 
 var expenses = [];
 var touristsByCountries = [];
