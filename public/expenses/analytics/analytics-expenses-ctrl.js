@@ -3,7 +3,7 @@
 /* global Highcharts*/
 /* global Plottable*/
 angular.module("app").controller("analyticsExpenses", ["$scope", "$http", function($scope, $http){
-    console.log("analytics ctrl initialized");
+    console.log("analytics ctrler initialized!");
      var API = "https://sos1819-08.herokuapp.com/api/v1/expenses-of-countries-in-education-and-culture";
      
      $http.get(API).then(function(response) {
@@ -98,7 +98,7 @@ console.log(data1)
       
       //PLOTTABLE
        
-  var data=[];
+   var data=[];
   var symbolSize = 10;
   
   for (var i in response.data) {
@@ -172,7 +172,8 @@ var table = new Plottable.Components.Table([
   [null,  xAxis]
 ]);
 
-table.renderTo("svg#example");
+table.renderTo("div#example");
+
 
 
 
