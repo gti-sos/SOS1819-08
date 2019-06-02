@@ -16,10 +16,10 @@ angular
                             spacingBottom: 30
                         },
                         title: {
-                            text: 'Fruit consumption *'
+                            text: 'Emigrations-by-Countries'
                         },
                         subtitle: {
-                            text: '* Jane\'s banana consumption is unknown',
+                            text: '',
                             floating: true,
                             align: 'right',
                             verticalAlign: 'bottom',
