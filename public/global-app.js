@@ -59,21 +59,10 @@ angular.module("app", ["ngRoute"])
 
         })
 
-        });
-
-  
-console.log("angular app ok");
-<<<<<<< HEAD
         .when("/analytics/n3", {
 
             controller: "n3Tourist",
             templateUrl: "tourists/analytics/n3.html"
-=======
-        .when("/analytics/expenses", {
-
-            controller: "analyticsExpenses",
-            templateUrl: "expenses/analytics/analytics-expenses.html"
->>>>>>> eaa59e7f4a4d5a188905871d54f7bfbe8fe7e252
 
         })
 
