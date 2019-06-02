@@ -58,9 +58,17 @@ angular.module("app", ["ngRoute"])
             templateUrl: "expenses/analytics/analytics-expenses.html"
 
         })
-         .when("/analytics", {
+         .when("/integrations", {
 
             templateUrl: "integrations.html"
+
+        }).when("/integrations/expenses-08", {
+             controller: "expensesG08ctrl",
+            templateUrl: "expenses/analytics/expenses-G08.html"
+
+        }).when("/integrations/expenses-06", {
+             controller: "expensesG06ctrl",
+            templateUrl: "expenses/analytics/expenses-G06.html"
 
         })
 
