@@ -3,6 +3,7 @@
             var API8 = "https://sos1819-08.herokuapp.com/api/v1/tourists-by-countries";
             var API = "https://sos1819-08.herokuapp.com/api/v1/expenses-of-countries-in-education-and-culture";
             var APIe1 ="https://sos1819-08.herokuapp.com/proxyExternal1"; 
+            var API2="https://sos1819-02.herokuapp.com/api/v1/scorers-stats/"
 //G08
 angular
     .module("app")
@@ -120,32 +121,18 @@ series2.columns.template.tooltipText = "expenses in {category} : [bold]{valueY}[
                     
                     
                     
-                     var data =[["UUU",0,0 ]];
+                     var data =[];
                     for(var i in response.data){
                         for(var j in response1.data){
-                            if(response.data[i].country==response1.data[j].country&&response.data[i].year==response1.data[j].season && (response.data[i].country!="Spain"||response1.data[j].country!="Spain")){
-                                var dat=[     response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],  
+                            if(response1.data[j].season ==response.data[i].year&& response.data[i].country==response1.data[j].country){
+                                var dat=[     response.data.map(function(d) { return d["country"] })[i]+" "+response.data[i].year,  
                                  parseInt(response.data.map(function(d) { return d["countryExpense"] })[i]),
                                  response1.data.map(function(d) { return d["points"] })[j]];
                                 data.push(dat);
-                                i+1;
-                                }else if(!(response.data[i].country==response1.data[j].country&&response.data[i].year==response1.data[j].season)&&j==response1.data.length-1 &&(response.data[i].country!="Spain"||response1.data[j].country!="Spain")){
-                                    var dat=[     response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],  
-                                 parseInt(response.data.map(function(d) { return d["countryExpense"] })[i]),
-                                 0];
-                                         data.push(dat);
-                                }if(response.data[i].country=="Spain" &&response1.data[j].country=="Spain"&&response.data[i].year==response1.data[j].season){
-                                    var dat=[     response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],  
-                                 parseInt(response.data.map(function(d) { return d["countryExpense"] })[i]),
-                                 response1.data.map(function(d) { return d["points"] })[j]];
-                                data.push(dat);
-                                i+1;
-                                }
-                            
+                            }
                         }
                         
                     }
-                    data.pop();
                     console.log("Datos finales: "+data);
                                 
                    
@@ -181,7 +168,7 @@ series2.columns.template.tooltipText = "expenses in {category} : [bold]{valueY}[
             .enabled(true)
             .useHtml(true)
             .text('Integration with uefa country raitings by anychart<br/>' +
-                    '<span style="color:#212121; font-size: 13px;">mean monthly relative humidity</span>');
+                    '<span style="color:#212121; font-size: 13px;"></span>');
 
     // create first series with mapped data
     var series_1 = chart.splineArea(seriesData_1);
@@ -327,3 +314,23 @@ series2.columns.template.tooltipText = "expenses in {category} : [bold]{valueY}[
             })
             
         }])
+        
+        
+        //G02
+         angular
+    .module("app")
+    .controller("expensesG02ctrl", ["$scope", "$http",
+        function($scope, $http) {
+            console.log("integracion por expenses-tourist");
+           
+            
+
+
+            $http.get(API2).then(function(response) {
+                console.log(JSON.stringify(response.data))
+                
+                
+                
+            });
+        }]);
+        
