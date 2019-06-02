@@ -8,11 +8,13 @@ angular
 
                 var API = "api/v1/tourists-by-countries";
                 var API2 = "api/v1/emigrations-by-countries";
+                var api04 = "https://sos1819-04.herokuapp.com/api/v1/beer-consumed-stats";
 
 
 
                 $http.get(API).then(function(response) {
                     $http.get(API2).then(function(response1) {
+                         $http.get(api04).then(function(response2) {
                         Highcharts.chart('container', {
                             chart: {
                                 type: 'bar'
@@ -113,6 +115,16 @@ angular
                                         parseInt(response1.data.filter(d => d.country == 'USA').map(function(d) { return d['emigrantwoman'] }))
                                     ]
                                 }
+                                
+                                , {
+                                    name: 'rating',
+                                    data: [parseInt(response2.data.filter(d => d.country == 'France').map(function(d) { return d['rating'] })),
+                                        parseInt(response2.data.filter(d => d.country == 'Spain').map(function(d) { return d['rating'] })),
+                                        parseInt(response2.data.filter(d => d.country == 'Georgia').map(function(d) { return d['rating'] })),
+                                        parseInt(response2.data.filter(d => d.country == 'Germany').map(function(d) { return d['rating'] })),
+                                        parseInt(response2.data.filter(d => d.country == 'United States').map(function(d) { return d['rating'] }))
+                                    ]
+                                }
 
 
 
@@ -124,5 +136,5 @@ angular
                         });
 
                     })
-})
+})})
                 }]);
