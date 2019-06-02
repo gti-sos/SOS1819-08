@@ -81,38 +81,40 @@ angular
                         ]
                     }]
                 });
+
+                google.charts.load('current', {
+                    'packages': ['geochart'],
+                    // Note: you will need to get a mapsApiKey for your project.
+                    // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+                    'mapsApiKey': 'AIzaSyAfgHk-QxAEOnOv40ZUlDjMNie-yRyLhIc'
+                });
+                var ApiCountriesEmigration = [];
+                for (var i in response.data) {
+                    var c = response.data[i].country
+                    if (c == 'USA') {
+                        c = "United States"
+                    }
+                    var d = [c, response.data[i].totalemigrant];
+                    ApiCountriesEmigration.push(d);
+                }
+
+                console.log("DATOS GEOCHART: " + JSON.stringify(ApiCountriesEmigration))
+                google.charts.setOnLoadCallback(drawRegionsMap);
+
+                function drawRegionsMap() {
+                    ApiCountriesEmigration.unshift(['country', 'totalemigrant'])
+                    var data1 = ApiCountriesEmigration;
+                    var data = google.visualization.arrayToDataTable(data1);
+                    console.log(data1)
+
+                    var options = {};
+
+                    var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+                    chart.draw(data, options);
+                }
+
+
             })
         }
     ]);
-
-google.charts.load('current', {
-    'packages': ['geochart'],
-    // Note: you will need to get a mapsApiKey for your project.
-    // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-    'mapsApiKey': 'AIzaSyAfgHk-QxAEOnOv40ZUlDjMNie-yRyLhIc'
-});
-var ApiCountriesEmigration = [];
-for (var i in response.data) {
-    var c = response.data[i].country
-    if (c == 'USA') {
-        c = "United States"
-    }
-    var d = [c, response.data[i].totalemigrant];
-    ApiCountriesEmigration.push(d);
-}
-
-console.log("DATOS GEOCHART: " + JSON.stringify(ApiCountriesEmigration))
-google.charts.setOnLoadCallback(drawRegionsMap);
-
-function drawRegionsMap() {
-        ApiCountriesEmigration.unshift(['country', 'totalemigrant'])
-        var data1=ApiCountriesEmigration;
-        var data = google.visualization.arrayToDataTable(data1);
-console.log(data1)
-
-    var options = {};
-
-    var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-
-    chart.draw(data, options);
-}
