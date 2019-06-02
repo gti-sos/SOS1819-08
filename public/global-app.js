@@ -72,6 +72,13 @@ angular.module("app", ["ngRoute"])
 
         })
 
+        .when("/analytics/n3", {
+
+            controller: "n3Tourist",
+            templateUrl: "tourists/analytics/n3.html"
+
+        })
+
         });
 
   
