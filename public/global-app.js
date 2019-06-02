@@ -78,7 +78,11 @@ angular.module("app", ["ngRoute"])
             templateUrl: "tourists/analytics/n3.html"
 
         })
+        .when("/integrations/expenses-e1", {
+             controller: "expensesExt1ctrl",
+            templateUrl: "expenses/analytics/expenses-E1.html"
 
+        })
         });
 
   

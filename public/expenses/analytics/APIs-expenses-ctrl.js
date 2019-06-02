@@ -2,7 +2,7 @@
  var API6="https://sos1819-06.herokuapp.com/api/v1/uefa-country-rankings"
             var API8 = "https://sos1819-08.herokuapp.com/api/v1/tourists-by-countries";
             var API = "https://sos1819-08.herokuapp.com/api/v1/expenses-of-countries-in-education-and-culture";
-
+            var APIe1 ="http://countryapi.gear.host/v1/Country/getCountries"; 
 //G08
 angular
     .module("app")
@@ -123,17 +123,23 @@ series2.columns.template.tooltipText = "expenses in {category} : [bold]{valueY}[
                      var data =[["UUU",0,0 ]];
                     for(var i in response.data){
                         for(var j in response1.data){
-                            if(response.data[i].country==response1.data[j].country&&response.data[i].year==response1.data[j].season){
+                            if(response.data[i].country==response1.data[j].country&&response.data[i].year==response1.data[j].season && (response.data[i].country!="Spain"||response1.data[j].country!="Spain")){
                                 var dat=[     response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],  
-                                 response.data.map(function(d) { return d["countryExpense"] })[i],
+                                 parseInt(response.data.map(function(d) { return d["countryExpense"] })[i]),
                                  response1.data.map(function(d) { return d["points"] })[j]];
                                 data.push(dat);
                                 i+1;
-                                }else if(!(response.data[i].country==response1.data[j].country&&response.data[i].year==response1.data[j].season)&&j==response1.data.length-1){
+                                }else if(!(response.data[i].country==response1.data[j].country&&response.data[i].year==response1.data[j].season)&&j==response1.data.length-1 &&(response.data[i].country!="Spain"||response1.data[j].country!="Spain")){
                                     var dat=[     response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],  
-                                 response.data.map(function(d) { return d["countryExpense"] })[i],
-                                 5000+787887];
+                                 parseInt(response.data.map(function(d) { return d["countryExpense"] })[i]),
+                                 0];
                                          data.push(dat);
+                                }if(response.data[i].country=="Spain" &&response1.data[j].country=="Spain"&&response.data[i].year==response1.data[j].season){
+                                    var dat=[     response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],  
+                                 parseInt(response.data.map(function(d) { return d["countryExpense"] })[i]),
+                                 response1.data.map(function(d) { return d["points"] })[j]];
+                                data.push(dat);
+                                i+1;
                                 }
                             
                         }
@@ -222,3 +228,25 @@ series2.columns.template.tooltipText = "expenses in {category} : [bold]{valueY}[
             
              
  }] )
+ 
+ angular
+    .module("app")
+    .controller("expensesExt1ctrl", ["$scope", "$http",
+        function($scope, $http) {
+            console.log("integracion por expenses-tourist");
+           
+            
+
+
+            $http.get(API).then(function(response) {
+                $http.get(APIe1).then(function(response1) {
+                     console.log("Data received: "+ JSON.stringify(response.data));
+                    $scope.expenses = response.data;
+                     console.log("Data received: "+response1.data);
+                    $scope.tourist = response1.data;
+                    
+                })
+                
+            })
+            
+        }])
