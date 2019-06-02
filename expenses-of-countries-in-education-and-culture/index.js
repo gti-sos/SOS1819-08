@@ -30,7 +30,7 @@ app.get("/api/v1/expenses-of-countries-in-education-and-culture/loadInitialData"
 },{
     "country": "Germany",
     "year": 2017,
-    "countryExpense": 658066.9,
+    "countryExpense": 146754.1,
     "budgetPercentage": 13.46,
     "expensePerCapita": 1.795
 },{
