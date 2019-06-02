@@ -7,7 +7,13 @@ var tourist = require("./tourist-by-countries");
 var cors = require("cors");
 
 var expensesExternalProxy='/proxyExternal1';
-var expensesProxyE1= 'http://countryapi.gear.host/v1/Country/getCountries';
+var expensesProxyE1= 'https://countryapi.gear.host/v1/Country/getCountries';
+
+var expPaths ="/proxyExternal1";
+
+var expRemoteApiE1 = 'https://countryapi.gear.host/v1/Country/getCountries';
+
+
 
 var expenses = [];
 var touristsByCountries = [];
@@ -102,7 +108,9 @@ app.use("/ui/v1/tourists-by-countries", express.static(path.join(__dirname + "/p
 
 
 
-app.get("/proxyExternal1",function(req,res){
-    console.log("piped: "+expensesProxyE1);
-    req.pipe(request(expensesProxyE1).pipe(res));
+//proxy felix E1
+app.use(expPaths, function(req, res) {
+  console.log('piped: '+expRemoteApiE1);
+  req.pipe(request(expRemoteApiE1)).pipe(res);
 });
+
