@@ -90,7 +90,7 @@ angular.module("app", ["ngRoute"])
 
         })
         
-        .when("/analytics/highchartsEmigrations", {
+        .when("/analytics/emigrations", {
 
             controller: "HighchartsEmigrations",
             templateUrl: "emigration/analytics/highcharts-emigrantions.html"
