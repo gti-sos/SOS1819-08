@@ -1,4 +1,4 @@
-/*global angular, am4core*/
+/*global angular, am4core, RGraph */
  var API6="https://sos1819-06.herokuapp.com/api/v1/uefa-country-rankings"
             var API8 = "https://sos1819-08.herokuapp.com/api/v1/tourists-by-countries";
             var API = "https://sos1819-08.herokuapp.com/api/v1/expenses-of-countries-in-education-and-culture";
@@ -328,8 +328,33 @@ series2.columns.template.tooltipText = "expenses in {category} : [bold]{valueY}[
 
             $http.get(API2).then(function(response) {
                 console.log(JSON.stringify(response.data))
+            
+            var data   =[];
+            var labels =[];
+            
+            
+               for(var i in response.data){
+                   data.push(response.data[i].scorergoal);
+                   labels.push(response.data[i].name);
+               }
+               
+            
+
+            
+
+            window.bar = new RGraph.SVG.Bar({
+                id: 'chart-container',
+                data: data,
+                options: {
+                    xaxisLabels: labels
+                }
+            }).draw();
+
                 
-                
+   
+       
+       
+       
                 
             });
         }]);
