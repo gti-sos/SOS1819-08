@@ -2,7 +2,7 @@
  var API6="https://sos1819-06.herokuapp.com/api/v1/uefa-country-rankings"
             var API8 = "https://sos1819-08.herokuapp.com/api/v1/tourists-by-countries";
             var API = "https://sos1819-08.herokuapp.com/api/v1/expenses-of-countries-in-education-and-culture";
-            var APIe1 ="https://countryapi.gear.host/v1/Country/getCountries"; 
+            var APIe1 ="https://sos1819-08.herokuapp.com/proxyExternal1"; 
 //G08
 angular
     .module("app")
@@ -242,8 +242,85 @@ series2.columns.template.tooltipText = "expenses in {category} : [bold]{valueY}[
                 $http.get(APIe1).then(function(response1) {
                      console.log("Data received: "+ JSON.stringify(response.data));
                     $scope.expenses = response.data;
-                     console.log("Data received: "+response1.data);
-                    $scope.tourist = response1.data;
+                     console.log("Data received: "+JSON.stringify(response1.data));
+                    $scope.coun = response1.data;
+                    
+                   var datos=response1.data.Response;
+                   var data=[];
+                    console.log(JSON.stringify(datos[0]));
+                    for(var i in response.data){
+                       for (var j in datos){
+                            if(datos[j].Name==response.data[i].country&&response.data[i].year==2017){
+                                var dat={
+                                    country: datos[j].Name,
+                                    area: datos[j].Area,
+                                    expenses: response.data[i].countryExpense
+                                }
+                          data.push(dat);  
+                        }
+                    }
+                
+                    
+                    }
+                    console.log("Datos a trabajar: "+JSON.stringify(data))
+                    
+                    var coun =[];
+                    var exp=[];
+                    var area=[];
+                    for (var h in data){
+                        coun.push(data[h].country);
+                        exp.push(data[h].expenses);
+                        area.push(data[h].area);
+                        
+                    } 
+                    
+                    console.log(coun,exp,area);
+                    Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Gráfica comparadora de area y gastos de pais en 2017'
+    },
+    subtitle: {
+        text: 'Limitado a Europa'
+    },
+    xAxis: {
+        categories:coun,
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Area y gastos'
+        },
+        max: 1000000
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Area',
+        data: area
+
+    }, {
+        name: 'Expenses',
+        data: exp
+
+    }]
+});
+                    
                     
                 })
                 

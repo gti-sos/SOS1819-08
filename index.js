@@ -6,12 +6,10 @@ var emigrationsByCountries = require("./emigrations-by-countries");
 var tourist = require("./tourist-by-countries");
 var cors = require("cors");
 
-var expensesExternalProxy='/proxyExternal1';
-var expensesProxyE1= 'https://countryapi.gear.host/v1/Country/getCountries';
 
 var expPaths ="/proxyExternal1";
 
-var expRemoteApiE1 = 'https://countryapi.gear.host/v1/Country/getCountries';
+var expRemoteApiE1 = 'https://countryapi.gear.host/v1/Country/getCountries?pRegion=Europe';
 
 
 
