@@ -2,7 +2,7 @@
  var API6="https://sos1819-06.herokuapp.com/api/v1/uefa-country-rankings"
             var API8 = "https://sos1819-08.herokuapp.com/api/v1/tourists-by-countries";
             var API = "https://sos1819-08.herokuapp.com/api/v1/expenses-of-countries-in-education-and-culture";
-            var APIe1 ="http://countryapi.gear.host/v1/Country/getCountries"; 
+            var APIe1 ="https://countryapi.gear.host/v1/Country/getCountries"; 
 //G08
 angular
     .module("app")

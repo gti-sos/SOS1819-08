@@ -6,6 +6,9 @@ var emigrationsByCountries = require("./emigrations-by-countries");
 var tourist = require("./tourist-by-countries");
 var cors = require("cors");
 
+var expensesExternalProxy='/proxyExternal1';
+var expensesProxyE1= 'https://countryapi.gear.host/v1/Country/getCountries';
+
 var expenses = [];
 var touristsByCountries = [];
 var emigrations = [];
@@ -83,6 +86,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
+
 app.use("/", express.static(path.join(__dirname, "public"))); //conexion index.html principal
 
 
@@ -95,3 +99,10 @@ app.use("/ui/v1/emigrations-by-countries", express.static(__dirname + "/public/e
 
 app.use("/api/v1/minipostman-tourist", express.static(path.join(__dirname + "/public/tourists/minipostman")));  //conexion index.html tourist
 app.use("/ui/v1/tourists-by-countries", express.static(path.join(__dirname + "/public/tourists")));
+
+
+
+app.get("/proxyExternal1",function(req,res){
+    console.log("piped: "+expensesProxyE1);
+    req.pipe(request(expensesProxyE1).pipe(res));
+});
