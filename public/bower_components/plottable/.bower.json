@@ -1,0 +1,15 @@
+{
+  "name": "plottable",
+  "homepage": "https://github.com/palantir/plottable",
+  "version": "3.8.6",
+  "_release": "3.8.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "v3.8.6",
+    "commit": "13a6f2a15a58ed9d612b26c7ddb918405742f466"
+  },
+  "_source": "https://github.com/palantir/plottable.git",
+  "_target": "^3.8.6",
+  "_originalSource": "plottable",
+  "_direct": true
+}
