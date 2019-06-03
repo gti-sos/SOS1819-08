@@ -6,7 +6,11 @@ angular
  var container = document.getElementById('visualization');
   var items = [
     {x: 'Sapin', y: 10},
-    {x: 'USA', y: 25},
+    {x: 'US', y: 25},
+    {x: '2014-06-13', y: 30},
+    {x: '2014-06-14', y: 10},
+    {x: '2014-06-15', y: 15},
+    {x: '2014-06-16', y: 30}
   ];
 
   var dataset = new vis.DataSet(items);

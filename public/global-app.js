@@ -116,6 +116,14 @@ angular.module("app", ["ngRoute"])
 
         })
         
+        .when("/integrations/population", {
+
+            controller: "integracionPopulationsEmi",
+            templateUrl: "emigration/analytics/integracionPopulation.html"
+
+        })
+        
+        
         // .when("/integrations/integracionhappines", {
 
         //     controller: "integracionhappines",
