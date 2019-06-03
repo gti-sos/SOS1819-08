@@ -10,7 +10,14 @@ angular
                 var API2 = "api/v1/emigrations-by-countries";
                 var api04 = "https://sos1819-04.herokuapp.com/api/v1/beer-consumed-stats";
 
-
+        //     var mashapePaisEs = {
+        //     method: 'GET',
+        //     url: "https://restcountries-v1.p.mashape.com/alpha/es",
+        //     headers: {
+        //         "X-Mashape-Key": "AcgEvL97rJmshaCOKvsl1gQsAywip1HIPLejsnt0pcuMEW5zzk",
+        //         "Accept": "application/json"
+        //     }
+        // };
 
                 $http.get(API).then(function(response) {
                     $http.get(API2).then(function(response1) {
