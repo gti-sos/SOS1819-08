@@ -6,6 +6,7 @@
             var API2="https://sos1819-02.herokuapp.com/api/v1/scorers-stats/";
             var API3 ="https://sos1819-03.herokuapp.com/api/v1/computers-attacks-stats";
             var API11="https://sos1819-11.herokuapp.com/api/v2/public-expenditure-educations";
+            var API12="https://sos1819-12.herokuapp.com/api/v1/pollution-stats";
 //G08
 angular
     .module("app")
@@ -628,6 +629,87 @@ function drawBarColors() {
       chart.draw(data, options);
     }
                     
+                    
+                });    
+            });
+        }]);
+        
+        //G12
+         angular
+    .module("app")
+    .controller("expensesG12ctrl", ["$scope", "$http",
+        function($scope, $http) {
+           
+            
+
+
+            $http.get(API).then(function(response) {
+                $http.get(API12).then(function(response1) {
+                     console.log("Data received: "+ JSON.stringify(response.data));
+                    $scope.expenses = response.data;
+                     console.log("Data received: "+JSON.stringify(response1.data));
+                    $scope.compu = response1.data;
+                     
+                     var data1=[];
+                     var coun=[];
+                     var exp=[];
+                     var out=[];
+                     for(var i in response.data){
+                       for (var j in response1.data){
+                          if(response.data[i].country.toLowerCase()==response1.data[j].country.toLocaleLowerCase() && response.data[i].year==response1.data[j].year){
+                              var dat=[
+                                   coun.push(response.data[i].country+" "+ response.data[i].year),
+                                   exp.push(response.data[i].budgetPercentage),
+                                   out.push(response1.data[j].pollution_perca)
+                              ]
+                               data1.push(dat);                   
+                          }else if(response.data[i].country=="Germany"&&response1.data[j].country=="alemania" && response.data[i].year==response1.data[j].year){
+                              coun.push(response.data[i].country+" "+ response.data[i].year),
+                                   exp.push(response.data[i].budgetPercentage),
+                                   out.push(response1.data[j].pollution_perca)
+                          }else if(response.data[i].country=="France"&&response1.data[j].country=="francia" && response.data[i].year==response1.data[j].year){
+                              coun.push(response.data[i].country+" "+ response.data[i].year),
+                                   exp.push(response.data[i].budgetPercentage),
+                                   out.push(response1.data[j].pollution_perca)
+                          }else if(response.data[i].country=="Italy"&&response1.data[j].country=="italia" && response.data[i].year==response1.data[j].year){
+                            coun.push(response.data[i].country+" "+ response.data[i].year),
+                                   exp.push(response.data[i].budgetPercentage),
+                                   out.push(response1.data[j].pollution_perca)
+                       }
+                     }}
+                     console.log(coun)
+                    console.log(exp)
+                    console.log(out)
+                    
+                    
+                     $scope.labels = coun;
+  $scope.series = ['expenses percentage', 'pollution percentage'];
+  $scope.data = [
+    exp,
+    out
+  ];
+  $scope.onClick = function (points, evt) {
+    console.log(points, evt);
+  };
+  $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+  $scope.options = {
+    scales: {
+      yAxes: [
+        {
+          id: 'y-axis-1',
+          type: 'linear',
+          display: true,
+          position: 'left'
+        },
+        {
+          id: 'y-axis-2',
+          type: 'linear',
+          display: true,
+          position: 'right'
+        }
+      ]
+    }
+  };
                     
                 });    
             });

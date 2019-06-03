@@ -1,6 +1,6 @@
 /*global angular*/
 
-angular.module("app", ["ngRoute"])
+angular.module("app", ["ngRoute","chart.js"])
     .config(function($routeProvider) {
         $routeProvider.when("/", {
                 templateUrl: "info.html"
@@ -147,6 +147,12 @@ angular.module("app", ["ngRoute"])
         .when("/integrations/expenses-11", {
              controller: "expensesG11ctrl",
             templateUrl: "expenses/analytics/expenses-G11.html"
+
+        })
+        
+         .when("/integrations/expenses-12", {
+             controller: "expensesG12ctrl",
+            templateUrl: "expenses/analytics/expenses-G12.html"
 
         })
         

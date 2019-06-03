@@ -12,7 +12,6 @@ var expPaths ="/proxyExternal1";
 var expRemoteApiE1 = 'https://countryapi.gear.host/v1/Country/getCountries?pRegion=Europe';
 
 
-
 var expenses = [];
 var touristsByCountries = [];
 var emigrations = [];
@@ -111,4 +110,3 @@ app.use(expPaths, function(req, res) {
   console.log('piped: '+expRemoteApiE1);
   req.pipe(request(expRemoteApiE1)).pipe(res);
 });
-
