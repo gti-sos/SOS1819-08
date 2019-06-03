@@ -37,7 +37,11 @@ angular
                         backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
                     },
                     xAxis: {
-                        categories: ['Spain 2017', 'China 2017', 'Colombia 2017', 'Germany 2017', 'USA 2017']
+                        categories: [response.data[0].country + " "+ response.data[0].year,
+                            response.data[1].country + " "+ response.data[1].year,
+                            response.data[2].country + " "+ response.data[2].year,
+                            response.data[3].country + " "+ response.data[3].year,
+                            response.data[4].country + " "+ response.data[4].year,]
                     },
                     yAxis: {
                         title: {
@@ -65,19 +69,19 @@ angular
                     },
                     series: [{
                         name: 'Total Emigrant',
-                        data: [parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d["totalemigrant"] })),
-                            parseInt(response.data.filter(d => d.country == 'China').map(function(d) { return d["totalemigrant"] })),
-                            parseInt(response.data.filter(d => d.country == 'Colombia').map(function(d) { return d["totalemigrant"] })),
-                            parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d["totalemigrant"] })),
-                            parseInt(response.data.filter(d => d.country == 'USA').map(function(d) { return d["totalemigrant"] }))
+                        data: [parseInt(response.data.filter(d => d.country == response.data[0].country).map(function(d) { return d["totalemigrant"] })),
+                            parseInt(response.data.filter(d => d.country == response.data[1].country).map(function(d) { return d["totalemigrant"] })),
+                            parseInt(response.data.filter(d => d.country == response.data[2].country).map(function(d) { return d["totalemigrant"] })),
+                            parseInt(response.data.filter(d => d.country == response.data[3].country).map(function(d) { return d["totalemigrant"] })),
+                            parseInt(response.data.filter(d => d.country == response.data[4].country).map(function(d) { return d["totalemigrant"] }))
                         ]
                     }, {
                         name: 'Emigrant Man',
-                        data: [parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d["emigrantman"] })),
-                            parseInt(response.data.filter(d => d.country == 'China').map(function(d) { return d["emigrantman"] })),
-                            parseInt(response.data.filter(d => d.country == 'Colombia').map(function(d) { return d["emigrantman"] })),
-                            parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d["emigrantman"] })),
-                            parseInt(response.data.filter(d => d.country == 'USA').map(function(d) { return d["emigrantman"] }))
+                        data: [parseInt(response.data.filter(d => d.country == response.data[0].country).map(function(d) { return d["emigrantman"] })),
+                            parseInt(response.data.filter(d => d.country == response.data[1].country).map(function(d) { return d["emigrantman"] })),
+                            parseInt(response.data.filter(d => d.country == response.data[2].country).map(function(d) { return d["emigrantman"] })),
+                            parseInt(response.data.filter(d => d.country == response.data[3].country).map(function(d) { return d["emigrantman"] })),
+                            parseInt(response.data.filter(d => d.country == response.data[4].country).map(function(d) { return d["emigrantman"] }))
                         ]
                     }]
                 });
