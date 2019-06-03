@@ -5,6 +5,9 @@
             var APIe1 ="https://sos1819-08.herokuapp.com/proxyExternal1"; 
             var API2="https://sos1819-02.herokuapp.com/api/v1/scorers-stats/";
             var API3 ="https://sos1819-03.herokuapp.com/api/v1/computers-attacks-stats";
+            var API11="https://sos1819-11.herokuapp.com/api/v2/public-expenditure-educations";
+            var API12="https://sos1819-12.herokuapp.com/api/v1/pollution-stats";
+            var APIe2="https://api.whatdoestrumpthink.com/api/v1/quotes";
 //G08
 angular
     .module("app")
@@ -384,43 +387,31 @@ series2.columns.template.tooltipText = "expenses in {category} : [bold]{valueY}[
                      console.log("Data received: "+JSON.stringify(response1.data));
                     $scope.compu = response1.data;
                    
-                   var data=[];
+                   var dataexp=[];
+                   var dataCom=[];
                    for(var i in response.data){
-                       for (var j in response1.data){
-                          if(response.data[i].country==response1.data[j].country&&response.data[i].year==response1.data[j].year){
-                              var dat={
-                                  country: response.data[i].country + " "+ response.data[i].year,
-                                  exp: response.data[i].countryExpense,
-                                  comp: response1.data[j].affectedequipments
-                              }
-                            data.push(dat);                      
-                          }else if(response.data[i].country=="USA"&& response1.data[j].country=="EEUU"&&response.data[i].year==response1.data[j].year){
-                              var dat={
-                                  country: response.data[i].country + " "+ response.data[i].year,
-                                  exp: response.data[i].countryExpense,
-                                  comp: response1.data[j].affectedequipments
-                              }
-                            data.push(dat);
-                          }
-                          
-                       }
+                             dataexp.push(response.data[i].countryExpense)
                        
                    }
                    
-                   console.log(JSON.stringify(data));
+                   for(var j in response1.data){
+                       dataCom.push(response1.data[j].affectedequipments);
+                   }
+                   
+                   console.log(JSON.stringify(dataexp));
                     
+                    var sum = dataexp.reduce((previous, current) => current += previous);
+                    var e = sum / dataexp.length;
+                        console.log("e: "+e);
+                                    
+                    var sum1 = dataCom.reduce((previous, current) => current += previous);
+                    var c = sum1 / dataCom.length;
+                        console.log("c: "+c);
 
                     am4core.ready(function() {
-        var j=0;
-        function jran(){
-            if(j==data.length-1){
-              j=0;  
-            }else{
-                j=j+1;
-            }
-            return j;
-        }
-        var p = jran()
+        
+                
+        
             
         
 // Themes begin
@@ -433,7 +424,7 @@ chart.hiddenState.properties.opacity = 0;
 
 var axis = chart.xAxes.push(new am4charts.ValueAxis());
 axis.min = 0;
-axis.max = 160;
+axis.max = 160000;
 axis.strictMinMax = true;
 axis.renderer.inside = true;
 //axis.renderer.ticks.template.inside = true;
@@ -455,7 +446,7 @@ axis.renderer.hiddenState.properties.endAngle = 180;
 
 var axis2 = chart.xAxes.push(new am4charts.ValueAxis());
 axis2.min = 0;
-axis2.max = 240;
+axis2.max = 160000;
 axis2.strictMinMax = true;
 
 axis2.renderer.line.strokeOpacity = 1;
@@ -488,9 +479,9 @@ hand2.startWidth = 10;
 
 
 
-  hand.showValue(data.map(function(d) { return d["exp"] })[p], am4core.ease.cubicOut);
+  hand.showValue(e, am4core.ease.cubicOut);
 //label.text = parseInt(hand.value);
-  hand2.showValue(data.map(function(d) { return d["comp"] })[p], am4core.ease.cubicOut);
+  hand2.showValue(c, am4core.ease.cubicOut);
   //label2.text = Math.round(hand2.value).toString();
 
 var legend = new am4charts.Legend();
@@ -499,10 +490,10 @@ legend.y = am4core.percent(100);
 legend.verticalCenter = "bottom";
 legend.parent = chart.chartContainer;
 legend.data = [{
-  "name": "Expenses of "+data.map(function(d) { return d["country"] })[p].toString(),
+  "name": "Media aritmetica de los gastos por paises",
   "fill": chart.colors.getIndex(0)
 }, {
-  "name": "Measurement #2",
+  "name": "Media aritmetica de los ordenadores afectados por ataques en paises",
   "fill": chart.colors.getIndex(3)
 }];
 
@@ -534,14 +525,14 @@ label.parent = chart.chartContainer;
 label.x = am4core.percent(40);
 label.background.stroke = chart.colors.getIndex(0);
 label.fill = chart.colors.getIndex(0);
-label.text = "0";
+label.text = e;
 
 var label2 = labelList.create();
 label2.parent = chart.chartContainer;
 label2.x = am4core.percent(60);
 label2.background.stroke = chart.colors.getIndex(3);
 label2.fill = chart.colors.getIndex(3);
-label2.text = "0";
+label2.text = c;
 
 
 }); // end am4core.ready()
@@ -552,4 +543,188 @@ label2.text = "0";
                     
                 });    
             });
+        }]);
+        
+        
+        
+        
+        
+        //G11
+          angular
+    .module("app")
+    .controller("expensesG11ctrl", ["$scope", "$http",
+        function($scope, $http) {
+           
+            
+
+
+            $http.get(API).then(function(response) {
+                $http.get(API11).then(function(response1) {
+                     console.log("Data received: "+ JSON.stringify(response.data));
+                    $scope.expenses = response.data;
+                     console.log("Data received: "+JSON.stringify(response1.data));
+                    $scope.compu = response1.data;
+                    
+                    
+                    
+                     var data1=[ ["Country and year", 'expenses in culture per capita', 'expenses in health per capita (G11)']];
+                   for(var i in response.data){
+                       for (var j in response1.data){
+                          if(response.data[i].country.toLowerCase()==response1.data[j].country.toLocaleLowerCase()&&response.data[i].year==response1.data[j].year){
+                              var dat=[
+                                   response.data[i].country+" "+ response.data[i].year,
+                                   response.data[i].expensePerCapita,
+                                   response1.data[j].healthExpenditurePerCapita
+                              ]
+                               data1.push(dat);                   
+                          }
+                          
+                       }
+                       
+                   }
+                   console.log(data1)
+                    
+                   
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawBarColors);
+
+function drawBarColors() {
+     
+        
+
+      
+      var data = google.visualization.arrayToDataTable(data1);
+
+      var options = {
+        title: 'expenses by countries',
+        chartArea: {width: '50%'},
+        colors: ['#b0120a', '#ffab91'],
+        hAxis: {
+          title: 'Total expenses per capita (€)',
+          minValue: 0
+        },
+        vAxis: {
+          title: 'Country and year'
+        }
+      };
+      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+                    
+                    
+                });    
+            });
+        }]);
+        
+        //G12
+         angular
+    .module("app")
+    .controller("expensesG12ctrl", ["$scope", "$http",
+        function($scope, $http) {
+           
+            
+
+
+            $http.get(API).then(function(response) {
+                $http.get(API12).then(function(response1) {
+                     console.log("Data received: "+ JSON.stringify(response.data));
+                    $scope.expenses = response.data;
+                     console.log("Data received: "+JSON.stringify(response1.data));
+                    $scope.compu = response1.data;
+                     
+                     var data1=[];
+                     var coun=[];
+                     var exp=[];
+                     var out=[];
+                     for(var i in response.data){
+                       for (var j in response1.data){
+                          if(response.data[i].country.toLowerCase()==response1.data[j].country.toLocaleLowerCase() && response.data[i].year==response1.data[j].year){
+                              var dat=[
+                                   coun.push(response.data[i].country+" "+ response.data[i].year),
+                                   exp.push(response.data[i].budgetPercentage),
+                                   out.push(response1.data[j].pollution_perca)
+                              ]
+                               data1.push(dat);                   
+                          }else if(response.data[i].country=="Germany"&&response1.data[j].country=="alemania" && response.data[i].year==response1.data[j].year){
+                              coun.push(response.data[i].country+" "+ response.data[i].year),
+                                   exp.push(response.data[i].budgetPercentage),
+                                   out.push(response1.data[j].pollution_perca)
+                          }else if(response.data[i].country=="France"&&response1.data[j].country=="francia" && response.data[i].year==response1.data[j].year){
+                              coun.push(response.data[i].country+" "+ response.data[i].year),
+                                   exp.push(response.data[i].budgetPercentage),
+                                   out.push(response1.data[j].pollution_perca)
+                          }else if(response.data[i].country=="Italy"&&response1.data[j].country=="italia" && response.data[i].year==response1.data[j].year){
+                            coun.push(response.data[i].country+" "+ response.data[i].year),
+                                   exp.push(response.data[i].budgetPercentage),
+                                   out.push(response1.data[j].pollution_perca)
+                       }
+                     }}
+                     console.log(coun)
+                    console.log(exp)
+                    console.log(out)
+                    
+                    
+                     $scope.labels = coun;
+  $scope.series = ['expenses percentage', 'pollution percentage'];
+  $scope.data = [
+    exp,
+    out
+  ];
+  $scope.onClick = function (points, evt) {
+    console.log(points, evt);
+  };
+  $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
+  $scope.options = {
+    scales: {
+      yAxes: [
+        {
+          id: 'y-axis-1',
+          type: 'linear',
+          display: true,
+          position: 'left'
+        },
+        {
+          id: 'y-axis-2',
+          type: 'linear',
+          display: true,
+          position: 'right'
+        }
+      ]
+    }
+  };
+                    
+                });    
+            });
+        }]);
+        
+        
+            angular
+    .module("app")
+    .controller("expensesE2ctrl", ["$scope", "$http",
+        function($scope, $http) {
+            $scope.getDonaldTrump = function(){
+                $http.get(APIe2+"/random").then(function(response){
+                    $scope.trump=response.data.message;
+                    console.log($scope.trump);
+                    $scope.dataResponse= $scope.trump;
+                });
+            }
+            
+             $scope.getDTPerso= function(name) {
+                $http.get(APIe2+"/personalized?q="+name).then(function(response){
+                    $scope.trump2=response.data.message;
+                    console.log($scope.trump2);
+                    $scope.dResponse= $scope.trump2;
+                })
+
+             }
+    
+    
         }]);

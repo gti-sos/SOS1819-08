@@ -1,6 +1,6 @@
 /*global angular*/
 
-angular.module("app", ["ngRoute"])
+angular.module("app", ["ngRoute","chart.js"])
     .config(function($routeProvider) {
         $routeProvider.when("/", {
                 templateUrl: "info.html"
@@ -52,7 +52,7 @@ angular.module("app", ["ngRoute"])
             templateUrl: "tourists/analytics/integracionG08.html"
 
         })
-        .when("/analytics/expenses", {
+        .when("/integrations/expenses", {
 
             controller: "analyticsExpenses",
             templateUrl: "expenses/analytics/analytics-expenses.html"
@@ -116,6 +116,14 @@ angular.module("app", ["ngRoute"])
 
         })
         
+        .when("/integrations/population", {
+
+            controller: "integracionPopulationsEmi",
+            templateUrl: "emigration/analytics/integracionPopulation.html"
+
+        })
+        
+        
         // .when("/integrations/integracionhappines", {
 
         //     controller: "integracionhappines",
@@ -136,7 +144,23 @@ angular.module("app", ["ngRoute"])
         //     templateUrl: "emigration/analytics/vis.html"
 
         // })
+        .when("/integrations/expenses-11", {
+             controller: "expensesG11ctrl",
+            templateUrl: "expenses/analytics/expenses-G11.html"
+
+        })
         
+         .when("/integrations/expenses-12", {
+             controller: "expensesG12ctrl",
+            templateUrl: "expenses/analytics/expenses-G12.html"
+
+        })
+        
+     .when("/integrations/expenses-E2", {
+             controller: "expensesE2ctrl",
+            templateUrl: "expenses/analytics/expenses-E2.html"
+
+        })
         
         });
 
