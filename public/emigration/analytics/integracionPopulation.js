@@ -77,12 +77,12 @@ angular
                             description: 'Chart depicting fictional fruit consumption data, with the minimum, maximum and median values for each month of 2015. Most plums were eaten in spring, and none at all in July or August. Bananas and apples were both consumed in smaller numbers and steadily throughout the year.'
                         },
                         title: {
-                            text: 'Daily company fruit consumption 2015'
+                            text: 'Total Emigrant / Total Populations'
                         },
                         xAxis: [{
                             crosshair: true,
                             accessibility: {
-                                description: 'Months of the year'
+                                description: 'Paises'
                             },
                             categories: [response.data[0].country + " " + response.data[0].year,
                                 response.data[1].country + " " + response.data[1].year,
@@ -91,7 +91,7 @@ angular
                         }],
                         yAxis: {
                             title: {
-                                text: 'Fruits consumed'
+                                text: 'Personas'
                             },
                             min: 0
                         },
@@ -105,51 +105,18 @@ angular
                             pointFormat: '<span style="color:{point.color}">●</span> {series.name}:<br/>Low: <b>{point.low}</b><br/>Median: <b>{point.median}</b><br/>High: <b>{point.high}</b><br/>'
                         },
                         series: [{
-                            name: 'Plums',
+                            name: 'Total Emigrant',
                             data: [
-                                [0, 8, 19],
-                                [1, 11, 23],
-                                [3, 16, 28],
-                                [2, 15, 28],
-                                [1, 15, 27],
-                                [0, 9, 21],
-                                null,
-                                null, [1, 6, 19],
-                                [2, 8, 21],
-                                [2, 9, 22],
-                                [1, 11, 19]
+                                [0, 0, parseInt(response.data.filter(d => d.country == response.data[0].country).map(function(d) { return d["totalemigrant"] }))],
+                                [0, 0, parseInt(response.data.filter(d => d.country == response.data[1].country).map(function(d) { return d["totalemigrant"] }))],
+                                [0, 0, parseInt(response.data.filter(d => d.country == response.data[3].country).map(function(d) { return d["totalemigrant"] }))]
                             ]
                         }, {
-                            name: 'Bananas',
+                            name: 'Total Populations',
                             data: [
-                                [0, 3, 6],
-                                [1, 2, 4],
-                                [0, 2, 5],
-                                [2, 2, 5],
-                                [1, 3, 6],
-                                [0, 1, 3],
-                                [1, 1, 2],
-                                [0, 1, 3],
-                                [1, 1, 3],
-                                [0, 2, 4],
-                                [1, 2, 5],
-                                [1, 3, 5]
-                            ]
-                        }, {
-                            name: 'Apples',
-                            data: [
-                                [1, 4, 6],
-                                [2, 4, 5],
-                                [1, 3, 6],
-                                [2, 3, 6],
-                                [1, 3, 4],
-                                [0, 2, 4],
-                                [0, 1, 2],
-                                [0, 1, 2],
-                                [0, 1, 2],
-                                [0, 2, 4],
-                                [1, 2, 4],
-                                [1, 3, 4]
+                                [0, 0, parseInt(response1.data.filter(d => d.country == response1.data[7].country).map(function(d) { return d["totalpopulation"] }))],
+                                [0, 0, parseInt(response1.data.filter(d => d.country == response1.data[5].country).map(function(d) { return d["totalpopulation"] }))],
+                                [0, 0, parseInt(response1.data.filter(d => d.country == response1.data[4].country).map(function(d) { return d["totalpopulation"] }))]
                             ]
                         }]
                     });
