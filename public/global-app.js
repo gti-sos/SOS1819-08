@@ -102,6 +102,29 @@ angular.module("app", ["ngRoute"])
 
         })
         
+        .when("/analytics/emigrations-expenses08", {
+
+            controller: "integracionExpensesEmi",
+            templateUrl: "emigration/analytics/integracionEmigrations-Expenses.html"
+
+        })
+        
+        .when("/analytics/emigrations-apiExterna1", {
+
+            controller: "apiExterna1Emigration",
+            templateUrl: "emigration/analytics/apiExterna1.html"
+
+        })
+        
+        .when("/analytics/integracionhappines", {
+
+            controller: "integracionhappines",
+            templateUrl: "emigration/analytics/integracionEmigrations-happines.html"
+
+        })
+        
+        
+        
         });
 
   
