@@ -20,7 +20,7 @@ angular
 
                         var data = google.visualization.arrayToDataTable([
                             ['Effort', 'Amount given'],
-                            [response.data[0].country + " "+ response.data[0].year],
+                            [response.data[0].country, parseInt(response.data.filter(d => d.country == response.data[0].country).map(function(d) { return d["totalemigrant"] }))],
                         ]);
 
                         var options = {
