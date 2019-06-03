@@ -112,20 +112,11 @@ angular
                                 [0, 0, parseInt(response.data.filter(d => d.country == response.data[3].country).map(function(d) { return d["totalemigrant"] }))]
                             ]
                         }, {
-                            name: 'Bananas',
+                            name: 'Total Populations',
                             data: [
-                                [0, 3, 6],
-                                [1, 2, 4],
-                                [0, 2, 5],
-                                [2, 2, 5],
-                                [1, 3, 6],
-                                [0, 1, 3],
-                                [1, 1, 2],
-                                [0, 1, 3],
-                                [1, 1, 3],
-                                [0, 2, 4],
-                                [1, 2, 5],
-                                [1, 3, 5]
+                                [0, 0, parseInt(response1.data.filter(d => d.country == response1.data[7].country).map(function(d) { return d["totalpopulation"] }))],
+                                [0, 0, parseInt(response1.data.filter(d => d.country == response1.data[5].country).map(function(d) { return d["totalpopulation"] }))],
+                                [0, 0, parseInt(response1.data.filter(d => d.country == response1.data[4].country).map(function(d) { return d["totalpopulation"] }))]
                             ]
                         }]
                     });
