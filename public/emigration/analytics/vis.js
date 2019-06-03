@@ -18,7 +18,7 @@ angular
     start: '2014-06-10',
     end: '2014-06-18'
   };
-  var graph2d = new vis.Graph2d(container, dataset, options);
+  var graph2d = new vis.Graph2d(container, dataset);
     
 
 
