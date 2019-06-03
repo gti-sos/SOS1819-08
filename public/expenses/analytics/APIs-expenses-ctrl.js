@@ -111,7 +111,6 @@ series2.columns.template.tooltipText = "expenses in {category} : [bold]{valueY}[
     .module("app")
     .controller("expensesG06ctrl", ["$scope", "$http",
         function($scope, $http) {
-            console.log("integracion por expenses-tourist");
            
             
 
@@ -125,88 +124,27 @@ series2.columns.template.tooltipText = "expenses in {category} : [bold]{valueY}[
                     
                     
                     
-                     var data =[];
+                     var coun =[];
+                     var exp=[];
+                     var point=[];
                     for(var i in response.data){
-                        for(var j in response1.data){
-                            if(response1.data[j].season ==response.data[i].year&& response.data[i].country==response1.data[j].country){
-                                var dat=[     response.data.map(function(d) { return d["country"] })[i]+" "+response.data[i].year,  
-                                 parseInt(response.data.map(function(d) { return d["countryExpense"] })[i]),
-                                 response1.data.map(function(d) { return d["points"] })[j]];
-                                data.push(dat);
-                            }
-                        }
+                               coun.push(    "Expenses "+ response.data.map(function(d) { return d["country"] })[i]+" "+response.data[i].year);  
+                                 exp.push(response.data.map(function(d) { return d["countryExpense"] })[i]);
                         
                     }
-                    console.log("Datos finales: "+data);
+                     for(var i in response1.data){
+                               coun.push(    "Points "+ response1.data.map(function(d) { return d["country"] })[i]+" "+response1.data[i].year);  
+                                 exp.push(response1.data.map(function(d) { return d["points"] })[i]);
+                        
+                    }
+                    console.log("Datos finales: "+coun + " "+ exp +  " " + point);
                                 
+                                
+                                $scope.labels= coun;
+                                $scope.data= exp;
                    
                    
-                   anychart.onDocumentReady(function () {
-    // create data set on our data
-    var dataSet = anychart.data.set(data);
-    
-    // map data for the first series, take x from the zero column and value from the first column of data set
-    var seriesData_1 = dataSet.mapAs({'x': 0, 'value': 1});
-
-    // map data for the second series, take x from the zero column and value from the second column of data set
-    var seriesData_2 = dataSet.mapAs({'x': 0, 'value': 2});
-
-    // create area chart
-    var chart = anychart.area();
-
-    // turn on chart animation
-    chart.animation(true);
-    chart.padding([10, 20, 5, 20]);
-
-    // Y axis title
-    chart.yAxis().title('points and expenses');
-    // Y axis labels formatting
-    chart.yAxis().labels().format('{%Value}');
-    // Minimum and maximum
-    chart.yScale()
-            .minimum(0)
-            .maximum(700000);
-
-    // set chart title text settings
-    chart.title()
-            .enabled(true)
-            .useHtml(true)
-            .text('Integration with uefa country raitings by anychart<br/>' +
-                    '<span style="color:#212121; font-size: 13px;"></span>');
-
-    // create first series with mapped data
-    var series_1 = chart.splineArea(seriesData_1);
-    series_1.name('Expenses of countries');
-    series_1.hovered().markers()
-            .enabled(true)
-            .type('circle')
-            .size(10)
-            .stroke('1.5 #fff');
-
-    // create second series with mapped data
-    var series_2 = chart.splineArea(seriesData_2);
-    series_2.name('points of countries');
-    series_2.hovered().markers()
-            .enabled(true)
-            .type('star5')
-            .size(10)
-            .stroke('1.5 #fff');
-
-    // turn the legend on and place it at the bottom of the chart
-    chart.legend()
-            .enabled(true)
-            .position('center-bottom')
-            .fontSize(13)
-            .padding([20, 0, 0, 0]);
-
-
-    // set container id for the chart
-    chart.container('container');
-
-    // initiate chart drawing
-    chart.draw();
-});
-                   
+                 
                    
                     
                     
@@ -224,7 +162,6 @@ series2.columns.template.tooltipText = "expenses in {category} : [bold]{valueY}[
     .module("app")
     .controller("expensesExt1ctrl", ["$scope", "$http",
         function($scope, $http) {
-            console.log("integracion por expenses-tourist");
            
             
 
@@ -237,81 +174,88 @@ series2.columns.template.tooltipText = "expenses in {category} : [bold]{valueY}[
                     $scope.coun = response1.data;
                     
                    var datos=response1.data.Response;
-                   var data=[];
-                    console.log(JSON.stringify(datos[0]));
-                    for(var i in response.data){
-                       for (var j in datos){
-                            if(datos[j].Name==response.data[i].country&&response.data[i].year==2017){
-                                var dat={
-                                    country: datos[j].Name,
-                                    area: datos[j].Area,
-                                    expenses: response.data[i].countryExpense
-                                }
-                          data.push(dat);  
-                        }
-                    }
-                
-                    
-                    }
-                    console.log("Datos a trabajar: "+JSON.stringify(data))
-                    
-                    var coun =[];
-                    var exp=[];
                     var area=[];
-                    for (var h in data){
-                        coun.push(data[h].country);
-                        exp.push(data[h].expenses);
-                        area.push(data[h].area);
-                        
-                    } 
+                    if(datos.length>response.data.length){
+                        for(var i in response.data){
+                                area.push([datos[i].Area,response.data[i].countryExpense]);
+                       
+                    }}else{
+                          for(var i in datos){
+
+                            area.push([datos[i].Area,response.data[i].countryExpense]);                    
+                    }
+                    }
                     
-                    console.log(coun,exp,area);
-                    Highcharts.chart('container', {
+                   console.log(area);
+                  
+                    
+                  
+                  
+                  
+                  Highcharts.chart('container', {
     chart: {
-        type: 'column'
+        type: 'scatter',
+        zoomType: 'xy'
     },
     title: {
-        text: 'Gráfica comparadora de area y gastos de pais en 2017'
+        text: 'Expenses vs area in countries'
     },
     subtitle: {
-        text: 'Limitado a Europa'
+        text: 'Source: API external with proxy'
     },
     xAxis: {
-        categories:coun,
-        crosshair: true
+        title: {
+            enabled: true,
+            text: 'Area (m2)'
+        },
+        startOnTick: true,
+        endOnTick: true,
+        showLastLabel: true
     },
     yAxis: {
-        min: 0,
         title: {
-            text: 'Area y gastos'
-        },
-        max: 1000000
-    },
-    tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f} </b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true
-    },
-    plotOptions: {
-        column: {
-            pointPadding: 0.2,
-            borderWidth: 0
+            text: 'Expenses (€)'
         }
     },
-    series: [{
-        name: 'Area',
-        data: area
+    legend: {
+        layout: 'vertical',
+        align: 'left',
+        verticalAlign: 'top',
+        x: 100,
+        y: 70,
+        floating: true,
+        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+        borderWidth: 1
+    },
+    plotOptions: {
+        scatter: {
+            marker: {
+                radius: 5,
+                states: {
+                    hover: {
+                        enabled: true,
+                        lineColor: 'rgb(100,100,100)'
+                    }
+                }
+            },
+            states: {
+                hover: {
+                    marker: {
+                        enabled: false
+                    }
+                }
+            },
+            tooltip: {
+                headerFormat: '<b>{series.name}</b><br>',
+                pointFormat: '{point.x} m, {point.y} €'
+            }
+        }
+    },
+    series: [{ name: 'Expenses with area',
+        color: 'rgba(23, 77, 77, .5)',
+        data: area}]
 
-    }, {
-        name: 'Expenses',
-        data: exp
-
-    }]
-});
-                    
+                  });
                     
                 })
                 
@@ -325,40 +269,49 @@ series2.columns.template.tooltipText = "expenses in {category} : [bold]{valueY}[
     .module("app")
     .controller("expensesG02ctrl", ["$scope", "$http",
         function($scope, $http) {
-            console.log("integracion por expenses-tourist");
            
             
-
-
+            
+        
             $http.get(API2).then(function(response) {
                 console.log(JSON.stringify(response.data))
-            
+                $http.get(API).then(function(response1){  
+                    console.log(response1.data);
             var data   =[];
             var labels =[];
             
             
                for(var i in response.data){
                    data.push(response.data[i].scorergoal);
-                   labels.push(response.data[i].name);
+                   labels.push(response.data[i].name+" player " +response.data[i].scorergoal);
+               }
+               
+                for(var i in response1.data){
+                   data.push(response1.data[i].expensePerCapita);
+                   labels.push(response1.data[i].country+" expenses "+response1.data[i].expensePerCapita);
                }
                
             
 
             
 
-            window.bar = new RGraph.SVG.Bar({
-                id: 'chart-container',
-                data: data,
-                options: {
-                    xaxisLabels: labels
-                }
-            }).draw();
+            new RGraph.SVG.Pie({
+        id: 'chart-container',
+        data: data,
+        options: {
+            tooltipsEvent: 'mousemove',
+            highlightStyle: 'outline',
+            labelsSticksHlength: 50,
+            tooltips: labels,
+            key: labels
+        }
+    }).draw();
 
                 
    
        
        
-       
+                })
                 
             });
         }]);
@@ -375,7 +328,6 @@ series2.columns.template.tooltipText = "expenses in {category} : [bold]{valueY}[
     .module("app")
     .controller("expensesG03ctrl", ["$scope", "$http",
         function($scope, $http) {
-            console.log("integracion por expenses-tourist");
            
             
 
@@ -567,14 +519,18 @@ label2.text = c;
                     
                     
                     
-                     var data1=[ ["Country and year", 'expenses in culture per capita', 'expenses in health per capita (G11)']];
+                     var data1=[ ];
                    for(var i in response.data){
                        for (var j in response1.data){
                           if(response.data[i].country.toLowerCase()==response1.data[j].country.toLocaleLowerCase()&&response.data[i].year==response1.data[j].year){
                               var dat=[
                                    response.data[i].country+" "+ response.data[i].year,
                                    response.data[i].expensePerCapita,
+                                   
+                                   response1.data[j].educationExpensePub,
+                                   response.data[i].budgetPercentage,
                                    response1.data[j].healthExpenditurePerCapita
+                                   
                               ]
                                data1.push(dat);                   
                           }
@@ -589,35 +545,26 @@ label2.text = c;
                     
                     
                     
-                    
-                    
-                    
-                    google.charts.load('current', {packages: ['corechart', 'bar']});
-google.charts.setOnLoadCallback(drawBarColors);
+                     google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
 
-function drawBarColors() {
-     
-        
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable(data1
+    
+      // Treat first row as data as well.
+    , true);
 
-      
-      var data = google.visualization.arrayToDataTable(data1);
+    var options = {
+      legend:'none'
+    };
 
-      var options = {
-        title: 'expenses by countries',
-        chartArea: {width: '50%'},
-        colors: ['#b0120a', '#ffab91'],
-        hAxis: {
-          title: 'Total expenses per capita (€)',
-          minValue: 0
-        },
-        vAxis: {
-          title: 'Country and year'
-        }
-      };
-      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-      chart.draw(data, options);
-    }
+    var chart = new google.visualization.CandlestickChart(document.getElementById('chart_div'));
+
+    chart.draw(data, options);
+  } 
                     
+                    
+                   
                     
                 });    
             });
@@ -646,12 +593,9 @@ function drawBarColors() {
                      for(var i in response.data){
                        for (var j in response1.data){
                           if(response.data[i].country.toLowerCase()==response1.data[j].country.toLocaleLowerCase() && response.data[i].year==response1.data[j].year){
-                              var dat=[
                                    coun.push(response.data[i].country+" "+ response.data[i].year),
                                    exp.push(response.data[i].budgetPercentage),
                                    out.push(response1.data[j].pollution_perca)
-                              ]
-                               data1.push(dat);                   
                           }else if(response.data[i].country=="Germany"&&response1.data[j].country=="alemania" && response.data[i].year==response1.data[j].year){
                               coun.push(response.data[i].country+" "+ response.data[i].year),
                                    exp.push(response.data[i].budgetPercentage),
@@ -676,29 +620,7 @@ function drawBarColors() {
   $scope.data = [
     exp,
     out
-  ];
-  $scope.onClick = function (points, evt) {
-    console.log(points, evt);
-  };
-  $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
-  $scope.options = {
-    scales: {
-      yAxes: [
-        {
-          id: 'y-axis-1',
-          type: 'linear',
-          display: true,
-          position: 'left'
-        },
-        {
-          id: 'y-axis-2',
-          type: 'linear',
-          display: true,
-          position: 'right'
-        }
-      ]
-    }
-  };
+ ]
                     
                 });    
             });
