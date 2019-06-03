@@ -14,11 +14,17 @@ angular
   ];
 
   var dataset = new vis.DataSet(items);
-  var options = {
-    start: '2014-06-10',
-    end: '2014-06-18'
-  };
-  var graph2d = new vis.Graph2d(container, dataset);
+var options = {
+    dataAxis: {
+        left: {
+            range: {min:-5, max:30}
+        },
+        right: {
+            range: {min:-5}
+        }
+    }
+};
+  var graph2d = new vis.Graph2d(container, dataset, options);
     
 
 
