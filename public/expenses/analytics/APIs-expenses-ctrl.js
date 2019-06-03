@@ -5,6 +5,7 @@
             var APIe1 ="https://sos1819-08.herokuapp.com/proxyExternal1"; 
             var API2="https://sos1819-02.herokuapp.com/api/v1/scorers-stats/";
             var API3 ="https://sos1819-03.herokuapp.com/api/v1/computers-attacks-stats";
+            var API11="https://sos1819-11.herokuapp.com/api/v2/public-expenditure-educations";
 //G08
 angular
     .module("app")
@@ -549,6 +550,84 @@ label2.text = "0";
                     
                          
             
+                    
+                });    
+            });
+        }]);
+        
+        
+        
+        
+        
+        //G04
+          angular
+    .module("app")
+    .controller("expensesG11ctrl", ["$scope", "$http",
+        function($scope, $http) {
+           
+            
+
+
+            $http.get(API).then(function(response) {
+                $http.get(API11).then(function(response1) {
+                     console.log("Data received: "+ JSON.stringify(response.data));
+                    $scope.expenses = response.data;
+                     console.log("Data received: "+JSON.stringify(response1.data));
+                    $scope.compu = response1.data;
+                    
+                    
+                    
+                     var data1=[ ["Country and year", 'expenses in culture per capita', 'expenses in health per capita (G11)']];
+                   for(var i in response.data){
+                       for (var j in response1.data){
+                          if(response.data[i].country.toLowerCase()==response1.data[j].country.toLocaleLowerCase()&&response.data[i].year==response1.data[j].year){
+                              var dat=[
+                                   response.data[i].country+" "+ response.data[i].year,
+                                   response.data[i].expensePerCapita,
+                                   response1.data[j].healthExpenditurePerCapita
+                              ]
+                               data1.push(dat);                   
+                          }
+                          
+                       }
+                       
+                   }
+                   console.log(data1)
+                    
+                   
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawBarColors);
+
+function drawBarColors() {
+     
+        
+
+      
+      var data = google.visualization.arrayToDataTable(data1);
+
+      var options = {
+        title: 'expenses by countries',
+        chartArea: {width: '50%'},
+        colors: ['#b0120a', '#ffab91'],
+        hAxis: {
+          title: 'Total expenses per capita (€)',
+          minValue: 0
+        },
+        vAxis: {
+          title: 'Country and year'
+        }
+      };
+      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+                    
                     
                 });    
             });

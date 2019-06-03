@@ -136,7 +136,11 @@ angular.module("app", ["ngRoute"])
         //     templateUrl: "emigration/analytics/vis.html"
 
         // })
-        
+        .when("/integrations/expenses-11", {
+             controller: "expensesG11ctrl",
+            templateUrl: "expenses/analytics/expenses-G11.html"
+
+        })
         
         });
 
