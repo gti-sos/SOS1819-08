@@ -90,7 +90,7 @@ angular.module("app", ["ngRoute"])
 
         })
         
-        .when("/analytics/emigrations", {
+        .when("/integrations/emigrations", {
 
             controller: "HighchartsEmigrations",
             templateUrl: "emigration/analytics/highcharts-emigrantions.html"
@@ -102,35 +102,35 @@ angular.module("app", ["ngRoute"])
 
         })
         
-        .when("/analytics/emigrations-expenses08", {
+        .when("/integrations/emigrations-expenses08", {
 
             controller: "integracionExpensesEmi",
             templateUrl: "emigration/analytics/integracionEmigrations-Expenses.html"
 
         })
         
-        .when("/analytics/emigrations-apiExterna1", {
+        .when("/integrations/emigrations-apiExterna1", {
 
             controller: "apiExterna1Emigration",
             templateUrl: "emigration/analytics/apiExterna1.html"
 
         })
         
-        .when("/analytics/integracionhappines", {
+        .when("/integrations/integracionhappines", {
 
             controller: "integracionhappines",
             templateUrl: "emigration/analytics/integracionEmigrations-happines.html"
 
         })
         
-        .when("/analytics/ejschart", {
+        .when("/integrations/ejschart", {
 
             controller: "ejschartctrl",
             templateUrl: "emigration/analytics/ejschart.html"
 
         })
         
-        .when("/analytics/vis", {
+        .when("/integrations/vis", {
 
             controller: "visctrl",
             templateUrl: "emigration/analytics/vis.html"
