@@ -8,6 +8,7 @@
             var API11="https://sos1819-11.herokuapp.com/api/v2/public-expenditure-educations";
             var API12="https://sos1819-12.herokuapp.com/api/v1/pollution-stats";
             var APIe2="https://api.whatdoestrumpthink.com/api/v1/quotes";
+            var APIcristian="https://sos1819-08.herokuapp.com/api/v1/emigrations-by-countries/";
 //G08
 angular
     .module("app")
@@ -649,4 +650,70 @@ label2.text = c;
              }
     
     
+        }]);
+        
+        
+        
+        
+        
+        
+        
+        // analyticsG08
+        angular
+    .module("app")
+    .controller("analyticsCtrl08", ["$scope", "$http",
+        function($scope, $http) {
+            console.log("integracion por expenses-tourist-emigrants");
+           
+            
+
+
+            $http.get(API).then(function(response) {
+                $http.get(API8).then(function(response1) {
+                     console.log("Data received: "+ JSON.stringify(response.data));
+                    $scope.expenses = response.data;
+                     console.log("Data received: "+ JSON.stringify(response1.data));
+                    $scope.tourist = response1.data;
+                    
+                     $http.get(APIcristian).then(function(response2) {
+            
+                        var coun=[];
+                        var exp=[];
+                        var tou=[];
+                        var emi=[];
+                        var data=[];
+                        for(var i in response.data){
+                            for (var j in response1.data){
+                                for(var k in response2.data){
+                                    if(response.data[i].country==response2.data[k].country&&response.data[i].country==response2.data[k].country)
+                                        {if(response.data[i].country==response1.data[j].country&&response.data[i].country==response1.data[j].country){
+                                        coun.push(response.data[i].country+ " "+response.data[i].year);
+                                        exp.push(response.data[i].countryExpense);
+                                        tou.push(response1.data[j].arrivalTourist);
+                                        emi.push(response2.data[k].totalemigrant);
+                                        var dat={
+                                            x:response1.data[j].arrivalTourist,
+                                            y: response2.data[k].totalemigrant,
+                                            r:response.data[i].budgetPercentage 
+                                        }
+                                        data.push([dat]);
+                                    }}
+                                }
+                            }
+                        }
+                          console.log(coun)
+                          console.log(exp);
+                          console.log(tou);
+                          console.log(emi)
+                          console.log(data);
+                        
+                        
+                         $scope.series = coun;
+
+     $scope.data = data
+        console.log($scope.data);                 
+                         
+                     });
+                });    
+            });
         }]);
