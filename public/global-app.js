@@ -123,6 +123,13 @@ angular.module("app", ["ngRoute"])
 
         })
         
+        .when("/analytics/ejschart", {
+
+            controller: "ejschartctrl",
+            templateUrl: "emigration/analytics/ejschart.html"
+
+        })
+        
         
         
         });
