@@ -77,12 +77,12 @@ angular
                             description: 'Chart depicting fictional fruit consumption data, with the minimum, maximum and median values for each month of 2015. Most plums were eaten in spring, and none at all in July or August. Bananas and apples were both consumed in smaller numbers and steadily throughout the year.'
                         },
                         title: {
-                            text: 'Daily company fruit consumption 2015'
+                            text: 'Total Emigrant / Total Populations'
                         },
                         xAxis: [{
                             crosshair: true,
                             accessibility: {
-                                description: 'Months of the year'
+                                description: 'Paises'
                             },
                             categories: [response.data[0].country + " " + response.data[0].year,
                                 response.data[1].country + " " + response.data[1].year,
@@ -91,7 +91,7 @@ angular
                         }],
                         yAxis: {
                             title: {
-                                text: 'Fruits consumed'
+                                text: 'Personas'
                             },
                             min: 0
                         },
