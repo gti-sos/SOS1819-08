@@ -61,7 +61,7 @@ angular
                                 parseInt(response.data.filter(d => d.country == response.data[4].country).map(function(d) { return d["totalemigrant"] }))
                         ]
                     }, {
-                        name: '',
+                        name: 'ExpensePerCapita',
                         data: [parseInt(response1.data.filter(d => d.country == response1.data[0].country).map(function(d) { return d["expensePerCapita"] })),
                             parseInt(response1.data.filter(d => d.country == response1.data[1].country).map(function(d) { return d["expensePerCapita"] })),
                             parseInt(response1.data.filter(d => d.country == response1.data[2].country).map(function(d) { return d["expensePerCapita"] })),
