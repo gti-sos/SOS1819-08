@@ -35,11 +35,11 @@ angular
                             }
                         },
                         xAxis: {
-                            categories: [response.data[0].country + " "+ response.data[0].year, response1.data[0].country + " "+ response1.data[0].year,
-                            response.data[1].country + " "+ response.data[1].year, response1.data[1].country + " "+ response1.data[1].year,
-                            response.data[2].country + " "+ response.data[2].year, response1.data[2].country + " "+ response1.data[2].year,
-                            response.data[3].country + " "+ response.data[3].year, response1.data[3].country + " "+ response1.data[3].year,
-                            response.data[4].country + " "+ response.data[4].year, response1.data[4].country + " "+ response1.data[4].year],
+                            categories: [response.data[0].country + " "+ response.data[0].year,
+                            response.data[1].country + " "+ response.data[1].year,
+                            response.data[2].country + " "+ response.data[2].year,
+                            response.data[3].country + " "+ response.data[3].year,
+                            response.data[4].country + " "+ response.data[4].year],
                             labels: {
                                 skew3d: true,
                                 style: {
