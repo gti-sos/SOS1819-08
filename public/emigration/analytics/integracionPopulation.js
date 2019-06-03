@@ -107,7 +107,7 @@ angular
                         series: [{
                             name: 'Plums',
                             data: [
-                                [0, 8, 19],
+                                [0, 0, parseInt(response.data.filter(d => d.country == response.data[0].country).map(function(d) { return d["totalemigrant"] }))],
                                 [1, 11, 23],
                                 [3, 16, 28],
                                 [2, 15, 28],
