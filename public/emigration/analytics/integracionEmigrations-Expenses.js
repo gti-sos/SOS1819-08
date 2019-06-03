@@ -2,7 +2,7 @@ angular
     .module("app")
     .controller("integracionExpensesEmi", ["$scope", "$http",
         function($scope, $http) {
-            console.log("integracionG08!");
+            console.log("integracionExpenses");
 
             var API = "api/v1/emigrations-by-countries";
             var API2 = "api/v1/expenses-of-countries-in-education-and-culture";
