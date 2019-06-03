@@ -102,41 +102,27 @@ angular.module("app", ["ngRoute"])
 
         })
         
-<<<<<<< HEAD
-        .when("/analytics/emigrations-expenses08", {
-=======
         .when("/integrations/emigrations-expenses08", {
->>>>>>> 987c729874054c7b9a3d6b358cd9b0767b872206
 
             controller: "integracionExpensesEmi",
             templateUrl: "emigration/analytics/integracionEmigrations-Expenses.html"
 
         })
         
-<<<<<<< HEAD
-        .when("/analytics/emigrations-apiExterna1", {
-=======
         .when("/integrations/emigrations-apiExterna1", {
->>>>>>> 987c729874054c7b9a3d6b358cd9b0767b872206
 
             controller: "apiExterna1Emigration",
             templateUrl: "emigration/analytics/apiExterna1.html"
 
         })
         
-<<<<<<< HEAD
-        .when("/analytics/integracionhappines", {
-=======
         .when("/integrations/integracionhappines", {
->>>>>>> 987c729874054c7b9a3d6b358cd9b0767b872206
 
             controller: "integracionhappines",
             templateUrl: "emigration/analytics/integracionEmigrations-happines.html"
 
         })
         
-<<<<<<< HEAD
-=======
         .when("/integrations/ejschart", {
 
             controller: "ejschartctrl",
@@ -150,7 +136,6 @@ angular.module("app", ["ngRoute"])
             templateUrl: "emigration/analytics/vis.html"
 
         })
->>>>>>> 987c729874054c7b9a3d6b358cd9b0767b872206
         
         
         });
