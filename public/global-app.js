@@ -46,10 +46,10 @@ angular.module("app", ["ngRoute","chart.js"])
             templateUrl: "tourists/analytics/geocharts-tourist.html"
 
         })
-         .when("/analytics/integracionG08", {
+         .when("/integrations-tourists-by-countries", {
 
-            controller: "integracionG08",
-            templateUrl: "tourists/analytics/integracionG08.html"
+            controller: "integracionTourist",
+            templateUrl: "tourists/analytics/integrations-tourist.html"
 
         })
         .when("/integrations/expenses", {
@@ -72,12 +72,7 @@ angular.module("app", ["ngRoute","chart.js"])
 
         })
 
-        .when("/analytics/n3", {
-
-            controller: "n3Tourist",
-            templateUrl: "tourists/analytics/n3.html"
-
-        })
+      
         .when("/integrations/expenses-e1", {
              controller: "expensesExt1ctrl",
             templateUrl: "expenses/analytics/expenses-E1.html"
