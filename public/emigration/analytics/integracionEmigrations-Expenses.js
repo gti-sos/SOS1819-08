@@ -1,6 +1,6 @@
 angular
     .module("app")
-    .controller("integracionG08", ["$scope", "$http",
+    .controller("integracionExpensesEmi", ["$scope", "$http",
         function($scope, $http) {
             console.log("integracionG08!");
 
