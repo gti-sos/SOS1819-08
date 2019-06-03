@@ -105,19 +105,11 @@ angular
                             pointFormat: '<span style="color:{point.color}">●</span> {series.name}:<br/>Low: <b>{point.low}</b><br/>Median: <b>{point.median}</b><br/>High: <b>{point.high}</b><br/>'
                         },
                         series: [{
-                            name: 'Plums',
+                            name: 'Total Emigrant',
                             data: [
                                 [0, 0, parseInt(response.data.filter(d => d.country == response.data[0].country).map(function(d) { return d["totalemigrant"] }))],
-                                [1, 11, 23],
-                                [3, 16, 28],
-                                [2, 15, 28],
-                                [1, 15, 27],
-                                [0, 9, 21],
-                                null,
-                                null, [1, 6, 19],
-                                [2, 8, 21],
-                                [2, 9, 22],
-                                [1, 11, 19]
+                                [0, 0, parseInt(response.data.filter(d => d.country == response.data[1].country).map(function(d) { return d["totalemigrant"] }))],
+                                [0, 0, parseInt(response.data.filter(d => d.country == response.data[3].country).map(function(d) { return d["totalemigrant"] }))]
                             ]
                         }, {
                             name: 'Bananas',
@@ -134,22 +126,6 @@ angular
                                 [0, 2, 4],
                                 [1, 2, 5],
                                 [1, 3, 5]
-                            ]
-                        }, {
-                            name: 'Apples',
-                            data: [
-                                [1, 4, 6],
-                                [2, 4, 5],
-                                [1, 3, 6],
-                                [2, 3, 6],
-                                [1, 3, 4],
-                                [0, 2, 4],
-                                [0, 1, 2],
-                                [0, 1, 2],
-                                [0, 1, 2],
-                                [0, 2, 4],
-                                [1, 2, 4],
-                                [1, 3, 4]
                             ]
                         }]
                     });
