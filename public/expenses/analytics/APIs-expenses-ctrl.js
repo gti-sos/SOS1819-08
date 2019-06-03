@@ -7,6 +7,7 @@
             var API3 ="https://sos1819-03.herokuapp.com/api/v1/computers-attacks-stats";
             var API11="https://sos1819-11.herokuapp.com/api/v2/public-expenditure-educations";
             var API12="https://sos1819-12.herokuapp.com/api/v1/pollution-stats";
+            var APIe2="https://api.whatdoestrumpthink.com/api/v1/quotes";
 //G08
 angular
     .module("app")
@@ -701,4 +702,29 @@ function drawBarColors() {
                     
                 });    
             });
+        }]);
+        
+        
+            angular
+    .module("app")
+    .controller("expensesE2ctrl", ["$scope", "$http",
+        function($scope, $http) {
+            $scope.getDonaldTrump = function(){
+                $http.get(APIe2+"/random").then(function(response){
+                    $scope.trump=response.data.message;
+                    console.log($scope.trump);
+                    $scope.dataResponse= $scope.trump;
+                });
+            }
+            
+             $scope.getDTPerso= function(name) {
+                $http.get(APIe2+"/personalized?q="+name).then(function(response){
+                    $scope.trump2=response.data.message;
+                    console.log($scope.trump2);
+                    $scope.dResponse= $scope.trump2;
+                })
+
+             }
+    
+    
         }]);

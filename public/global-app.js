@@ -156,6 +156,12 @@ angular.module("app", ["ngRoute","chart.js"])
 
         })
         
+     .when("/integrations/expenses-E2", {
+             controller: "expensesE2ctrl",
+            templateUrl: "expenses/analytics/expenses-E2.html"
+
+        })
+        
         });
 
   
