@@ -37,11 +37,11 @@ angular
                         backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
                     },
                     xAxis: {
-                        categories: [response.data[0].country + " "+ response.data[0].year, response.data[0].country + " "+ response.data[0].year,
-                            response.data[1].country + " "+ response.data[1].year, response.data[1].country + " "+ response.data[1].year,
-                            response.data[2].country + " "+ response.data[2].year, response.data[2].country + " "+ response.data[2].year,
-                            response.data[3].country + " "+ response.data[3].year, response.data[3].country + " "+ response.data[3].year,
-                            response.data[4].country + " "+ response.data[4].year, response.data[4].country + " "+ response.data[4].year]
+                        categories: [response.data[0].country + " "+ response.data[0].year,
+                            response.data[1].country + " "+ response.data[1].year,
+                            response.data[2].country + " "+ response.data[2].year,
+                            response.data[3].country + " "+ response.data[3].year,
+                            response.data[4].country + " "+ response.data[4].year,]
                     },
                     yAxis: {
                         title: {
