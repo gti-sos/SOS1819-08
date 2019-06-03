@@ -116,12 +116,12 @@ angular.module("app", ["ngRoute"])
 
         })
         
-        .when("/integrations/integracionhappines", {
+        // .when("/integrations/integracionhappines", {
 
-            controller: "integracionhappines",
-            templateUrl: "emigration/analytics/integracionEmigrations-happines.html"
+        //     controller: "integracionhappines",
+        //     templateUrl: "emigration/analytics/integracionEmigrations-happines.html"
 
-        })
+        // })
         
         // .when("/integrations/ejschart", {
 
