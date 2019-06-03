@@ -1,14 +1,14 @@
 angular
     .module("app")
-    .controller("ListCtrlEmigration",["$scope","$http", function ($scope,$http){
-        console.log("ListCtrlEmigration Initialized.");
-        var API = "https://sos1819-08.herokuapp.com/api/v1/emigrations-by-countries";
+    .controller("ejschartctrl",["$scope","$http", function ($scope,$http){
+        console.log("ejschartctrl Initialized.");
+        var API = "/api/v1/emigrations-by-countries";
     var chart = new EJSC.Chart("myChart4a", {
       show_legend: false
     } );
       
     var mySeries = new EJSC.BarSeries(
-      new EJSC.ArrayDataHandler($scope.emigrations) , {
+      new EJSC.ArrayDataHandler([[1,"Widgets"],[2,"Gizmos"],[3,"Doodads"],[4,"Thingies"]]) , {
           orientation: "horizontal",
           intervalOffset: .5,
           useColorArray: true
@@ -24,5 +24,8 @@ angular
     } );
   
     chart.addSeries(mySeries);
+    
+
+
     
 }]);
