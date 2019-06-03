@@ -3,7 +3,8 @@
             var API8 = "https://sos1819-08.herokuapp.com/api/v1/tourists-by-countries";
             var API = "https://sos1819-08.herokuapp.com/api/v1/expenses-of-countries-in-education-and-culture";
             var APIe1 ="https://sos1819-08.herokuapp.com/proxyExternal1"; 
-            var API2="https://sos1819-02.herokuapp.com/api/v1/scorers-stats/"
+            var API2="https://sos1819-02.herokuapp.com/api/v1/scorers-stats/";
+            var API3 ="https://sos1819-03.herokuapp.com/api/v1/computers-attacks-stats";
 //G08
 angular
     .module("app")
@@ -359,3 +360,196 @@ series2.columns.template.tooltipText = "expenses in {category} : [bold]{valueY}[
             });
         }]);
         
+        
+        
+        
+    
+    
+    
+    
+    //G03
+     angular
+    .module("app")
+    .controller("expensesG03ctrl", ["$scope", "$http",
+        function($scope, $http) {
+            console.log("integracion por expenses-tourist");
+           
+            
+
+
+            $http.get(API).then(function(response) {
+                $http.get(API3).then(function(response1) {
+                     console.log("Data received: "+ JSON.stringify(response.data));
+                    $scope.expenses = response.data;
+                     console.log("Data received: "+JSON.stringify(response1.data));
+                    $scope.compu = response1.data;
+                   
+                   var data=[];
+                   for(var i in response.data){
+                       for (var j in response1.data){
+                          if(response.data[i].country==response1.data[j].country&&response.data[i].year==response1.data[j].year){
+                              var dat={
+                                  country: response.data[i].country + " "+ response.data[i].year,
+                                  exp: response.data[i].countryExpense,
+                                  comp: response1.data[j].affectedequipments
+                              }
+                            data.push(dat);                      
+                          }else if(response.data[i].country=="USA"&& response1.data[j].country=="EEUU"&&response.data[i].year==response1.data[j].year){
+                              var dat={
+                                  country: response.data[i].country + " "+ response.data[i].year,
+                                  exp: response.data[i].countryExpense,
+                                  comp: response1.data[j].affectedequipments
+                              }
+                            data.push(dat);
+                          }
+                          
+                       }
+                       
+                   }
+                   
+                   console.log(JSON.stringify(data));
+                    
+
+                    am4core.ready(function() {
+        var j=0;
+        function jran(){
+            if(j==data.length-1){
+              j=0;  
+            }else{
+                j=j+1;
+            }
+            return j;
+        }
+        var p = jran()
+            
+        
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// create chart
+var chart = am4core.create("chartdiv", am4charts.GaugeChart);
+chart.hiddenState.properties.opacity = 0;
+
+var axis = chart.xAxes.push(new am4charts.ValueAxis());
+axis.min = 0;
+axis.max = 160;
+axis.strictMinMax = true;
+axis.renderer.inside = true;
+//axis.renderer.ticks.template.inside = true;
+//axis.stroke = chart.colors.getIndex(3);
+axis.renderer.radius = am4core.percent(97);
+//axis.renderer.radius = 80;
+axis.renderer.line.strokeOpacity = 1;
+axis.renderer.line.strokeWidth = 5;
+axis.renderer.line.stroke = chart.colors.getIndex(0);
+axis.renderer.ticks.template.stroke = chart.colors.getIndex(0);
+axis.renderer.labels.template.radius = 35;
+axis.renderer.ticks.template.strokeOpacity = 1;
+axis.renderer.grid.template.disabled = true;
+axis.renderer.ticks.template.length = 10;
+axis.hiddenState.properties.opacity = 1;
+axis.hiddenState.properties.visible = true;
+axis.setStateOnChildren = true;
+axis.renderer.hiddenState.properties.endAngle = 180;
+
+var axis2 = chart.xAxes.push(new am4charts.ValueAxis());
+axis2.min = 0;
+axis2.max = 240;
+axis2.strictMinMax = true;
+
+axis2.renderer.line.strokeOpacity = 1;
+axis2.renderer.line.strokeWidth = 5;
+axis2.renderer.line.stroke = chart.colors.getIndex(3);
+axis2.renderer.ticks.template.stroke = chart.colors.getIndex(3);
+
+axis2.renderer.ticks.template.strokeOpacity = 1;
+axis2.renderer.grid.template.disabled = true;
+axis2.renderer.ticks.template.length = 10;
+axis2.hiddenState.properties.opacity = 1;
+axis2.hiddenState.properties.visible = true;
+axis2.setStateOnChildren = true;
+axis2.renderer.hiddenState.properties.endAngle = 180;
+
+var hand = chart.hands.push(new am4charts.ClockHand());
+hand.fill = axis.renderer.line.stroke;
+hand.stroke = axis.renderer.line.stroke;
+hand.axis = axis;
+hand.pin.radius = 14;
+hand.startWidth = 10;
+
+var hand2 = chart.hands.push(new am4charts.ClockHand());
+hand2.fill = axis2.renderer.line.stroke;
+hand2.stroke = axis2.renderer.line.stroke;
+hand2.axis = axis2;
+hand2.pin.radius = 10;
+hand2.startWidth = 10;
+
+
+
+
+  hand.showValue(data.map(function(d) { return d["exp"] })[p], am4core.ease.cubicOut);
+//label.text = parseInt(hand.value);
+  hand2.showValue(data.map(function(d) { return d["comp"] })[p], am4core.ease.cubicOut);
+  //label2.text = Math.round(hand2.value).toString();
+
+var legend = new am4charts.Legend();
+legend.isMeasured = false;
+legend.y = am4core.percent(100);
+legend.verticalCenter = "bottom";
+legend.parent = chart.chartContainer;
+legend.data = [{
+  "name": "Expenses of "+data.map(function(d) { return d["country"] })[p].toString(),
+  "fill": chart.colors.getIndex(0)
+}, {
+  "name": "Measurement #2",
+  "fill": chart.colors.getIndex(3)
+}];
+
+legend.itemContainers.template.events.on("hit", function(ev) {
+  var index = ev.target.dataItem.index;
+
+  if (!ev.target.isActive) {
+    chart.hands.getIndex(index).hide();
+    chart.xAxes.getIndex(index).hide();
+    labelList.getIndex(index).hide();
+  }
+  else {
+    chart.hands.getIndex(index).show();
+    chart.xAxes.getIndex(index).show();
+    labelList.getIndex(index).show();
+  }
+});
+
+var labelList = new am4core.ListTemplate(new am4core.Label());
+labelList.template.isMeasured = false;
+labelList.template.background.strokeWidth = 2;
+labelList.template.fontSize = 25;
+labelList.template.padding(10, 20, 10, 20);
+labelList.template.y = am4core.percent(50);
+labelList.template.horizontalCenter = "middle";
+
+var label = labelList.create();
+label.parent = chart.chartContainer;
+label.x = am4core.percent(40);
+label.background.stroke = chart.colors.getIndex(0);
+label.fill = chart.colors.getIndex(0);
+label.text = "0";
+
+var label2 = labelList.create();
+label2.parent = chart.chartContainer;
+label2.x = am4core.percent(60);
+label2.background.stroke = chart.colors.getIndex(3);
+label2.fill = chart.colors.getIndex(3);
+label2.text = "0";
+
+
+}); // end am4core.ready()
+
+                    
+                         
+            
+                    
+                });    
+            });
+        }]);

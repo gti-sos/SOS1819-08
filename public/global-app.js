@@ -96,6 +96,11 @@ angular.module("app", ["ngRoute"])
             templateUrl: "emigration/analytics/highcharts-emigrantions.html"
 
         })
+        .when("/integrations/expenses-03", {
+             controller: "expensesG03ctrl",
+            templateUrl: "expenses/analytics/expenses-G03.html"
+
+        })
         
         });
 
