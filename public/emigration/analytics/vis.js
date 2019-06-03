@@ -5,22 +5,14 @@ angular
         var API = "/api/v1/emigrations-by-countries";
  var container = document.getElementById('visualization');
   var items = [
-    {x: '2014-06-11', y: 10},
-    {x: '2014-06-12', y: 25},
-    {x: '2014-06-13', y: 30}
+    {x: 'Spain', y: 10},
+    {x: 'USA', y: 25}
   ];
 
   var dataset = new vis.DataSet(items);
-var options = {
-    dataAxis: {
-        left: {
-            range: {min:-5, max:30}
-        },
-        right: {
-            range: {min:-5}
-        }
-    }
-};
+  var options = {
+    data: ['Spain','USA']
+  };
   var graph2d = new vis.Graph2d(container, dataset, options);
     
 
