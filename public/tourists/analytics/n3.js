@@ -1,7 +1,7 @@
 /*global angular Highcharts google*/
 
 angular
-    .module("app")
+    .module("app",['n3-line-chart'])
     .controller("n3Tourist",["$scope","$http", function($scope,$http){
         //FUNCIÓN QUE HACE GET A LA RUTA BASE PARA CARGAR LOS DATOS ACTUALMENTE EN LA BASE DE DATOS
         const URL = "api/v1/tourists-by-countries";
