@@ -12,7 +12,7 @@ angular
             $http.get(API).then(function(response) {
                 $http.get(API2).then(function(response1) {
 
-                    Highcharts.chart('container', {
+                    Highcharts.chart('integracion', {
                         chart: {
                             type: 'packedbubble',
                             height: '100%'
