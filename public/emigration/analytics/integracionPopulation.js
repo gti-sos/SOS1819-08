@@ -105,20 +105,53 @@ angular
                             pointFormat: '<span style="color:{point.color}">●</span> {series.name}:<br/>Low: <b>{point.low}</b><br/>Median: <b>{point.median}</b><br/>High: <b>{point.high}</b><br/>'
                         },
                         series: [{
-                                name: 'Plums',
-                                data: [[parseInt(response.data.filter(d => d.country == response.data[0].country).map(function(d) { return d["totalemigrant"] }))],
-                                    [parseInt(response.data.filter(d => d.country == response.data[1].country).map(function(d) { return d["totalemigrant"] }))],
-                                    [parseInt(response.data.filter(d => d.country == response.data[3].country).map(function(d) { return d["totalemigrant"] }))]
-                                ]
-                            }, {
-                                name: 'Bananas',
-                                data: [[parseInt(response1.data.filter(d => d.country == response1.data[7].country).map(function(d) { return d["expensePerCapita"] }))],
-                            [parseInt(response1.data.filter(d => d.country == response1.data[5].country).map(function(d) { return d["expensePerCapita"] }))],
-                            [parseInt(response1.data.filter(d => d.country == response1.data[4].country).map(function(d) { return d["expensePerCapita"] }))]
-                        ]
-                            }
-
-                        ]
+                            name: 'Plums',
+                            data: [
+                                [0, 8, 19],
+                                [1, 11, 23],
+                                [3, 16, 28],
+                                [2, 15, 28],
+                                [1, 15, 27],
+                                [0, 9, 21],
+                                null,
+                                null, [1, 6, 19],
+                                [2, 8, 21],
+                                [2, 9, 22],
+                                [1, 11, 19]
+                            ]
+                        }, {
+                            name: 'Bananas',
+                            data: [
+                                [0, 3, 6],
+                                [1, 2, 4],
+                                [0, 2, 5],
+                                [2, 2, 5],
+                                [1, 3, 6],
+                                [0, 1, 3],
+                                [1, 1, 2],
+                                [0, 1, 3],
+                                [1, 1, 3],
+                                [0, 2, 4],
+                                [1, 2, 5],
+                                [1, 3, 5]
+                            ]
+                        }, {
+                            name: 'Apples',
+                            data: [
+                                [1, 4, 6],
+                                [2, 4, 5],
+                                [1, 3, 6],
+                                [2, 3, 6],
+                                [1, 3, 4],
+                                [0, 2, 4],
+                                [0, 1, 2],
+                                [0, 1, 2],
+                                [0, 1, 2],
+                                [0, 2, 4],
+                                [1, 2, 4],
+                                [1, 3, 4]
+                            ]
+                        }]
                     });
 
                     // Remove click events on container to avoid having "clickable" announced by AT
