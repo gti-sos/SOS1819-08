@@ -1,127 +1,77 @@
 /*global angular Highcharts google*/
-
-angular
-    .module("app",['n3-line-chart'])
-    .controller("n3Tourist",["$scope","$http", function($scope,$http){
-        //FUNCIÓN QUE HACE GET A LA RUTA BASE PARA CARGAR LOS DATOS ACTUALMENTE EN LA BASE DE DATOS
+angular.module('app')
+  .controller('n3Tourist', ["$scope","$http", function($scope,$http){
+      console.log("n3 iniciado")
+      
         const URL = "api/v1/tourists-by-countries";
+        
         console.log("n3 tourist");
         
-        $http.get(URL).then(function(response){
+$http.get(URL).then(function(response){
+     var incomeTourist = [];
+     var touristDeparture = [];
+     var arrivalTourist = [];
+            for(var i=0; i<5;i++){
+                var e = response.data.slice(i,i+1).map(function(d){return d["incomeTourist"]});
+                e = e[0];
+                incomeTourist.push(e);
+            }
             
+            for(var i=0; i<5;i++){
+                var e = response.data.slice(i,i+1).map(function(d){return d["touristDeparture"]});
+                e = e[0];
+                touristDeparture.push(e);
+            }
+            
+            for(var i=0; i<5;i++){
+                var e = response.data.slice(i,i+1).map(function(d){return d["arrivalTourist"]});
+                e = e[0];
+                arrivalTourist.push(e);
+            }
+            
+           
 
-                var dataset_d3charts_tourists = [{x: 0, incomeTourist: 0,  touristDeparture: 0, arrivalTourist: 0}];
-                var tourist = $scope.tourist;
-                var country_leyend = [];
-                
-                var countryDiccionary = {
-                    "Spain": "España",
-                    "Colombia": "Colombia",
-                    "China": "China",
-                    "USA": "USA",
-                    "Germany": "Alemania"
-                };
-
-
-                //GENERACIÓN DE DATASETS Y LEYANDA PARA D3-CHARTS
-                for (var i=0; i<response.length; i++){
-                    
+d3.select(".chart") // Selecciona el identificador en donde se va a mostrar la gráfica 
+  .selectAll("div") // Selecciona todas las etiquetas div que se van a ir agregando después del identificador 
+  .data(incomeTourist) // Agregar el arreglo con los datos
+  .enter() // Crea los nuevos nodos
+  .append("div") // Crea nuevas instancias con la etiqueta div
+  .transition() // Agregar animación 
+  .duration(2000) // Duración de la animación 
+  .style("width", function(d) {
+    return d + "px"; // La función obtiene los valores del arreglo y lo retorna al width
+  })
+  .text(function(d) {
+    return d; // La función obtiene los valores del arreglo y lo retorna como texto
+  })
  
-                    //Modelado de datos para d3-charts
-                    var inputD3Data = {
-                        x: i,
-                        incomeTourist: parseInt(response.data.filter(d => d.country[i]).map(function(d) { return d['incomeTourist'] })),
-                        touristDeparture: parseInt(response.data.filter(d => d.country[i]).map(function(d) { return d["touristDeparture"] })),
-                        arrivalTourist: parseInt(response.data.filter(d => d.country[i]).map(function(d) { return d['arrivalTourist'] }))
-                    };
-                    dataset_d3charts_tourists.push(inputD3Data);
-                    
-                    //Modelado de datos para la Leyenda
-                    country_leyend.push({id: i, country: d => d.country[i]});
-                }
-                
-                $scope.country_leyend = country_leyend;
 
- //GRÁFICA D3-CHARTS
-                $scope.tourists_data = {
-                    dataset0: dataset_d3charts_tourists
-                };
-        
-                $scope.tourists_options = {
-                    margin: {top: 5},
-                    
-                    series: [
-                        {
-                            axis: "y",
-                            dataset: "dataset0",
-                            key: "arrivalTourist",
-                            label: "Salidas de touristas",
-                            color: "hsla(104, 73%, 42%, 1)",
-                            type: ["dot", "line"],
-                            id: 'serieArrivalTourists'
-                        },
-                        {
-                            axis: "y",
-                            dataset: "dataset0",
-                            key: " touristDeparture",
-                            label: "llegada de turistas",
-                            color: "hsla(306, 48%, 48%, 1)",
-                            type: ["dot", "line"],
-                            id: 'serieTouristDeparture'
-                        },
-                        {
-                            axis: "y",
-                            dataset: "dataset0",
-                            key: "incomeTourist",
-                            label: "incomeTourist",
-                            color: "hsla(190, 73%, 42%, 1)",
-                            type: ["dot", "line", "area"],
-                            id: 'serieIncomeTourist'
-                        }
-                    ],
-                    
-                    //No Mostrar los valores de los ejes reptidos
-                    grid: {
-                        x: false,
-                        y: false
-                    },
-                    
-                    //Márgenes de la Gráfica
-                    margin: {
-                        bottom: 40,
-                        left: 40
-                    },
-                    
-                    //Formatero de Ejes
-                    axes: {
-                        x: {
-                            key: "x",
-                            padding: {min:10, max:10}
-                        },
-                        y: {
-                            min: 0,
-                            max: 120,
-                            padding: {min:1, max: 10},
-                          }
-                    },
-                    
-                    //Permitir Zoom
-                    zoom: {
-                        x: true,
-                        y: true
-                    },
-                    
-                    //Resetear Zoom con Doble Click
-                    doubleClickEnabled: false
-                };
-            }
-        );
-        
-                
-                
-                
-                
-            }
-        ]
-    );
-
+d3.select(".chart1") // Selecciona el identificador en donde se va a mostrar la gráfica 
+  .selectAll("div") // Selecciona todas las etiquetas div que se van a ir agregando después del identificador 
+  .data(arrivalTourist) // Agregar el arreglo con los datos
+  .enter() // Crea los nuevos nodos
+  .append("div") // Crea nuevas instancias con la etiqueta div
+  .transition() // Agregar animación 
+  .duration(2000) // Duración de la animación 
+  .style("width", function(d) {
+    return d + "px"; // La función obtiene los valores del arreglo y lo retorna al width
+  })
+  .text(function(d) {
+    return d; // La función obtiene los valores del arreglo y lo retorna como texto
+  })
+  
+  d3.select(".chart2") // Selecciona el identificador en donde se va a mostrar la gráfica 
+  .selectAll("div") // Selecciona todas las etiquetas div que se van a ir agregando después del identificador 
+  .data(touristDeparture) // Agregar el arreglo con los datos
+  .enter() // Crea los nuevos nodos
+  .append("div") // Crea nuevas instancias con la etiqueta div
+  .transition() // Agregar animación 
+  .duration(2000) // Duración de la animación 
+  .style("width", function(d) {
+    return d + "px"; // La función obtiene los valores del arreglo y lo retorna al width
+  })
+  .text(function(d) {
+    return d; // La función obtiene los valores del arreglo y lo retorna como texto
+  })
+})
+}]);
