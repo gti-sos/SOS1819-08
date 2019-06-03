@@ -130,6 +130,12 @@ angular.module("app", ["ngRoute"])
 
         })
         
+        .when("/analytics/vis", {
+
+            controller: "visctrl",
+            templateUrl: "emigration/analytics/vis.html"
+
+        })
         
         
         });
