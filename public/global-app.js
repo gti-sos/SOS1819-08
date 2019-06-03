@@ -123,19 +123,19 @@ angular.module("app", ["ngRoute"])
 
         })
         
-        .when("/integrations/ejschart", {
+        // .when("/integrations/ejschart", {
 
-            controller: "ejschartctrl",
-            templateUrl: "emigration/analytics/ejschart.html"
+        //     controller: "ejschartctrl",
+        //     templateUrl: "emigration/analytics/ejschart.html"
 
-        })
+        // })
         
-        .when("/integrations/vis", {
+        // .when("/integrations/vis", {
 
-            controller: "visctrl",
-            templateUrl: "emigration/analytics/vis.html"
+        //     controller: "visctrl",
+        //     templateUrl: "emigration/analytics/vis.html"
 
-        })
+        // })
         
         
         });
