@@ -49,7 +49,7 @@ angular.module("app", ["ngRoute","chart.js"])
          .when("/integrations-tourists-by-countries", {
 
             controller: "integracionTourist",
-            templateUrl: "tourists/analytics/integrations-tourist.html"
+            templateUrl: "tourists/analytics/integracionesApi.html"
 
         })
         .when("/integrations/expenses", {

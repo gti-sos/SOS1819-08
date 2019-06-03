@@ -12,12 +12,12 @@ angular
             $http.get(API).then(function(response) {
                 $http.get(API2).then(function(response1) {
 
-              Highcharts.chart('integracion1', {
+    Highcharts.chart('integracion1', {
     chart: {
         type: 'column'
     },
     title: {
-        text: 'Column chart with negative values'
+        text: 'integrations tourist by countries and emigrations by countries'
     },
     xAxis: {
         categories: ['Spain', 'China', 'Colombia', 'Germany', 'USA']
