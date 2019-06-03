@@ -52,7 +52,7 @@ angular.module("app", ["ngRoute","chart.js"])
             templateUrl: "tourists/analytics/integracionG08.html"
 
         })
-        .when("/analytics/expenses", {
+        .when("/integrations/expenses", {
 
             controller: "analyticsExpenses",
             templateUrl: "expenses/analytics/analytics-expenses.html"
