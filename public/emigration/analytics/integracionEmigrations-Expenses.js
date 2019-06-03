@@ -53,11 +53,22 @@ angular
                             }
                         },
                         series: [{
-                            name: 'Sales',
-                            data: [response.data[0].totalemigrant, response.data[0].expensePerCapita, response.data[1].totalemigrant, response.data[1].expensePerCapita,
-                            response.data[2].totalemigrant, response.data[2].expensePerCapita, response.data[3].totalemigrant, response.data[3].expensePerCapita,
-                            response.data[4].totalemigrant, response.data[4].expensePerCapita,]
-                        }]
+                            name: 'Emigrant Man',
+                            data: [parseInt(response.data.filter(d => d.country == response.data[0].country).map(function(d) { return d["totalemigrant"] })),
+                                parseInt(response.data.filter(d => d.country == response.data[1].country).map(function(d) { return d["totalemigrant"] })),
+                                parseInt(response.data.filter(d => d.country == response.data[2].country).map(function(d) { return d["totalemigrant"] })),
+                                parseInt(response.data.filter(d => d.country == response.data[3].country).map(function(d) { return d["totalemigrant"] })),
+                                parseInt(response.data.filter(d => d.country == response.data[4].country).map(function(d) { return d["totalemigrant"] }))
+                        ]
+                    }, {
+                        name: '',
+                        data: [parseInt(response1.data.filter(d => d.country == response1.data[0].country).map(function(d) { return d["expensePerCapita"] })),
+                            parseInt(response1.data.filter(d => d.country == response1.data[1].country).map(function(d) { return d["expensePerCapita"] })),
+                            parseInt(response1.data.filter(d => d.country == response1.data[2].country).map(function(d) { return d["expensePerCapita"] })),
+                            parseInt(response1.data.filter(d => d.country == response1.data[3].country).map(function(d) { return d["expensePerCapita"] })),
+                            parseInt(response1.data.filter(d => d.country == response1.data[4].country).map(function(d) { return d["expensePerCapita"] }))
+                        ]
+                    }]
                     });
                 })
 
