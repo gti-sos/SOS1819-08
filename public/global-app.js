@@ -109,6 +109,13 @@ angular.module("app", ["ngRoute"])
 
         })
         
+        .when("/analytics/emigrations-apiExterna1", {
+
+            controller: "apiExterna1Emigration",
+            templateUrl: "emigration/analytics/apiExterna1.html"
+
+        })
+        
         
         
         });
