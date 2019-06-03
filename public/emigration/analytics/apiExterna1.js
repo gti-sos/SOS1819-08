@@ -11,7 +11,7 @@ angular
 
             $http.get(API).then(function(response) {
                 $http.get(API2).then(function(response1) {
-
+                    console.log("Data received: "+JSON.stringify(response1.data));
 
                     Highcharts.chart('container', {
                         chart: {
