@@ -102,6 +102,15 @@ angular.module("app", ["ngRoute"])
 
         })
         
+        .when("/analytics/emigrations-expenses08", {
+
+            controller: "HighchartsEmigrations",
+            templateUrl: "emigration/analytics/integracionEmigrations-Expenses.html"
+
+        })
+        
+        
+        
         });
 
   
