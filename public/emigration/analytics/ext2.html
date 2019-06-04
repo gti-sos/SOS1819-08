@@ -1,0 +1,37 @@
+<h4>Uso de API Ext</h4>
+<br>
+<div>
+    
+    <table class="table">
+        <thead>
+                
+                <tr>
+                    
+                    <th>Palo</th>
+                    <th>Valor</th>
+                    <th>Carta</th>
+
+                    
+                </tr>
+                
+        </thead>
+        
+        <tbody>
+            
+            <tr ng-repeat = "card in cards">
+            
+                
+                <th>{{ card.suit }}</th>
+                <th>{{ card.value }}</th>
+                <th><img src="{{ card.images.png }}"></img></th>
+                
+                
+            </tr>
+            
+        </tbody>
+        
+        
+    </table>
+    
+    
+</div>

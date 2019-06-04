@@ -117,6 +117,13 @@ angular.module("app", ["ngRoute","chart.js"])
 
         })
         
+        .when("/integrations/apiExterna2-cristian", {
+
+            controller: "Externa2Cristian",
+            templateUrl: "emigration/analytics/ext2.html"
+
+        })
+        
         .when("/integrations/population", {
 
             controller: "integracionPopulationsEmi",
