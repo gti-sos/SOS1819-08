@@ -11,34 +11,32 @@ angular
 
                         
 
-                        var chart = new CanvasJS.Chart("chartContainer", {
-                            animationEnabled: true,
-                            zoomEnabled: true,
-                            theme: "light2",
-                            title: {
-                                text: "Capitalization And Education Expense"
-                            },
-                            axisX: {
-                                title: "",
-                                suffix: "",
-                                minimum: 0,
-                                maximum: 100,
-                                gridThickness: 1
-                            },
-                            axisY: {
-                                title: "",
-                                suffix: "",
-                                minimum: 0,
-                                maximum: 100,
-                                gridThickness: 1
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	exportEnabled: true,
+	theme: "light1",
+	title:{
+		text: "Software Sales Conversion"
+	},
+	data: [{
+		type: "pyramid",
+		yValueFormatString: "#\"%\"",
+		indexLabelFontColor: "black",
+		indexLabelFontSize: 16,
+		indexLabel: "{label} - {y}",
+		//reversed: true, // Reverses the pyramid
+		dataPoints: [
+			{ y: 100, label: "Website Visit" },
+			{ y: 65, label: "Download Page Visit" },
+			{ y: 45, label: "Downloaded" },
+			{ y: 32, label: "Interested To Buy" },
+			{ y: 5, label: "Purchased" }
+		]
+	}]
+});
+chart.render();
 
-                            },
-                            data: [response.data[0].country ,response.data[1].country
-                          
-                        ]
-                        });
 
-                        chart.render();
 
                     });
 
