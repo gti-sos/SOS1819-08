@@ -8,23 +8,20 @@ angular
 
             $http.get(API).then(function(response) {
 
-	var items = [];
+	
 
-	$.each(res, function(key, val){
-		items.push({
-			value: val["rank"],
-			title: val["title"]
-		});
-	});
-
-	$("#chart").linechart({
-		data: [1,2,3,4,5],
-		width: 50, 
-		height: 10,
-		boxSize: 16,
-		line: true,
-		theme: "purple"
-	});
+<LineChart
+  width={400}
+  height={400}
+  data={1,2,3,4,5}
+  margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
+>
+  <XAxis dataKey="name" />
+  <Tooltip />
+  <CartesianGrid stroke="#f5f5f5" />
+  <Line type="monotone" dataKey="uv" stroke="#ff7300" yAxisId={0} />
+  <Line type="monotone" dataKey="pv" stroke="#387908" yAxisId={1} />
+</LineChart>
 });
 
 
