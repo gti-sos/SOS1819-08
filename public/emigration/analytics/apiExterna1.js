@@ -61,12 +61,9 @@ angular
                                 parseInt(response.data.filter(d => d.country == response.data[4].country).map(function(d) { return d["totalemigrant"] }))
                         ]
                     }, {
-                        name: 'ExpensePerCapita',
-                        data: [parseInt(response1.data.filter(d => d.name == response1.data[0].name).map(function(d) { return d["name"] })),
-                            parseInt(response1.data.filter(d => d.name == response1.data[1].name).map(function(d) { return d["name"] })),
-                            parseInt(response1.data.filter(d => d.name == response1.data[2].name).map(function(d) { return d["name"] })),
-                            parseInt(response1.data.filter(d => d.name == response1.data[3].name).map(function(d) { return d["name"] })),
-                            parseInt(response1.data.filter(d => d.name == response1.data[4].name).map(function(d) { return d["name"] }))
+                        name: 'monedas',
+                        data: [response1.data[0].name,response1.data[1].name
+                            
                         ]
                     }]
                     });
