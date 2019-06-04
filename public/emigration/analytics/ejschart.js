@@ -6,24 +6,27 @@ angular
 window.onload = function () {
 
 var chart = new CanvasJS.Chart("chartContainer", {
-	theme: "light1", // "light2", "dark1", "dark2"
-	animationEnabled: false, // change to true		
+	animationEnabled: true,
+	exportEnabled: true,
+	theme: "light1",
 	title:{
-		text: "Basic Column Chart"
+		text: "Software Sales Conversion"
 	},
-	data: [
-	{
-		// Change type to "bar", "area", "spline", "pie",etc.
-		type: "column",
+	data: [{
+		type: "pyramid",
+		yValueFormatString: "#\"%\"",
+		indexLabelFontColor: "black",
+		indexLabelFontSize: 16,
+		indexLabel: "{label} - {y}",
+		//reversed: true, // Reverses the pyramid
 		dataPoints: [
-			{ label: "apple",  y: 10  },
-			{ label: "orange", y: 15  },
-			{ label: "banana", y: 25  },
-			{ label: "mango",  y: 30  },
-			{ label: "grape",  y: 28  }
+			{ y: 100, label: "Website Visit" },
+			{ y: 65, label: "Download Page Visit" },
+			{ y: 45, label: "Downloaded" },
+			{ y: 32, label: "Interested To Buy" },
+			{ y: 5, label: "Purchased" }
 		]
-	}
-	]
+	}]
 });
 chart.render();
 
