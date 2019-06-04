@@ -30,7 +30,9 @@ angular
                             [response1.data[6].country, parseInt(response1.data.filter(d => d.country == response1.data[6].country).map(function(d) { return d["happinessScore"] }))],
                             [response1.data[7].country, parseInt(response1.data.filter(d => d.country == response1.data[7].country).map(function(d) { return d["happinessScore"] }))],
                             [response1.data[8].country, parseInt(response1.data.filter(d => d.country == response1.data[8].country).map(function(d) { return d["happinessScore"] }))],
-                            [response1.data[9].country, parseInt(response1.data.filter(d => d.country == response1.data[9].country).map(function(d) { return d["happinessScore"] }))]
+                            [response1.data[9].country, parseInt(response1.data.filter(d => d.country == response1.data[9].country).map(function(d) { return d["happinessScore"] }))],
+                            [response1.data[10].country, parseInt(response1.data.filter(d => d.country == response1.data[10].country).map(function(d) { return d["happinessScore"] }))],
+                            [response1.data[11].country, parseInt(response1.data.filter(d => d.country == response1.data[11].country).map(function(d) { return d["happinessScore"] }))]
                         ]);
 
                         var options = {
