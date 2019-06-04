@@ -5,7 +5,6 @@ var expensesCountries = require("./expenses-of-countries-in-education-and-cultur
 var emigrationsByCountries = require("./emigrations-by-countries");
 var tourist = require("./tourist-by-countries");
 var cors = require("cors");
-var unirest = require('unirest');
 
 
 var expPaths ="/proxyExternal1";
