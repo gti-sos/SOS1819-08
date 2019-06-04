@@ -9,57 +9,44 @@ angular
 
 
 
- var API = "api/v1/tourists-by-countries";
-var API2 = "https://sos1819-04.herokuapp.com/api/v1/beer-consumed-stats";
-
-$http.get(API).then(function(response) {
-$http.get(API2).then(function(response2) {
-               
-am4core.ready(function() {
-
-// Themes begin
-am4core.useTheme(am4themes_animated);
-// Themes end
-
-var chart = am4core.create("integracion2", am4charts.SlicedChart);
-chart.hiddenState.properties.opacity = 0; // this makes initial fade in effect
-
-chart.data = [{
-    "name": "Spain rating",
-    "value": parseInt(response2.data.filter(d => d.country == 'Spain').map(function(d) { return d['rating'] }))
-}, {
-    "name": "Germany rating",
-    "value": parseInt(response2.data.filter(d => d.country == 'Germany').map(function(d) { return d['rating'] }))
-
-}, {
-    "name": "Spain llegada de turistas",
-    "value": parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d["arrivalTourist"] })),
-}, {
-    "name": "Alemania llegada de turistas",
-    "value": parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d["arrivalTourist"] }))
-
-}];
-
-var series = chart.series.push(new am4charts.FunnelSeries());
-series.colors.step = 2;
-series.dataFields.value = "value";
-series.dataFields.category = "name";
-series.alignLabels = true;
-
-series.labelsContainer.paddingLeft = 15;
-series.labelsContainer.width = 200;
-
-//series.orientation = "horizontal";
-//series.bottomRatio = 1;
-
-chart.legend = new am4charts.Legend();
-chart.legend.position = "left";
-chart.legend.valign = "bottom";
-chart.legend.margin(5,5,20,5);
-
-});
+                 
+                var URL = "https://restcountries-v1.p.rapidapi.com/all";
+                var URL_BASE = "https://restcountries-v1.p.rapidapi.com/all";
+                
+                refresh(URL_BASE);
+                
+                //FUNCIÓN QUE HACE GET A LA RUTA BASE PARA MOSTRAR LO QUE SE ENCUENTRA ACTUALMENTE EN LA BASE DE DATOS
+                function refresh(URL){
+  
+           
+                    $http.get(URL_BASE).then(function(response3) {                  
+                    var config = {
+                        headers: {
+                            "X-RapidAPI-Host": "restcountries-v1.p.rapidapi.com",
+                            "X-RapidAPI-Key": "99007e2d19msh5516fcc3b68661ap1a0efajsnc3899b9c335b",
+                            
+                        }
+                    };
+                    
+                   new RGraph.SVG.Bipolar({
+        id: 'cc',
+        left: [parseInt(response3.data.filter(d => d.region == 'Asia').map(function(d) { return d['Population'] })),8,6,3,5,8,9],
+        right: [parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['arrivalTourist'] })),7,9,6,6,3,5],
+        options: {
+            yaxisLabels: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+            yaxisTextBold: true,
+            yaxisTextItalic: true,
+            grouping: 'grouped',
+            marginInner: 15,
+            title: 'An SVG Bipolar chart using the grow() effect',
+            titleSubtitle: 'A subtitle to go along with the title',
+            marginTop: 50
+        }
+    }).grow();
+                
+ 
 
 })
-})
+}
                 
 }]);
