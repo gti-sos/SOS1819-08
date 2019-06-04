@@ -19,7 +19,7 @@
     "body-parser": "^1.18.3",
     "chart.js": "^2.8.0",
     "cors": "^2.8.5",
-    "express": "^4.16.4",
+    "express": "^4.17.1",
     "mongodb": "^3.2.3",
     "plottable": "^3.8.6",
     "react-vis": "^1.11.7",

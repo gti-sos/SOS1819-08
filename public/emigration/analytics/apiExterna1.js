@@ -5,7 +5,7 @@ angular
             console.log("integracionExpenses");
 
             var API = "api/v1/emigrations-by-countries";
-            var API2 = "https://data.gateio.co/api2/1/marketlist";
+            var API2 = "/proxy1";
 
 
 

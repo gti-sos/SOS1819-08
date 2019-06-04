@@ -1,4 +1,5 @@
-
+var express = require('express');  
+var request = require('request');
 
 module.exports = function(app, emigrations){
     
@@ -58,6 +59,23 @@ app.get("/api/v1/emigrations-by-countries/loadInitialData", (req, res) => {
         }
     });
 })
+
+
+//proxy
+
+var ext1='/proxy1';
+var apiServerHost = 'http://echo.httpkit.com';
+
+var apiExt1 ="https://data.gateio.co/api2/1/marketlist";
+
+var app = express();  
+app.use(ext1, function(req, res) {
+  console.log('piped: '+apiExt1);
+  req.pipe(request(apiExt1)).pipe(res);
+});
+
+
+
 
 
 //Cristian GET /emigrations-by-countries/
