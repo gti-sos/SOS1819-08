@@ -1,0 +1,37 @@
+<h4>Use of external API draw a card</h4>
+<br>
+<div>
+    
+    <table class="table">
+        <thead>
+                
+                <tr>
+                    
+                    <th>Suit</th>
+                    <th>Value</th>
+                    <th>Picture</th>
+                    <ht><buttom class="btn btn-primary" ng-click="refresh2()">Draw another card</buttom></ht>
+                    
+                </tr>
+                
+        </thead>
+        
+        <tbody>
+            
+            <tr ng-repeat = "card in cards">
+            
+                
+                <th>{{ card.suit }}</th>
+                <th>{{ card.value }}</th>
+                <th><img src="{{ card.images.png }}"></img></th>
+                
+                
+            </tr>
+            
+        </tbody>
+        
+        
+    </table>
+    
+    
+</div>

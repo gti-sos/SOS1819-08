@@ -2,7 +2,7 @@ angular
     .module("app")
     .controller("apiExterna1Emigration", ["$scope", "$http",
         function($scope, $http) {
-            console.log("integracionExpenses");
+            console.log("integracionEmigrations");
 
             var API = "api/v1/emigrations-by-countries";
             var API2 = "/proxyc1";
