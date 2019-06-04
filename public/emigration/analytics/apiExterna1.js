@@ -62,7 +62,7 @@ angular
                         ]
                     }, {
                         name: 'monedas',
-                        data: [response1.data.map(function(d) { return d["rate"] })
+                        data: [response1.data
                         ]
                     }]
                     });
