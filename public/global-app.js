@@ -124,12 +124,12 @@ angular.module("app", ["ngRoute","chart.js"])
 
         })
         
-        .when("/integrations/jqEmigrations", {
+        // .when("/integrations/jqEmigrations", {
 
-            controller: "jqueryEmigrations",
-            templateUrl: "emigration/analytics/emigrations-jquery.html"
+        //     controller: "jqueryEmigrations",
+        //     templateUrl: "emigration/analytics/emigrations-jquery.html"
 
-        })
+        // })
         
         
         // .when("/integrations/integracionhappines", {
