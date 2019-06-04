@@ -175,6 +175,12 @@ angular.module("app", ["ngRoute","chart.js"])
 
         })
         
+        
+         .when("/integrations/expenses-e3", {
+             controller: "expE3ctrl",
+            templateUrl: "expenses/analytics/expenses-E3.html"
+
+        })
         });
 
   

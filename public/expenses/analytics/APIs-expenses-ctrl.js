@@ -9,6 +9,8 @@
             var API12="https://sos1819-12.herokuapp.com/api/v1/pollution-stats";
             var APIe2="https://api.whatdoestrumpthink.com/api/v1/quotes";
             var APIcristian="https://sos1819-08.herokuapp.com/api/v1/emigrations-by-countries/";
+            var APIe3 = "https://api.punkapi.com/v2/beers";
+            
 //G08
 angular
     .module("app")
@@ -717,3 +719,95 @@ label2.text = c;
                 });    
             });
         }]);
+        
+        
+        
+         angular
+    .module("app")
+    .controller("expE3ctrl", ["$scope", "$http",
+        function($scope, $http) {
+       
+           
+            
+
+
+            $http.get(API).then(function(response) {
+                $http.get(APIe3+"?page=2&per_page=10").then(function(response1) {
+                     console.log("Data received: "+ JSON.stringify(response.data));
+                     console.log("Data received: LIMITED 10"+JSON.stringify(response1.data));
+                    
+                     var data1=[ ['Expenses and beers', 'value budgetPercentage or attenuation level']];
+                   for(var i in response.data){
+                      
+                              var dat=[
+                                   response.data[i].country+" "+ response.data[i].year,
+                                   
+                                   response.data[i].budgetPercentage,
+                                   
+                              ]
+                               data1.push(dat);                   
+                          
+                       
+                       
+                   }
+                    for (var j in response1.data){
+                        var dat2=[
+                            response1.data[j].name,
+                            response1.data[j].attenuation_level
+                            
+                            ]
+                        data1.push(dat2)
+                    }
+                    console.log(data1)
+                    
+                    console.log([
+          ['Dinosaur', 'Length'],
+          ['Acrocanthosaurus (top-spined lizard)', 12.2],
+          ['Albertosaurus (Alberta lizard)', 9.1],
+          ['Allosaurus (other lizard)', 12.2],
+          ['Apatosaurus (deceptive lizard)', 22.9],
+          ['Archaeopteryx (ancient wing)', 0.9],
+          ['Argentinosaurus (Argentina lizard)', 36.6],
+          ['Baryonyx (heavy claws)', 9.1],
+          ['Brachiosaurus (arm lizard)', 30.5],
+          ['Ceratosaurus (horned lizard)', 6.1],
+          ['Coelophysis (hollow form)', 2.7],
+          ['Compsognathus (elegant jaw)', 0.9],
+          ['Deinonychus (terrible claw)', 2.7],
+          ['Diplodocus (double beam)', 27.1],
+          ['Dromicelomimus (emu mimic)', 3.4],
+          ['Gallimimus (fowl mimic)', 5.5],
+          ['Mamenchisaurus (Mamenchi lizard)', 21.0],
+          ['Megalosaurus (big lizard)', 7.9],
+          ['Microvenator (small hunter)', 1.2],
+          ['Ornithomimus (bird mimic)', 4.6],
+          ['Oviraptor (egg robber)', 1.5],
+          ['Plateosaurus (flat lizard)', 7.9],
+          ['Sauronithoides (narrow-clawed lizard)', 2.0],
+          ['Seismosaurus (tremor lizard)', 45.7],
+          ['Spinosaurus (spiny lizard)', 12.2],
+          ['Supersaurus (super lizard)', 30.5],
+          ['Tyrannosaurus (tyrant lizard)', 15.2],
+          ['Ultrasaurus (ultra lizard)', 30.5],
+          ['Velociraptor (swift robber)', 1.8]]);
+                     google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(data1);
+
+        var options = {
+          title: 'comparing budgetPercentage with attenuation level',
+          legend: { position: 'none' },
+        };
+
+        var chart = new google.visualization.Histogram(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+                   
+                    
+                    
+                });
+               
+                });
+        }]);
+        
