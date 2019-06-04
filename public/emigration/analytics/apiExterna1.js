@@ -5,17 +5,32 @@ angular
             console.log("integracionExpenses");
 
             var API = "api/v1/emigrations-by-countries";
-            var API2 = "/proxyc1";
+            var API2 = "https://deckofcardsapi.com/api/deck/new/draw/";
 
 
 
-            $http.get(API).then(function(response) {
-                $http.get(API2).then(function(response1) {
-                    console.log("Data received: "+JSON.stringify(response1.data));
-                     $scope.data = JSON.stringify(response1.data,null,2);
-                    
-                })
 
-            })
+    $http.get(API2).then(function(response){
+        
+        
+        $scope.cards = response.data.cards;
+        
+        console.log($scope.cards);
+        
+    });
+    $scope.refresh2 = function refresh(){ 
+    $http.get(API2).then(function(response){
+        
+        
+        
+       $scope.cards = response.data.cards;
+        
+    });
+    
+    };
+
         }
+
+            
+        
     ]);
