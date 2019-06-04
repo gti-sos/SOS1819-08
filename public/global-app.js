@@ -188,6 +188,10 @@ angular.module("app", ["ngRoute","chart.js"])
             templateUrl: "expenses/analytics/expenses-E3.html"
 
         })
+        .when("/about", {
+            templateUrl: "about.html"
+
+        })
         });
 
   
