@@ -20,7 +20,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	axisX: {
 		title:"Area (in sq. ft)",
 		minimum: 790,
-		maximum: 2260
+		maximum: 10000000
 	},
 	axisY:{
 		title: "Price (in USD)",
