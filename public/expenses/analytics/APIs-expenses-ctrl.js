@@ -649,6 +649,8 @@ label2.text = c;
                     $scope.dResponse= $scope.trump2;
                 })
 
+             
+            
              }
     
     
