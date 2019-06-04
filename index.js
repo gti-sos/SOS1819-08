@@ -9,6 +9,9 @@ var cors = require("cors");
 
 var expPaths ="/proxyExternal1";
 
+var expPathsCristian1 ="/proxyc1";
+var expRemoteApiCristian1 = 'https://data.gateio.co/api2/1/marketlist';
+
 var expRemoteApiE1 = 'https://countryapi.gear.host/v1/Country/getCountries?pRegion=Europe';
 
 
@@ -109,4 +112,11 @@ app.use("/ui/v1/tourists-by-countries", express.static(path.join(__dirname + "/p
 app.use(expPaths, function(req, res) {
   console.log('piped: '+expRemoteApiE1);
   req.pipe(request(expRemoteApiE1)).pipe(res);
+});
+
+
+//proxy Cristian E1
+app.use(expPathsCristian1, function(req, res) {
+  console.log('piped: '+expRemoteApiCristian1);
+  req.pipe(request(expRemoteApiCristian1)).pipe(res);
 });
