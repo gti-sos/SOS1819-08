@@ -11,9 +11,7 @@ angular
 
             $http.get(API).then(function(response) {
                 $http.get(API2).then(function(response1) {
-                    console.log("Data received: "+JSON.stringify(response1.data));
-                    $scope.coun = response1.data;
-                    var datos=response1.data.Response
+                    console.log("Data received: "+JSON.stringify(response1.data.name));
 
                     Highcharts.chart('container', {
                         chart: {
@@ -64,8 +62,11 @@ angular
                         ]
                     }, {
                         name: 'monedas',
-                        data: [datos.name
-                            
+                        data: [parseInt(response1.data.filter(d => d.name == response1.data[0].name).map(function(d) { return d["rate"] })),
+                            parseInt(response1.data.filter(d => d.name == response1.data[1].name).map(function(d) { return d["name"] })),
+                            parseInt(response1.data.filter(d => d.name == response1.data[2].name).map(function(d) { return d["name"] })),
+                            parseInt(response1.data.filter(d => d.name == response1.data[3].name).map(function(d) { return d["name"] })),
+                            parseInt(response1.data.filter(d => d.name == response1.data[4].name).map(function(d) { return d["name"] }))
                         ]
                     }]
                     });
