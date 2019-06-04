@@ -1,7 +1,7 @@
 angular
     .module("app")
-    .controller("integracionTourist", ["$scope", "$http",
-            function($scope, $http) {
+    .controller("integracionTourist", ["$scope", "$http", "$httpParamSerializer",
+            function($scope, $http, $httpParamSerializer) {
                 console.log("integracionTourist!");
 
                 var API = "api/v1/tourists-by-countries";
@@ -85,7 +85,7 @@ angular
                 })
 
 
-                var API = "api/v1/tourists-by-countries";
+var API = "api/v1/tourists-by-countries";
 var API2 = "https://sos1819-04.herokuapp.com/api/v1/beer-consumed-stats";
 
 $http.get(API).then(function(response) {
@@ -247,7 +247,7 @@ $http.get(API4).then(function(response4) {
         ]);
 
         var options = {
-          title: 'Company Performance',
+          title: 'integracion deceaseds',
           curveType: 'function',
           legend: { position: 'bottom' }
         };
@@ -343,9 +343,7 @@ anychart.onDocumentReady(function () {
 
     // create chart label with description
     chart.label()
-            .text('This chart compares countries by using specific indicators.\n' +
-                    'For each indicator, the value 1 is assigned to the country that has the highest value.\n' +
-                    'Other countries have their value computed as a proportion of the country with the highest value.')
+            .text('Integracion uefa club rankings.')
             .anchor('center-bottom')
             .position('center-bottom')
             .fontWeight('normal')
@@ -391,16 +389,16 @@ var chart = am4core.create("integracion7", am4charts.PieChart);
 // Add data
 chart.data = [ {
   "country": "Japon",
-  "litres": parseInt(response7.data.filter(d => d.country == 'Japon').map(function(d) { return d['employee'] }))
+  "employee": parseInt(response7.data.filter(d => d.country == 'Japon').map(function(d) { return d['employee'] }))
 }, {
   "country": "España",
-  "litres": parseInt(response7.data.filter(d => d.country == 'España').map(function(d) { return d['employee'] }))
+  "employee": parseInt(response7.data.filter(d => d.country == 'España').map(function(d) { return d['employee'] }))
 }, {
   "country": "Spain",
-  "litres": parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['arrivalTourist'] }))
+  "arrivalTourist": parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['arrivalTourist'] }))
 }, {
   "country": "Germany",
-  "litres": parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['arrivalTourist'] }))
+  "arrivalTourist": parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['arrivalTourist'] }))
 }];
 
 // Set inner radius
@@ -408,7 +406,7 @@ chart.innerRadius = am4core.percent(50);
 
 // Add and configure Series
 var pieSeries = chart.series.push(new am4charts.PieSeries());
-pieSeries.dataFields.value = "litres";
+pieSeries.dataFields.value = "";
 pieSeries.dataFields.category = "country";
 pieSeries.slices.template.stroke = am4core.color("#fff");
 pieSeries.slices.template.strokeWidth = 2;
@@ -425,7 +423,7 @@ pieSeries.hiddenState.properties.startAngle = -90;
 })
     
     
- var APIE1 = "https://www.oostende.be/opendataset/view/6/json";
+ var APIE1 = "https://api.openbrewerydb.org/breweries";
  var API = "api/v1/tourists-by-countries";
  
 
@@ -449,11 +447,111 @@ $http.get(API).then(function(response) {
         }
     }).draw();
                     
+var APIE2 = "/proxyMLS";
+ var API = "api/v1/tourists-by-countries";
+ 
 
+$http.get(API).then(function(response) {     
+
+ $http.get(APIE2).then(function(responseE1) {                  
+
+
+anychart.onDocumentReady(function () {
+    // create data set on our data
+    var dataSet = anychart.data.set([
+        ['poblacion oeste europa', parseInt(responseE1.data.filter(d => d.region == 'Europe' && d.subregion == "Western Europe").map(function(d) { return d['population'] }))],
+        ['Colombia salida de turistas', parseInt(response.data.filter(d => d.country == 'Colombia').map(function(d) { return d['touristDeparture'] }))],
+        ['Germany salida de turistas', parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['touristDeparture'] }))]
+        
+    ]);
+
+    // map data for the first series, take x from the zero column and value from the first column of data set
+    var seriesData = dataSet.mapAs({'x': 0, 'value': 1});
+
+    // create area chart
+    var chart = anychart.area();
+
+    // adding dollar symbols to yAxis labels
+    chart.yAxis().labels().format('{%Value}');
+
+    // turn on chart animation
+    chart.animation(true);
+
+    // axes and scale settings
+    chart.yScale()
+            .minimum(9000000)
+            .maximum(30000);
+    chart.yAxis().title('integracion2');
+    chart.xAxis().labels().padding([5, 5, 0, 5]);
+
+    // chart grids
+    chart.yGrid(true)
+            .xGrid(true);
+
+    // turn on the crosshair
+    var crosshair = chart.crosshair();
+    crosshair.enabled(true)
+            .yStroke(null)
+            .xStroke('#fff')
+            .zIndex(99);
+    crosshair.yLabel(false);
+    crosshair.xLabel(false);
+
+    // set chart title text settings
+    chart.title()
+            .enabled(true)
+            .useHtml(true)
+            .text('AVERAGE MONTHLY HOURS OF SUNSHINE OVER THE YEAR<br/>' +
+                    '<span style="color:#212121; font-size: 13px;">the monthly total of sunhours over the year in Sydney, Australia.</span>')
+            .padding([0, 0, 20, 0]);
+
+    // create first series with mapped data
+    var series = chart.splineArea(seriesData);
+    series.name('Sunhours');
+    series.color('Gold 0.5');
+    series.markers()
+            .enabled(true)
+            .type('circle')
+            .size(4)
+            .stroke('1.5 #fff')
+            .zIndex(100);
+
+    // set chart tooltip and interactivity settings
+    chart.tooltip()
+            .positionMode('chart')
+            .anchor('right-top')
+            .position('right-top')
+            .offsetX(50)
+            .offsetY(50);
+
+    chart.interactivity().hoverMode('by-x');
+
+    // set container id for the chart
+    chart.container('integracionE2');
+
+    // initiate chart drawing
+    chart.draw();
+});
+
+   
+
+
+ })
+
+})
  
 })
 })
 
+
+    $http.get("https://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats/").then(function(response) {
+        $scope.datoscomp = response.data;
+        $scope.status = response.status;
+        console.log($scope.datoscomp);
+    }, function(response) {
+        $scope.datoscomp = response.data || 'Request failed';
+        $scope.status = response.status;
+    })
     
           
                 

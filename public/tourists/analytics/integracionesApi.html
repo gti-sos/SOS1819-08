@@ -1,7 +1,12 @@
+<p>Integracion emigrations by countries.</p>
 <div id="integracion1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
+
+<p>Integracion beer counsumed.</p>
 <div id="integracion2"></div>
 
+
+<p>Integracion climate States.</p>
 <style>
     #integracion3 {
 	min-width: 320px;
@@ -13,13 +18,16 @@
 
 <div id="integracion3"></div>
 
-
+<p>Integracion deceaseds.</p>
 <div id="integracion4" style="width: 900px; height: 500px"></div>
 
+
+<p>Integracion general public expenses.</p>
  <div id="integracion5" style="width: 900px; height: 500px;"></div>
  
- <style type="text/css">
-html, body, #integracion6 {
+ 
+ <p>Integracion uefa club ranking.</p>
+ <style> #integracion6 {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -28,12 +36,15 @@ html, body, #integracion6 {
 </style>
 
  <div id="integracion6"></div>
- 
+ <p>Integracion companies stats.</p>
  <div id="integracion7"></div>
  
+ <p>Integracion externa 1.</p>
  <div style="width: 600px; height: 600px" id="integracionE1"></div>
  
-   <style> #container {
+ 
+ <p>Integracion externa 2 con proxy.</p>
+   <style> #integracionE2 {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -43,3 +54,29 @@ html, body, #integracion6 {
 
   <div id="integracionE2"></div>
  
+ 
+ <p>Integracion life expectancy stats.</p> 
+<div class="table-responsive-xl" style="background-color:rgb(153,102,153);">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">
+                    País
+                </th>
+                <th scope="col">
+                    Expectativa de la mujer
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in datoscomp">
+                <td>
+                    {{data.country}}
+                </td>
+                <td>
+                    {{data.expectancy_woman}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
