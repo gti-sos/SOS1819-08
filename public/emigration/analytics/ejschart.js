@@ -33,7 +33,7 @@ angular
                                 gridThickness: 1
 
                             },
-                            data: [response.data[0].emigrantman ,response.data[1].emigrantman
+                            data: [response.data[0].country ,response.data[1].country
                           
                         ]
                         });
