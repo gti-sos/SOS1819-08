@@ -54,3 +54,29 @@
 
   <div id="integracionE2"></div>
  
+ 
+ <p>Integracion life expectancy stats.</p> 
+<div class="table-responsive-xl" style="background-color:rgb(153,102,153);">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">
+                    País
+                </th>
+                <th scope="col">
+                    Expectativa de la mujer
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in datoscomp">
+                <td>
+                    {{data.country}}
+                </td>
+                <td>
+                    {{data.expectancy_woman}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

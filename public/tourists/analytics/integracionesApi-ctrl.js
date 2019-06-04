@@ -1,7 +1,7 @@
 angular
     .module("app")
-    .controller("integracionTourist", ["$scope", "$http",
-            function($scope, $http) {
+    .controller("integracionTourist", ["$scope", "$http", "$httpParamSerializer",
+            function($scope, $http, $httpParamSerializer) {
                 console.log("integracionTourist!");
 
                 var API = "api/v1/tourists-by-countries";
@@ -85,7 +85,7 @@ angular
                 })
 
 
-                var API = "api/v1/tourists-by-countries";
+var API = "api/v1/tourists-by-countries";
 var API2 = "https://sos1819-04.herokuapp.com/api/v1/beer-consumed-stats";
 
 $http.get(API).then(function(response) {
@@ -247,7 +247,7 @@ $http.get(API4).then(function(response4) {
         ]);
 
         var options = {
-          title: 'Company Performance',
+          title: 'integracion deceaseds',
           curveType: 'function',
           legend: { position: 'bottom' }
         };
@@ -343,9 +343,7 @@ anychart.onDocumentReady(function () {
 
     // create chart label with description
     chart.label()
-            .text('This chart compares countries by using specific indicators.\n' +
-                    'For each indicator, the value 1 is assigned to the country that has the highest value.\n' +
-                    'Other countries have their value computed as a proportion of the country with the highest value.')
+            .text('Integracion uefa club rankings.')
             .anchor('center-bottom')
             .position('center-bottom')
             .fontWeight('normal')
@@ -391,16 +389,16 @@ var chart = am4core.create("integracion7", am4charts.PieChart);
 // Add data
 chart.data = [ {
   "country": "Japon",
-  "litres": parseInt(response7.data.filter(d => d.country == 'Japon').map(function(d) { return d['employee'] }))
+  "employee": parseInt(response7.data.filter(d => d.country == 'Japon').map(function(d) { return d['employee'] }))
 }, {
   "country": "España",
-  "litres": parseInt(response7.data.filter(d => d.country == 'España').map(function(d) { return d['employee'] }))
+  "employee": parseInt(response7.data.filter(d => d.country == 'España').map(function(d) { return d['employee'] }))
 }, {
   "country": "Spain",
-  "litres": parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['arrivalTourist'] }))
+  "arrivalTourist": parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['arrivalTourist'] }))
 }, {
   "country": "Germany",
-  "litres": parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['arrivalTourist'] }))
+  "arrivalTourist": parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['arrivalTourist'] }))
 }];
 
 // Set inner radius
@@ -408,7 +406,7 @@ chart.innerRadius = am4core.percent(50);
 
 // Add and configure Series
 var pieSeries = chart.series.push(new am4charts.PieSeries());
-pieSeries.dataFields.value = "litres";
+pieSeries.dataFields.value = "";
 pieSeries.dataFields.category = "country";
 pieSeries.slices.template.stroke = am4core.color("#fff");
 pieSeries.slices.template.strokeWidth = 2;
@@ -545,6 +543,15 @@ anychart.onDocumentReady(function () {
 })
 })
 
+
+    $http.get("https://sos1819-12.herokuapp.com/api/v1/life-expectancy-stats/").then(function(response) {
+        $scope.datoscomp = response.data;
+        $scope.status = response.status;
+        console.log($scope.datoscomp);
+    }, function(response) {
+        $scope.datoscomp = response.data || 'Request failed';
+        $scope.status = response.status;
+    })
     
           
                 
