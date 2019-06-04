@@ -15,6 +15,14 @@ var expRemoteApiCristian1 = 'https://breaking-bad-quotes.herokuapp.com/v1/quotes
 var expRemoteApiE1 = 'https://countryapi.gear.host/v1/Country/getCountries?pRegion=Europe';
 
 
+
+var expPathsML2 = "/proxyMLS";
+  
+var expRemoteApiE2Ml = 'https://restcountries.eu/rest/v2/regionalbloc/eu';
+
+
+
+
 var expenses = [];
 var touristsByCountries = [];
 var emigrations = [];
