@@ -1,4 +1,4 @@
-<h4>Use of external API Breaking Bad quotes</h4>
+<h4>Api externa 1 citas famosas</h4>
 <br>
 <div>
     
@@ -9,7 +9,7 @@
                     
                     <th>author</th>
                     <th>quote</th>
-                    <ht><buttom class="btn btn-primary" ng-click="refresh()">MORE QUOTES</buttom></ht>
+                    
                     
                 </tr>
                 
@@ -17,11 +17,11 @@
         
         <tbody>
             
-            <tr ng-repeat = "data in datas">
+            <tr ng-repeat = "quote in quotes">
             
                 
-                <th>{{ data.name }}</th>
-                <th>{{ data.rate }}</th>
+                <th>{{ quote.author }}</th>
+                <th>{{ quote.quote }}</th>
                 
                 
             </tr>

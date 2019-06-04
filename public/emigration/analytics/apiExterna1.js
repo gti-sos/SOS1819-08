@@ -8,14 +8,10 @@ angular
             var API2 = "/proxyc1";
 
 
-
-            $http.get(API).then(function(response) {
-                $http.get(API2).then(function(response1) {
-                    console.log("Data received: "+JSON.stringify(response1.data));
-                    var datos=response1.data.Response
-                    $scope.data= response1.data;
-                })
-
-            })
+$http.get(API2).then(function(response){
+        
+        $scope.quotes = response.data;
+        
+    });
         }
     ]);
