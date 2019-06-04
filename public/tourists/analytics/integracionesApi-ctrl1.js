@@ -19,9 +19,9 @@ $http.get(API).then(function(response) {
 anychart.onDocumentReady(function () {
     // create data set on our data
     var dataSet = anychart.data.set([
-        ['Jan', parseInt(responseE1.data.filter(d => d.region == 'Europe' && d.subregion == "Western Europe").map(function(d) { return d['population'] }))],
-        ['Feb', parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['incomeTourist'] }))],
-        ['Mar', parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['incomeTourist'] }))]
+        ['poblacion oeste europa', parseInt(responseE1.data.filter(d => d.region == 'Europe' && d.subregion == "Western Europe").map(function(d) { return d['population'] }))],
+        ['Colombia salida de turistas', parseInt(response.data.filter(d => d.country == 'Colombia').map(function(d) { return d['touristDeparture'] }))],
+        ['Germany salida de turistas', parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['touristDeparture'] }))]
         
     ]);
 
@@ -32,16 +32,16 @@ anychart.onDocumentReady(function () {
     var chart = anychart.area();
 
     // adding dollar symbols to yAxis labels
-    chart.yAxis().labels().format('{%Value} hrs');
+    chart.yAxis().labels().format('{%Value}');
 
     // turn on chart animation
     chart.animation(true);
 
     // axes and scale settings
     chart.yScale()
-            .minimum(150)
-            .maximum(300);
-    chart.yAxis().title('Sunhours');
+            .minimum(9000000)
+            .maximum(30000);
+    chart.yAxis().title('integracion2');
     chart.xAxis().labels().padding([5, 5, 0, 5]);
 
     // chart grids
