@@ -21,6 +21,7 @@
     <LI><A HREF= "https://documenter.getpostman.com/view/6911989/S17xt6bh ">https://sos1819-08.herokuapp.com/api/v1/expenses-of-countries-in-education-and-culture/docs</A>(developed by <A HREF= "https://github.com/felgonmar ">Felix Gonzalez Marín</A>)</LI>
     
 </UL>
+<LI>Docker: docker run -p 8080:8080 -d felgonmar/sos1819-08</LI>
 
         </body>
     </head>
