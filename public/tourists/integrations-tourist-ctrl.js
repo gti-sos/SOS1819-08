@@ -156,7 +156,7 @@ angular
                 function drawMarkersMap() {
           var data1 = google.visualization.arrayToDataTable([
     
-        ['touristDeparture', 'country'],
+        ['country', 'touristDeparture'],
         [   'Germany' ,parseInt(response.data.filter(d =>d.country == 'Germany' && d.year == 2017).map(d => { return d['touristDeparture']}))],
         [   'United States' ,parseInt(response.data.filter(d =>d.country == 'USA' && d.year == 2017).map(d => { return d['touristDeparture']}))],
         [   'Spain' ,parseInt(response.data.filter(d =>d.country == 'Spain' && d.year == 2017).map(d => { return d['touristDeparture']}))],
