@@ -11,6 +11,8 @@ angular
 
                         
 
+window.onload = function () {
+
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
 	exportEnabled: true,
@@ -35,6 +37,9 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	}]
 });
 chart.render();
+
+}
+
 
 
 
