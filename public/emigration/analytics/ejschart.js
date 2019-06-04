@@ -36,11 +36,8 @@ angular
                                 gridThickness: 1
 
                             },
-                            data: [parseInt(response.data.filter(d => d.country == response.data[0].country).map(function(d) { return d["totalemigrant"] })),
-                            parseInt(response.data.filter(d => d.country == response.data[1].country).map(function(d) { return d["totalemigrant"] })),
-                            parseInt(response.data.filter(d => d.country == response.data[2].country).map(function(d) { return d["totalemigrant"] })),
-                            parseInt(response.data.filter(d => d.country == response.data[3].country).map(function(d) { return d["totalemigrant"] })),
-                            parseInt(response.data.filter(d => d.country == response.data[4].country).map(function(d) { return d["totalemigrant"] }))
+                            data: [response.data[0].emigrantman ,response.data[1].emigrantman
+                          
                         ]
                         });
 
