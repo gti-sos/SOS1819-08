@@ -64,7 +64,7 @@ angular
                         ]
                     }, {
                         name: 'monedas',
-                        data: [datos[0].name,datos[1].name
+                        data: [datos.name
                             
                         ]
                     }]
