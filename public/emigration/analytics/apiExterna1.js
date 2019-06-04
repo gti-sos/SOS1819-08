@@ -12,6 +12,8 @@ angular
             $http.get(API).then(function(response) {
                 $http.get(API2).then(function(response1) {
                     console.log("Data received: "+JSON.stringify(response1.data));
+                    $scope.coun = response1.data;
+                    var datos=response1.data.Response
 
                     Highcharts.chart('container', {
                         chart: {
@@ -62,7 +64,7 @@ angular
                         ]
                     }, {
                         name: 'monedas',
-                        data: [response1.data[0].name,response1.data[1].name
+                        data: [datos[0].name,datos[1].name
                             
                         ]
                     }]
