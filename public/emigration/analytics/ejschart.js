@@ -6,7 +6,7 @@ angular
              
 
                     $http.get(API).then(function(response) {
-                        var i;
+                        
 
 
                         
@@ -30,7 +30,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		type: "scatter",
 		toolTipContent: "<b>Area: </b>{x} sq.ft<br/><b>Price: </b>${y}k",
 		dataPoints: [
-			{ x: 800, y: 350 },
+			{ x: response.data[0].emigrantman, y: response.data[0].emigrantwoman },
 			{ x: 900, y: 450 },
 			{ x: 850, y: 450 },
 			{ x: 1250, y: 700 },
