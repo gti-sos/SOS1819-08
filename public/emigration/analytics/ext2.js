@@ -15,16 +15,6 @@ $http.get(API2).then(function(response){
         console.log($scope.cards);
         
     });
-    $scope.refresh2 = function refresh(){ 
-    $http.get(API2).then(function(response){
-        
-        
-        
-       $scope.cards = response.data.cards;
-        
-    });
-    
-    };
 
 
 
