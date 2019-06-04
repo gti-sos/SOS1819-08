@@ -117,6 +117,13 @@ angular.module("app", ["ngRoute","chart.js"])
 
         })
         
+        .when("/integrations/apiExterna2-cristian", {
+
+            controller: "Externa2Cristian",
+            templateUrl: "emigration/analytics/ext2.html"
+
+        })
+        
         .when("/integrations/population", {
 
             controller: "integracionPopulationsEmi",
@@ -139,12 +146,12 @@ angular.module("app", ["ngRoute","chart.js"])
 
         })
         
-        // .when("/integrations/ejschart", {
+        .when("/integrations/ejschart", {
 
-        //     controller: "ejschartctrl",
-        //     templateUrl: "emigration/analytics/ejschart.html"
+            controller: "ejschartctrl",
+            templateUrl: "emigration/analytics/ejschart.html"
 
-        // })
+        })
         
         // .when("/integrations/vis", {
 

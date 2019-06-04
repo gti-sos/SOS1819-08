@@ -1,4 +1,4 @@
-<h4>Api externa 1 citas famosas</h4>
+<h4>Uso de API Ext</h4>
 <br>
 <div>
     
@@ -7,9 +7,10 @@
                 
                 <tr>
                     
-                    <th>author</th>
-                    <th>quote</th>
-                    
+                    <th>Palo</th>
+                    <th>Valor</th>
+                    <th>Carta</th>
+
                     
                 </tr>
                 
@@ -17,11 +18,12 @@
         
         <tbody>
             
-            <tr ng-repeat = "quote in quotes">
+            <tr ng-repeat = "card in cards">
             
                 
-                <th>{{ quote.author }}</th>
-                <th>{{ quote.quote }}</th>
+                <th>{{ card.suit }}</th>
+                <th>{{ card.value }}</th>
+                <th><img src="{{ card.images.png }}"></img></th>
                 
                 
             </tr>

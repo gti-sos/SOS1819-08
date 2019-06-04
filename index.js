@@ -11,7 +11,7 @@ var unirest = require('unirest');
 var expPaths ="/proxyExternal1";
 
 var expPathsCristian1 ="/proxyc1";
-var expRemoteApiCristian1 = 'https://data.gateio.co/api2/1/marketlist';
+var expRemoteApiCristian1 = 'https://breaking-bad-quotes.herokuapp.com/v1/quotes/5';
 
 var expRemoteApiE1 = 'https://countryapi.gear.host/v1/Country/getCountries?pRegion=Europe';
 
