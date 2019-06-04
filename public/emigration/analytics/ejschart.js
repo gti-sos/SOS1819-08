@@ -3,16 +3,13 @@ angular
     .controller("ejschartctrl",["$scope","$http", function ($scope,$http){
         console.log("ejschartctrl Initialized.");
         var API = "/api/v1/emigrations-by-countries";
-             var datos = [];
+             
 
                     $http.get(API).then(function(response) {
                         var i;
-                        console.log(response.status);
-                        for (i = 0; i < response.data.length; i++) {
-                            datos.push({ x: response.data[i].emigrantman, y: response.data[i].emigrantwoman, z: response.data[i].year, name: response.data[i].country });
-                        }
 
-                        console.log(datos);
+
+                        
 
                         var chart = new CanvasJS.Chart("chartContainer", {
                             animationEnabled: true,
