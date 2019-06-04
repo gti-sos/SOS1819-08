@@ -121,3 +121,9 @@ app.use(expPathsCristian1, function(req, res) {
   console.log('piped: '+expRemoteApiCristian1);
   req.pipe(request(expRemoteApiCristian1)).pipe(res);
 });
+
+//proxy mariloli E2
+app.use(expPathsML2, function(req, res) {
+  console.log('piped: '+expRemoteApiE2Ml);
+  req.pipe(request(expRemoteApiE2Ml)).pipe(res);
+});

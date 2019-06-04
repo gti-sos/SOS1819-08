@@ -423,6 +423,38 @@ pieSeries.hiddenState.properties.startAngle = -90;
 
 })
 })
+    
+    
+ var APIE1 = "https://www.oostende.be/opendataset/view/6/json";
+ var API = "api/v1/tourists-by-countries";
+ 
+
+$http.get(API).then(function(response) {     
+
+ $http.get(APIE1).then(function(responseE1) {                  
+
+
+
+    new RGraph.SVG.Rose({
+        id: 'integracionE1',
+        data: [parseInt(responseE1.data.filter(d => d.city == 'Birmingham').map(function(d) { return d['phone'] })),parseInt(response.data.filter(d => d.country == 'USA').map(function(d) { return d['incomeTourist'] }))],
+        options: {
+            colors: [ 'rgba(255,0,0,0.5)', 'rgba(0,255,0,0.5)', 'rgba(0,0,255,0.5)' ],
+            backgroundGridRadialsCount: 0,
+            linewidth: 2,
+            amargin: '5deg',
+            labels: ['phone','incomeTourist'],
+            tooltips: ['phone','incomeTourist'],
+            linewidth: .5
+        }
+    }).draw();
+                    
+
+ 
+})
+})
+
+    
           
                 
 }]);
