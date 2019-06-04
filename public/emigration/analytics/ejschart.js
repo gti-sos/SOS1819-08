@@ -20,7 +20,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	axisX: {
 		title:"Area (in sq. ft)",
 		minimum: 790,
-		maximum: 10000000
+		maximum: 6000000
 	},
 	axisY:{
 		title: "Price (in USD)",
@@ -30,7 +30,12 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		type: "scatter",
 		toolTipContent: "<b>Area: </b>{x} sq.ft<br/><b>Price: </b>${y}k",
 		dataPoints: [
-			{ x: response.data[0].emigrantman, y: response.data[0].emigrantwoman }
+			{ x: response.data[0].emigrantman, y: response.data[0].emigrantwoman },
+			{ x: response.data[1].emigrantman, y: response.data[1].emigrantwoman },
+			{ x: response.data[2].emigrantman, y: response.data[2].emigrantwoman },
+			{ x: response.data[3].emigrantman, y: response.data[3].emigrantwoman },
+			{ x: response.data[4].emigrantman, y: response.data[4].emigrantwoman },
+			{ x: response.data[5].emigrantman, y: response.data[5].emigrantwoman }
 		]
 	}]
 });
