@@ -3,36 +3,53 @@ angular
     .controller("ejschartctrl",["$scope","$http", function ($scope,$http){
         console.log("ejschartctrl Initialized.");
         var API = "/api/v1/emigrations-by-countries";
-window.onload = function () {
+             var datos = [];
 
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	exportEnabled: true,
-	theme: "light1",
-	title:{
-		text: "Software Sales Conversion"
-	},
-	data: [{
-		type: "pyramid",
-		yValueFormatString: "#\"%\"",
-		indexLabelFontColor: "black",
-		indexLabelFontSize: 16,
-		indexLabel: "{label} - {y}",
-		//reversed: true, // Reverses the pyramid
-		dataPoints: [
-			{ y: 100, label: "Website Visit" },
-			{ y: 65, label: "Download Page Visit" },
-			{ y: 45, label: "Downloaded" },
-			{ y: 32, label: "Interested To Buy" },
-			{ y: 5, label: "Purchased" }
-		]
-	}]
-});
-chart.render();
+                    $http.get(API).then(function(response) {
+                        var i;
+                        console.log(response.status);
+                        for (i = 0; i < response.data.length; i++) {
+                            datos.push({ x: response.data[i].number, y: response.data[i].life, z: response.data[i].year, name: response.data[i].province });
+                        }
 
-}
+                        console.log(datos);
+
+                        var chart = new CanvasJS.Chart("chartContainer", {
+                            animationEnabled: true,
+                            zoomEnabled: true,
+                            theme: "light2",
+                            title: {
+                                text: "Capitalization And Education Expense"
+                            },
+                            axisX: {
+                                title: "",
+                                suffix: "",
+                                minimum: 0,
+                                maximum: 100,
+                                gridThickness: 1
+                            },
+                            axisY: {
+                                title: "",
+                                suffix: "",
+                                minimum: 0,
+                                maximum: 100,
+                                gridThickness: 1
+
+                            },
+                            data: [{
+                                type: "bubble",
+                                toolTipContent: "<b>{name}</b><br/>Number: {x}  <br/> Lifes: {y} . <br/> Year: {z}",
+                                dataPoints: datos
+                            }]
+                        });
+
+                        chart.render();
+
+                    });
+
+                },
     
 
 
     
-}]);
+]);
