@@ -12,7 +12,7 @@ angular
             $http.get(API).then(function(response) {
                 $http.get(API2).then(function(response1) {
                     console.log("Data received: "+JSON.stringify(response1.data));
-
+                    var datos=response1.data.Response
                     Highcharts.chart('container', {
                         chart: {
                             type: 'column',
@@ -62,7 +62,7 @@ angular
                         ]
                     }, {
                         name: 'monedas',
-                        data: [response1.data
+                        data: [datos[0].rate, datos[1].rate,
                         ]
                     }]
                     });
