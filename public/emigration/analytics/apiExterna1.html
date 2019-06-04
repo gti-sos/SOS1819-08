@@ -1,1 +1,35 @@
-<div id="container" style="height: 400px"></div>
+<h4>Api externa 1 citas famosas</h4>
+<br>
+<div>
+    
+    <table class="table">
+        <thead>
+                
+                <tr>
+                    
+                    <th>author</th>
+                    <th>quote</th>
+                    
+                    
+                </tr>
+                
+        </thead>
+        
+        <tbody>
+            
+            <tr ng-repeat = "quote in quotes">
+            
+                
+                <th>{{ quote.author }}</th>
+                <th>{{ quote.quote }}</th>
+                
+                
+            </tr>
+            
+        </tbody>
+        
+        
+    </table>
+    
+    
+</div>
