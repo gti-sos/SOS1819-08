@@ -10,7 +10,7 @@ angular
                 var API3 = "https://sos1819-09.herokuapp.com/api/v2/climate-stats";
                 var API4 = "https://sos1819-14.herokuapp.com/api/v1/deceaseds/";
                 var API5 = "https://sos1819-11.herokuapp.com/api/v1/general-public-expenses";
-                var API6 = "https://sos1819-06.herokuapp.com/api/v1/uefa-club-rankings/";
+                
 
 
                 $http.get(API).then(function(response) {
@@ -85,40 +85,58 @@ angular
                 })
 
 
-                $http.get(API).then(function(response) {
-                    $http.get(API2).then(function(response2) {
+                var API = "api/v1/tourists-by-countries";
+var API2 = "https://sos1819-04.herokuapp.com/api/v1/beer-consumed-stats";
 
-                        Highcharts.chart('integracion2', {
-                            chart: {
-                                type: 'column'
-                            },
-                            title: {
-                                text: 'integrations tourist by countries and beer consumed stats'
-                            },
-                            xAxis: {
-                                categories: ['Spain', 'Germany']
-                            },
-                            credits: {
-                                enabled: false
-                            },
-                            series: [{
-                                name: 'arrivalTourist',
-                                data: [parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d["arrivalTourist"] })),
-                                    parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d["arrivalTourist"] }))
+$http.get(API).then(function(response) {
+$http.get(API2).then(function(response2) {
+               
+am4core.ready(function() {
 
-                                ]
-                            }, {
-                                name: 'rating',
-                                data: [
-                                    parseInt(response2.data.filter(d => d.country == 'Spain').map(function(d) { return d['rating'] })),
-                                    parseInt(response2.data.filter(d => d.country == 'Germany').map(function(d) { return d['rating'] }))
-                                ]
-                            }]
-                        });
-                    })
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
 
-                })
+var chart = am4core.create("integracion2", am4charts.SlicedChart);
+chart.hiddenState.properties.opacity = 0; // this makes initial fade in effect
 
+chart.data = [{
+    "name": "Spain rating",
+    "value": parseInt(response2.data.filter(d => d.country == 'Spain').map(function(d) { return d['rating'] }))
+}, {
+    "name": "Germany rating",
+    "value": parseInt(response2.data.filter(d => d.country == 'Germany').map(function(d) { return d['rating'] }))
+
+}, {
+    "name": "Spain llegada de turistas",
+    "value": parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d["arrivalTourist"] })),
+}, {
+    "name": "Alemania llegada de turistas",
+    "value": parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d["arrivalTourist"] }))
+
+}];
+
+var series = chart.series.push(new am4charts.FunnelSeries());
+series.colors.step = 2;
+series.dataFields.value = "value";
+series.dataFields.category = "name";
+series.alignLabels = true;
+
+series.labelsContainer.paddingLeft = 15;
+series.labelsContainer.width = 200;
+
+//series.orientation = "horizontal";
+//series.bottomRatio = 1;
+
+chart.legend = new am4charts.Legend();
+chart.legend.position = "left";
+chart.legend.valign = "bottom";
+chart.legend.margin(5,5,20,5);
+
+});
+
+})
+})
                 $http.get(API).then(function(response) {
                     $http.get(API3).then(function(response3) {
 
@@ -210,6 +228,39 @@ angular
                     })
 
                 })  
+
+ var API = "api/v1/tourists-by-countries";
+ var API4 = "https://sos1819-14.herokuapp.com/api/v1/deceaseds/";
+
+$http.get(API).then(function(response) {
+$http.get(API4).then(function(response4) {
+               
+     
+           google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+           ['Pais', 'llegada de touristas', 'penalty' ],
+          ['Spain',parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['arrivalTourist'] })),parseInt(response4.data.filter(d=> d.province=='Huelva' && d.year == 2015).map(function(d) { return d['penalty'] }))],
+          ['Spain1', parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['touristDeparture'] })),parseInt(response4.data.filter(d=> d.province=='Soria' && d.year == 2017).map(function(d) { return d['penalty'] }))]
+        ]);
+
+        var options = {
+          title: 'Company Performance',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('integracion4'));
+
+        chart.draw(data, options);
+      }          
+    
+ })
+ })  
+
+
                
 $http.get(API).then(function(response) {
 $http.get(API5).then(function(response5) {
@@ -245,58 +296,24 @@ $http.get(API5).then(function(response5) {
                     })
                 })
                 
-                
-                                $http.get(API).then(function(response) {
-                    $http.get(API4).then(function(response4) {
-               
-               
-    google.charts.load('current', {'packages':['treemap']});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data2 = google.visualization.arrayToDataTable([
-          ['Pais', 'provincia', 'llegada de touristas', 'penalty' ],
-          ['Spain','Huelva', parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['arrivalTourist'] })),parseInt(response4.data.filter(d=> d.province=='Huelva' && d.year == 2015).map(function(d) { return d['penalty'] }))],
-          ['Spain1','Soria', parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['touristDeparture'] })),parseInt(response4.data.filter(d=> d.province=='Soria' && d.year == 2017).map(function(d) { return d['penalty'] }))]
-          
-        ]);;
 
-        tree = new google.visualization.TreeMap(document.getElementById('integracion4'));
 
-        tree.draw(data2, {
-          minColor: '#f00',
-          midColor: '#ddd',
-          maxColor: '#0d0',
-          headerHeight: 15,
-          fontColor: 'black',
-          showScale: true
-        });
-
-      }
-
- })
- })
-    
-    
-    var API = "api/v1/tourists-by-countries";  
-    var API6 = "https://sos1819-06.herokuapp.com/api/v1/uefa-club-rankings";
+var API = "api/v1/tourists-by-countries";  
+var API6 = "https://sos1819-06.herokuapp.com/api/v1/uefa-club-rankings/";
 $http.get(API).then(function(response) {
 $http.get(API6).then(function(response6) {
                
                
-    anychart.onDocumentReady(function () {
-    // create data set on our data
-    var dataSet = anychart.data.set([
-        ['Spain', parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['arrivalTourist'] })),parseInt(response6.data.filter(d => d.country == 'Spainy' && d.year ==2017).map(function(d) { return d['points'] })), parseInt(response6.data.filter(d => d.country == 'Spain' && d.year ==2017).map(function(d) { return d['tsbeforeseason'] }))],
-        ['Germany', parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['arrivalTourist'] })), parseInt(response6.data.filter(d => d.country == 'Germany' && d.year ==2017).map(function(d) { return d['points'] })), response6.data.filter(d => d.country == 'Germany' && d.year ==2017).map(function(d) { return d['tsbeforeseason'] })]
-    ]);
+
+
 anychart.onDocumentReady(function () {
     // create data set on our data
     var dataSet = anychart.data.set([
         ['arrivalTourist', parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['arrivalTourist'] })), parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['arrivalTourist'] }))],
-        ['points', parseInt(response6.data.filter(d => d.country == 'Spainy' && d.year ==2017).map(function(d) { return d['points'] })), parseInt(response6.data.filter(d => d.country == 'Germany' && d.year ==2017).map(function(d) { return d['points'] }))],
-        ['tsbeforeseason',parseInt(response6.data.filter(d => d.country == 'Spain' && d.year ==2017).map(function(d) { return d['tsbeforeseason'] })), parseInt(response6.data.filter(d => d.country == 'Germany' && d.year ==2017).map(function(d) { return d['tsbeforeseason'] }))],
+        ['points', parseInt(response6.data.filter(d => d.country == 'Spainy' && d.season ==2017).map(function(d) { return d['points'] })), parseInt(response6.data.filter(d => d.country == 'Germany' && d.season ==2017).map(function(d) { return d['points'] }))],
+        ['ptsbeforeseason',parseInt(response6.data.filter(d => d.country == 'Spain' && d.season ==2017).map(function(d) { return d['ptsbeforeseason'] })), parseInt(response6.data.filter(d => d.country == 'Germany' && d.season ==2017).map(function(d) { return d['ptsbeforeseason'] }))],
         ['touristDeparture', parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['touristDeparture'] })), parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['touristDeparture'] }))],
-        ['incomeTourist', parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['incomeTourist'] })), parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['incomeTourist'] }))],
+ //       ['incomeTourist', parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['incomeTourist'] })), parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['incomeTourist'] }))],
         
     ]);
 
@@ -320,9 +337,9 @@ anychart.onDocumentReady(function () {
 
     // set chart yScale settings
     chart.yScale()
-            .minimum(-.2)
-            .maximum(1)
-            .ticks({'interval': 0.2});
+            .minimum(50000)
+            .maximum(200000)
+            .ticks({'interval': 50000});
 
     // create chart label with description
     chart.label()
@@ -354,7 +371,58 @@ anychart.onDocumentReady(function () {
 });
  })
  })
-})                           
-                
+                           
+ var API = "api/v1/tourists-by-countries";
+ var API7 = "https://sos1819-02.herokuapp.com/api/v1/companies-stats";
+
+$http.get(API).then(function(response) {
+$http.get(API7).then(function(response7) {
+               
+     
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("integracion7", am4charts.PieChart);
+
+// Add data
+chart.data = [ {
+  "country": "Japon",
+  "litres": parseInt(response7.data.filter(d => d.country == 'Japon').map(function(d) { return d['employee'] }))
+}, {
+  "country": "España",
+  "litres": parseInt(response7.data.filter(d => d.country == 'España').map(function(d) { return d['employee'] }))
+}, {
+  "country": "Spain",
+  "litres": parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['arrivalTourist'] }))
+}, {
+  "country": "Germany",
+  "litres": parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['arrivalTourist'] }))
+}];
+
+// Set inner radius
+chart.innerRadius = am4core.percent(50);
+
+// Add and configure Series
+var pieSeries = chart.series.push(new am4charts.PieSeries());
+pieSeries.dataFields.value = "litres";
+pieSeries.dataFields.category = "country";
+pieSeries.slices.template.stroke = am4core.color("#fff");
+pieSeries.slices.template.strokeWidth = 2;
+pieSeries.slices.template.strokeOpacity = 1;
+
+// This creates initial animation
+pieSeries.hiddenState.properties.opacity = 1;
+pieSeries.hiddenState.properties.endAngle = -90;
+pieSeries.hiddenState.properties.startAngle = -90;
+
+}); // end am4core.ready()
+
+})
+})
+          
                 
 }]);
