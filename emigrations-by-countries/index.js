@@ -46,6 +46,12 @@ app.get("/api/v1/emigrations-by-countries/loadInitialData", (req, res) => {
                 "emigrantman": 1249848,
                 "emigrantwoman": 1486382,
                 "totalemigrant": 2736230
+            }, {
+                "country": "Uruguay",
+                "year": 2017,
+                "emigrantman": 1000,
+                "emigrantwoman": 1050,
+                "totalemigrant": 2050
             }];
             emigrations.insert(newEmigrations);
             res.sendStatus(200);

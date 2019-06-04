@@ -1,3 +1,5 @@
+
+
 angular
     .module("app")
     .controller("ejschartctrl",["$scope","$http", function ($scope,$http){
@@ -65,10 +67,6 @@ var chart = new CanvasJS.Chart("chartContainer", {
 	},]
 });
 chart.render();
-  
-
-
-
 
                     });
 

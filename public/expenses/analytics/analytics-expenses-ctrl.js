@@ -12,55 +12,164 @@ angular.module("app").controller("analyticsExpenses", ["$scope", "$http", functi
                 
                 
                 //HIGHCHARTS FOR MY OWN API
-                var expensesData=[];
+                var coun=[];
+                var cexp=[];
+                var bp=[];
+                var epc=[];
                 for (var i in response.data) {
-                    if(i==0){
-                    var dat={
-                        name: response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],
-                        y: response.data.map(function(d) { return d["countryExpense"] })[i] ,sliced: true,
-            selected: true
-                    };}else{
-                         dat={
-                        name: response.data.map(function(d) { return d["country"] })[i]+" "+ response.data.map(function(d) { return d["year"] })[i],
-                        y: response.data.map(function(d) { return d["countryExpense"] })[i]};
-                    };
-                    expensesData.push(dat);
+                    var c=response.data[i].country + " " + response.data[i].year
+                    var e=response.data[i].countryExpense
+                    var pe=response.data[i].budgetPercentage
+                    var cap=response.data[i].expensePerCapita
+                    coun.push(c)
+                    cexp.push(e)
+                    bp.push(pe)
+                    epc.push(cap)
                     }
                     
                     
-                    console.log("Datos:"+ JSON.stringify(expensesData));
+                    console.log( coun);
      
                 
-                
-              Highcharts.chart('container', {
+                    var colors = Highcharts.getOptions().colors;
+Highcharts.chart('container', {
+
     chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
+        type: 'streamgraph',
+        marginBottom: 30,
+        zoomType: 'x'
     },
+
+    // Make sure connected countries have similar colors
+    colors: [
+        colors[0],
+        colors[1],
+        colors[2],
+        colors[3],
+        colors[4],
+        // East Germany, West Germany and Germany
+        Highcharts.color(colors[5]).brighten(0.2).get(),
+        Highcharts.color(colors[5]).brighten(0.1).get(),
+
+        colors[5],
+        colors[6],
+        colors[7],
+        colors[8],
+        colors[9],
+        colors[0],
+        colors[1],
+        colors[3],
+        // Soviet Union, Russia
+        Highcharts.color(colors[2]).brighten(-0.1).get(),
+        Highcharts.color(colors[2]).brighten(-0.2).get(),
+        Highcharts.color(colors[2]).brighten(-0.3).get()
+    ],
+
     title: {
-        text: 'Browser market shares in January, 2018'
+        floating: true,
+        align: 'left',
+        text: 'Expenses of countries in education and culture'
     },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+   
+
+    xAxis: {
+        maxPadding: 0,
+        type: 'category',
+        crosshair: true,
+        categories: coun
+            ,
+        labels: {
+            align: 'left',
+            reserveSpace: false,
+            rotation: 270
+        },
+        lineWidth: 0,
+        margin: 20,
+        tickWidth: 0
     },
-    plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: false
+
+    yAxis: {
+        visible: false,
+        startOnTick: false,
+        endOnTick: false
+    },
+
+    legend: {
+        enabled: false
+    },
+
+    annotations: [{
+        labels: [{
+            point: {
+                x: 5.5,
+                xAxis: 0,
+                y: 30,
+                yAxis: 0
             },
-            showInLegend: true
+            text: 'Cancelled<br>during<br>World War II'
+        }, {
+            point: {
+                x: 18,
+                xAxis: 0,
+                y: 90,
+                yAxis: 0
+            },
+            text: 'Soviet Union fell,<br>Germany united'
+        }],
+        labelOptions: {
+            backgroundColor: 'rgba(255,255,255,0.5)',
+            borderColor: 'silver'
+        }
+    }],
+
+    plotOptions: {
+        series: {
+            label: {
+                minFontSize: 5,
+                maxFontSize: 15,
+                style: {
+                    color: 'rgba(255,255,255,0.75)'
+                }
+            }
         }
     },
+
     series: [{
-        name: 'Countries and years',
-        colorByPoint: true,
-        data: expensesData
-    }]
+        name: "country expenses",
+        data: cexp
+    },{
+        name: "budget percentage"
+        , data: bp
+    },{
+        name:"expenses per capita"
+        , data: epc
+    }
+        ],
+
+    exporting: {
+        sourceWidth: 800,
+        sourceHeight: 600
+    }
+
 });
+                
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //GEOCHARTS
     
