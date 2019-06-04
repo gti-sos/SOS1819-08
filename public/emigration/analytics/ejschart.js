@@ -38,13 +38,13 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		type: "scatter",
 		toolTipContent: "<b>China: Emigrantman: </b>{x} sq.ft<br/><b>Emigrantwoman: </b>${y}k",
 		dataPoints: [
-			{ x: response.data[1].emigrantman, y: response.data[1].emigrantwoman }
+			{ x: response.data[2].emigrantman, y: response.data[2].emigrantwoman }
 		]
 	},{
 		type: "scatter",
 		toolTipContent: "<b>Spain: Emigrantman: </b>{x} sq.ft<br/><b>Emigrantwoman: </b>${y}k",
 		dataPoints: [
-			{ x: response.data[2].emigrantman, y: response.data[2].emigrantwoman }
+			{ x: response.data[1].emigrantman, y: response.data[1].emigrantwoman }
 		]
 	},{
 		type: "scatter",
