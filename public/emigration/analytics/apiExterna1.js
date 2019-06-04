@@ -13,24 +13,7 @@ angular
                 $http.get(API2).then(function(response1) {
                     console.log("Data received: "+JSON.stringify(response1.data));
                     
-                    
-                    $scope.coun = response1.data;
-                    
-                   var datos=response1.data.Response;
-                    var area=[];
-                    if(datos.length>response.data.length){
-                        for(var i in response.data){
-                                area.push([datos[i].Area,response.data[i].country]);
-                       
-                    }}else{
-                          for(var i in datos){
-
-                            area.push([datos[i].Area,response.data[i].country]);                    
-                    }
-                    }
-                    
-                   console.log(area);
-                    
+                    response1.data;
                     
                     
                     
