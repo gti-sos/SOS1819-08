@@ -24,6 +24,13 @@ angular
                             [response1.data[0].country, parseInt(response1.data.filter(d => d.country == response1.data[0].country).map(function(d) { return d["happinessScore"] }))],
                             [response1.data[1].country, parseInt(response1.data.filter(d => d.country == response1.data[1].country).map(function(d) { return d["happinessScore"] }))],
                             [response1.data[2].country, parseInt(response1.data.filter(d => d.country == response1.data[2].country).map(function(d) { return d["happinessScore"] }))],
+                            [response1.data[3].country, parseInt(response1.data.filter(d => d.country == response1.data[3].country).map(function(d) { return d["happinessScore"] }))],
+                            [response1.data[4].country, parseInt(response1.data.filter(d => d.country == response1.data[4].country).map(function(d) { return d["happinessScore"] }))],
+                            [response1.data[5].country, parseInt(response1.data.filter(d => d.country == response1.data[5].country).map(function(d) { return d["happinessScore"] }))],
+                            [response1.data[6].country, parseInt(response1.data.filter(d => d.country == response1.data[6].country).map(function(d) { return d["happinessScore"] }))],
+                            [response1.data[7].country, parseInt(response1.data.filter(d => d.country == response1.data[7].country).map(function(d) { return d["happinessScore"] }))],
+                            [response1.data[8].country, parseInt(response1.data.filter(d => d.country == response1.data[8].country).map(function(d) { return d["happinessScore"] }))],
+                            [response1.data[9].country, parseInt(response1.data.filter(d => d.country == response1.data[9].country).map(function(d) { return d["happinessScore"] }))]
                         ]);
 
                         var options = {
