@@ -395,10 +395,10 @@ chart.data = [ {
   "employee": parseInt(response7.data.filter(d => d.country == 'España').map(function(d) { return d['employee'] }))
 }, {
   "country": "Spain",
-  "arrivalTourist": parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['arrivalTourist'] }))
+  "employee": parseInt(response.data.filter(d => d.country == 'Spain').map(function(d) { return d['arrivalTourist'] }))
 }, {
   "country": "Germany",
-  "arrivalTourist": parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['arrivalTourist'] }))
+  "empoloyee": parseInt(response.data.filter(d => d.country == 'Germany').map(function(d) { return d['arrivalTourist'] }))
 }];
 
 // Set inner radius
@@ -406,7 +406,7 @@ chart.innerRadius = am4core.percent(50);
 
 // Add and configure Series
 var pieSeries = chart.series.push(new am4charts.PieSeries());
-pieSeries.dataFields.value = "";
+pieSeries.dataFields.value = "employee";
 pieSeries.dataFields.category = "country";
 pieSeries.slices.template.stroke = am4core.color("#fff");
 pieSeries.slices.template.strokeWidth = 2;

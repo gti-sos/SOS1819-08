@@ -46,7 +46,7 @@ angular.module("app", ["ngRoute","chart.js"])
             templateUrl: "tourists/analytics/geocharts-tourist.html"
 
         })
-         .when("/integrations-tourists-by-countries", {
+         .when("/integrations/ALLtourists-by-countries", {
 
             controller: "integracionTourist",
             templateUrl: "tourists/analytics/integracionesApi.html"
